@@ -1,0 +1,11 @@
+# Supabase local/dev configuration (S0-T7). Create the dev/staging/prod
+# projects in the Supabase dashboard, then `supabase link --project-ref <ref>`.
+project_id = "vehicle-khata"
+
+[auth]
+enabled = true
+
+[auth.sms]
+enable_signup = true
+enable_confirmations = true
+# Provider chosen in S0-T6; see docs/spikes/otp.md

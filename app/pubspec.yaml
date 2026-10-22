@@ -1,0 +1,33 @@
+name: vehicle_khata
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  drift: ^2.35.2
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^3.4.3
+  path: ^1.9.1
+  path_provider: ^2.1.6
+  pdf: ^3.13.1
+  sentry_flutter: ^10.1.0
+  sqlite3: ^3.7.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  drift_dev: ^2.35.1
+  build_runner: ^2.16.2
+
+flutter:
+  uses-material-design: true
+
+# S0-T4: SQLite3 Multiple Ciphers (encrypted DB) via sqlite3 build hooks.
+hooks:
+  user_defines:
+    sqlite3:
+      source: sqlite3mc
