@@ -10,21 +10,31 @@ dependencies:
   drift: ^2.35.2
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_riverpod: ^3.4.3
+  flutter_secure_storage: ^11.2.0
+  go_router: ^18.1.1
+  intl: ^0.20.3
+  meta: ^1.19.0
   path: ^1.9.1
   path_provider: ^2.1.6
   pdf: ^3.13.1
   sentry_flutter: ^10.1.0
+  shared_preferences: ^2.5.6
   sqlite3: ^3.7.1
+  uuid: ^4.6.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
   drift_dev: ^2.35.1
   build_runner: ^2.16.2
+  very_good_analysis: ^11.0.0
 
 flutter:
   uses-material-design: true
+  generate: true
 
 # S0-T4: SQLite3 Multiple Ciphers (encrypted DB) via sqlite3 build hooks.
 hooks:

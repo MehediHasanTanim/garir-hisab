@@ -22,10 +22,12 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
+      - run: flutter gen-l10n
       - run: dart run build_runner build --delete-conflicting-outputs
       - run: dart format --output=none --set-exit-if-changed lib test
       - run: flutter analyze
-      - run: flutter test
+      # Golden images are OS-specific; run locally: flutter test --tags golden
+      - run: flutter test --exclude-tags golden
       - name: Build release APK (prod, split per ABI)
         run: flutter build apk --release --flavor prod -t lib/main_prod.dart --split-per-abi
       - name: Enforce APK size budget (30 MB)

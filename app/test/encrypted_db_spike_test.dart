@@ -13,7 +13,7 @@ void main() {
       File('${dir.path}/enc.db'),
       key: 'test-key',
     );
-    // ignore: avoid_print
+    // ignore: avoid_print, spike output is the deliverable
     print('SPIKE S0-T4 (host): $result');
     expect(result.rows, 50000);
   });

@@ -14,7 +14,7 @@ class SpikeRows extends Table {
 
 @DriftDatabase(tables: [SpikeRows])
 class SpikeDatabase extends _$SpikeDatabase {
-  SpikeDatabase(File file, {required String key})
+  new(File file, {required String key})
     : super(
         NativeDatabase(
           file,
@@ -37,7 +37,7 @@ class SpikeDatabase extends _$SpikeDatabase {
 }
 
 class SpikeResult {
-  const SpikeResult(this.openMs, this.insertMs, this.countMs, this.rows);
+  const new(this.openMs, this.insertMs, this.countMs, this.rows);
   final int openMs;
   final int insertMs;
   final int countMs;

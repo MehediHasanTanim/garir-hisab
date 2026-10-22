@@ -1,9 +1,4 @@
-import 'app/bootstrap.dart';
-import 'app/flavor.dart';
+import 'package:vehicle_khata/app/bootstrap.dart';
+import 'package:vehicle_khata/app/flavor.dart';
 
-Future<void> main() => bootstrap(
-  const AppConfig(
-    flavor: Flavor.staging,
-    sentryDsn: String.fromEnvironment('SENTRY_DSN'),
-  ),
-);
+Future<void> main() => bootstrap(const AppConfig(flavor: Flavor.staging));

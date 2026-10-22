@@ -1,0 +1,167 @@
+{
+  "@@locale": "en",
+  "appName": "Vehicle Khata",
+  "@appName": {
+    "description": "appName"
+  },
+  "navHome": "Home",
+  "@navHome": {
+    "description": "navHome"
+  },
+  "navEntries": "Entries",
+  "@navEntries": {
+    "description": "navEntries"
+  },
+  "navReports": "Reports",
+  "@navReports": {
+    "description": "navReports"
+  },
+  "navMore": "More",
+  "@navMore": {
+    "description": "navMore"
+  },
+  "homeEmptyTitle": "No vehicles yet",
+  "@homeEmptyTitle": {
+    "description": "homeEmptyTitle"
+  },
+  "homeEmptyMessage": "Add your first vehicle to start tracking income.",
+  "@homeEmptyMessage": {
+    "description": "homeEmptyMessage"
+  },
+  "entriesEmptyTitle": "No entries yet",
+  "@entriesEmptyTitle": {
+    "description": "entriesEmptyTitle"
+  },
+  "entriesEmptyMessage": "Trips and daily income will appear here.",
+  "@entriesEmptyMessage": {
+    "description": "entriesEmptyMessage"
+  },
+  "reportsEmptyTitle": "No reports yet",
+  "@reportsEmptyTitle": {
+    "description": "reportsEmptyTitle"
+  },
+  "reportsEmptyMessage": "Reports appear once you log income.",
+  "@reportsEmptyMessage": {
+    "description": "reportsEmptyMessage"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "settings"
+  },
+  "uiGallery": "UI gallery",
+  "@uiGallery": {
+    "description": "uiGallery"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "language"
+  },
+  "languageBangla": "বাংলা",
+  "@languageBangla": {
+    "description": "languageBangla"
+  },
+  "languageEnglish": "English",
+  "@languageEnglish": {
+    "description": "languageEnglish"
+  },
+  "numerals": "Numerals",
+  "@numerals": {
+    "description": "numerals"
+  },
+  "numeralsBangla": "১২৩",
+  "@numeralsBangla": {
+    "description": "numeralsBangla"
+  },
+  "numeralsLatin": "123",
+  "@numeralsLatin": {
+    "description": "numeralsLatin"
+  },
+  "grouping": "Number grouping",
+  "@grouping": {
+    "description": "grouping"
+  },
+  "groupingSouthAsian": "1,23,456",
+  "@groupingSouthAsian": {
+    "description": "groupingSouthAsian"
+  },
+  "groupingInternational": "123,456",
+  "@groupingInternational": {
+    "description": "groupingInternational"
+  },
+  "profitView": "Profit view",
+  "@profitView": {
+    "description": "profitView"
+  },
+  "profitCash": "Cash",
+  "@profitCash": {
+    "description": "profitCash"
+  },
+  "profitAccrual": "Accrual",
+  "@profitAccrual": {
+    "description": "profitAccrual"
+  },
+  "addIncome": "Add income",
+  "@addIncome": {
+    "description": "addIncome"
+  },
+  "keypadDone": "Done",
+  "@keypadDone": {
+    "description": "keypadDone"
+  },
+  "keypadDelete": "Delete",
+  "@keypadDelete": {
+    "description": "keypadDelete"
+  },
+  "amountLabel": "Amount",
+  "@amountLabel": {
+    "description": "amountLabel"
+  },
+  "chipFuel": "Fuel",
+  "@chipFuel": {
+    "description": "chipFuel"
+  },
+  "chipToll": "Toll",
+  "@chipToll": {
+    "description": "chipToll"
+  },
+  "chipParking": "Parking",
+  "@chipParking": {
+    "description": "chipParking"
+  },
+  "chipHelper": "Helper",
+  "@chipHelper": {
+    "description": "chipHelper"
+  },
+  "galleryAmountSample": "Income today",
+  "@galleryAmountSample": {
+    "description": "galleryAmountSample"
+  },
+  "galleryTileTitle": "Rahim · Jama",
+  "@galleryTileTitle": {
+    "description": "galleryTileTitle"
+  },
+  "galleryTileSubtitle": "Paid today",
+  "@galleryTileSubtitle": {
+    "description": "galleryTileSubtitle"
+  },
+  "galleryButtons": "Buttons",
+  "@galleryButtons": {
+    "description": "galleryButtons"
+  },
+  "galleryChips": "Quick chips",
+  "@galleryChips": {
+    "description": "galleryChips"
+  },
+  "galleryKeypad": "Amount keypad",
+  "@galleryKeypad": {
+    "description": "galleryKeypad"
+  },
+  "galleryTiles": "List tiles",
+  "@galleryTiles": {
+    "description": "galleryTiles"
+  },
+  "galleryEmpty": "Empty state",
+  "@galleryEmpty": {
+    "description": "galleryEmpty"
+  }
+}

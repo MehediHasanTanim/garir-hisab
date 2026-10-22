@@ -15,24 +15,24 @@ const bengaliSamples = <String>[
   'মোট লাভ ৳ ১,২৩,৪৫৬',
 ];
 
-Future<Uint8List> buildBengaliPdf(ByteData fontData) async {
+Future<Uint8List> buildBengaliPdf(ByteData fontData) {
   final font = pw.Font.ttf(fontData);
-  final doc = pw.Document();
-  doc.addPage(
-    pw.Page(
-      pageFormat: PdfPageFormat.a4,
-      theme: pw.ThemeData.withFont(base: font, bold: font),
-      build: (_) => pw.Column(
-        crossAxisAlignment: pw.CrossAxisAlignment.start,
-        children: [
-          for (final s in bengaliSamples)
-            pw.Padding(
-              padding: const pw.EdgeInsets.only(bottom: 12),
-              child: pw.Text(s, style: const pw.TextStyle(fontSize: 22)),
-            ),
-        ],
+  final doc = pw.Document()
+    ..addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        theme: pw.ThemeData.withFont(base: font, bold: font),
+        build: (_) => pw.Column(
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: [
+            for (final s in bengaliSamples)
+              pw.Padding(
+                padding: const pw.EdgeInsets.only(bottom: 12),
+                child: pw.Text(s, style: const pw.TextStyle(fontSize: 22)),
+              ),
+          ],
+        ),
       ),
-    ),
-  );
+    );
   return doc.save();
 }

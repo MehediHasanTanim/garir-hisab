@@ -1,7 +1,23 @@
-include: package:flutter_lints/flutter.yaml
+include: package:very_good_analysis/analysis_options.yaml
 
 analyzer:
   exclude:
     - build/**
     - android/**
     - ios/**
+    - '**/*.g.dart'
+    - test/generated_migrations/**
+    - lib/l10n/gen/**
+  errors:
+    # Spike code prints results on purpose.
+    avoid_print: ignore
+
+linter:
+  rules:
+    public_member_api_docs: false
+    lines_longer_than_80_chars: false
+    always_use_package_imports: true
+    prefer_relative_imports: false
+    avoid_relative_lib_imports: true
+    sort_pub_dependencies: false
+    flutter_style_todos: false
