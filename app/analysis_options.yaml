@@ -21,3 +21,4 @@ linter:
     avoid_relative_lib_imports: true
     sort_pub_dependencies: false
     flutter_style_todos: false
+    specify_nonobvious_property_types: false

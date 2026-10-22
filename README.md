@@ -18,6 +18,10 @@ dart run build_runner build --delete-conflicting-outputs
 flutter run --flavor dev -t lib/main_dev.dart
 ```
 
+Backend (optional): pass `--dart-define=SUPABASE_URL=... --dart-define=SUPABASE_ANON_KEY=...`
+to enable phone-OTP sign-in. Without them the app runs in local-only mode
+(on-device data, sign-in disabled).
+
 Flavors: `dev`, `staging`, `prod` (Android application IDs
 `com.vehiclekhata.vehicle_khata[.dev|.staging]`). Pass
 `--dart-define=SENTRY_DSN=...` to enable Sentry.

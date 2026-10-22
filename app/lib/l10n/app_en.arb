@@ -163,5 +163,567 @@
   "galleryEmpty": "Empty state",
   "@galleryEmpty": {
     "description": "galleryEmpty"
+  },
+  "onbStepOf": "Step {current} of {total}",
+  "@onbStepOf": {
+    "description": "onbStepOf",
+    "placeholders": {
+      "current": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "welcomeTitle": "Welcome to Vehicle Khata",
+  "@welcomeTitle": {
+    "description": "welcomeTitle"
+  },
+  "welcomeSubtitle": "Keep your trips, income and profit in one simple ledger.",
+  "@welcomeSubtitle": {
+    "description": "welcomeSubtitle"
+  },
+  "chooseLanguage": "Choose your language",
+  "@chooseLanguage": {
+    "description": "chooseLanguage"
+  },
+  "continueLabel": "Continue",
+  "@continueLabel": {
+    "description": "continueLabel"
+  },
+  "backLabel": "Back",
+  "@backLabel": {
+    "description": "backLabel"
+  },
+  "skip": "Skip",
+  "@skip": {
+    "description": "skip"
+  },
+  "skipForNow": "Skip for now",
+  "@skipForNow": {
+    "description": "skipForNow"
+  },
+  "accountTitle": "Sign in with your phone",
+  "@accountTitle": {
+    "description": "accountTitle"
+  },
+  "accountSubtitle": "Your data is backed up and can be restored on a new phone.",
+  "@accountSubtitle": {
+    "description": "accountSubtitle"
+  },
+  "continueWithoutAccount": "Continue without account",
+  "@continueWithoutAccount": {
+    "description": "continueWithoutAccount"
+  },
+  "localOnlyNote": "You can sign in later from More.",
+  "@localOnlyNote": {
+    "description": "localOnlyNote"
+  },
+  "phoneLabel": "Mobile number",
+  "@phoneLabel": {
+    "description": "phoneLabel"
+  },
+  "phoneHint": "01XXXXXXXXX",
+  "@phoneHint": {
+    "description": "phoneHint"
+  },
+  "sendCode": "Send code",
+  "@sendCode": {
+    "description": "sendCode"
+  },
+  "otpTitle": "Enter the 6-digit code",
+  "@otpTitle": {
+    "description": "otpTitle"
+  },
+  "otpSentTo": "Code sent to {phone}",
+  "@otpSentTo": {
+    "description": "otpSentTo",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "otpLabel": "Verification code",
+  "@otpLabel": {
+    "description": "otpLabel"
+  },
+  "verify": "Verify",
+  "@verify": {
+    "description": "verify"
+  },
+  "resendIn": "Resend code in {seconds}s",
+  "@resendIn": {
+    "description": "resendIn",
+    "placeholders": {
+      "seconds": {
+        "type": "String"
+      }
+    }
+  },
+  "resendCode": "Resend code",
+  "@resendCode": {
+    "description": "resendCode"
+  },
+  "changeNumber": "Change number",
+  "@changeNumber": {
+    "description": "changeNumber"
+  },
+  "errInvalidPhone": "Enter a valid mobile number, e.g. 01712345678",
+  "@errInvalidPhone": {
+    "description": "errInvalidPhone"
+  },
+  "errRateLimited": "Too many attempts. Please wait a while and try again.",
+  "@errRateLimited": {
+    "description": "errRateLimited"
+  },
+  "errInvalidCode": "That code is incorrect or has expired.",
+  "@errInvalidCode": {
+    "description": "errInvalidCode"
+  },
+  "errNetwork": "No internet connection. Try again, or continue without an account.",
+  "@errNetwork": {
+    "description": "errNetwork"
+  },
+  "errUnknown": "Something went wrong. Please try again.",
+  "@errUnknown": {
+    "description": "errUnknown"
+  },
+  "account": "Account",
+  "@account": {
+    "description": "account"
+  },
+  "signedInAs": "Signed in as {phone}",
+  "@signedInAs": {
+    "description": "signedInAs",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "signOut": "Sign out",
+  "@signOut": {
+    "description": "signOut"
+  },
+  "signInToBackUp": "Sign in to back up your data",
+  "@signInToBackUp": {
+    "description": "signInToBackUp"
+  },
+  "signInUnavailable": "Sign-in is not available in this version.",
+  "@signInUnavailable": {
+    "description": "signInUnavailable"
+  },
+  "roleTitle": "How will you use the app?",
+  "@roleTitle": {
+    "description": "roleTitle"
+  },
+  "roleOwner": "I own vehicles",
+  "@roleOwner": {
+    "description": "roleOwner"
+  },
+  "roleOwnerDesc": "Track trips, income, drivers and profit.",
+  "@roleOwnerDesc": {
+    "description": "roleOwnerDesc"
+  },
+  "roleDriver": "I drive for an owner",
+  "@roleDriver": {
+    "description": "roleDriver"
+  },
+  "comingSoon": "Coming soon",
+  "@comingSoon": {
+    "description": "comingSoon"
+  },
+  "firstVehicleTitle": "Add your first vehicle",
+  "@firstVehicleTitle": {
+    "description": "firstVehicleTitle"
+  },
+  "modelTitle": "How does this vehicle earn?",
+  "@modelTitle": {
+    "description": "modelTitle"
+  },
+  "finishSetup": "Finish setup",
+  "@finishSetup": {
+    "description": "finishSetup"
+  },
+  "vehicleNickname": "Nickname",
+  "@vehicleNickname": {
+    "description": "vehicleNickname"
+  },
+  "vehicleNicknameHint": "e.g. Rahim's CNG",
+  "@vehicleNicknameHint": {
+    "description": "vehicleNicknameHint"
+  },
+  "vehicleType": "Vehicle type",
+  "@vehicleType": {
+    "description": "vehicleType"
+  },
+  "typeCng": "CNG auto-rickshaw",
+  "@typeCng": {
+    "description": "typeCng"
+  },
+  "typeRickshaw": "Rickshaw",
+  "@typeRickshaw": {
+    "description": "typeRickshaw"
+  },
+  "typeEasyBike": "Easy-bike",
+  "@typeEasyBike": {
+    "description": "typeEasyBike"
+  },
+  "typePickup": "Pickup",
+  "@typePickup": {
+    "description": "typePickup"
+  },
+  "typeMiniTruck": "Mini-truck",
+  "@typeMiniTruck": {
+    "description": "typeMiniTruck"
+  },
+  "typeTruck": "Truck",
+  "@typeTruck": {
+    "description": "typeTruck"
+  },
+  "typeOther": "Other",
+  "@typeOther": {
+    "description": "typeOther"
+  },
+  "fuelCng": "CNG gas",
+  "@fuelCng": {
+    "description": "fuelCng"
+  },
+  "fuelOctane": "Octane",
+  "@fuelOctane": {
+    "description": "fuelOctane"
+  },
+  "fuelPetrol": "Petrol",
+  "@fuelPetrol": {
+    "description": "fuelPetrol"
+  },
+  "fuelDiesel": "Diesel",
+  "@fuelDiesel": {
+    "description": "fuelDiesel"
+  },
+  "fuelElectric": "Electric",
+  "@fuelElectric": {
+    "description": "fuelElectric"
+  },
+  "modelSelf": "Self-driven",
+  "@modelSelf": {
+    "description": "modelSelf"
+  },
+  "modelSalaried": "Salaried driver",
+  "@modelSalaried": {
+    "description": "modelSalaried"
+  },
+  "modelDailyWage": "Daily wage",
+  "@modelDailyWage": {
+    "description": "modelDailyWage"
+  },
+  "modelCommission": "Commission",
+  "@modelCommission": {
+    "description": "modelCommission"
+  },
+  "modelJama": "Jama (rent)",
+  "@modelJama": {
+    "description": "modelJama"
+  },
+  "modelContract": "Per-trip contract",
+  "@modelContract": {
+    "description": "modelContract"
+  },
+  "modelSelfDesc": "I drive it myself.",
+  "@modelSelfDesc": {
+    "description": "modelSelfDesc"
+  },
+  "modelSalariedDesc": "Driver gets a monthly salary.",
+  "@modelSalariedDesc": {
+    "description": "modelSalariedDesc"
+  },
+  "modelDailyWageDesc": "Driver gets a fixed amount per day.",
+  "@modelDailyWageDesc": {
+    "description": "modelDailyWageDesc"
+  },
+  "modelCommissionDesc": "Driver gets a share of the income.",
+  "@modelCommissionDesc": {
+    "description": "modelCommissionDesc"
+  },
+  "modelJamaDesc": "Driver pays me a fixed daily rent.",
+  "@modelJamaDesc": {
+    "description": "modelJamaDesc"
+  },
+  "modelContractDesc": "I am paid per hauling job.",
+  "@modelContractDesc": {
+    "description": "modelContractDesc"
+  },
+  "statusActive": "Active",
+  "@statusActive": {
+    "description": "statusActive"
+  },
+  "statusInGarage": "In garage",
+  "@statusInGarage": {
+    "description": "statusInGarage"
+  },
+  "statusSold": "Sold",
+  "@statusSold": {
+    "description": "statusSold"
+  },
+  "statusArchived": "Archived",
+  "@statusArchived": {
+    "description": "statusArchived"
+  },
+  "filterAll": "All",
+  "@filterAll": {
+    "description": "filterAll"
+  },
+  "showArchived": "Show archived",
+  "@showArchived": {
+    "description": "showArchived"
+  },
+  "vehiclesTitle": "Vehicles",
+  "@vehiclesTitle": {
+    "description": "vehiclesTitle"
+  },
+  "addVehicle": "Add vehicle",
+  "@addVehicle": {
+    "description": "addVehicle"
+  },
+  "searchVehicles": "Search by name or number",
+  "@searchVehicles": {
+    "description": "searchVehicles"
+  },
+  "noResults": "No vehicles match your search.",
+  "@noResults": {
+    "description": "noResults"
+  },
+  "newVehicle": "New vehicle",
+  "@newVehicle": {
+    "description": "newVehicle"
+  },
+  "editVehicle": "Edit vehicle",
+  "@editVehicle": {
+    "description": "editVehicle"
+  },
+  "regNo": "Registration number",
+  "@regNo": {
+    "description": "regNo"
+  },
+  "vehicleModel": "Make / model",
+  "@vehicleModel": {
+    "description": "vehicleModel"
+  },
+  "vehicleYear": "Year",
+  "@vehicleYear": {
+    "description": "vehicleYear"
+  },
+  "fuelType": "Fuel type",
+  "@fuelType": {
+    "description": "fuelType"
+  },
+  "businessModel": "Business model",
+  "@businessModel": {
+    "description": "businessModel"
+  },
+  "statusLabel": "Status",
+  "@statusLabel": {
+    "description": "statusLabel"
+  },
+  "photo": "Photo",
+  "@photo": {
+    "description": "photo"
+  },
+  "takePhoto": "Take photo",
+  "@takePhoto": {
+    "description": "takePhoto"
+  },
+  "chooseFromGallery": "Choose from gallery",
+  "@chooseFromGallery": {
+    "description": "chooseFromGallery"
+  },
+  "removePhoto": "Remove photo",
+  "@removePhoto": {
+    "description": "removePhoto"
+  },
+  "purchaseDate": "Purchase date",
+  "@purchaseDate": {
+    "description": "purchaseDate"
+  },
+  "purchasePrice": "Purchase price (৳)",
+  "@purchasePrice": {
+    "description": "purchasePrice"
+  },
+  "optional": "Optional",
+  "@optional": {
+    "description": "optional"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "save"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "cancel"
+  },
+  "errNicknameEmpty": "Enter a nickname",
+  "@errNicknameEmpty": {
+    "description": "errNicknameEmpty"
+  },
+  "errNicknameTooLong": "Nickname is too long (max {max} characters)",
+  "@errNicknameTooLong": {
+    "description": "errNicknameTooLong",
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "errYearInvalid": "Enter a valid year",
+  "@errYearInvalid": {
+    "description": "errYearInvalid"
+  },
+  "errPriceInvalid": "Enter a valid amount",
+  "@errPriceInvalid": {
+    "description": "errPriceInvalid"
+  },
+  "dupRegWarning": "Another vehicle ({name}) already has this number.",
+  "@dupRegWarning": {
+    "description": "dupRegWarning",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "archive": "Archive",
+  "@archive": {
+    "description": "archive"
+  },
+  "restore": "Restore",
+  "@restore": {
+    "description": "restore"
+  },
+  "archiveConfirmTitle": "Archive this vehicle?",
+  "@archiveConfirmTitle": {
+    "description": "archiveConfirmTitle"
+  },
+  "archiveConfirmBody": "It will be hidden from the list but kept in your reports.",
+  "@archiveConfirmBody": {
+    "description": "archiveConfirmBody"
+  },
+  "vehicleArchived": "Vehicle archived",
+  "@vehicleArchived": {
+    "description": "vehicleArchived"
+  },
+  "vehicleRestored": "Vehicle restored",
+  "@vehicleRestored": {
+    "description": "vehicleRestored"
+  },
+  "changeStatus": "Change status",
+  "@changeStatus": {
+    "description": "changeStatus"
+  },
+  "vehicleNotFound": "Vehicle not found",
+  "@vehicleNotFound": {
+    "description": "vehicleNotFound"
+  },
+  "homeEmptyAction": "Add your first vehicle",
+  "@homeEmptyAction": {
+    "description": "homeEmptyAction"
+  },
+  "security": "Security",
+  "@security": {
+    "description": "security"
+  },
+  "appLock": "App lock",
+  "@appLock": {
+    "description": "appLock"
+  },
+  "appLockOff": "Off",
+  "@appLockOff": {
+    "description": "appLockOff"
+  },
+  "appLockOn": "PIN lock is on",
+  "@appLockOn": {
+    "description": "appLockOn"
+  },
+  "setPinTitle": "Set a 4-digit PIN",
+  "@setPinTitle": {
+    "description": "setPinTitle"
+  },
+  "confirmPinTitle": "Confirm your PIN",
+  "@confirmPinTitle": {
+    "description": "confirmPinTitle"
+  },
+  "pinMismatch": "PINs don't match. Try again.",
+  "@pinMismatch": {
+    "description": "pinMismatch"
+  },
+  "enterPin": "Enter your PIN",
+  "@enterPin": {
+    "description": "enterPin"
+  },
+  "enterCurrentPin": "Enter your current PIN",
+  "@enterCurrentPin": {
+    "description": "enterCurrentPin"
+  },
+  "wrongPin": "Wrong PIN",
+  "@wrongPin": {
+    "description": "wrongPin"
+  },
+  "pinBlocked": "Too many attempts. Try again in {seconds}s.",
+  "@pinBlocked": {
+    "description": "pinBlocked",
+    "placeholders": {
+      "seconds": {
+        "type": "String"
+      }
+    }
+  },
+  "useBiometric": "Unlock with fingerprint or face",
+  "@useBiometric": {
+    "description": "useBiometric"
+  },
+  "biometricReason": "Unlock Vehicle Khata",
+  "@biometricReason": {
+    "description": "biometricReason"
+  },
+  "biometricUnavailable": "Not available on this device",
+  "@biometricUnavailable": {
+    "description": "biometricUnavailable"
+  },
+  "lockTimeout": "Lock after",
+  "@lockTimeout": {
+    "description": "lockTimeout"
+  },
+  "timeoutImmediately": "Immediately",
+  "@timeoutImmediately": {
+    "description": "timeoutImmediately"
+  },
+  "timeout30": "30 seconds",
+  "@timeout30": {
+    "description": "timeout30"
+  },
+  "timeout1m": "1 minute",
+  "@timeout1m": {
+    "description": "timeout1m"
+  },
+  "timeout5m": "5 minutes",
+  "@timeout5m": {
+    "description": "timeout5m"
+  },
+  "changePin": "Change PIN",
+  "@changePin": {
+    "description": "changePin"
+  },
+  "turnOffLock": "Turn off app lock",
+  "@turnOffLock": {
+    "description": "turnOffLock"
+  },
+  "unlockTitle": "Unlock",
+  "@unlockTitle": {
+    "description": "unlockTitle"
+  },
+  "vehicleSaved": "Vehicle saved",
+  "@vehicleSaved": {
+    "description": "vehicleSaved"
   }
 }

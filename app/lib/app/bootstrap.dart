@@ -4,15 +4,24 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vehicle_khata/app/app.dart';
 import 'package:vehicle_khata/app/flavor.dart';
+import 'package:vehicle_khata/app/providers/feature_providers.dart';
 import 'package:vehicle_khata/app/providers/providers.dart';
+import 'package:vehicle_khata/features/auth/data/supabase_auth_repository.dart';
 
 /// Shared entrypoint body for all flavors. Sentry is enabled only when a
 /// DSN is supplied (`--dart-define=SENTRY_DSN=...`).
 Future<void> bootstrap(AppConfig config) async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
+  // Null (local-only mode) when SUPABASE_URL / SUPABASE_ANON_KEY are absent.
+  final auth = await SupabaseAuthRepository.initialize(
+    BackendConfig.fromEnvironment,
+  );
   final app = ProviderScope(
-    overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+    overrides: [
+      sharedPreferencesProvider.overrideWithValue(prefs),
+      if (auth != null) authRepositoryProvider.overrideWithValue(auth),
+    ],
     child: KhataApp(config: config),
   );
 

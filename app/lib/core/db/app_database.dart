@@ -9,6 +9,7 @@ import 'package:vehicle_khata/core/db/database_key_store.dart';
 import 'package:vehicle_khata/core/db/ids.dart';
 import 'package:vehicle_khata/core/db/synced_repository.dart';
 import 'package:vehicle_khata/core/db/tables.dart';
+import 'package:vehicle_khata/features/vehicles/domain/vehicle_enums.dart';
 
 part 'app_database.g.dart';
 
@@ -20,7 +21,7 @@ QueryExecutor _openEncrypted(File file, String key) {
   );
 }
 
-@DriftDatabase(tables: [AuditLogs])
+@DriftDatabase(tables: [AuditLogs, Vehicles])
 class AppDatabase extends _$AppDatabase with SyncedHelpers {
   new(super.e);
 
@@ -42,12 +43,16 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
   new file(File file, {required String key}) : super(_openEncrypted(file, key));
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
     onCreate: (m) => m.createAll(),
-    onUpgrade: stepByStep(),
+    onUpgrade: stepByStep(
+      from1To2: (m, schema) async {
+        await m.createTable(schema.vehicles);
+      },
+    ),
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
     },

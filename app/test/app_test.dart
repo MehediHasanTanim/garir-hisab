@@ -9,14 +9,14 @@ void main() {
   testWidgets('boots to the empty Home shell in Bangla by default', (
     tester,
   ) async {
-    await pumpApp(tester);
+    await pumpApp(tester, prefs: {'settings.language': 'bn'});
     expect(find.text('এখনো কোনো গাড়ি নেই'), findsOneWidget);
     expect(find.text('হোম'), findsWidgets);
     expect(find.byType(NavigationBar), findsOneWidget);
   });
 
   testWidgets('boots in English when saved', (tester) async {
-    await pumpApp(tester, prefs: {'settings.language': 'en'});
+    await pumpApp(tester);
     expect(find.text('No vehicles yet'), findsOneWidget);
     expect(find.text('Reports'), findsOneWidget);
   });
@@ -24,7 +24,7 @@ void main() {
   testWidgets('bottom navigation switches between the four tabs', (
     tester,
   ) async {
-    await pumpApp(tester, prefs: {'settings.language': 'en'});
+    await pumpApp(tester);
     await tester.tap(
       find.descendant(
         of: find.byType(NavigationBar),
@@ -54,29 +54,23 @@ void main() {
   });
 
   testWidgets('deep link opens a nested route', (tester) async {
-    await pumpApp(
-      tester,
-      prefs: {'settings.language': 'en'},
-      location: Routes.settings,
-    );
+    await pumpApp(tester, location: Routes.settings);
     expect(find.text('Profit view'), findsOneWidget);
   });
 
   testWidgets('switching language in settings updates UI and persists', (
     tester,
   ) async {
-    final container = await pumpApp(
-      tester,
-      prefs: {'settings.language': 'en'},
-      location: Routes.settings,
-    );
+    final app = await pumpApp(tester, location: Routes.settings);
     await tester.tap(find.text('বাংলা'));
     await tester.pumpAndSettle();
 
     expect(find.text('সেটিংস'), findsOneWidget);
-    expect(container.read(settingsProvider).languageCode, 'bn');
+    expect(app.container.read(settingsProvider).languageCode, 'bn');
     expect(
-      container.read(sharedPreferencesProvider).getString('settings.language'),
+      app.container
+          .read(sharedPreferencesProvider)
+          .getString('settings.language'),
       'bn',
     );
   });
