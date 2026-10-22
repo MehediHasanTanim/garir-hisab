@@ -37,14 +37,24 @@ class Money implements Comparable<Money> {
   /// [basisPoints] of this amount (2000 = 20%), rounded to the nearest poisha
   /// with ties going to the even poisha (banker's rounding). Negative amounts
   /// round symmetrically.
-  Money percentOf(int basisPoints) {
-    final numerator = minor.abs() * basisPoints.abs();
-    final quotient = numerator ~/ basisPointsPerWhole;
-    final remainder = numerator.remainder(basisPointsPerWhole);
-    const half = basisPointsPerWhole ~/ 2;
-    final roundUp = remainder > half || (remainder == half && quotient.isOdd);
+  Money percentOf(int basisPoints) =>
+      proportion(basisPoints, basisPointsPerWhole);
+
+  /// `this * numerator / denominator`, rounded to the nearest poisha with ties
+  /// to the even poisha. [denominator] must be positive; [numerator] may be
+  /// negative.
+  Money proportion(int numerator, int denominator) {
+    if (denominator <= 0) {
+      throw ArgumentError.value(denominator, 'denominator', 'must be > 0');
+    }
+    final product = minor.abs() * numerator.abs();
+    final quotient = product ~/ denominator;
+    final remainder = product.remainder(denominator);
+    final twice = remainder * 2;
+    final roundUp =
+        twice > denominator || (twice == denominator && quotient.isOdd);
     final magnitude = roundUp ? quotient + 1 : quotient;
-    final negative = (minor < 0) != (basisPoints < 0);
+    final negative = (minor < 0) != (numerator < 0);
     return Money(negative ? -magnitude : magnitude);
   }
 

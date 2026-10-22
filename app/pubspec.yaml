@@ -29,6 +29,7 @@ dependencies:
   supabase_flutter: ^2.18.3
   uuid: ^4.6.0
   riverpod: any
+  cryptography: ^2.9.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

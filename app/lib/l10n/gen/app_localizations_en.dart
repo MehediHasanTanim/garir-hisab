@@ -544,4 +544,580 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vehicleSaved => 'Vehicle saved';
+
+  @override
+  String get driversTitle => 'Drivers';
+
+  @override
+  String get addDriver => 'Add driver';
+
+  @override
+  String get newDriver => 'New driver';
+
+  @override
+  String get editDriver => 'Edit driver';
+
+  @override
+  String get searchDrivers => 'Search by name, phone or licence';
+
+  @override
+  String get driversEmptyTitle => 'No drivers yet';
+
+  @override
+  String get driversEmptyMessage => 'Add the people who drive your vehicles.';
+
+  @override
+  String get driversNoResults => 'No drivers match your search.';
+
+  @override
+  String get driverStatusActive => 'Working';
+
+  @override
+  String get driverStatusLeft => 'Left';
+
+  @override
+  String get driverName => 'Full name';
+
+  @override
+  String get licenseNo => 'Licence number';
+
+  @override
+  String get licenseExpiry => 'Licence expiry';
+
+  @override
+  String get nid => 'National ID (NID)';
+
+  @override
+  String get nidHelper => 'Stored encrypted on this phone.';
+
+  @override
+  String get nidOnFile => 'NID on file';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get emergencyContact => 'Emergency contact';
+
+  @override
+  String get joinDate => 'Joining date';
+
+  @override
+  String get errNameEmpty => 'Enter the driver\'s name';
+
+  @override
+  String errNameTooLong(String max) {
+    return 'Name is too long (max $max characters)';
+  }
+
+  @override
+  String get errNidInvalid => 'NID must be 10, 13 or 17 digits';
+
+  @override
+  String get driverSaved => 'Driver saved';
+
+  @override
+  String get driverNotFound => 'Driver not found';
+
+  @override
+  String get markAsLeft => 'Mark as left';
+
+  @override
+  String get reactivate => 'Mark as working again';
+
+  @override
+  String markLeftTitle(String name) {
+    return 'Mark $name as left?';
+  }
+
+  @override
+  String get markLeftBody =>
+      'Their current vehicle assignments will end today.';
+
+  @override
+  String get driverMarkedLeft => 'Marked as left';
+
+  @override
+  String get driverReactivated => 'Marked as working';
+
+  @override
+  String get licenseExpired => 'Licence expired';
+
+  @override
+  String licenseExpiresSoon(String date) {
+    return 'Licence expires $date';
+  }
+
+  @override
+  String licenseValidUntil(String date) {
+    return 'Valid until $date';
+  }
+
+  @override
+  String get tabOverview => 'Overview';
+
+  @override
+  String get tabAttendance => 'Attendance';
+
+  @override
+  String get tabAdvances => 'Advances';
+
+  @override
+  String get tabPayouts => 'Payouts';
+
+  @override
+  String get workingOn => 'Working on';
+
+  @override
+  String get notAssigned => 'Not assigned to a vehicle';
+
+  @override
+  String get advancesOwed => 'Advances owed';
+
+  @override
+  String sinceDate(String date) {
+    return 'Since $date';
+  }
+
+  @override
+  String get contactDetails => 'Details';
+
+  @override
+  String get attPresent => 'Present';
+
+  @override
+  String get attAbsent => 'Absent';
+
+  @override
+  String get attHalfDay => 'Half day';
+
+  @override
+  String get attUnmarked => 'Not marked';
+
+  @override
+  String get attClear => 'Clear mark';
+
+  @override
+  String get prevMonth => 'Previous month';
+
+  @override
+  String get nextMonth => 'Next month';
+
+  @override
+  String markDay(String date) {
+    return 'Mark $date';
+  }
+
+  @override
+  String get month1 => 'January';
+
+  @override
+  String get month2 => 'February';
+
+  @override
+  String get month3 => 'March';
+
+  @override
+  String get month4 => 'April';
+
+  @override
+  String get month5 => 'May';
+
+  @override
+  String get month6 => 'June';
+
+  @override
+  String get month7 => 'July';
+
+  @override
+  String get month8 => 'August';
+
+  @override
+  String get month9 => 'September';
+
+  @override
+  String get month10 => 'October';
+
+  @override
+  String get month11 => 'November';
+
+  @override
+  String get month12 => 'December';
+
+  @override
+  String get wdMon => 'Mon';
+
+  @override
+  String get wdTue => 'Tue';
+
+  @override
+  String get wdWed => 'Wed';
+
+  @override
+  String get wdThu => 'Thu';
+
+  @override
+  String get wdFri => 'Fri';
+
+  @override
+  String get wdSat => 'Sat';
+
+  @override
+  String get wdSun => 'Sun';
+
+  @override
+  String get advancesEmptyTitle => 'No advances';
+
+  @override
+  String get advancesEmptyMessage =>
+      'Advances you give are deducted from the next payout.';
+
+  @override
+  String get giveAdvance => 'Give advance';
+
+  @override
+  String get advanceAmount => 'Amount (৳)';
+
+  @override
+  String get advanceDate => 'Date';
+
+  @override
+  String get advanceNote => 'Note (optional)';
+
+  @override
+  String get advanceSaved => 'Advance recorded';
+
+  @override
+  String get errAmountInvalid => 'Enter an amount greater than zero';
+
+  @override
+  String advanceRecovered(String amount) {
+    return 'Recovered $amount';
+  }
+
+  @override
+  String advanceRemaining(String amount) {
+    return 'Remaining $amount';
+  }
+
+  @override
+  String get advanceSettled => 'Fully recovered';
+
+  @override
+  String get deleteAdvanceTitle => 'Delete this advance?';
+
+  @override
+  String get errAdvanceRecovered =>
+      'This advance was already recovered in a payout. Void that payout first.';
+
+  @override
+  String get deleteLabel => 'Delete';
+
+  @override
+  String get editLabel => 'Edit';
+
+  @override
+  String get payoutsEmptyTitle => 'No payouts yet';
+
+  @override
+  String get payoutsEmptyMessage =>
+      'Record a payout to settle salary and advances.';
+
+  @override
+  String get newPayout => 'New payout';
+
+  @override
+  String get payoutTitle => 'Record payout';
+
+  @override
+  String get payPeriod => 'Period';
+
+  @override
+  String get customRange => 'Custom dates';
+
+  @override
+  String get payVehicle => 'Vehicle';
+
+  @override
+  String get payEarned => 'Earned';
+
+  @override
+  String get payAdjustment => 'Bonus (+) or penalty (−) (৳)';
+
+  @override
+  String get payAdjustmentNote => 'Reason (optional)';
+
+  @override
+  String get payAdvancesDeducted => 'Advances recovered';
+
+  @override
+  String get payNet => 'Pay now';
+
+  @override
+  String get payAdvancesCarried => 'Advances still owed after this payout';
+
+  @override
+  String get recordPayout => 'Record payout';
+
+  @override
+  String get payoutRecorded => 'Payout recorded';
+
+  @override
+  String get payoutAlreadyRecorded => 'This period was already recorded';
+
+  @override
+  String get payoutVoid => 'Void payout';
+
+  @override
+  String get payoutVoidTitle => 'Void this payout?';
+
+  @override
+  String get payoutVoidBody =>
+      'Advance recoveries are released and the period can be paid again.';
+
+  @override
+  String get payoutVoided => 'Payout voided';
+
+  @override
+  String payoutPeriodClipped(String start, String end) {
+    return 'Only $start to $end is covered by this assignment.';
+  }
+
+  @override
+  String get payoutTripsNote =>
+      'Trip earnings will be included once trip logging is available.';
+
+  @override
+  String get payErrNotPayable =>
+      'Jama drivers pay the owner, so there is nothing to pay out.';
+
+  @override
+  String get payErrOutside =>
+      'This vehicle assignment does not cover that period.';
+
+  @override
+  String get payErrOverlap =>
+      'Another payout already covers part of this period.';
+
+  @override
+  String get payErrNothing => 'There is nothing to pay for this period.';
+
+  @override
+  String payLineSalary(String days) {
+    return 'Salary ($days days)';
+  }
+
+  @override
+  String payLineWages(String days) {
+    return 'Wages ($days days)';
+  }
+
+  @override
+  String payLineTripFees(String count) {
+    return 'Trip fees ($count trips)';
+  }
+
+  @override
+  String get payLineCommission => 'Commission';
+
+  @override
+  String paidOn(String date) {
+    return 'Paid on $date';
+  }
+
+  @override
+  String dateRange(String start, String end) {
+    return '$start – $end';
+  }
+
+  @override
+  String get driverAndPay => 'Driver & pay';
+
+  @override
+  String get assignDriver => 'Assign driver';
+
+  @override
+  String get changeDriver => 'Change driver or pay';
+
+  @override
+  String get endAssignment => 'End assignment';
+
+  @override
+  String get endAssignmentTitle => 'End this assignment?';
+
+  @override
+  String endAssignmentBody(String driver, String vehicle) {
+    return '$driver will no longer drive $vehicle after today.';
+  }
+
+  @override
+  String get assignmentEnded => 'Assignment ended';
+
+  @override
+  String get currentDriver => 'Current driver';
+
+  @override
+  String get assignmentHistory => 'Past drivers';
+
+  @override
+  String get noDriverAssigned => 'No driver assigned';
+
+  @override
+  String get noDriverAssignedHint =>
+      'Assign a driver and choose how they are paid.';
+
+  @override
+  String get selectDriver => 'Driver';
+
+  @override
+  String get startDate => 'Starts on';
+
+  @override
+  String replacesNote(String driver, String date) {
+    return '$driver will stop on $date.';
+  }
+
+  @override
+  String get noActiveDrivers => 'Add a driver first.';
+
+  @override
+  String get selfDrivenNoDriver =>
+      'Self-driven vehicles don\'t have a driver. Change the vehicle\'s business model to assign one.';
+
+  @override
+  String get assignmentSaved => 'Driver assigned';
+
+  @override
+  String get errAssignStartAfter =>
+      'The new start date must be after the current assignment began.';
+
+  @override
+  String get errAssignOverlap => 'That date overlaps an earlier assignment.';
+
+  @override
+  String get errAssignPayType => 'That pay type does not suit this vehicle.';
+
+  @override
+  String get errAssignDriverLeft => 'This driver has left.';
+
+  @override
+  String get ongoing => 'now';
+
+  @override
+  String get ptSalary => 'Monthly salary';
+
+  @override
+  String get ptDailyWage => 'Daily wage';
+
+  @override
+  String get ptPerTrip => 'Per trip';
+
+  @override
+  String get ptCommission => 'Commission';
+
+  @override
+  String get ptJama => 'Jama (rent)';
+
+  @override
+  String get ptMixed => 'Salary + commission';
+
+  @override
+  String get payTypeLabel => 'How is the driver paid?';
+
+  @override
+  String get fMonthly => 'Monthly salary (৳)';
+
+  @override
+  String get fBaseSalary => 'Base salary per month (৳)';
+
+  @override
+  String get fPerDay => 'Pay per day (৳)';
+
+  @override
+  String get fHalfDay => 'Half-day pay (% of a full day)';
+
+  @override
+  String get fPerTrip => 'Pay per trip (৳)';
+
+  @override
+  String get fRate => 'Commission (% of fare)';
+
+  @override
+  String get fBasis => 'Commission on';
+
+  @override
+  String get basisBefore => 'Fare before expenses';
+
+  @override
+  String get basisAfter => 'Fare after expenses';
+
+  @override
+  String get fJamaAmount => 'Jama amount (৳)';
+
+  @override
+  String get fFrequency => 'Collected';
+
+  @override
+  String get freqDaily => 'Daily';
+
+  @override
+  String get freqWeekly => 'Weekly';
+
+  @override
+  String get fOffDays => 'Days with no jama';
+
+  @override
+  String get errPayAmount => 'Enter an amount greater than zero';
+
+  @override
+  String get errPayRate => 'Enter a percentage between 0 and 100';
+
+  @override
+  String get errPayOffDays => 'Leave at least one day when jama is collected';
+
+  @override
+  String sumSalary(String amount) {
+    return '$amount per month';
+  }
+
+  @override
+  String sumDailyWage(String amount, String rate) {
+    return '$amount per day (half day $rate%)';
+  }
+
+  @override
+  String sumPerTrip(String amount) {
+    return '$amount per trip';
+  }
+
+  @override
+  String sumCommissionBefore(String rate) {
+    return '$rate% of fare before expenses';
+  }
+
+  @override
+  String sumCommissionAfter(String rate) {
+    return '$rate% of fare after expenses';
+  }
+
+  @override
+  String sumJamaDaily(String amount) {
+    return '$amount per day';
+  }
+
+  @override
+  String sumJamaWeekly(String amount) {
+    return '$amount per week';
+  }
+
+  @override
+  String sumMixed(String amount, String rate) {
+    return '$amount per month + $rate% commission';
+  }
+
+  @override
+  String get today => 'Today';
+
+  @override
+  String get errSelectDriver => 'Choose a driver';
 }

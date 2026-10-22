@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:drift/drift.dart' show Value;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:vehicle_khata/core/db/app_database.dart';
@@ -208,5 +210,43 @@ void main() {
     expect(await repo.countActive(), 2);
     await db.softDelete(db.vehicles, id);
     expect(await repo.countActive(), 1);
+  });
+
+  group('audit log', () {
+    Future<List<AuditLog>> audit(String id) async =>
+        (await db.select(db.auditLogs).get())
+            .where((r) => r.entityId == id)
+            .toList()
+          ..sort((a, b) => a.at.compareTo(b.at));
+
+    test('every mutation is recorded with what changed', () async {
+      final id = await repo.create(_draft('Old', regNo: 'AA 1'));
+      await repo.update(id, _draft('New', regNo: 'AA 1', model: 'Tata'));
+      await repo.setStatus(id, VehicleStatus.inGarage);
+      await repo.setArchived(id, archived: true);
+      await repo.setArchived(id, archived: false);
+
+      final rows = await audit(id);
+      expect(rows.map((r) => r.action), [
+        'create',
+        'update',
+        'status',
+        'archive',
+        'restore',
+      ]);
+      final diff = jsonDecode(rows[1].diffJson) as Map<String, Object?>;
+      expect(diff, {
+        'nickname': {'from': 'Old', 'to': 'New'},
+        'model': {'from': null, 'to': 'Tata'},
+      });
+      expect(jsonDecode(rows[2].diffJson), {'status': 'inGarage'});
+    });
+
+    test('the change and its audit row commit together', () async {
+      final id = await repo.create(_draft('A'));
+      final before = (await db.select(db.auditLogs).get()).length;
+      await repo.setStatus(id, VehicleStatus.sold);
+      expect((await db.select(db.auditLogs).get()).length, before + 1);
+    });
   });
 }

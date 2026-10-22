@@ -40,16 +40,32 @@ void main() {
   });
 
   test('no hard-coded user-facing strings in widgets', () {
-    // Matches Text('...') / Text("...") with a literal. All UI text must come
-    // from AppLocalizations.
-    final literalText = RegExp(r'''Text\(\s*(const\s+)?['"]''');
+    // Text('...') whose first string literal contains letters outside of
+    // ${...} / $name interpolations. All UI text must come from
+    // AppLocalizations; formatting glue like '$a: $b' is fine.
+    final literalText = RegExp(
+      r"""Text\(\s*(?:const\s+)?(['"])((?:(?!\1)[\s\S])*)\1""",
+    );
+    final interpolation = RegExp(r'\$\{[^}]*\}|\$[A-Za-z_]\w*');
     final violations = <String>[];
     for (final f in _dartFiles('lib')) {
       if (f.path.startsWith('lib/spikes/') || f.path.startsWith('lib/l10n/')) {
         continue;
       }
-      final source = f.readAsStringSync();
-      if (literalText.hasMatch(source)) violations.add(f.path);
+      // Drop ${...} bodies first: they may contain quotes of their own.
+      final source = f.readAsStringSync().replaceAll(
+        RegExp(r'\$\{[^}]*\}'),
+        r'$x',
+      );
+      for (final m in literalText.allMatches(source)) {
+        final text = m
+            .group(2)!
+            .replaceAll(interpolation, '')
+            .replaceAll(RegExp(r'\\.'), '');
+        if (RegExp('[A-Za-z]').hasMatch(text)) {
+          violations.add('${f.path}: ${m.group(0)}');
+        }
+      }
     }
     expect(violations, isEmpty);
   });

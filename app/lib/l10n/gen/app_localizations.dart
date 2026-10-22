@@ -1129,6 +1129,1038 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Vehicle saved'**
   String get vehicleSaved;
+
+  /// driversTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Drivers'**
+  String get driversTitle;
+
+  /// addDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Add driver'**
+  String get addDriver;
+
+  /// newDriver
+  ///
+  /// In en, this message translates to:
+  /// **'New driver'**
+  String get newDriver;
+
+  /// editDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Edit driver'**
+  String get editDriver;
+
+  /// searchDrivers
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name, phone or licence'**
+  String get searchDrivers;
+
+  /// driversEmptyTitle
+  ///
+  /// In en, this message translates to:
+  /// **'No drivers yet'**
+  String get driversEmptyTitle;
+
+  /// driversEmptyMessage
+  ///
+  /// In en, this message translates to:
+  /// **'Add the people who drive your vehicles.'**
+  String get driversEmptyMessage;
+
+  /// driversNoResults
+  ///
+  /// In en, this message translates to:
+  /// **'No drivers match your search.'**
+  String get driversNoResults;
+
+  /// driverStatusActive
+  ///
+  /// In en, this message translates to:
+  /// **'Working'**
+  String get driverStatusActive;
+
+  /// driverStatusLeft
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get driverStatusLeft;
+
+  /// driverName
+  ///
+  /// In en, this message translates to:
+  /// **'Full name'**
+  String get driverName;
+
+  /// licenseNo
+  ///
+  /// In en, this message translates to:
+  /// **'Licence number'**
+  String get licenseNo;
+
+  /// licenseExpiry
+  ///
+  /// In en, this message translates to:
+  /// **'Licence expiry'**
+  String get licenseExpiry;
+
+  /// nid
+  ///
+  /// In en, this message translates to:
+  /// **'National ID (NID)'**
+  String get nid;
+
+  /// nidHelper
+  ///
+  /// In en, this message translates to:
+  /// **'Stored encrypted on this phone.'**
+  String get nidHelper;
+
+  /// nidOnFile
+  ///
+  /// In en, this message translates to:
+  /// **'NID on file'**
+  String get nidOnFile;
+
+  /// address
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// emergencyContact
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency contact'**
+  String get emergencyContact;
+
+  /// joinDate
+  ///
+  /// In en, this message translates to:
+  /// **'Joining date'**
+  String get joinDate;
+
+  /// errNameEmpty
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the driver\'s name'**
+  String get errNameEmpty;
+
+  /// errNameTooLong
+  ///
+  /// In en, this message translates to:
+  /// **'Name is too long (max {max} characters)'**
+  String errNameTooLong(String max);
+
+  /// errNidInvalid
+  ///
+  /// In en, this message translates to:
+  /// **'NID must be 10, 13 or 17 digits'**
+  String get errNidInvalid;
+
+  /// driverSaved
+  ///
+  /// In en, this message translates to:
+  /// **'Driver saved'**
+  String get driverSaved;
+
+  /// driverNotFound
+  ///
+  /// In en, this message translates to:
+  /// **'Driver not found'**
+  String get driverNotFound;
+
+  /// markAsLeft
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as left'**
+  String get markAsLeft;
+
+  /// reactivate
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as working again'**
+  String get reactivate;
+
+  /// markLeftTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Mark {name} as left?'**
+  String markLeftTitle(String name);
+
+  /// markLeftBody
+  ///
+  /// In en, this message translates to:
+  /// **'Their current vehicle assignments will end today.'**
+  String get markLeftBody;
+
+  /// driverMarkedLeft
+  ///
+  /// In en, this message translates to:
+  /// **'Marked as left'**
+  String get driverMarkedLeft;
+
+  /// driverReactivated
+  ///
+  /// In en, this message translates to:
+  /// **'Marked as working'**
+  String get driverReactivated;
+
+  /// licenseExpired
+  ///
+  /// In en, this message translates to:
+  /// **'Licence expired'**
+  String get licenseExpired;
+
+  /// licenseExpiresSoon
+  ///
+  /// In en, this message translates to:
+  /// **'Licence expires {date}'**
+  String licenseExpiresSoon(String date);
+
+  /// licenseValidUntil
+  ///
+  /// In en, this message translates to:
+  /// **'Valid until {date}'**
+  String licenseValidUntil(String date);
+
+  /// tabOverview
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get tabOverview;
+
+  /// tabAttendance
+  ///
+  /// In en, this message translates to:
+  /// **'Attendance'**
+  String get tabAttendance;
+
+  /// tabAdvances
+  ///
+  /// In en, this message translates to:
+  /// **'Advances'**
+  String get tabAdvances;
+
+  /// tabPayouts
+  ///
+  /// In en, this message translates to:
+  /// **'Payouts'**
+  String get tabPayouts;
+
+  /// workingOn
+  ///
+  /// In en, this message translates to:
+  /// **'Working on'**
+  String get workingOn;
+
+  /// notAssigned
+  ///
+  /// In en, this message translates to:
+  /// **'Not assigned to a vehicle'**
+  String get notAssigned;
+
+  /// advancesOwed
+  ///
+  /// In en, this message translates to:
+  /// **'Advances owed'**
+  String get advancesOwed;
+
+  /// sinceDate
+  ///
+  /// In en, this message translates to:
+  /// **'Since {date}'**
+  String sinceDate(String date);
+
+  /// contactDetails
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get contactDetails;
+
+  /// attPresent
+  ///
+  /// In en, this message translates to:
+  /// **'Present'**
+  String get attPresent;
+
+  /// attAbsent
+  ///
+  /// In en, this message translates to:
+  /// **'Absent'**
+  String get attAbsent;
+
+  /// attHalfDay
+  ///
+  /// In en, this message translates to:
+  /// **'Half day'**
+  String get attHalfDay;
+
+  /// attUnmarked
+  ///
+  /// In en, this message translates to:
+  /// **'Not marked'**
+  String get attUnmarked;
+
+  /// attClear
+  ///
+  /// In en, this message translates to:
+  /// **'Clear mark'**
+  String get attClear;
+
+  /// prevMonth
+  ///
+  /// In en, this message translates to:
+  /// **'Previous month'**
+  String get prevMonth;
+
+  /// nextMonth
+  ///
+  /// In en, this message translates to:
+  /// **'Next month'**
+  String get nextMonth;
+
+  /// markDay
+  ///
+  /// In en, this message translates to:
+  /// **'Mark {date}'**
+  String markDay(String date);
+
+  /// month1
+  ///
+  /// In en, this message translates to:
+  /// **'January'**
+  String get month1;
+
+  /// month2
+  ///
+  /// In en, this message translates to:
+  /// **'February'**
+  String get month2;
+
+  /// month3
+  ///
+  /// In en, this message translates to:
+  /// **'March'**
+  String get month3;
+
+  /// month4
+  ///
+  /// In en, this message translates to:
+  /// **'April'**
+  String get month4;
+
+  /// month5
+  ///
+  /// In en, this message translates to:
+  /// **'May'**
+  String get month5;
+
+  /// month6
+  ///
+  /// In en, this message translates to:
+  /// **'June'**
+  String get month6;
+
+  /// month7
+  ///
+  /// In en, this message translates to:
+  /// **'July'**
+  String get month7;
+
+  /// month8
+  ///
+  /// In en, this message translates to:
+  /// **'August'**
+  String get month8;
+
+  /// month9
+  ///
+  /// In en, this message translates to:
+  /// **'September'**
+  String get month9;
+
+  /// month10
+  ///
+  /// In en, this message translates to:
+  /// **'October'**
+  String get month10;
+
+  /// month11
+  ///
+  /// In en, this message translates to:
+  /// **'November'**
+  String get month11;
+
+  /// month12
+  ///
+  /// In en, this message translates to:
+  /// **'December'**
+  String get month12;
+
+  /// wdMon
+  ///
+  /// In en, this message translates to:
+  /// **'Mon'**
+  String get wdMon;
+
+  /// wdTue
+  ///
+  /// In en, this message translates to:
+  /// **'Tue'**
+  String get wdTue;
+
+  /// wdWed
+  ///
+  /// In en, this message translates to:
+  /// **'Wed'**
+  String get wdWed;
+
+  /// wdThu
+  ///
+  /// In en, this message translates to:
+  /// **'Thu'**
+  String get wdThu;
+
+  /// wdFri
+  ///
+  /// In en, this message translates to:
+  /// **'Fri'**
+  String get wdFri;
+
+  /// wdSat
+  ///
+  /// In en, this message translates to:
+  /// **'Sat'**
+  String get wdSat;
+
+  /// wdSun
+  ///
+  /// In en, this message translates to:
+  /// **'Sun'**
+  String get wdSun;
+
+  /// advancesEmptyTitle
+  ///
+  /// In en, this message translates to:
+  /// **'No advances'**
+  String get advancesEmptyTitle;
+
+  /// advancesEmptyMessage
+  ///
+  /// In en, this message translates to:
+  /// **'Advances you give are deducted from the next payout.'**
+  String get advancesEmptyMessage;
+
+  /// giveAdvance
+  ///
+  /// In en, this message translates to:
+  /// **'Give advance'**
+  String get giveAdvance;
+
+  /// advanceAmount
+  ///
+  /// In en, this message translates to:
+  /// **'Amount (৳)'**
+  String get advanceAmount;
+
+  /// advanceDate
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get advanceDate;
+
+  /// advanceNote
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get advanceNote;
+
+  /// advanceSaved
+  ///
+  /// In en, this message translates to:
+  /// **'Advance recorded'**
+  String get advanceSaved;
+
+  /// errAmountInvalid
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount greater than zero'**
+  String get errAmountInvalid;
+
+  /// advanceRecovered
+  ///
+  /// In en, this message translates to:
+  /// **'Recovered {amount}'**
+  String advanceRecovered(String amount);
+
+  /// advanceRemaining
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining {amount}'**
+  String advanceRemaining(String amount);
+
+  /// advanceSettled
+  ///
+  /// In en, this message translates to:
+  /// **'Fully recovered'**
+  String get advanceSettled;
+
+  /// deleteAdvanceTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this advance?'**
+  String get deleteAdvanceTitle;
+
+  /// errAdvanceRecovered
+  ///
+  /// In en, this message translates to:
+  /// **'This advance was already recovered in a payout. Void that payout first.'**
+  String get errAdvanceRecovered;
+
+  /// deleteLabel
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get deleteLabel;
+
+  /// editLabel
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get editLabel;
+
+  /// payoutsEmptyTitle
+  ///
+  /// In en, this message translates to:
+  /// **'No payouts yet'**
+  String get payoutsEmptyTitle;
+
+  /// payoutsEmptyMessage
+  ///
+  /// In en, this message translates to:
+  /// **'Record a payout to settle salary and advances.'**
+  String get payoutsEmptyMessage;
+
+  /// newPayout
+  ///
+  /// In en, this message translates to:
+  /// **'New payout'**
+  String get newPayout;
+
+  /// payoutTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Record payout'**
+  String get payoutTitle;
+
+  /// payPeriod
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get payPeriod;
+
+  /// customRange
+  ///
+  /// In en, this message translates to:
+  /// **'Custom dates'**
+  String get customRange;
+
+  /// payVehicle
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle'**
+  String get payVehicle;
+
+  /// payEarned
+  ///
+  /// In en, this message translates to:
+  /// **'Earned'**
+  String get payEarned;
+
+  /// payAdjustment
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus (+) or penalty (−) (৳)'**
+  String get payAdjustment;
+
+  /// payAdjustmentNote
+  ///
+  /// In en, this message translates to:
+  /// **'Reason (optional)'**
+  String get payAdjustmentNote;
+
+  /// payAdvancesDeducted
+  ///
+  /// In en, this message translates to:
+  /// **'Advances recovered'**
+  String get payAdvancesDeducted;
+
+  /// payNet
+  ///
+  /// In en, this message translates to:
+  /// **'Pay now'**
+  String get payNet;
+
+  /// payAdvancesCarried
+  ///
+  /// In en, this message translates to:
+  /// **'Advances still owed after this payout'**
+  String get payAdvancesCarried;
+
+  /// recordPayout
+  ///
+  /// In en, this message translates to:
+  /// **'Record payout'**
+  String get recordPayout;
+
+  /// payoutRecorded
+  ///
+  /// In en, this message translates to:
+  /// **'Payout recorded'**
+  String get payoutRecorded;
+
+  /// payoutAlreadyRecorded
+  ///
+  /// In en, this message translates to:
+  /// **'This period was already recorded'**
+  String get payoutAlreadyRecorded;
+
+  /// payoutVoid
+  ///
+  /// In en, this message translates to:
+  /// **'Void payout'**
+  String get payoutVoid;
+
+  /// payoutVoidTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Void this payout?'**
+  String get payoutVoidTitle;
+
+  /// payoutVoidBody
+  ///
+  /// In en, this message translates to:
+  /// **'Advance recoveries are released and the period can be paid again.'**
+  String get payoutVoidBody;
+
+  /// payoutVoided
+  ///
+  /// In en, this message translates to:
+  /// **'Payout voided'**
+  String get payoutVoided;
+
+  /// payoutPeriodClipped
+  ///
+  /// In en, this message translates to:
+  /// **'Only {start} to {end} is covered by this assignment.'**
+  String payoutPeriodClipped(String start, String end);
+
+  /// payoutTripsNote
+  ///
+  /// In en, this message translates to:
+  /// **'Trip earnings will be included once trip logging is available.'**
+  String get payoutTripsNote;
+
+  /// payErrNotPayable
+  ///
+  /// In en, this message translates to:
+  /// **'Jama drivers pay the owner, so there is nothing to pay out.'**
+  String get payErrNotPayable;
+
+  /// payErrOutside
+  ///
+  /// In en, this message translates to:
+  /// **'This vehicle assignment does not cover that period.'**
+  String get payErrOutside;
+
+  /// payErrOverlap
+  ///
+  /// In en, this message translates to:
+  /// **'Another payout already covers part of this period.'**
+  String get payErrOverlap;
+
+  /// payErrNothing
+  ///
+  /// In en, this message translates to:
+  /// **'There is nothing to pay for this period.'**
+  String get payErrNothing;
+
+  /// payLineSalary
+  ///
+  /// In en, this message translates to:
+  /// **'Salary ({days} days)'**
+  String payLineSalary(String days);
+
+  /// payLineWages
+  ///
+  /// In en, this message translates to:
+  /// **'Wages ({days} days)'**
+  String payLineWages(String days);
+
+  /// payLineTripFees
+  ///
+  /// In en, this message translates to:
+  /// **'Trip fees ({count} trips)'**
+  String payLineTripFees(String count);
+
+  /// payLineCommission
+  ///
+  /// In en, this message translates to:
+  /// **'Commission'**
+  String get payLineCommission;
+
+  /// paidOn
+  ///
+  /// In en, this message translates to:
+  /// **'Paid on {date}'**
+  String paidOn(String date);
+
+  /// dateRange
+  ///
+  /// In en, this message translates to:
+  /// **'{start} – {end}'**
+  String dateRange(String start, String end);
+
+  /// driverAndPay
+  ///
+  /// In en, this message translates to:
+  /// **'Driver & pay'**
+  String get driverAndPay;
+
+  /// assignDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Assign driver'**
+  String get assignDriver;
+
+  /// changeDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Change driver or pay'**
+  String get changeDriver;
+
+  /// endAssignment
+  ///
+  /// In en, this message translates to:
+  /// **'End assignment'**
+  String get endAssignment;
+
+  /// endAssignmentTitle
+  ///
+  /// In en, this message translates to:
+  /// **'End this assignment?'**
+  String get endAssignmentTitle;
+
+  /// endAssignmentBody
+  ///
+  /// In en, this message translates to:
+  /// **'{driver} will no longer drive {vehicle} after today.'**
+  String endAssignmentBody(String driver, String vehicle);
+
+  /// assignmentEnded
+  ///
+  /// In en, this message translates to:
+  /// **'Assignment ended'**
+  String get assignmentEnded;
+
+  /// currentDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Current driver'**
+  String get currentDriver;
+
+  /// assignmentHistory
+  ///
+  /// In en, this message translates to:
+  /// **'Past drivers'**
+  String get assignmentHistory;
+
+  /// noDriverAssigned
+  ///
+  /// In en, this message translates to:
+  /// **'No driver assigned'**
+  String get noDriverAssigned;
+
+  /// noDriverAssignedHint
+  ///
+  /// In en, this message translates to:
+  /// **'Assign a driver and choose how they are paid.'**
+  String get noDriverAssignedHint;
+
+  /// selectDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Driver'**
+  String get selectDriver;
+
+  /// startDate
+  ///
+  /// In en, this message translates to:
+  /// **'Starts on'**
+  String get startDate;
+
+  /// replacesNote
+  ///
+  /// In en, this message translates to:
+  /// **'{driver} will stop on {date}.'**
+  String replacesNote(String driver, String date);
+
+  /// noActiveDrivers
+  ///
+  /// In en, this message translates to:
+  /// **'Add a driver first.'**
+  String get noActiveDrivers;
+
+  /// selfDrivenNoDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Self-driven vehicles don\'t have a driver. Change the vehicle\'s business model to assign one.'**
+  String get selfDrivenNoDriver;
+
+  /// assignmentSaved
+  ///
+  /// In en, this message translates to:
+  /// **'Driver assigned'**
+  String get assignmentSaved;
+
+  /// errAssignStartAfter
+  ///
+  /// In en, this message translates to:
+  /// **'The new start date must be after the current assignment began.'**
+  String get errAssignStartAfter;
+
+  /// errAssignOverlap
+  ///
+  /// In en, this message translates to:
+  /// **'That date overlaps an earlier assignment.'**
+  String get errAssignOverlap;
+
+  /// errAssignPayType
+  ///
+  /// In en, this message translates to:
+  /// **'That pay type does not suit this vehicle.'**
+  String get errAssignPayType;
+
+  /// errAssignDriverLeft
+  ///
+  /// In en, this message translates to:
+  /// **'This driver has left.'**
+  String get errAssignDriverLeft;
+
+  /// ongoing
+  ///
+  /// In en, this message translates to:
+  /// **'now'**
+  String get ongoing;
+
+  /// ptSalary
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly salary'**
+  String get ptSalary;
+
+  /// ptDailyWage
+  ///
+  /// In en, this message translates to:
+  /// **'Daily wage'**
+  String get ptDailyWage;
+
+  /// ptPerTrip
+  ///
+  /// In en, this message translates to:
+  /// **'Per trip'**
+  String get ptPerTrip;
+
+  /// ptCommission
+  ///
+  /// In en, this message translates to:
+  /// **'Commission'**
+  String get ptCommission;
+
+  /// ptJama
+  ///
+  /// In en, this message translates to:
+  /// **'Jama (rent)'**
+  String get ptJama;
+
+  /// ptMixed
+  ///
+  /// In en, this message translates to:
+  /// **'Salary + commission'**
+  String get ptMixed;
+
+  /// payTypeLabel
+  ///
+  /// In en, this message translates to:
+  /// **'How is the driver paid?'**
+  String get payTypeLabel;
+
+  /// fMonthly
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly salary (৳)'**
+  String get fMonthly;
+
+  /// fBaseSalary
+  ///
+  /// In en, this message translates to:
+  /// **'Base salary per month (৳)'**
+  String get fBaseSalary;
+
+  /// fPerDay
+  ///
+  /// In en, this message translates to:
+  /// **'Pay per day (৳)'**
+  String get fPerDay;
+
+  /// fHalfDay
+  ///
+  /// In en, this message translates to:
+  /// **'Half-day pay (% of a full day)'**
+  String get fHalfDay;
+
+  /// fPerTrip
+  ///
+  /// In en, this message translates to:
+  /// **'Pay per trip (৳)'**
+  String get fPerTrip;
+
+  /// fRate
+  ///
+  /// In en, this message translates to:
+  /// **'Commission (% of fare)'**
+  String get fRate;
+
+  /// fBasis
+  ///
+  /// In en, this message translates to:
+  /// **'Commission on'**
+  String get fBasis;
+
+  /// basisBefore
+  ///
+  /// In en, this message translates to:
+  /// **'Fare before expenses'**
+  String get basisBefore;
+
+  /// basisAfter
+  ///
+  /// In en, this message translates to:
+  /// **'Fare after expenses'**
+  String get basisAfter;
+
+  /// fJamaAmount
+  ///
+  /// In en, this message translates to:
+  /// **'Jama amount (৳)'**
+  String get fJamaAmount;
+
+  /// fFrequency
+  ///
+  /// In en, this message translates to:
+  /// **'Collected'**
+  String get fFrequency;
+
+  /// freqDaily
+  ///
+  /// In en, this message translates to:
+  /// **'Daily'**
+  String get freqDaily;
+
+  /// freqWeekly
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly'**
+  String get freqWeekly;
+
+  /// fOffDays
+  ///
+  /// In en, this message translates to:
+  /// **'Days with no jama'**
+  String get fOffDays;
+
+  /// errPayAmount
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount greater than zero'**
+  String get errPayAmount;
+
+  /// errPayRate
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a percentage between 0 and 100'**
+  String get errPayRate;
+
+  /// errPayOffDays
+  ///
+  /// In en, this message translates to:
+  /// **'Leave at least one day when jama is collected'**
+  String get errPayOffDays;
+
+  /// sumSalary
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} per month'**
+  String sumSalary(String amount);
+
+  /// sumDailyWage
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} per day (half day {rate}%)'**
+  String sumDailyWage(String amount, String rate);
+
+  /// sumPerTrip
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} per trip'**
+  String sumPerTrip(String amount);
+
+  /// sumCommissionBefore
+  ///
+  /// In en, this message translates to:
+  /// **'{rate}% of fare before expenses'**
+  String sumCommissionBefore(String rate);
+
+  /// sumCommissionAfter
+  ///
+  /// In en, this message translates to:
+  /// **'{rate}% of fare after expenses'**
+  String sumCommissionAfter(String rate);
+
+  /// sumJamaDaily
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} per day'**
+  String sumJamaDaily(String amount);
+
+  /// sumJamaWeekly
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} per week'**
+  String sumJamaWeekly(String amount);
+
+  /// sumMixed
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} per month + {rate}% commission'**
+  String sumMixed(String amount, String rate);
+
+  /// today
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// errSelectDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a driver'**
+  String get errSelectDriver;
 }
 
 class _AppLocalizationsDelegate

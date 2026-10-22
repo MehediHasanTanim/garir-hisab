@@ -725,5 +725,831 @@
   "vehicleSaved": "Vehicle saved",
   "@vehicleSaved": {
     "description": "vehicleSaved"
+  },
+  "driversTitle": "Drivers",
+  "@driversTitle": {
+    "description": "driversTitle"
+  },
+  "addDriver": "Add driver",
+  "@addDriver": {
+    "description": "addDriver"
+  },
+  "newDriver": "New driver",
+  "@newDriver": {
+    "description": "newDriver"
+  },
+  "editDriver": "Edit driver",
+  "@editDriver": {
+    "description": "editDriver"
+  },
+  "searchDrivers": "Search by name, phone or licence",
+  "@searchDrivers": {
+    "description": "searchDrivers"
+  },
+  "driversEmptyTitle": "No drivers yet",
+  "@driversEmptyTitle": {
+    "description": "driversEmptyTitle"
+  },
+  "driversEmptyMessage": "Add the people who drive your vehicles.",
+  "@driversEmptyMessage": {
+    "description": "driversEmptyMessage"
+  },
+  "driversNoResults": "No drivers match your search.",
+  "@driversNoResults": {
+    "description": "driversNoResults"
+  },
+  "driverStatusActive": "Working",
+  "@driverStatusActive": {
+    "description": "driverStatusActive"
+  },
+  "driverStatusLeft": "Left",
+  "@driverStatusLeft": {
+    "description": "driverStatusLeft"
+  },
+  "driverName": "Full name",
+  "@driverName": {
+    "description": "driverName"
+  },
+  "licenseNo": "Licence number",
+  "@licenseNo": {
+    "description": "licenseNo"
+  },
+  "licenseExpiry": "Licence expiry",
+  "@licenseExpiry": {
+    "description": "licenseExpiry"
+  },
+  "nid": "National ID (NID)",
+  "@nid": {
+    "description": "nid"
+  },
+  "nidHelper": "Stored encrypted on this phone.",
+  "@nidHelper": {
+    "description": "nidHelper"
+  },
+  "nidOnFile": "NID on file",
+  "@nidOnFile": {
+    "description": "nidOnFile"
+  },
+  "address": "Address",
+  "@address": {
+    "description": "address"
+  },
+  "emergencyContact": "Emergency contact",
+  "@emergencyContact": {
+    "description": "emergencyContact"
+  },
+  "joinDate": "Joining date",
+  "@joinDate": {
+    "description": "joinDate"
+  },
+  "errNameEmpty": "Enter the driver's name",
+  "@errNameEmpty": {
+    "description": "errNameEmpty"
+  },
+  "errNameTooLong": "Name is too long (max {max} characters)",
+  "@errNameTooLong": {
+    "description": "errNameTooLong",
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "errNidInvalid": "NID must be 10, 13 or 17 digits",
+  "@errNidInvalid": {
+    "description": "errNidInvalid"
+  },
+  "driverSaved": "Driver saved",
+  "@driverSaved": {
+    "description": "driverSaved"
+  },
+  "driverNotFound": "Driver not found",
+  "@driverNotFound": {
+    "description": "driverNotFound"
+  },
+  "markAsLeft": "Mark as left",
+  "@markAsLeft": {
+    "description": "markAsLeft"
+  },
+  "reactivate": "Mark as working again",
+  "@reactivate": {
+    "description": "reactivate"
+  },
+  "markLeftTitle": "Mark {name} as left?",
+  "@markLeftTitle": {
+    "description": "markLeftTitle",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "markLeftBody": "Their current vehicle assignments will end today.",
+  "@markLeftBody": {
+    "description": "markLeftBody"
+  },
+  "driverMarkedLeft": "Marked as left",
+  "@driverMarkedLeft": {
+    "description": "driverMarkedLeft"
+  },
+  "driverReactivated": "Marked as working",
+  "@driverReactivated": {
+    "description": "driverReactivated"
+  },
+  "licenseExpired": "Licence expired",
+  "@licenseExpired": {
+    "description": "licenseExpired"
+  },
+  "licenseExpiresSoon": "Licence expires {date}",
+  "@licenseExpiresSoon": {
+    "description": "licenseExpiresSoon",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "licenseValidUntil": "Valid until {date}",
+  "@licenseValidUntil": {
+    "description": "licenseValidUntil",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "tabOverview": "Overview",
+  "@tabOverview": {
+    "description": "tabOverview"
+  },
+  "tabAttendance": "Attendance",
+  "@tabAttendance": {
+    "description": "tabAttendance"
+  },
+  "tabAdvances": "Advances",
+  "@tabAdvances": {
+    "description": "tabAdvances"
+  },
+  "tabPayouts": "Payouts",
+  "@tabPayouts": {
+    "description": "tabPayouts"
+  },
+  "workingOn": "Working on",
+  "@workingOn": {
+    "description": "workingOn"
+  },
+  "notAssigned": "Not assigned to a vehicle",
+  "@notAssigned": {
+    "description": "notAssigned"
+  },
+  "advancesOwed": "Advances owed",
+  "@advancesOwed": {
+    "description": "advancesOwed"
+  },
+  "sinceDate": "Since {date}",
+  "@sinceDate": {
+    "description": "sinceDate",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "contactDetails": "Details",
+  "@contactDetails": {
+    "description": "contactDetails"
+  },
+  "attPresent": "Present",
+  "@attPresent": {
+    "description": "attPresent"
+  },
+  "attAbsent": "Absent",
+  "@attAbsent": {
+    "description": "attAbsent"
+  },
+  "attHalfDay": "Half day",
+  "@attHalfDay": {
+    "description": "attHalfDay"
+  },
+  "attUnmarked": "Not marked",
+  "@attUnmarked": {
+    "description": "attUnmarked"
+  },
+  "attClear": "Clear mark",
+  "@attClear": {
+    "description": "attClear"
+  },
+  "prevMonth": "Previous month",
+  "@prevMonth": {
+    "description": "prevMonth"
+  },
+  "nextMonth": "Next month",
+  "@nextMonth": {
+    "description": "nextMonth"
+  },
+  "markDay": "Mark {date}",
+  "@markDay": {
+    "description": "markDay",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "month1": "January",
+  "@month1": {
+    "description": "month1"
+  },
+  "month2": "February",
+  "@month2": {
+    "description": "month2"
+  },
+  "month3": "March",
+  "@month3": {
+    "description": "month3"
+  },
+  "month4": "April",
+  "@month4": {
+    "description": "month4"
+  },
+  "month5": "May",
+  "@month5": {
+    "description": "month5"
+  },
+  "month6": "June",
+  "@month6": {
+    "description": "month6"
+  },
+  "month7": "July",
+  "@month7": {
+    "description": "month7"
+  },
+  "month8": "August",
+  "@month8": {
+    "description": "month8"
+  },
+  "month9": "September",
+  "@month9": {
+    "description": "month9"
+  },
+  "month10": "October",
+  "@month10": {
+    "description": "month10"
+  },
+  "month11": "November",
+  "@month11": {
+    "description": "month11"
+  },
+  "month12": "December",
+  "@month12": {
+    "description": "month12"
+  },
+  "wdMon": "Mon",
+  "@wdMon": {
+    "description": "wdMon"
+  },
+  "wdTue": "Tue",
+  "@wdTue": {
+    "description": "wdTue"
+  },
+  "wdWed": "Wed",
+  "@wdWed": {
+    "description": "wdWed"
+  },
+  "wdThu": "Thu",
+  "@wdThu": {
+    "description": "wdThu"
+  },
+  "wdFri": "Fri",
+  "@wdFri": {
+    "description": "wdFri"
+  },
+  "wdSat": "Sat",
+  "@wdSat": {
+    "description": "wdSat"
+  },
+  "wdSun": "Sun",
+  "@wdSun": {
+    "description": "wdSun"
+  },
+  "advancesEmptyTitle": "No advances",
+  "@advancesEmptyTitle": {
+    "description": "advancesEmptyTitle"
+  },
+  "advancesEmptyMessage": "Advances you give are deducted from the next payout.",
+  "@advancesEmptyMessage": {
+    "description": "advancesEmptyMessage"
+  },
+  "giveAdvance": "Give advance",
+  "@giveAdvance": {
+    "description": "giveAdvance"
+  },
+  "advanceAmount": "Amount (৳)",
+  "@advanceAmount": {
+    "description": "advanceAmount"
+  },
+  "advanceDate": "Date",
+  "@advanceDate": {
+    "description": "advanceDate"
+  },
+  "advanceNote": "Note (optional)",
+  "@advanceNote": {
+    "description": "advanceNote"
+  },
+  "advanceSaved": "Advance recorded",
+  "@advanceSaved": {
+    "description": "advanceSaved"
+  },
+  "errAmountInvalid": "Enter an amount greater than zero",
+  "@errAmountInvalid": {
+    "description": "errAmountInvalid"
+  },
+  "advanceRecovered": "Recovered {amount}",
+  "@advanceRecovered": {
+    "description": "advanceRecovered",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "advanceRemaining": "Remaining {amount}",
+  "@advanceRemaining": {
+    "description": "advanceRemaining",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "advanceSettled": "Fully recovered",
+  "@advanceSettled": {
+    "description": "advanceSettled"
+  },
+  "deleteAdvanceTitle": "Delete this advance?",
+  "@deleteAdvanceTitle": {
+    "description": "deleteAdvanceTitle"
+  },
+  "errAdvanceRecovered": "This advance was already recovered in a payout. Void that payout first.",
+  "@errAdvanceRecovered": {
+    "description": "errAdvanceRecovered"
+  },
+  "deleteLabel": "Delete",
+  "@deleteLabel": {
+    "description": "deleteLabel"
+  },
+  "editLabel": "Edit",
+  "@editLabel": {
+    "description": "editLabel"
+  },
+  "payoutsEmptyTitle": "No payouts yet",
+  "@payoutsEmptyTitle": {
+    "description": "payoutsEmptyTitle"
+  },
+  "payoutsEmptyMessage": "Record a payout to settle salary and advances.",
+  "@payoutsEmptyMessage": {
+    "description": "payoutsEmptyMessage"
+  },
+  "newPayout": "New payout",
+  "@newPayout": {
+    "description": "newPayout"
+  },
+  "payoutTitle": "Record payout",
+  "@payoutTitle": {
+    "description": "payoutTitle"
+  },
+  "payPeriod": "Period",
+  "@payPeriod": {
+    "description": "payPeriod"
+  },
+  "customRange": "Custom dates",
+  "@customRange": {
+    "description": "customRange"
+  },
+  "payVehicle": "Vehicle",
+  "@payVehicle": {
+    "description": "payVehicle"
+  },
+  "payEarned": "Earned",
+  "@payEarned": {
+    "description": "payEarned"
+  },
+  "payAdjustment": "Bonus (+) or penalty (−) (৳)",
+  "@payAdjustment": {
+    "description": "payAdjustment"
+  },
+  "payAdjustmentNote": "Reason (optional)",
+  "@payAdjustmentNote": {
+    "description": "payAdjustmentNote"
+  },
+  "payAdvancesDeducted": "Advances recovered",
+  "@payAdvancesDeducted": {
+    "description": "payAdvancesDeducted"
+  },
+  "payNet": "Pay now",
+  "@payNet": {
+    "description": "payNet"
+  },
+  "payAdvancesCarried": "Advances still owed after this payout",
+  "@payAdvancesCarried": {
+    "description": "payAdvancesCarried"
+  },
+  "recordPayout": "Record payout",
+  "@recordPayout": {
+    "description": "recordPayout"
+  },
+  "payoutRecorded": "Payout recorded",
+  "@payoutRecorded": {
+    "description": "payoutRecorded"
+  },
+  "payoutAlreadyRecorded": "This period was already recorded",
+  "@payoutAlreadyRecorded": {
+    "description": "payoutAlreadyRecorded"
+  },
+  "payoutVoid": "Void payout",
+  "@payoutVoid": {
+    "description": "payoutVoid"
+  },
+  "payoutVoidTitle": "Void this payout?",
+  "@payoutVoidTitle": {
+    "description": "payoutVoidTitle"
+  },
+  "payoutVoidBody": "Advance recoveries are released and the period can be paid again.",
+  "@payoutVoidBody": {
+    "description": "payoutVoidBody"
+  },
+  "payoutVoided": "Payout voided",
+  "@payoutVoided": {
+    "description": "payoutVoided"
+  },
+  "payoutPeriodClipped": "Only {start} to {end} is covered by this assignment.",
+  "@payoutPeriodClipped": {
+    "description": "payoutPeriodClipped",
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "payoutTripsNote": "Trip earnings will be included once trip logging is available.",
+  "@payoutTripsNote": {
+    "description": "payoutTripsNote"
+  },
+  "payErrNotPayable": "Jama drivers pay the owner, so there is nothing to pay out.",
+  "@payErrNotPayable": {
+    "description": "payErrNotPayable"
+  },
+  "payErrOutside": "This vehicle assignment does not cover that period.",
+  "@payErrOutside": {
+    "description": "payErrOutside"
+  },
+  "payErrOverlap": "Another payout already covers part of this period.",
+  "@payErrOverlap": {
+    "description": "payErrOverlap"
+  },
+  "payErrNothing": "There is nothing to pay for this period.",
+  "@payErrNothing": {
+    "description": "payErrNothing"
+  },
+  "payLineSalary": "Salary ({days} days)",
+  "@payLineSalary": {
+    "description": "payLineSalary",
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "payLineWages": "Wages ({days} days)",
+  "@payLineWages": {
+    "description": "payLineWages",
+    "placeholders": {
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "payLineTripFees": "Trip fees ({count} trips)",
+  "@payLineTripFees": {
+    "description": "payLineTripFees",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "payLineCommission": "Commission",
+  "@payLineCommission": {
+    "description": "payLineCommission"
+  },
+  "paidOn": "Paid on {date}",
+  "@paidOn": {
+    "description": "paidOn",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "dateRange": "{start} – {end}",
+  "@dateRange": {
+    "description": "dateRange",
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "driverAndPay": "Driver & pay",
+  "@driverAndPay": {
+    "description": "driverAndPay"
+  },
+  "assignDriver": "Assign driver",
+  "@assignDriver": {
+    "description": "assignDriver"
+  },
+  "changeDriver": "Change driver or pay",
+  "@changeDriver": {
+    "description": "changeDriver"
+  },
+  "endAssignment": "End assignment",
+  "@endAssignment": {
+    "description": "endAssignment"
+  },
+  "endAssignmentTitle": "End this assignment?",
+  "@endAssignmentTitle": {
+    "description": "endAssignmentTitle"
+  },
+  "endAssignmentBody": "{driver} will no longer drive {vehicle} after today.",
+  "@endAssignmentBody": {
+    "description": "endAssignmentBody",
+    "placeholders": {
+      "driver": {
+        "type": "String"
+      },
+      "vehicle": {
+        "type": "String"
+      }
+    }
+  },
+  "assignmentEnded": "Assignment ended",
+  "@assignmentEnded": {
+    "description": "assignmentEnded"
+  },
+  "currentDriver": "Current driver",
+  "@currentDriver": {
+    "description": "currentDriver"
+  },
+  "assignmentHistory": "Past drivers",
+  "@assignmentHistory": {
+    "description": "assignmentHistory"
+  },
+  "noDriverAssigned": "No driver assigned",
+  "@noDriverAssigned": {
+    "description": "noDriverAssigned"
+  },
+  "noDriverAssignedHint": "Assign a driver and choose how they are paid.",
+  "@noDriverAssignedHint": {
+    "description": "noDriverAssignedHint"
+  },
+  "selectDriver": "Driver",
+  "@selectDriver": {
+    "description": "selectDriver"
+  },
+  "startDate": "Starts on",
+  "@startDate": {
+    "description": "startDate"
+  },
+  "replacesNote": "{driver} will stop on {date}.",
+  "@replacesNote": {
+    "description": "replacesNote",
+    "placeholders": {
+      "driver": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "noActiveDrivers": "Add a driver first.",
+  "@noActiveDrivers": {
+    "description": "noActiveDrivers"
+  },
+  "selfDrivenNoDriver": "Self-driven vehicles don't have a driver. Change the vehicle's business model to assign one.",
+  "@selfDrivenNoDriver": {
+    "description": "selfDrivenNoDriver"
+  },
+  "assignmentSaved": "Driver assigned",
+  "@assignmentSaved": {
+    "description": "assignmentSaved"
+  },
+  "errAssignStartAfter": "The new start date must be after the current assignment began.",
+  "@errAssignStartAfter": {
+    "description": "errAssignStartAfter"
+  },
+  "errAssignOverlap": "That date overlaps an earlier assignment.",
+  "@errAssignOverlap": {
+    "description": "errAssignOverlap"
+  },
+  "errAssignPayType": "That pay type does not suit this vehicle.",
+  "@errAssignPayType": {
+    "description": "errAssignPayType"
+  },
+  "errAssignDriverLeft": "This driver has left.",
+  "@errAssignDriverLeft": {
+    "description": "errAssignDriverLeft"
+  },
+  "ongoing": "now",
+  "@ongoing": {
+    "description": "ongoing"
+  },
+  "ptSalary": "Monthly salary",
+  "@ptSalary": {
+    "description": "ptSalary"
+  },
+  "ptDailyWage": "Daily wage",
+  "@ptDailyWage": {
+    "description": "ptDailyWage"
+  },
+  "ptPerTrip": "Per trip",
+  "@ptPerTrip": {
+    "description": "ptPerTrip"
+  },
+  "ptCommission": "Commission",
+  "@ptCommission": {
+    "description": "ptCommission"
+  },
+  "ptJama": "Jama (rent)",
+  "@ptJama": {
+    "description": "ptJama"
+  },
+  "ptMixed": "Salary + commission",
+  "@ptMixed": {
+    "description": "ptMixed"
+  },
+  "payTypeLabel": "How is the driver paid?",
+  "@payTypeLabel": {
+    "description": "payTypeLabel"
+  },
+  "fMonthly": "Monthly salary (৳)",
+  "@fMonthly": {
+    "description": "fMonthly"
+  },
+  "fBaseSalary": "Base salary per month (৳)",
+  "@fBaseSalary": {
+    "description": "fBaseSalary"
+  },
+  "fPerDay": "Pay per day (৳)",
+  "@fPerDay": {
+    "description": "fPerDay"
+  },
+  "fHalfDay": "Half-day pay (% of a full day)",
+  "@fHalfDay": {
+    "description": "fHalfDay"
+  },
+  "fPerTrip": "Pay per trip (৳)",
+  "@fPerTrip": {
+    "description": "fPerTrip"
+  },
+  "fRate": "Commission (% of fare)",
+  "@fRate": {
+    "description": "fRate"
+  },
+  "fBasis": "Commission on",
+  "@fBasis": {
+    "description": "fBasis"
+  },
+  "basisBefore": "Fare before expenses",
+  "@basisBefore": {
+    "description": "basisBefore"
+  },
+  "basisAfter": "Fare after expenses",
+  "@basisAfter": {
+    "description": "basisAfter"
+  },
+  "fJamaAmount": "Jama amount (৳)",
+  "@fJamaAmount": {
+    "description": "fJamaAmount"
+  },
+  "fFrequency": "Collected",
+  "@fFrequency": {
+    "description": "fFrequency"
+  },
+  "freqDaily": "Daily",
+  "@freqDaily": {
+    "description": "freqDaily"
+  },
+  "freqWeekly": "Weekly",
+  "@freqWeekly": {
+    "description": "freqWeekly"
+  },
+  "fOffDays": "Days with no jama",
+  "@fOffDays": {
+    "description": "fOffDays"
+  },
+  "errPayAmount": "Enter an amount greater than zero",
+  "@errPayAmount": {
+    "description": "errPayAmount"
+  },
+  "errPayRate": "Enter a percentage between 0 and 100",
+  "@errPayRate": {
+    "description": "errPayRate"
+  },
+  "errPayOffDays": "Leave at least one day when jama is collected",
+  "@errPayOffDays": {
+    "description": "errPayOffDays"
+  },
+  "sumSalary": "{amount} per month",
+  "@sumSalary": {
+    "description": "sumSalary",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "sumDailyWage": "{amount} per day (half day {rate}%)",
+  "@sumDailyWage": {
+    "description": "sumDailyWage",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "sumPerTrip": "{amount} per trip",
+  "@sumPerTrip": {
+    "description": "sumPerTrip",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "sumCommissionBefore": "{rate}% of fare before expenses",
+  "@sumCommissionBefore": {
+    "description": "sumCommissionBefore",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "sumCommissionAfter": "{rate}% of fare after expenses",
+  "@sumCommissionAfter": {
+    "description": "sumCommissionAfter",
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "sumJamaDaily": "{amount} per day",
+  "@sumJamaDaily": {
+    "description": "sumJamaDaily",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "sumJamaWeekly": "{amount} per week",
+  "@sumJamaWeekly": {
+    "description": "sumJamaWeekly",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "sumMixed": "{amount} per month + {rate}% commission",
+  "@sumMixed": {
+    "description": "sumMixed",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "today": "Today",
+  "@today": {
+    "description": "today"
+  },
+  "errSelectDriver": "Choose a driver",
+  "@errSelectDriver": {
+    "description": "errSelectDriver"
   }
 }

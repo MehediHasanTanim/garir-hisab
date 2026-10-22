@@ -9,6 +9,8 @@ import 'package:vehicle_khata/core/db/database_key_store.dart';
 import 'package:vehicle_khata/core/db/ids.dart';
 import 'package:vehicle_khata/core/db/synced_repository.dart';
 import 'package:vehicle_khata/core/db/tables.dart';
+import 'package:vehicle_khata/features/drivers/domain/attendance.dart';
+import 'package:vehicle_khata/features/drivers/domain/driver.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle_enums.dart';
 
 part 'app_database.g.dart';
@@ -21,7 +23,18 @@ QueryExecutor _openEncrypted(File file, String key) {
   );
 }
 
-@DriftDatabase(tables: [AuditLogs, Vehicles])
+@DriftDatabase(
+  tables: [
+    AuditLogs,
+    Vehicles,
+    Drivers,
+    Assignments,
+    AttendanceRecords,
+    Advances,
+    Payouts,
+    PayoutAdvanceAllocations,
+  ],
+)
 class AppDatabase extends _$AppDatabase with SyncedHelpers {
   new(super.e);
 
@@ -43,7 +56,7 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
   new file(File file, {required String key}) : super(_openEncrypted(file, key));
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -51,6 +64,14 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
     onUpgrade: stepByStep(
       from1To2: (m, schema) async {
         await m.createTable(schema.vehicles);
+      },
+      from2To3: (m, schema) async {
+        await m.createTable(schema.drivers);
+        await m.createTable(schema.assignments);
+        await m.createTable(schema.attendanceRecords);
+        await m.createTable(schema.advances);
+        await m.createTable(schema.payouts);
+        await m.createTable(schema.payoutAdvanceAllocations);
       },
     ),
     beforeOpen: (details) async {

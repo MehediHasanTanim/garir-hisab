@@ -4,6 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:vehicle_khata/core/money/money.dart';
 
 void main() {
+  proportionTests();
+
   group('basic arithmetic', () {
     test('add, subtract, negate, scale', () {
       expect(const Money(150) + const Money(250), const Money(400));
@@ -118,5 +120,32 @@ void main() {
         }
       },
     );
+  });
+}
+
+void proportionTests() {
+  group('proportion', () {
+    test('rounds half to even and handles signs', () {
+      expect(const Money(100).proportion(1, 3), const Money(33));
+      expect(const Money(100).proportion(2, 3), const Money(67));
+      expect(const Money(1).proportion(1, 2), Money.zero); // 0.5 -> 0
+      expect(const Money(3).proportion(1, 2), const Money(2)); // 1.5 -> 2
+      expect(const Money(-3).proportion(1, 2), const Money(-2));
+      expect(const Money(3).proportion(-1, 2), const Money(-2));
+    });
+
+    test('rejects a non-positive denominator', () {
+      expect(() => const Money(1).proportion(1, 0), throwsArgumentError);
+      expect(() => const Money(1).proportion(1, -1), throwsArgumentError);
+    });
+
+    test('x * n / n is x', () {
+      final rng = Random(7);
+      for (var i = 0; i < 300; i++) {
+        final m = Money(rng.nextInt(2000001) - 1000000);
+        final n = rng.nextInt(60) + 1;
+        expect(m.proportion(n, n), m);
+      }
+    });
   });
 }

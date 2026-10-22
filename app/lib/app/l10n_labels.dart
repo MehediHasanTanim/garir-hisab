@@ -1,4 +1,8 @@
 import 'package:vehicle_khata/features/auth/domain/auth_repository.dart';
+import 'package:vehicle_khata/features/drivers/data/assignment_repository.dart';
+import 'package:vehicle_khata/features/drivers/data/payout_service.dart';
+import 'package:vehicle_khata/features/drivers/domain/attendance.dart';
+import 'package:vehicle_khata/features/drivers/domain/driver.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle_enums.dart';
 import 'package:vehicle_khata/l10n/gen/app_localizations.dart';
 
@@ -52,5 +56,40 @@ extension DomainLabels on AppLocalizations {
     AuthFailure.invalidCode => errInvalidCode,
     AuthFailure.network => errNetwork,
     AuthFailure.unknown => errUnknown,
+  };
+
+  String attendanceName(AttendanceStatus s) => switch (s) {
+    AttendanceStatus.present => attPresent,
+    AttendanceStatus.absent => attAbsent,
+    AttendanceStatus.halfDay => attHalfDay,
+  };
+
+  String driverStatusName(DriverStatus s) => switch (s) {
+    DriverStatus.active => driverStatusActive,
+    DriverStatus.left => driverStatusLeft,
+  };
+
+  String assignmentError(AssignmentError e) => switch (e) {
+    AssignmentError.startNotAfterCurrent => errAssignStartAfter,
+    AssignmentError.overlapsHistory => errAssignOverlap,
+    AssignmentError.payTypeNotAllowed => errAssignPayType,
+    AssignmentError.driverInactive => errAssignDriverLeft,
+    AssignmentError.noDriverForSelfDriven => selfDrivenNoDriver,
+    AssignmentError.payModelInvalid ||
+    AssignmentError.vehicleNotFound ||
+    AssignmentError.driverNotFound ||
+    AssignmentError.endBeforeStart ||
+    AssignmentError.assignmentNotFound ||
+    AssignmentError.alreadyEnded => errUnknown,
+  };
+
+  String payoutError(PayoutError e) => switch (e) {
+    PayoutError.notPayable => payErrNotPayable,
+    PayoutError.periodOutsideAssignment => payErrOutside,
+    PayoutError.overlapsExistingPayout => payErrOverlap,
+    PayoutError.nothingToPay => payErrNothing,
+    PayoutError.assignmentNotFound ||
+    PayoutError.notThisDriversAssignment ||
+    PayoutError.payoutNotFound => errUnknown,
   };
 }

@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:meta/meta.dart';
 import 'package:vehicle_khata/core/db/app_database.dart';
+import 'package:vehicle_khata/core/db/audit.dart';
 import 'package:vehicle_khata/core/db/ids.dart';
 import 'package:vehicle_khata/core/money/money.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle.dart';
@@ -113,32 +114,83 @@ class VehicleRepository {
     return total ?? 0;
   }
 
-  Future<String> create(VehicleDraft draft) async {
-    final id = newId();
-    await _db.into(_db.vehicles).insert(_companion(draft, id: id));
-    return id;
+  Future<String> create(VehicleDraft draft) {
+    return _db.transaction(() async {
+      final id = newId();
+      await _db.into(_db.vehicles).insert(_companion(draft, id: id));
+      await _db.logAudit(
+        entity: 'vehicle',
+        entityId: id,
+        action: 'create',
+        diff: {'nickname': VehicleRules.cleanText(draft.nickname)},
+      );
+      return id;
+    });
   }
 
-  Future<void> update(String id, VehicleDraft draft) async {
-    await (_db.update(
-      _db.vehicles,
-    )..where((t) => t.id.equals(id))).write(_companion(draft));
-    await _db.touch(_db.vehicles, id);
+  Future<void> update(String id, VehicleDraft draft) {
+    return _db.transaction(() async {
+      final before = await get(id);
+      await (_db.update(
+        _db.vehicles,
+      )..where((t) => t.id.equals(id))).write(_companion(draft));
+      await _db.touch(_db.vehicles, id);
+      await _db.logAudit(
+        entity: 'vehicle',
+        entityId: id,
+        action: 'update',
+        diff: before == null
+            ? const {}
+            : diffFields(
+                _snapshot(VehicleDraft.fromVehicle(before)),
+                _snapshot(draft),
+              ),
+      );
+    });
   }
 
-  Future<void> setStatus(String id, VehicleStatus status) async {
-    await (_db.update(_db.vehicles)..where((t) => t.id.equals(id))).write(
-      VehiclesCompanion(status: Value(status)),
-    );
-    await _db.touch(_db.vehicles, id);
+  Future<void> setStatus(String id, VehicleStatus status) {
+    return _db.transaction(() async {
+      await (_db.update(_db.vehicles)..where((t) => t.id.equals(id))).write(
+        VehiclesCompanion(status: Value(status)),
+      );
+      await _db.touch(_db.vehicles, id);
+      await _db.logAudit(
+        entity: 'vehicle',
+        entityId: id,
+        action: 'status',
+        diff: {'status': status.name},
+      );
+    });
   }
 
-  Future<void> setArchived(String id, {required bool archived}) async {
-    await (_db.update(_db.vehicles)..where((t) => t.id.equals(id))).write(
-      VehiclesCompanion(archived: Value(archived)),
-    );
-    await _db.touch(_db.vehicles, id);
+  Future<void> setArchived(String id, {required bool archived}) {
+    return _db.transaction(() async {
+      await (_db.update(_db.vehicles)..where((t) => t.id.equals(id))).write(
+        VehiclesCompanion(archived: Value(archived)),
+      );
+      await _db.touch(_db.vehicles, id);
+      await _db.logAudit(
+        entity: 'vehicle',
+        entityId: id,
+        action: archived ? 'archive' : 'restore',
+      );
+    });
   }
+
+  Map<String, Object?> _snapshot(VehicleDraft d) => {
+    'nickname': VehicleRules.cleanText(d.nickname),
+    'type': d.type.name,
+    'regNo': VehicleRules.cleanRegNo(d.regNo),
+    'model': _nullIfBlank(d.model),
+    'year': d.year,
+    'fuelType': d.fuelType.name,
+    'businessModel': d.businessModel.name,
+    'status': d.status.name,
+    'photoFile': d.photoFile,
+    'purchaseDate': d.purchaseDate?.toUtc().toIso8601String(),
+    'purchasePriceMinor': d.purchasePrice?.minor,
+  };
 
   /// Another (non-deleted) vehicle with the same registration number, if any.
   Future<Vehicle?> findByRegNo(String? regNo, {String? excludingId}) async {

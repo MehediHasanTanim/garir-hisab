@@ -8,6 +8,12 @@ import 'package:vehicle_khata/features/app_lock/presentation/app_lock_controller
 import 'package:vehicle_khata/features/app_lock/presentation/lock_page.dart';
 import 'package:vehicle_khata/features/app_lock/presentation/pin_setup_page.dart';
 import 'package:vehicle_khata/features/auth/presentation/account_page.dart';
+import 'package:vehicle_khata/features/drivers/presentation/assignment_form_page.dart';
+import 'package:vehicle_khata/features/drivers/presentation/driver_detail_page.dart';
+import 'package:vehicle_khata/features/drivers/presentation/driver_form_page.dart';
+import 'package:vehicle_khata/features/drivers/presentation/drivers_page.dart';
+import 'package:vehicle_khata/features/drivers/presentation/payout_page.dart';
+import 'package:vehicle_khata/features/drivers/presentation/vehicle_driver_page.dart';
 import 'package:vehicle_khata/features/entries/presentation/entries_page.dart';
 import 'package:vehicle_khata/features/gallery/presentation/gallery_page.dart';
 import 'package:vehicle_khata/features/home/presentation/home_page.dart';
@@ -30,6 +36,14 @@ abstract final class Routes {
   static const lock = '/lock';
   static const newVehicle = '/vehicles/new';
   static String editVehicle(String id) => '/vehicles/$id/edit';
+  static const drivers = '/drivers';
+  static const newDriver = '/drivers/new';
+  static String driver(String id) => '/drivers/$id';
+  static String editDriver(String id) => '/drivers/$id/edit';
+  static String newPayout(String driverId) => '/drivers/$driverId/payout/new';
+  static String vehicleDriver(String vehicleId) =>
+      '/vehicles/$vehicleId/driver';
+  static String assignDriver(String vehicleId) => '/vehicles/$vehicleId/assign';
 }
 
 /// Where the router starts. Tests override this to open a deep link.
@@ -82,6 +96,38 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/vehicles/:id/edit',
         builder: (_, state) =>
             VehicleFormPage(vehicleId: state.pathParameters['id']),
+      ),
+      GoRoute(path: Routes.drivers, builder: (_, _) => const DriversPage()),
+      GoRoute(
+        path: Routes.newDriver,
+        builder: (_, _) => const DriverFormPage(),
+      ),
+      GoRoute(
+        path: '/drivers/:id',
+        builder: (_, state) =>
+            DriverDetailPage(driverId: state.pathParameters['id']!),
+        routes: [
+          GoRoute(
+            path: 'edit',
+            builder: (_, state) =>
+                DriverFormPage(driverId: state.pathParameters['id']),
+          ),
+          GoRoute(
+            path: 'payout/new',
+            builder: (_, state) =>
+                PayoutPage(driverId: state.pathParameters['id']!),
+          ),
+        ],
+      ),
+      GoRoute(
+        path: '/vehicles/:id/driver',
+        builder: (_, state) =>
+            VehicleDriverPage(vehicleId: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: '/vehicles/:id/assign',
+        builder: (_, state) =>
+            AssignmentFormPage(vehicleId: state.pathParameters['id']!),
       ),
       GoRoute(
         path: '/pin/:mode',

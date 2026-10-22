@@ -243,6 +243,7 @@ class _VehicleTile extends ConsumerWidget {
         onSelected: (a) => _onAction(context, ref, a),
         itemBuilder: (_) => [
           PopupMenuItem(value: _Action.edit, child: Text(l10n.editVehicle)),
+          PopupMenuItem(value: _Action.driver, child: Text(l10n.driverAndPay)),
           PopupMenuItem(value: _Action.status, child: Text(l10n.changeStatus)),
           PopupMenuItem(
             value: vehicle.archived ? _Action.restore : _Action.archive,
@@ -264,6 +265,8 @@ class _VehicleTile extends ConsumerWidget {
     switch (action) {
       case _Action.edit:
         await context.push('/vehicles/${vehicle.id}/edit');
+      case _Action.driver:
+        await context.push('/vehicles/${vehicle.id}/driver');
       case _Action.status:
         final picked = await showDialog<VehicleStatus>(
           context: context,
@@ -322,7 +325,7 @@ class _VehicleTile extends ConsumerWidget {
   }
 }
 
-enum _Action { edit, status, archive, restore }
+enum _Action { edit, driver, status, archive, restore }
 
 class _StatusLabel extends StatelessWidget {
   const new({required this.text, required this.color});

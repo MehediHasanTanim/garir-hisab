@@ -544,4 +544,577 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get vehicleSaved => 'গাড়ি সংরক্ষণ করা হয়েছে';
+
+  @override
+  String get driversTitle => 'ড্রাইভার';
+
+  @override
+  String get addDriver => 'ড্রাইভার যোগ করুন';
+
+  @override
+  String get newDriver => 'নতুন ড্রাইভার';
+
+  @override
+  String get editDriver => 'ড্রাইভার সম্পাদনা';
+
+  @override
+  String get searchDrivers => 'নাম, ফোন বা লাইসেন্স দিয়ে খুঁজুন';
+
+  @override
+  String get driversEmptyTitle => 'এখনো কোনো ড্রাইভার নেই';
+
+  @override
+  String get driversEmptyMessage => 'যারা আপনার গাড়ি চালায় তাদের যোগ করুন।';
+
+  @override
+  String get driversNoResults => 'কোনো ড্রাইভার পাওয়া যায়নি।';
+
+  @override
+  String get driverStatusActive => 'কর্মরত';
+
+  @override
+  String get driverStatusLeft => 'ছেড়ে গেছে';
+
+  @override
+  String get driverName => 'পুরো নাম';
+
+  @override
+  String get licenseNo => 'লাইসেন্স নম্বর';
+
+  @override
+  String get licenseExpiry => 'লাইসেন্সের মেয়াদ';
+
+  @override
+  String get nid => 'জাতীয় পরিচয়পত্র (এনআইডি)';
+
+  @override
+  String get nidHelper => 'এই ফোনে এনক্রিপ্ট করে রাখা হয়।';
+
+  @override
+  String get nidOnFile => 'এনআইডি জমা আছে';
+
+  @override
+  String get address => 'ঠিকানা';
+
+  @override
+  String get emergencyContact => 'জরুরি যোগাযোগ';
+
+  @override
+  String get joinDate => 'যোগদানের তারিখ';
+
+  @override
+  String get errNameEmpty => 'ড্রাইভারের নাম দিন';
+
+  @override
+  String errNameTooLong(String max) {
+    return 'নাম খুব বড় (সর্বোচ্চ $max অক্ষর)';
+  }
+
+  @override
+  String get errNidInvalid => 'এনআইডি ১০, ১৩ বা ১৭ সংখ্যার হতে হবে';
+
+  @override
+  String get driverSaved => 'ড্রাইভার সংরক্ষণ করা হয়েছে';
+
+  @override
+  String get driverNotFound => 'ড্রাইভার পাওয়া যায়নি';
+
+  @override
+  String get markAsLeft => 'ছেড়ে গেছে বলে চিহ্নিত করুন';
+
+  @override
+  String get reactivate => 'আবার কর্মরত করুন';
+
+  @override
+  String markLeftTitle(String name) {
+    return '$name ছেড়ে গেছে?';
+  }
+
+  @override
+  String get markLeftBody => 'তার বর্তমান গাড়ির দায়িত্ব আজ শেষ হবে।';
+
+  @override
+  String get driverMarkedLeft => 'ছেড়ে গেছে বলে চিহ্নিত';
+
+  @override
+  String get driverReactivated => 'কর্মরত হিসেবে চিহ্নিত';
+
+  @override
+  String get licenseExpired => 'লাইসেন্সের মেয়াদ শেষ';
+
+  @override
+  String licenseExpiresSoon(String date) {
+    return 'লাইসেন্সের মেয়াদ শেষ হবে $date';
+  }
+
+  @override
+  String licenseValidUntil(String date) {
+    return 'মেয়াদ $date পর্যন্ত';
+  }
+
+  @override
+  String get tabOverview => 'সারসংক্ষেপ';
+
+  @override
+  String get tabAttendance => 'হাজিরা';
+
+  @override
+  String get tabAdvances => 'অগ্রিম';
+
+  @override
+  String get tabPayouts => 'পরিশোধ';
+
+  @override
+  String get workingOn => 'যে গাড়িতে কাজ করছে';
+
+  @override
+  String get notAssigned => 'কোনো গাড়িতে নেই';
+
+  @override
+  String get advancesOwed => 'অগ্রিম বাকি';
+
+  @override
+  String sinceDate(String date) {
+    return '$date থেকে';
+  }
+
+  @override
+  String get contactDetails => 'তথ্য';
+
+  @override
+  String get attPresent => 'উপস্থিত';
+
+  @override
+  String get attAbsent => 'অনুপস্থিত';
+
+  @override
+  String get attHalfDay => 'অর্ধদিবস';
+
+  @override
+  String get attUnmarked => 'চিহ্নিত নয়';
+
+  @override
+  String get attClear => 'চিহ্ন মুছুন';
+
+  @override
+  String get prevMonth => 'আগের মাস';
+
+  @override
+  String get nextMonth => 'পরের মাস';
+
+  @override
+  String markDay(String date) {
+    return '$date চিহ্নিত করুন';
+  }
+
+  @override
+  String get month1 => 'জানুয়ারি';
+
+  @override
+  String get month2 => 'ফেব্রুয়ারি';
+
+  @override
+  String get month3 => 'মার্চ';
+
+  @override
+  String get month4 => 'এপ্রিল';
+
+  @override
+  String get month5 => 'মে';
+
+  @override
+  String get month6 => 'জুন';
+
+  @override
+  String get month7 => 'জুলাই';
+
+  @override
+  String get month8 => 'আগস্ট';
+
+  @override
+  String get month9 => 'সেপ্টেম্বর';
+
+  @override
+  String get month10 => 'অক্টোবর';
+
+  @override
+  String get month11 => 'নভেম্বর';
+
+  @override
+  String get month12 => 'ডিসেম্বর';
+
+  @override
+  String get wdMon => 'সোম';
+
+  @override
+  String get wdTue => 'মঙ্গল';
+
+  @override
+  String get wdWed => 'বুধ';
+
+  @override
+  String get wdThu => 'বৃহ';
+
+  @override
+  String get wdFri => 'শুক্র';
+
+  @override
+  String get wdSat => 'শনি';
+
+  @override
+  String get wdSun => 'রবি';
+
+  @override
+  String get advancesEmptyTitle => 'কোনো অগ্রিম নেই';
+
+  @override
+  String get advancesEmptyMessage =>
+      'দেওয়া অগ্রিম পরের পরিশোধ থেকে কেটে নেওয়া হবে।';
+
+  @override
+  String get giveAdvance => 'অগ্রিম দিন';
+
+  @override
+  String get advanceAmount => 'পরিমাণ (৳)';
+
+  @override
+  String get advanceDate => 'তারিখ';
+
+  @override
+  String get advanceNote => 'নোট (ঐচ্ছিক)';
+
+  @override
+  String get advanceSaved => 'অগ্রিম লেখা হয়েছে';
+
+  @override
+  String get errAmountInvalid => 'শূন্যের বেশি পরিমাণ দিন';
+
+  @override
+  String advanceRecovered(String amount) {
+    return 'ফেরত $amount';
+  }
+
+  @override
+  String advanceRemaining(String amount) {
+    return 'বাকি $amount';
+  }
+
+  @override
+  String get advanceSettled => 'পুরো ফেরত হয়েছে';
+
+  @override
+  String get deleteAdvanceTitle => 'অগ্রিমটি মুছবেন?';
+
+  @override
+  String get errAdvanceRecovered =>
+      'এই অগ্রিম একটি পরিশোধে কেটে নেওয়া হয়েছে। আগে সেই পরিশোধ বাতিল করুন।';
+
+  @override
+  String get deleteLabel => 'মুছুন';
+
+  @override
+  String get editLabel => 'সম্পাদনা';
+
+  @override
+  String get payoutsEmptyTitle => 'এখনো কোনো পরিশোধ নেই';
+
+  @override
+  String get payoutsEmptyMessage =>
+      'বেতন ও অগ্রিমের হিসাব মেটাতে পরিশোধ লিখুন।';
+
+  @override
+  String get newPayout => 'নতুন পরিশোধ';
+
+  @override
+  String get payoutTitle => 'পরিশোধ লিখুন';
+
+  @override
+  String get payPeriod => 'সময়কাল';
+
+  @override
+  String get customRange => 'নিজের তারিখ';
+
+  @override
+  String get payVehicle => 'গাড়ি';
+
+  @override
+  String get payEarned => 'উপার্জন';
+
+  @override
+  String get payAdjustment => 'বোনাস (+) বা জরিমানা (−) (৳)';
+
+  @override
+  String get payAdjustmentNote => 'কারণ (ঐচ্ছিক)';
+
+  @override
+  String get payAdvancesDeducted => 'অগ্রিম কাটা হলো';
+
+  @override
+  String get payNet => 'এখন দিন';
+
+  @override
+  String get payAdvancesCarried => 'এই পরিশোধের পরও বাকি অগ্রিম';
+
+  @override
+  String get recordPayout => 'পরিশোধ লিখুন';
+
+  @override
+  String get payoutRecorded => 'পরিশোধ লেখা হয়েছে';
+
+  @override
+  String get payoutAlreadyRecorded => 'এই সময়ের পরিশোধ আগেই লেখা আছে';
+
+  @override
+  String get payoutVoid => 'পরিশোধ বাতিল';
+
+  @override
+  String get payoutVoidTitle => 'পরিশোধটি বাতিল করবেন?';
+
+  @override
+  String get payoutVoidBody =>
+      'কেটে নেওয়া অগ্রিম ফেরত আসবে এবং এই সময়ের জন্য আবার পরিশোধ করা যাবে।';
+
+  @override
+  String get payoutVoided => 'পরিশোধ বাতিল হয়েছে';
+
+  @override
+  String payoutPeriodClipped(String start, String end) {
+    return 'এই দায়িত্বে শুধু $start থেকে $end পর্যন্ত ধরা হয়েছে।';
+  }
+
+  @override
+  String get payoutTripsNote => 'ট্রিপের আয় যোগ হবে ট্রিপ লেখার সুবিধা এলে।';
+
+  @override
+  String get payErrNotPayable =>
+      'জমার ড্রাইভাররা মালিককে টাকা দেয়, তাই পরিশোধ করার কিছু নেই।';
+
+  @override
+  String get payErrOutside => 'এই সময়ে এই গাড়ির দায়িত্ব ছিল না।';
+
+  @override
+  String get payErrOverlap => 'এই সময়ের কিছু অংশের পরিশোধ আগেই লেখা আছে।';
+
+  @override
+  String get payErrNothing => 'এই সময়ের জন্য কিছু পরিশোধ করার নেই।';
+
+  @override
+  String payLineSalary(String days) {
+    return 'বেতন ($days দিন)';
+  }
+
+  @override
+  String payLineWages(String days) {
+    return 'মজুরি ($days দিন)';
+  }
+
+  @override
+  String payLineTripFees(String count) {
+    return 'ট্রিপ ভাড়া ($countটি ট্রিপ)';
+  }
+
+  @override
+  String get payLineCommission => 'কমিশন';
+
+  @override
+  String paidOn(String date) {
+    return '$date তারিখে দেওয়া হয়েছে';
+  }
+
+  @override
+  String dateRange(String start, String end) {
+    return '$start – $end';
+  }
+
+  @override
+  String get driverAndPay => 'ড্রাইভার ও বেতন';
+
+  @override
+  String get assignDriver => 'ড্রাইভার ঠিক করুন';
+
+  @override
+  String get changeDriver => 'ড্রাইভার বা বেতন বদলান';
+
+  @override
+  String get endAssignment => 'দায়িত্ব শেষ করুন';
+
+  @override
+  String get endAssignmentTitle => 'দায়িত্ব শেষ করবেন?';
+
+  @override
+  String endAssignmentBody(String driver, String vehicle) {
+    return 'আজকের পর $driver আর $vehicle চালাবে না।';
+  }
+
+  @override
+  String get assignmentEnded => 'দায়িত্ব শেষ হয়েছে';
+
+  @override
+  String get currentDriver => 'বর্তমান ড্রাইভার';
+
+  @override
+  String get assignmentHistory => 'আগের ড্রাইভার';
+
+  @override
+  String get noDriverAssigned => 'কোনো ড্রাইভার নেই';
+
+  @override
+  String get noDriverAssignedHint =>
+      'ড্রাইভার ঠিক করুন এবং কীভাবে বেতন পাবে তা বেছে নিন।';
+
+  @override
+  String get selectDriver => 'ড্রাইভার';
+
+  @override
+  String get startDate => 'শুরুর তারিখ';
+
+  @override
+  String replacesNote(String driver, String date) {
+    return '$driver $date পর্যন্ত থাকবে।';
+  }
+
+  @override
+  String get noActiveDrivers => 'আগে একজন ড্রাইভার যোগ করুন।';
+
+  @override
+  String get selfDrivenNoDriver =>
+      'নিজে চালানো গাড়িতে ড্রাইভার থাকে না। ড্রাইভার দিতে গাড়ির আয়ের ধরন বদলান।';
+
+  @override
+  String get assignmentSaved => 'ড্রাইভার ঠিক করা হয়েছে';
+
+  @override
+  String get errAssignStartAfter =>
+      'নতুন শুরুর তারিখ বর্তমান দায়িত্ব শুরুর পরে হতে হবে।';
+
+  @override
+  String get errAssignOverlap =>
+      'এই তারিখ আগের দায়িত্বের সময়ের সাথে মিলে যাচ্ছে।';
+
+  @override
+  String get errAssignPayType => 'এই বেতনের ধরন এই গাড়ির সাথে মানায় না।';
+
+  @override
+  String get errAssignDriverLeft => 'এই ড্রাইভার ছেড়ে গেছে।';
+
+  @override
+  String get ongoing => 'চলছে';
+
+  @override
+  String get ptSalary => 'মাসিক বেতন';
+
+  @override
+  String get ptDailyWage => 'দৈনিক মজুরি';
+
+  @override
+  String get ptPerTrip => 'ট্রিপ প্রতি';
+
+  @override
+  String get ptCommission => 'কমিশন';
+
+  @override
+  String get ptJama => 'জমা (ভাড়া)';
+
+  @override
+  String get ptMixed => 'বেতন + কমিশন';
+
+  @override
+  String get payTypeLabel => 'ড্রাইভার কীভাবে বেতন পাবে?';
+
+  @override
+  String get fMonthly => 'মাসিক বেতন (৳)';
+
+  @override
+  String get fBaseSalary => 'মাসিক মূল বেতন (৳)';
+
+  @override
+  String get fPerDay => 'দৈনিক মজুরি (৳)';
+
+  @override
+  String get fHalfDay => 'অর্ধদিবসের মজুরি (পূর্ণ দিনের %)';
+
+  @override
+  String get fPerTrip => 'প্রতি ট্রিপে (৳)';
+
+  @override
+  String get fRate => 'কমিশন (ভাড়ার %)';
+
+  @override
+  String get fBasis => 'কমিশন কিসের উপর';
+
+  @override
+  String get basisBefore => 'খরচ বাদ দেওয়ার আগের ভাড়া';
+
+  @override
+  String get basisAfter => 'খরচ বাদ দেওয়ার পরের ভাড়া';
+
+  @override
+  String get fJamaAmount => 'জমার পরিমাণ (৳)';
+
+  @override
+  String get fFrequency => 'আদায়';
+
+  @override
+  String get freqDaily => 'প্রতিদিন';
+
+  @override
+  String get freqWeekly => 'প্রতি সপ্তাহে';
+
+  @override
+  String get fOffDays => 'যেদিন জমা নেই';
+
+  @override
+  String get errPayAmount => 'শূন্যের বেশি পরিমাণ দিন';
+
+  @override
+  String get errPayRate => '০ থেকে ১০০ এর মধ্যে শতাংশ দিন';
+
+  @override
+  String get errPayOffDays => 'অন্তত একদিন জমা আদায়ের জন্য রাখুন';
+
+  @override
+  String sumSalary(String amount) {
+    return 'মাসে $amount';
+  }
+
+  @override
+  String sumDailyWage(String amount, String rate) {
+    return 'দিনে $amount (অর্ধদিবস $rate%)';
+  }
+
+  @override
+  String sumPerTrip(String amount) {
+    return 'ট্রিপ প্রতি $amount';
+  }
+
+  @override
+  String sumCommissionBefore(String rate) {
+    return 'খরচ বাদ দেওয়ার আগের ভাড়ার $rate%';
+  }
+
+  @override
+  String sumCommissionAfter(String rate) {
+    return 'খরচ বাদ দেওয়ার পরের ভাড়ার $rate%';
+  }
+
+  @override
+  String sumJamaDaily(String amount) {
+    return 'দিনে $amount';
+  }
+
+  @override
+  String sumJamaWeekly(String amount) {
+    return 'সপ্তাহে $amount';
+  }
+
+  @override
+  String sumMixed(String amount, String rate) {
+    return 'মাসে $amount + $rate% কমিশন';
+  }
+
+  @override
+  String get today => 'আজ';
+
+  @override
+  String get errSelectDriver => 'একজন ড্রাইভার বেছে নিন';
 }

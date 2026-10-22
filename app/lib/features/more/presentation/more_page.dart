@@ -27,6 +27,11 @@ class MorePage extends ConsumerWidget {
             onTap: () => context.go('/more/account'),
           ),
           KhataListTile(
+            icon: Icons.badge_outlined,
+            title: l10n.driversTitle,
+            onTap: () => context.push('/drivers'),
+          ),
+          KhataListTile(
             icon: Icons.settings_outlined,
             title: l10n.settings,
             onTap: () => context.go('/more/settings'),

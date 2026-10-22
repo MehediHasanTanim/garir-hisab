@@ -1,7 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vehicle_khata/app/providers/providers.dart';
+import 'package:vehicle_khata/core/db/field_cipher.dart';
+import 'package:vehicle_khata/core/money/money.dart';
+import 'package:vehicle_khata/core/time/calendar_day.dart';
+import 'package:vehicle_khata/features/app_lock/presentation/app_lock_controller.dart';
 import 'package:vehicle_khata/features/auth/data/local_only_auth_repository.dart';
 import 'package:vehicle_khata/features/auth/domain/auth_repository.dart';
+import 'package:vehicle_khata/features/drivers/data/advance_repository.dart';
+import 'package:vehicle_khata/features/drivers/data/assignment_repository.dart';
+import 'package:vehicle_khata/features/drivers/data/attendance_repository.dart';
+import 'package:vehicle_khata/features/drivers/data/driver_repository.dart';
+import 'package:vehicle_khata/features/drivers/data/payout_service.dart';
+import 'package:vehicle_khata/features/drivers/domain/attendance.dart';
+import 'package:vehicle_khata/features/drivers/domain/driver.dart';
 import 'package:vehicle_khata/features/onboarding/data/onboarding_repository.dart';
 import 'package:vehicle_khata/features/onboarding/domain/onboarding_state.dart';
 import 'package:vehicle_khata/features/vehicles/data/photo_store.dart';
@@ -46,6 +57,109 @@ final vehicleListProvider = StreamProvider.autoDispose
 final vehicleProvider = StreamProvider.autoDispose.family<Vehicle?, String>(
   (ref, id) => ref.watch(vehicleRepositoryProvider).watchOne(id),
 );
+
+// ---- Drivers -------------------------------------------------------------
+
+final fieldCipherProvider = Provider<FieldCipher>(
+  (ref) => AesGcmFieldCipher(ref.watch(secretStoreProvider)),
+);
+
+final driverRepositoryProvider = Provider<DriverRepository>(
+  (ref) => DriverRepository(
+    ref.watch(appDatabaseProvider),
+    ref.watch(fieldCipherProvider),
+  ),
+);
+
+final assignmentRepositoryProvider = Provider<AssignmentRepository>(
+  (ref) => AssignmentRepository(ref.watch(appDatabaseProvider)),
+);
+
+final attendanceRepositoryProvider = Provider<AttendanceRepository>(
+  (ref) => AttendanceRepository(ref.watch(appDatabaseProvider)),
+);
+
+final advanceRepositoryProvider = Provider<AdvanceRepository>(
+  (ref) => AdvanceRepository(ref.watch(appDatabaseProvider)),
+);
+
+final payoutServiceProvider = Provider<PayoutService>(
+  (ref) => PayoutService(
+    ref.watch(appDatabaseProvider),
+    ref.watch(assignmentRepositoryProvider),
+    ref.watch(attendanceRepositoryProvider),
+    ref.watch(advanceRepositoryProvider),
+    clock: ref.watch(clockProvider),
+  ),
+);
+
+final driverListProvider = StreamProvider.autoDispose
+    .family<List<Driver>, DriverFilter>(
+      (ref, filter) => ref.watch(driverRepositoryProvider).watch(filter),
+    );
+
+final driverProvider = StreamProvider.autoDispose.family<Driver?, String>(
+  (ref, id) => ref.watch(driverRepositoryProvider).watchOne(id),
+);
+
+final driverAssignmentsProvider = StreamProvider.autoDispose
+    .family<List<AssignmentView>, String>(
+      (ref, driverId) =>
+          ref.watch(assignmentRepositoryProvider).watchForDriver(driverId),
+    );
+
+final vehicleAssignmentsProvider = StreamProvider.autoDispose
+    .family<List<AssignmentView>, String>(
+      (ref, vehicleId) =>
+          ref.watch(assignmentRepositoryProvider).watchForVehicle(vehicleId),
+    );
+
+typedef AttendanceMonth = ({String driverId, int year, int month});
+
+final attendanceMonthProvider = StreamProvider.autoDispose
+    .family<Map<CalendarDay, AttendanceStatus>, AttendanceMonth>(
+      (ref, key) => ref
+          .watch(attendanceRepositoryProvider)
+          .watchRange(key.driverId, DayRange.month(key.year, key.month)),
+    );
+
+final driverAdvancesProvider = StreamProvider.autoDispose
+    .family<List<Advance>, String>(
+      (ref, driverId) =>
+          ref.watch(advanceRepositoryProvider).watchForDriver(driverId),
+    );
+
+final driverOutstandingProvider = StreamProvider.autoDispose
+    .family<Money, String>(
+      (ref, driverId) =>
+          ref.watch(advanceRepositoryProvider).watchOutstandingTotal(driverId),
+    );
+
+final driverPayoutsProvider = StreamProvider.autoDispose
+    .family<List<Payout>, String>(
+      (ref, driverId) =>
+          ref.watch(payoutServiceProvider).watchForDriver(driverId),
+    );
+
+typedef PayoutPreviewArgs = ({
+  String driverId,
+  String assignmentId,
+  int startDay,
+  int endDay,
+  int adjustmentMinor,
+});
+
+final payoutPreviewProvider = FutureProvider.autoDispose
+    .family<PayoutPreview, PayoutPreviewArgs>(
+      (ref, a) => ref
+          .watch(payoutServiceProvider)
+          .preview(
+            driverId: a.driverId,
+            assignmentId: a.assignmentId,
+            period: DayRange(CalendarDay(a.startDay), CalendarDay(a.endDay)),
+            adjustment: Money(a.adjustmentMinor),
+          ),
+    );
 
 // ---- Onboarding ----------------------------------------------------------
 
