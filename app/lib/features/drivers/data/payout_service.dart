@@ -88,6 +88,17 @@ class PayoutService {
   final TripRepository? _trips;
   final DateTime Function() _clock;
 
+  /// Newest period first.
+  Future<List<Payout>> listForDriver(String driverId) async {
+    final q = _db.select(_db.payouts)
+      ..where((t) => t.driverId.equals(driverId) & t.deletedAt.isNull())
+      ..orderBy([
+        (t) => OrderingTerm.desc(t.periodEndDay),
+        (t) => OrderingTerm.desc(t.id),
+      ]);
+    return (await q.get()).map(_toDomain).toList();
+  }
+
   Stream<List<Payout>> watchForDriver(String driverId) {
     final q = _db.select(_db.payouts)
       ..where((t) => t.driverId.equals(driverId) & t.deletedAt.isNull())

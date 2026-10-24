@@ -1638,4 +1638,101 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get syncRestoreAction => 'ফিরিয়ে আনুন';
+
+  @override
+  String get exportTitle => 'আমার তথ্য এক্সপোর্ট করুন';
+
+  @override
+  String get exportExplain =>
+      'আপনার সব গাড়ি, ড্রাইভার, ট্রিপ, খরচ ও পেমেন্ট নিয়ে একটি জিপ ফাইল তৈরি হবে। এতে JSON কপি এবং এক্সেলে খোলার মতো CSV ফাইল থাকবে। অঙ্ক পয়সায় লেখা।';
+
+  @override
+  String get exportNidNote =>
+      'ড্রাইভারের জাতীয় পরিচয়পত্র নম্বর এতে থাকবে না।';
+
+  @override
+  String get exportAction => 'এক্সপোর্ট করে শেয়ার করুন';
+
+  @override
+  String get exportPreparing => 'তৈরি হচ্ছে…';
+
+  @override
+  String get exportFailed => 'ফাইল তৈরি করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get stmtTitle => 'ড্রাইভারের হিসাব';
+
+  @override
+  String get stmtThisMonth => 'এই মাস';
+
+  @override
+  String get stmtLastMonth => 'গত মাস';
+
+  @override
+  String get stmtLast3 => 'গত ৩ মাস';
+
+  @override
+  String get stmtAllTime => 'সব সময়';
+
+  @override
+  String get stmtPayouts => 'পেমেন্ট';
+
+  @override
+  String get stmtAdvances => 'দেওয়া অগ্রিম';
+
+  @override
+  String get stmtEarned => 'অর্জিত';
+
+  @override
+  String get stmtAdjustment => 'বোনাস / জরিমানা';
+
+  @override
+  String get stmtRecovered => 'অগ্রিম কাটা হয়েছে';
+
+  @override
+  String get stmtPaid => 'দেওয়া হয়েছে';
+
+  @override
+  String get stmtTotalPaid => 'মোট দেওয়া হয়েছে';
+
+  @override
+  String get stmtAdvancesOwed => 'অগ্রিম এখনো বাকি';
+
+  @override
+  String get stmtNone => 'এই সময়ে কিছু নেই';
+
+  @override
+  String get stmtShare => 'PDF শেয়ার করুন';
+
+  @override
+  String get stmtPreparing => 'তৈরি হচ্ছে…';
+
+  @override
+  String get stmtFailed => 'PDF তৈরি করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get stmtPreparedWith => 'ভেহিকল খাতা দিয়ে তৈরি';
+
+  @override
+  String stmtShareText(String name) {
+    return '$name-এর হিসাব';
+  }
+
+  @override
+  String stmtPaidOn(String date) {
+    return '$date তারিখে দেওয়া';
+  }
+
+  @override
+  String stmtRemaining(String amount) {
+    return 'বাকি: $amount';
+  }
+
+  @override
+  String stmtPeriodLine(String from, String to) {
+    return '$from থেকে $to';
+  }
+
+  @override
+  String get stmtMenu => 'হিসাব (PDF)';
 }

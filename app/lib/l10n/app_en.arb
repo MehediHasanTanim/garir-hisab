@@ -2267,5 +2267,144 @@
   "syncRestoreAction": "Restore",
   "@syncRestoreAction": {
     "description": "syncRestoreAction"
+  },
+  "exportTitle": "Export my data",
+  "@exportTitle": {
+    "description": "exportTitle"
+  },
+  "exportExplain": "Creates one zip file with all your vehicles, drivers, trips, expenses and payments. It contains a JSON copy and spreadsheet (CSV) files you can open in Excel. Amounts are in poisha.",
+  "@exportExplain": {
+    "description": "exportExplain"
+  },
+  "exportNidNote": "Drivers' national ID numbers are not included.",
+  "@exportNidNote": {
+    "description": "exportNidNote"
+  },
+  "exportAction": "Export and share",
+  "@exportAction": {
+    "description": "exportAction"
+  },
+  "exportPreparing": "Preparing…",
+  "@exportPreparing": {
+    "description": "exportPreparing"
+  },
+  "exportFailed": "Could not create the file. Please try again.",
+  "@exportFailed": {
+    "description": "exportFailed"
+  },
+  "stmtTitle": "Driver statement",
+  "@stmtTitle": {
+    "description": "stmtTitle"
+  },
+  "stmtThisMonth": "This month",
+  "@stmtThisMonth": {
+    "description": "stmtThisMonth"
+  },
+  "stmtLastMonth": "Last month",
+  "@stmtLastMonth": {
+    "description": "stmtLastMonth"
+  },
+  "stmtLast3": "Last 3 months",
+  "@stmtLast3": {
+    "description": "stmtLast3"
+  },
+  "stmtAllTime": "All time",
+  "@stmtAllTime": {
+    "description": "stmtAllTime"
+  },
+  "stmtPayouts": "Payouts",
+  "@stmtPayouts": {
+    "description": "stmtPayouts"
+  },
+  "stmtAdvances": "Advances given",
+  "@stmtAdvances": {
+    "description": "stmtAdvances"
+  },
+  "stmtEarned": "Earned",
+  "@stmtEarned": {
+    "description": "stmtEarned"
+  },
+  "stmtAdjustment": "Bonus / penalty",
+  "@stmtAdjustment": {
+    "description": "stmtAdjustment"
+  },
+  "stmtRecovered": "Advances recovered",
+  "@stmtRecovered": {
+    "description": "stmtRecovered"
+  },
+  "stmtPaid": "Paid",
+  "@stmtPaid": {
+    "description": "stmtPaid"
+  },
+  "stmtTotalPaid": "Total paid",
+  "@stmtTotalPaid": {
+    "description": "stmtTotalPaid"
+  },
+  "stmtAdvancesOwed": "Advances still owed",
+  "@stmtAdvancesOwed": {
+    "description": "stmtAdvancesOwed"
+  },
+  "stmtNone": "Nothing in this period",
+  "@stmtNone": {
+    "description": "stmtNone"
+  },
+  "stmtShare": "Share PDF",
+  "@stmtShare": {
+    "description": "stmtShare"
+  },
+  "stmtPreparing": "Preparing…",
+  "@stmtPreparing": {
+    "description": "stmtPreparing"
+  },
+  "stmtFailed": "Could not create the PDF. Please try again.",
+  "@stmtFailed": {
+    "description": "stmtFailed"
+  },
+  "stmtPreparedWith": "Prepared with Vehicle Khata",
+  "@stmtPreparedWith": {
+    "description": "stmtPreparedWith"
+  },
+  "stmtShareText": "Statement for {name}",
+  "@stmtShareText": {
+    "description": "stmtShareText",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "stmtPaidOn": "Paid on {date}",
+  "@stmtPaidOn": {
+    "description": "stmtPaidOn",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "stmtRemaining": "Still owed: {amount}",
+  "@stmtRemaining": {
+    "description": "stmtRemaining",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "stmtPeriodLine": "{from} to {to}",
+  "@stmtPeriodLine": {
+    "description": "stmtPeriodLine",
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "stmtMenu": "Statement (PDF)",
+  "@stmtMenu": {
+    "description": "stmtMenu"
   }
 }

@@ -3,6 +3,7 @@ import 'package:vehicle_khata/app/providers/providers.dart';
 import 'package:vehicle_khata/core/db/field_cipher.dart';
 import 'package:vehicle_khata/core/money/money.dart';
 import 'package:vehicle_khata/core/settings/app_settings.dart';
+import 'package:vehicle_khata/core/share/file_sharer.dart';
 import 'package:vehicle_khata/core/sync/sync_engine.dart';
 import 'package:vehicle_khata/core/sync/sync_server.dart';
 import 'package:vehicle_khata/core/sync/sync_store.dart';
@@ -21,10 +22,12 @@ import 'package:vehicle_khata/features/drivers/domain/driver.dart';
 import 'package:vehicle_khata/features/expenses/data/category_repository.dart';
 import 'package:vehicle_khata/features/expenses/data/expense_repository.dart';
 import 'package:vehicle_khata/features/expenses/domain/expense.dart';
+import 'package:vehicle_khata/features/export/data/data_export_service.dart';
 import 'package:vehicle_khata/features/onboarding/data/onboarding_repository.dart';
 import 'package:vehicle_khata/features/onboarding/domain/onboarding_state.dart';
 import 'package:vehicle_khata/features/reports/data/report_service.dart';
 import 'package:vehicle_khata/features/reports/domain/profit_engine.dart';
+import 'package:vehicle_khata/features/statement/data/driver_statement.dart';
 import 'package:vehicle_khata/features/trips/data/trip_repository.dart';
 import 'package:vehicle_khata/features/trips/domain/trip.dart';
 import 'package:vehicle_khata/features/vehicles/data/photo_store.dart';
@@ -46,6 +49,24 @@ final authUserProvider = StreamProvider<AuthUser?>((ref) async* {
   yield auth.currentUser;
   yield* auth.authChanges();
 });
+
+final statementServiceProvider = Provider<StatementService>(
+  (ref) => StatementService(
+    ref.watch(driverRepositoryProvider),
+    ref.watch(payoutServiceProvider),
+    ref.watch(advanceRepositoryProvider),
+  ),
+);
+
+// ---- Sharing and export ----------------------------------------------------
+
+final fileSharerProvider = Provider<FileSharer>(
+  (ref) => const SystemFileSharer(),
+);
+
+final dataExportServiceProvider = Provider<DataExportService>(
+  (ref) => DataExportService(ref.watch(appDatabaseProvider)),
+);
 
 // ---- Sync ----------------------------------------------------------------
 

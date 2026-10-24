@@ -3133,6 +3133,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Restore'**
   String get syncRestoreAction;
+
+  /// exportTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Export my data'**
+  String get exportTitle;
+
+  /// exportExplain
+  ///
+  /// In en, this message translates to:
+  /// **'Creates one zip file with all your vehicles, drivers, trips, expenses and payments. It contains a JSON copy and spreadsheet (CSV) files you can open in Excel. Amounts are in poisha.'**
+  String get exportExplain;
+
+  /// exportNidNote
+  ///
+  /// In en, this message translates to:
+  /// **'Drivers\' national ID numbers are not included.'**
+  String get exportNidNote;
+
+  /// exportAction
+  ///
+  /// In en, this message translates to:
+  /// **'Export and share'**
+  String get exportAction;
+
+  /// exportPreparing
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing…'**
+  String get exportPreparing;
+
+  /// exportFailed
+  ///
+  /// In en, this message translates to:
+  /// **'Could not create the file. Please try again.'**
+  String get exportFailed;
+
+  /// stmtTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Driver statement'**
+  String get stmtTitle;
+
+  /// stmtThisMonth
+  ///
+  /// In en, this message translates to:
+  /// **'This month'**
+  String get stmtThisMonth;
+
+  /// stmtLastMonth
+  ///
+  /// In en, this message translates to:
+  /// **'Last month'**
+  String get stmtLastMonth;
+
+  /// stmtLast3
+  ///
+  /// In en, this message translates to:
+  /// **'Last 3 months'**
+  String get stmtLast3;
+
+  /// stmtAllTime
+  ///
+  /// In en, this message translates to:
+  /// **'All time'**
+  String get stmtAllTime;
+
+  /// stmtPayouts
+  ///
+  /// In en, this message translates to:
+  /// **'Payouts'**
+  String get stmtPayouts;
+
+  /// stmtAdvances
+  ///
+  /// In en, this message translates to:
+  /// **'Advances given'**
+  String get stmtAdvances;
+
+  /// stmtEarned
+  ///
+  /// In en, this message translates to:
+  /// **'Earned'**
+  String get stmtEarned;
+
+  /// stmtAdjustment
+  ///
+  /// In en, this message translates to:
+  /// **'Bonus / penalty'**
+  String get stmtAdjustment;
+
+  /// stmtRecovered
+  ///
+  /// In en, this message translates to:
+  /// **'Advances recovered'**
+  String get stmtRecovered;
+
+  /// stmtPaid
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get stmtPaid;
+
+  /// stmtTotalPaid
+  ///
+  /// In en, this message translates to:
+  /// **'Total paid'**
+  String get stmtTotalPaid;
+
+  /// stmtAdvancesOwed
+  ///
+  /// In en, this message translates to:
+  /// **'Advances still owed'**
+  String get stmtAdvancesOwed;
+
+  /// stmtNone
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing in this period'**
+  String get stmtNone;
+
+  /// stmtShare
+  ///
+  /// In en, this message translates to:
+  /// **'Share PDF'**
+  String get stmtShare;
+
+  /// stmtPreparing
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing…'**
+  String get stmtPreparing;
+
+  /// stmtFailed
+  ///
+  /// In en, this message translates to:
+  /// **'Could not create the PDF. Please try again.'**
+  String get stmtFailed;
+
+  /// stmtPreparedWith
+  ///
+  /// In en, this message translates to:
+  /// **'Prepared with Vehicle Khata'**
+  String get stmtPreparedWith;
+
+  /// stmtShareText
+  ///
+  /// In en, this message translates to:
+  /// **'Statement for {name}'**
+  String stmtShareText(String name);
+
+  /// stmtPaidOn
+  ///
+  /// In en, this message translates to:
+  /// **'Paid on {date}'**
+  String stmtPaidOn(String date);
+
+  /// stmtRemaining
+  ///
+  /// In en, this message translates to:
+  /// **'Still owed: {amount}'**
+  String stmtRemaining(String amount);
+
+  /// stmtPeriodLine
+  ///
+  /// In en, this message translates to:
+  /// **'{from} to {to}'**
+  String stmtPeriodLine(String from, String to);
+
+  /// stmtMenu
+  ///
+  /// In en, this message translates to:
+  /// **'Statement (PDF)'**
+  String get stmtMenu;
 }
 
 class _AppLocalizationsDelegate

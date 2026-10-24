@@ -1641,4 +1641,100 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get syncRestoreAction => 'Restore';
+
+  @override
+  String get exportTitle => 'Export my data';
+
+  @override
+  String get exportExplain =>
+      'Creates one zip file with all your vehicles, drivers, trips, expenses and payments. It contains a JSON copy and spreadsheet (CSV) files you can open in Excel. Amounts are in poisha.';
+
+  @override
+  String get exportNidNote => 'Drivers\' national ID numbers are not included.';
+
+  @override
+  String get exportAction => 'Export and share';
+
+  @override
+  String get exportPreparing => 'Preparing…';
+
+  @override
+  String get exportFailed => 'Could not create the file. Please try again.';
+
+  @override
+  String get stmtTitle => 'Driver statement';
+
+  @override
+  String get stmtThisMonth => 'This month';
+
+  @override
+  String get stmtLastMonth => 'Last month';
+
+  @override
+  String get stmtLast3 => 'Last 3 months';
+
+  @override
+  String get stmtAllTime => 'All time';
+
+  @override
+  String get stmtPayouts => 'Payouts';
+
+  @override
+  String get stmtAdvances => 'Advances given';
+
+  @override
+  String get stmtEarned => 'Earned';
+
+  @override
+  String get stmtAdjustment => 'Bonus / penalty';
+
+  @override
+  String get stmtRecovered => 'Advances recovered';
+
+  @override
+  String get stmtPaid => 'Paid';
+
+  @override
+  String get stmtTotalPaid => 'Total paid';
+
+  @override
+  String get stmtAdvancesOwed => 'Advances still owed';
+
+  @override
+  String get stmtNone => 'Nothing in this period';
+
+  @override
+  String get stmtShare => 'Share PDF';
+
+  @override
+  String get stmtPreparing => 'Preparing…';
+
+  @override
+  String get stmtFailed => 'Could not create the PDF. Please try again.';
+
+  @override
+  String get stmtPreparedWith => 'Prepared with Vehicle Khata';
+
+  @override
+  String stmtShareText(String name) {
+    return 'Statement for $name';
+  }
+
+  @override
+  String stmtPaidOn(String date) {
+    return 'Paid on $date';
+  }
+
+  @override
+  String stmtRemaining(String amount) {
+    return 'Still owed: $amount';
+  }
+
+  @override
+  String stmtPeriodLine(String from, String to) {
+    return '$from to $to';
+  }
+
+  @override
+  String get stmtMenu => 'Statement (PDF)';
 }

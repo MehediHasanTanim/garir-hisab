@@ -59,6 +59,10 @@ class DriverDetailPage extends ConsumerWidget {
                   onSelected: (a) => _onMenu(context, ref, d, a),
                   itemBuilder: (_) => [
                     PopupMenuItem(
+                      value: _MenuAction.statement,
+                      child: Text(l10n.stmtMenu),
+                    ),
+                    PopupMenuItem(
                       value: d.isActive
                           ? _MenuAction.markLeft
                           : _MenuAction.reactivate,
@@ -104,6 +108,8 @@ class DriverDetailPage extends ConsumerWidget {
     final messenger = ScaffoldMessenger.of(context);
     final repo = ref.read(driverRepositoryProvider);
     switch (action) {
+      case _MenuAction.statement:
+        await context.push('/drivers/${driver.id}/statement');
       case _MenuAction.markLeft:
         final ok = await showDialog<bool>(
           context: context,
@@ -143,7 +149,7 @@ class DriverDetailPage extends ConsumerWidget {
   }
 }
 
-enum _MenuAction { markLeft, reactivate }
+enum _MenuAction { statement, markLeft, reactivate }
 
 class _OverviewTab extends ConsumerWidget {
   const new({required this.driver});

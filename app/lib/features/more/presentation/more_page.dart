@@ -41,6 +41,11 @@ class MorePage extends ConsumerWidget {
               onTap: () => context.go('/more/sync'),
             ),
           KhataListTile(
+            icon: Icons.ios_share,
+            title: l10n.exportTitle,
+            onTap: () => context.go('/more/export'),
+          ),
+          KhataListTile(
             icon: Icons.badge_outlined,
             title: l10n.driversTitle,
             onTap: () => context.push('/drivers'),

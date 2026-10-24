@@ -18,12 +18,14 @@ import 'package:vehicle_khata/features/drivers/presentation/vehicle_driver_page.
 import 'package:vehicle_khata/features/entries/presentation/entries_page.dart';
 import 'package:vehicle_khata/features/expenses/presentation/categories_page.dart';
 import 'package:vehicle_khata/features/expenses/presentation/vehicle_expenses_page.dart';
+import 'package:vehicle_khata/features/export/presentation/export_page.dart';
 import 'package:vehicle_khata/features/gallery/presentation/gallery_page.dart';
 import 'package:vehicle_khata/features/home/presentation/home_page.dart';
 import 'package:vehicle_khata/features/more/presentation/more_page.dart';
 import 'package:vehicle_khata/features/onboarding/presentation/onboarding_page.dart';
 import 'package:vehicle_khata/features/reports/presentation/reports_page.dart';
 import 'package:vehicle_khata/features/settings/presentation/settings_page.dart';
+import 'package:vehicle_khata/features/statement/presentation/statement_page.dart';
 import 'package:vehicle_khata/features/sync/presentation/sync_page.dart';
 import 'package:vehicle_khata/features/trips/presentation/trip_detail_page.dart';
 import 'package:vehicle_khata/features/trips/presentation/trip_form_page.dart';
@@ -155,6 +157,11 @@ final routerProvider = Provider<GoRouter>((ref) {
                 DriverFormPage(driverId: state.pathParameters['id']),
           ),
           GoRoute(
+            path: 'statement',
+            builder: (_, state) =>
+                StatementPage(driverId: state.pathParameters['id']!),
+          ),
+          GoRoute(
             path: 'payout/new',
             builder: (_, state) =>
                 PayoutPage(driverId: state.pathParameters['id']!),
@@ -223,6 +230,10 @@ final routerProvider = Provider<GoRouter>((ref) {
                     builder: (_, _) => const AccountPage(),
                   ),
                   GoRoute(path: 'sync', builder: (_, _) => const SyncPage()),
+                  GoRoute(
+                    path: 'export',
+                    builder: (_, _) => const ExportPage(),
+                  ),
                   GoRoute(
                     path: 'gallery',
                     builder: (_, _) => const GalleryPage(),

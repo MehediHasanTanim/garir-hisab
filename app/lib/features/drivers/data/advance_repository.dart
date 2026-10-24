@@ -52,6 +52,10 @@ ORDER BY a.given_day DESC, a.id DESC
       );
 
   /// Newest first.
+  Future<List<Advance>> listForDriver(String driverId) =>
+      _query(driverId).get();
+
+  /// Newest first.
   Stream<List<Advance>> watchForDriver(String driverId) =>
       _query(driverId).watch();
 
