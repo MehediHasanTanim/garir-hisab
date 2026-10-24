@@ -5,7 +5,9 @@ import 'package:vehicle_khata/app/flavor.dart';
 import 'package:vehicle_khata/app/providers/feature_providers.dart';
 import 'package:vehicle_khata/app/providers/providers.dart';
 import 'package:vehicle_khata/app/ui/widgets/khata_list_tile.dart';
+import 'package:vehicle_khata/core/sync/sync_engine.dart';
 import 'package:vehicle_khata/dev/seed_data.dart';
+import 'package:vehicle_khata/features/sync/presentation/sync_page.dart';
 import 'package:vehicle_khata/l10n/gen/app_localizations.dart';
 
 class MorePage extends ConsumerWidget {
@@ -28,6 +30,16 @@ class MorePage extends ConsumerWidget {
                 : formatter.digits(user.phone),
             onTap: () => context.go('/more/account'),
           ),
+          if (ref.watch(syncEngineProvider) != null)
+            KhataListTile(
+              icon: Icons.cloud_sync_outlined,
+              title: l10n.syncTitle,
+              subtitle: syncPhaseText(
+                l10n,
+                ref.watch(syncStatusProvider).value ?? const SyncStatus(),
+              ),
+              onTap: () => context.go('/more/sync'),
+            ),
           KhataListTile(
             icon: Icons.badge_outlined,
             title: l10n.driversTitle,

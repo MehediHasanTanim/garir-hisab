@@ -41,6 +41,8 @@ QueryExecutor _openEncrypted(File file, String key) {
     Expenses,
     DayLogs,
     DailyRollups,
+    SyncMeta,
+    SyncIssues,
   ],
 )
 class AppDatabase extends _$AppDatabase with SyncedHelpers {
@@ -64,7 +66,7 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
   new file(File file, {required String key}) : super(_openEncrypted(file, key));
 
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 6;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -108,6 +110,26 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
             'UPDATE expenses SET spent_day = ? WHERE id = ?',
             [CalendarDay.fromDate(local).epochDay, r.read<String>('id')],
           );
+        }
+      },
+      from5To6: (m, schema) async {
+        await m.createTable(schema.syncMeta);
+        await m.createTable(schema.syncIssues);
+        // Everything created before sync existed still has to reach the server.
+        for (final t in [
+          'vehicles',
+          'drivers',
+          'assignments',
+          'attendance_records',
+          'advances',
+          'payouts',
+          'payout_advance_allocations',
+          'expense_categories',
+          'trips',
+          'expenses',
+          'day_logs',
+        ]) {
+          await customStatement('UPDATE $t SET dirty = 1');
         }
       },
     ),

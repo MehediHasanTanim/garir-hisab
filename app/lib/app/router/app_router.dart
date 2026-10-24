@@ -24,6 +24,7 @@ import 'package:vehicle_khata/features/more/presentation/more_page.dart';
 import 'package:vehicle_khata/features/onboarding/presentation/onboarding_page.dart';
 import 'package:vehicle_khata/features/reports/presentation/reports_page.dart';
 import 'package:vehicle_khata/features/settings/presentation/settings_page.dart';
+import 'package:vehicle_khata/features/sync/presentation/sync_page.dart';
 import 'package:vehicle_khata/features/trips/presentation/trip_detail_page.dart';
 import 'package:vehicle_khata/features/trips/presentation/trip_form_page.dart';
 import 'package:vehicle_khata/features/vehicles/presentation/vehicle_form_page.dart';
@@ -221,6 +222,7 @@ final routerProvider = Provider<GoRouter>((ref) {
                     path: 'account',
                     builder: (_, _) => const AccountPage(),
                   ),
+                  GoRoute(path: 'sync', builder: (_, _) => const SyncPage()),
                   GoRoute(
                     path: 'gallery',
                     builder: (_, _) => const GalleryPage(),

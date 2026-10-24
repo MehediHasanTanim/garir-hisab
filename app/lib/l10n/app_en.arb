@@ -2172,5 +2172,100 @@
   "demoDone": "Demo data created",
   "@demoDone": {
     "description": "demoDone"
+  },
+  "syncTitle": "Sync & backup",
+  "@syncTitle": {
+    "description": "syncTitle"
+  },
+  "syncNow": "Sync now",
+  "@syncNow": {
+    "description": "syncNow"
+  },
+  "syncUpToDate": "Everything is backed up",
+  "@syncUpToDate": {
+    "description": "syncUpToDate"
+  },
+  "syncSyncing": "Syncing…",
+  "@syncSyncing": {
+    "description": "syncSyncing"
+  },
+  "syncOffline": "No connection. Will try again soon.",
+  "@syncOffline": {
+    "description": "syncOffline"
+  },
+  "syncError": "Something went wrong. Will try again soon.",
+  "@syncError": {
+    "description": "syncError"
+  },
+  "syncSignedOut": "Sign in again to keep backing up",
+  "@syncSignedOut": {
+    "description": "syncSignedOut"
+  },
+  "syncDisabled": "Not signed in. Your data stays on this phone only.",
+  "@syncDisabled": {
+    "description": "syncDisabled"
+  },
+  "syncWrongAccount": "This phone holds data from another account, so it is not synced.",
+  "@syncWrongAccount": {
+    "description": "syncWrongAccount"
+  },
+  "syncLast": "Last backed up {time}",
+  "@syncLast": {
+    "description": "syncLast",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "syncNever": "Not backed up yet",
+  "@syncNever": {
+    "description": "syncNever"
+  },
+  "syncWaiting": "{count} waiting to be sent",
+  "@syncWaiting": {
+    "description": "syncWaiting",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "syncIssuesTitle": "Needs attention",
+  "@syncIssuesTitle": {
+    "description": "syncIssuesTitle"
+  },
+  "syncIssuesBody": "{count} items could not be synced",
+  "@syncIssuesBody": {
+    "description": "syncIssuesBody",
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "syncRetry": "Try again",
+  "@syncRetry": {
+    "description": "syncRetry"
+  },
+  "syncRestore": "Restore from backup",
+  "@syncRestore": {
+    "description": "syncRestore"
+  },
+  "syncRestoreHelp": "Fetch everything saved online onto this phone. Changes here that are not sent yet are kept.",
+  "@syncRestoreHelp": {
+    "description": "syncRestoreHelp"
+  },
+  "syncRestoreConfirmTitle": "Restore from backup?",
+  "@syncRestoreConfirmTitle": {
+    "description": "syncRestoreConfirmTitle"
+  },
+  "syncRestoreConfirmBody": "All your saved data will be fetched again. Nothing on this phone is deleted.",
+  "@syncRestoreConfirmBody": {
+    "description": "syncRestoreConfirmBody"
+  },
+  "syncRestoreAction": "Restore",
+  "@syncRestoreAction": {
+    "description": "syncRestoreAction"
   }
 }

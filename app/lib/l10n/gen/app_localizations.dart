@@ -3013,6 +3013,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Demo data created'**
   String get demoDone;
+
+  /// syncTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Sync & backup'**
+  String get syncTitle;
+
+  /// syncNow
+  ///
+  /// In en, this message translates to:
+  /// **'Sync now'**
+  String get syncNow;
+
+  /// syncUpToDate
+  ///
+  /// In en, this message translates to:
+  /// **'Everything is backed up'**
+  String get syncUpToDate;
+
+  /// syncSyncing
+  ///
+  /// In en, this message translates to:
+  /// **'Syncing…'**
+  String get syncSyncing;
+
+  /// syncOffline
+  ///
+  /// In en, this message translates to:
+  /// **'No connection. Will try again soon.'**
+  String get syncOffline;
+
+  /// syncError
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Will try again soon.'**
+  String get syncError;
+
+  /// syncSignedOut
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in again to keep backing up'**
+  String get syncSignedOut;
+
+  /// syncDisabled
+  ///
+  /// In en, this message translates to:
+  /// **'Not signed in. Your data stays on this phone only.'**
+  String get syncDisabled;
+
+  /// syncWrongAccount
+  ///
+  /// In en, this message translates to:
+  /// **'This phone holds data from another account, so it is not synced.'**
+  String get syncWrongAccount;
+
+  /// syncLast
+  ///
+  /// In en, this message translates to:
+  /// **'Last backed up {time}'**
+  String syncLast(String time);
+
+  /// syncNever
+  ///
+  /// In en, this message translates to:
+  /// **'Not backed up yet'**
+  String get syncNever;
+
+  /// syncWaiting
+  ///
+  /// In en, this message translates to:
+  /// **'{count} waiting to be sent'**
+  String syncWaiting(String count);
+
+  /// syncIssuesTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Needs attention'**
+  String get syncIssuesTitle;
+
+  /// syncIssuesBody
+  ///
+  /// In en, this message translates to:
+  /// **'{count} items could not be synced'**
+  String syncIssuesBody(String count);
+
+  /// syncRetry
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get syncRetry;
+
+  /// syncRestore
+  ///
+  /// In en, this message translates to:
+  /// **'Restore from backup'**
+  String get syncRestore;
+
+  /// syncRestoreHelp
+  ///
+  /// In en, this message translates to:
+  /// **'Fetch everything saved online onto this phone. Changes here that are not sent yet are kept.'**
+  String get syncRestoreHelp;
+
+  /// syncRestoreConfirmTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Restore from backup?'**
+  String get syncRestoreConfirmTitle;
+
+  /// syncRestoreConfirmBody
+  ///
+  /// In en, this message translates to:
+  /// **'All your saved data will be fetched again. Nothing on this phone is deleted.'**
+  String get syncRestoreConfirmBody;
+
+  /// syncRestoreAction
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get syncRestoreAction;
 }
 
 class _AppLocalizationsDelegate

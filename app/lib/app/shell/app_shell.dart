@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:vehicle_khata/app/providers/feature_providers.dart';
 import 'package:vehicle_khata/l10n/gen/app_localizations.dart';
 
 /// Bottom-navigation scaffold around the four top-level branches.
-class AppShell extends StatelessWidget {
+class AppShell extends ConsumerWidget {
   const new({required this.navigationShell, super.key});
 
   final StatefulNavigationShell navigationShell;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Starts background sync (no-op without a backend) for the app's lifetime.
+    ref.watch(syncEngineProvider);
     final l10n = AppLocalizations.of(context);
     return Scaffold(
       body: navigationShell,

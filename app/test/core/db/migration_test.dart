@@ -10,6 +10,7 @@ import '../../generated_migrations/app/generated/schema_v2.dart' as v2;
 import '../../generated_migrations/app/generated/schema_v3.dart' as v3;
 import '../../generated_migrations/app/generated/schema_v4.dart' as v4;
 import '../../generated_migrations/app/generated/schema_v5.dart' as v5;
+import '../../generated_migrations/app/generated/schema_v6.dart' as v6;
 
 /// Data-preservation tests for real upgrades. The generated
 /// `test/generated_migrations/app/migration_test.dart` covers pure schema
@@ -149,6 +150,39 @@ void main() {
         expect(rollups, hasLength(1));
         expect(rollups.single.read<int>('day'), expectedDay);
         expect(rollups.single.read<int>('variable_minor'), 50000);
+      },
+    );
+  });
+
+  test('v5 -> v6 adds the sync tables and queues existing rows', () async {
+    await verifier.testWithDataIntegrity(
+      oldVersion: 5,
+      newVersion: 6,
+      createOld: v5.DatabaseAtV5.new,
+      createNew: v6.DatabaseAtV6.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch.customStatement(
+          'INSERT INTO vehicles (id, owner_id, created_at, updated_at, rev, '
+          'dirty, nickname, type, fuel_type, business_model, status, '
+          "archived) VALUES ('v1', 'local', 1, 1, 0, 0, 'Rahim CNG', 'cng', "
+          "'cng', 'self', 'active', 0)",
+        );
+      },
+      validateItems: (newDb) async {
+        final rows = await newDb
+            .customSelect('SELECT dirty, nickname FROM vehicles')
+            .get();
+        expect(rows.single.read<int>('dirty'), 1);
+        expect(rows.single.read<String>('nickname'), 'Rahim CNG');
+        expect(
+          await newDb.customSelect('SELECT 1 FROM sync_meta').get(),
+          isEmpty,
+        );
+        expect(
+          await newDb.customSelect('SELECT 1 FROM sync_issues').get(),
+          isEmpty,
+        );
       },
     );
   });

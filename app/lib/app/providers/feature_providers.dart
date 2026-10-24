@@ -3,6 +3,9 @@ import 'package:vehicle_khata/app/providers/providers.dart';
 import 'package:vehicle_khata/core/db/field_cipher.dart';
 import 'package:vehicle_khata/core/money/money.dart';
 import 'package:vehicle_khata/core/settings/app_settings.dart';
+import 'package:vehicle_khata/core/sync/sync_engine.dart';
+import 'package:vehicle_khata/core/sync/sync_server.dart';
+import 'package:vehicle_khata/core/sync/sync_store.dart';
 import 'package:vehicle_khata/core/time/calendar_day.dart';
 import 'package:vehicle_khata/features/app_lock/presentation/app_lock_controller.dart';
 import 'package:vehicle_khata/features/auth/data/local_only_auth_repository.dart';
@@ -42,6 +45,42 @@ final authUserProvider = StreamProvider<AuthUser?>((ref) async* {
   final auth = ref.watch(authRepositoryProvider);
   yield auth.currentUser;
   yield* auth.authChanges();
+});
+
+// ---- Sync ----------------------------------------------------------------
+
+/// The server to sync with; null in local-only builds. Overridden at startup
+/// with the Supabase implementation when a backend is configured.
+final syncServerProvider = Provider<SyncServer?>((ref) => null);
+
+/// Runs for as long as the app is open. Null when there is no server.
+final syncEngineProvider = Provider<SyncEngine?>((ref) {
+  final server = ref.watch(syncServerProvider);
+  if (server == null) return null;
+  final db = ref.watch(appDatabaseProvider);
+  final auth = ref.watch(authRepositoryProvider);
+  final engine = SyncEngine(
+    db: db,
+    store: SyncStore(db),
+    server: server,
+    userId: () => auth.currentUser?.id,
+  );
+  // Signing in or out changes what may be synced.
+  ref
+    ..listen(authUserProvider, (_, _) => engine.syncNow())
+    ..onDispose(engine.dispose);
+  engine.start();
+  return engine;
+});
+
+final syncStatusProvider = StreamProvider<SyncStatus>((ref) async* {
+  final engine = ref.watch(syncEngineProvider);
+  if (engine == null) {
+    yield const SyncStatus();
+    return;
+  }
+  yield engine.status;
+  yield* engine.changes;
 });
 
 // ---- Vehicles ------------------------------------------------------------

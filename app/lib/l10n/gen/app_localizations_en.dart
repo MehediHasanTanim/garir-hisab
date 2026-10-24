@@ -1571,4 +1571,74 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get demoDone => 'Demo data created';
+
+  @override
+  String get syncTitle => 'Sync & backup';
+
+  @override
+  String get syncNow => 'Sync now';
+
+  @override
+  String get syncUpToDate => 'Everything is backed up';
+
+  @override
+  String get syncSyncing => 'Syncing…';
+
+  @override
+  String get syncOffline => 'No connection. Will try again soon.';
+
+  @override
+  String get syncError => 'Something went wrong. Will try again soon.';
+
+  @override
+  String get syncSignedOut => 'Sign in again to keep backing up';
+
+  @override
+  String get syncDisabled =>
+      'Not signed in. Your data stays on this phone only.';
+
+  @override
+  String get syncWrongAccount =>
+      'This phone holds data from another account, so it is not synced.';
+
+  @override
+  String syncLast(String time) {
+    return 'Last backed up $time';
+  }
+
+  @override
+  String get syncNever => 'Not backed up yet';
+
+  @override
+  String syncWaiting(String count) {
+    return '$count waiting to be sent';
+  }
+
+  @override
+  String get syncIssuesTitle => 'Needs attention';
+
+  @override
+  String syncIssuesBody(String count) {
+    return '$count items could not be synced';
+  }
+
+  @override
+  String get syncRetry => 'Try again';
+
+  @override
+  String get syncRestore => 'Restore from backup';
+
+  @override
+  String get syncRestoreHelp =>
+      'Fetch everything saved online onto this phone. Changes here that are not sent yet are kept.';
+
+  @override
+  String get syncRestoreConfirmTitle => 'Restore from backup?';
+
+  @override
+  String get syncRestoreConfirmBody =>
+      'All your saved data will be fetched again. Nothing on this phone is deleted.';
+
+  @override
+  String get syncRestoreAction => 'Restore';
 }

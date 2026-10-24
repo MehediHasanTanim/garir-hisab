@@ -226,3 +226,29 @@ class DailyRollups extends Table {
   @override
   Set<Column<Object>> get primaryKey => {vehicleId, day};
 }
+
+/// Sync bookkeeping (cursor, owner, last run). Local only.
+@DataClassName('SyncMetaRow')
+class SyncMeta extends Table {
+  TextColumn get key => text()();
+  TextColumn get value => text()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {key};
+}
+
+/// Rows the sync could not push or apply, kept so one bad row never blocks the
+/// rest and the person can see what is stuck. Local only.
+@DataClassName('SyncIssueRow')
+class SyncIssues extends Table {
+  TextColumn get entity => text()();
+  TextColumn get rowId => text()();
+  // 'push' or 'pull'
+  TextColumn get direction => text()();
+  TextColumn get reason => text()();
+  IntColumn get attempts => integer().withDefault(const Constant(1))();
+  IntColumn get at => integer()();
+
+  @override
+  Set<Column<Object>> get primaryKey => {entity, rowId, direction};
+}

@@ -1568,4 +1568,74 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get demoDone => 'ডেমো তথ্য তৈরি হয়েছে';
+
+  @override
+  String get syncTitle => 'সিঙ্ক ও ব্যাকআপ';
+
+  @override
+  String get syncNow => 'এখনই সিঙ্ক করুন';
+
+  @override
+  String get syncUpToDate => 'সব তথ্য ব্যাকআপ করা আছে';
+
+  @override
+  String get syncSyncing => 'সিঙ্ক হচ্ছে…';
+
+  @override
+  String get syncOffline => 'ইন্টারনেট নেই। একটু পরে আবার চেষ্টা করা হবে।';
+
+  @override
+  String get syncError =>
+      'কিছু একটা সমস্যা হয়েছে। একটু পরে আবার চেষ্টা করা হবে।';
+
+  @override
+  String get syncSignedOut => 'ব্যাকআপ চালু রাখতে আবার সাইন ইন করুন';
+
+  @override
+  String get syncDisabled => 'সাইন ইন করা নেই। তথ্য শুধু এই ফোনেই আছে।';
+
+  @override
+  String get syncWrongAccount =>
+      'এই ফোনে অন্য অ্যাকাউন্টের তথ্য আছে, তাই সিঙ্ক হচ্ছে না।';
+
+  @override
+  String syncLast(String time) {
+    return 'সর্বশেষ ব্যাকআপ: $time';
+  }
+
+  @override
+  String get syncNever => 'এখনো ব্যাকআপ হয়নি';
+
+  @override
+  String syncWaiting(String count) {
+    return '$countটি পাঠানো বাকি';
+  }
+
+  @override
+  String get syncIssuesTitle => 'মনোযোগ দরকার';
+
+  @override
+  String syncIssuesBody(String count) {
+    return '$countটি তথ্য সিঙ্ক করা যায়নি';
+  }
+
+  @override
+  String get syncRetry => 'আবার চেষ্টা করুন';
+
+  @override
+  String get syncRestore => 'ব্যাকআপ থেকে ফিরিয়ে আনুন';
+
+  @override
+  String get syncRestoreHelp =>
+      'অনলাইনে রাখা সব তথ্য এই ফোনে আনুন। এখানকার যে পরিবর্তন এখনো পাঠানো হয়নি তা থেকে যাবে।';
+
+  @override
+  String get syncRestoreConfirmTitle => 'ব্যাকআপ থেকে ফিরিয়ে আনবেন?';
+
+  @override
+  String get syncRestoreConfirmBody =>
+      'আপনার সব সংরক্ষিত তথ্য আবার আনা হবে। এই ফোনের কিছু মুছে যাবে না।';
+
+  @override
+  String get syncRestoreAction => 'ফিরিয়ে আনুন';
 }
