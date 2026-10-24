@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vehicle_khata/app/providers/providers.dart';
+import 'package:vehicle_khata/core/db/app_database.dart' show JamaPaymentRow;
 import 'package:vehicle_khata/core/db/field_cipher.dart';
 import 'package:vehicle_khata/core/money/money.dart';
 import 'package:vehicle_khata/core/settings/app_settings.dart';
@@ -23,9 +24,11 @@ import 'package:vehicle_khata/features/expenses/data/category_repository.dart';
 import 'package:vehicle_khata/features/expenses/data/expense_repository.dart';
 import 'package:vehicle_khata/features/expenses/domain/expense.dart';
 import 'package:vehicle_khata/features/export/data/data_export_service.dart';
+import 'package:vehicle_khata/features/jama/data/jama_repository.dart';
 import 'package:vehicle_khata/features/onboarding/data/onboarding_repository.dart';
 import 'package:vehicle_khata/features/onboarding/domain/onboarding_state.dart';
 import 'package:vehicle_khata/features/reports/data/report_service.dart';
+import 'package:vehicle_khata/features/reports/data/rollup_service.dart';
 import 'package:vehicle_khata/features/reports/domain/profit_engine.dart';
 import 'package:vehicle_khata/features/statement/data/driver_statement.dart';
 import 'package:vehicle_khata/features/trips/data/trip_repository.dart';
@@ -57,6 +60,45 @@ final statementServiceProvider = Provider<StatementService>(
     ref.watch(advanceRepositoryProvider),
   ),
 );
+
+// ---- Jama ----------------------------------------------------------------
+
+final jamaRepositoryProvider = Provider<JamaRepository>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  return JamaRepository(db, RollupService(db));
+});
+
+/// Creates the jama entries due up to today (and any missed while the app
+/// was closed). Watched by the shell so it runs whenever the app opens.
+final jamaGeneratorProvider = FutureProvider<int>(
+  (ref) => ref.watch(jamaRepositoryProvider).generate(ref.watch(todayProvider)),
+);
+
+final jamaMonthProvider = StreamProvider.autoDispose
+    .family<List<JamaEntryView>, (String, int, int)>((ref, key) {
+      final (vehicleId, year, month) = key;
+      return ref
+          .watch(jamaRepositoryProvider)
+          .watchForVehicle(vehicleId, DayRange.month(year, month));
+    });
+
+final jamaBakiProvider = StreamProvider.autoDispose.family<Money, String>(
+  (ref, vehicleId) => ref
+      .watch(jamaRepositoryProvider)
+      .watchBakiForVehicle(vehicleId, ref.watch(todayProvider)),
+);
+
+final jamaPaymentsProvider = StreamProvider.autoDispose
+    .family<List<JamaPaymentRow>, String>(
+      (ref, assignmentId) =>
+          ref.watch(jamaRepositoryProvider).watchPayments(assignmentId),
+    );
+
+final jamaGarageProvider = StreamProvider.autoDispose
+    .family<List<GaragePeriod>, String>(
+      (ref, vehicleId) =>
+          ref.watch(jamaRepositoryProvider).watchGarage(vehicleId),
+    );
 
 // ---- Sharing and export ----------------------------------------------------
 

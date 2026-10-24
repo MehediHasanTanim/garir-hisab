@@ -43,6 +43,11 @@ QueryExecutor _openEncrypted(File file, String key) {
     DailyRollups,
     SyncMeta,
     SyncIssues,
+    JamaEntries,
+    JamaPayments,
+    JamaAllocations,
+    JamaDeposits,
+    JamaPauses,
   ],
 )
 class AppDatabase extends _$AppDatabase with SyncedHelpers {
@@ -66,7 +71,7 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
   new file(File file, {required String key}) : super(_openEncrypted(file, key));
 
   @override
-  int get schemaVersion => 6;
+  int get schemaVersion => 7;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -131,6 +136,13 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
         ]) {
           await customStatement('UPDATE $t SET dirty = 1');
         }
+      },
+      from6To7: (m, schema) async {
+        await m.createTable(schema.jamaEntries);
+        await m.createTable(schema.jamaPayments);
+        await m.createTable(schema.jamaAllocations);
+        await m.createTable(schema.jamaDeposits);
+        await m.createTable(schema.jamaPauses);
       },
     ),
     beforeOpen: (details) async {

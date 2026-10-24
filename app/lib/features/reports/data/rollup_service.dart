@@ -119,6 +119,7 @@ class RollupService {
 SELECT vehicle_id, trip_day AS day FROM trips WHERE deleted_at IS NULL
 UNION SELECT vehicle_id, log_day FROM day_logs WHERE deleted_at IS NULL
 UNION SELECT vehicle_id, spent_day FROM expenses WHERE deleted_at IS NULL
+UNION SELECT vehicle_id, paid_day FROM jama_payments WHERE deleted_at IS NULL
 ''').get();
     return {
       for (final r in rows)
@@ -199,6 +200,19 @@ UNION SELECT vehicle_id, spent_day FROM expenses WHERE deleted_at IS NULL
             .get();
     for (final l in logs) {
       at(l.logDay).collection += l.collectionMinor;
+    }
+
+    // Jama is the owner's income on the day it is handed over.
+    final jama =
+        await (_db.select(_db.jamaPayments)..where(
+              (t) =>
+                  t.vehicleId.equals(vehicleId) &
+                  t.deletedAt.isNull() &
+                  t.paidDay.isBetweenValues(first, last),
+            ))
+            .get();
+    for (final p in jama) {
+      at(p.paidDay).collection += p.amountMinor;
     }
 
     final keys = {

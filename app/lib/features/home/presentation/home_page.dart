@@ -247,6 +247,8 @@ class _VehicleTile extends ConsumerWidget {
         itemBuilder: (_) => [
           PopupMenuItem(value: _Action.edit, child: Text(l10n.editVehicle)),
           PopupMenuItem(value: _Action.driver, child: Text(l10n.driverAndPay)),
+          if (vehicle.businessModel == BusinessModel.jama)
+            PopupMenuItem(value: _Action.jama, child: Text(l10n.jamaTitle)),
           PopupMenuItem(
             value: _Action.expenses,
             child: Text(l10n.vehicleExpenses),
@@ -276,6 +278,8 @@ class _VehicleTile extends ConsumerWidget {
         await context.push('/vehicles/${vehicle.id}/expenses');
       case _Action.driver:
         await context.push('/vehicles/${vehicle.id}/driver');
+      case _Action.jama:
+        await context.push('/vehicles/${vehicle.id}/jama');
       case _Action.status:
         final picked = await showDialog<VehicleStatus>(
           context: context,
@@ -334,7 +338,7 @@ class _VehicleTile extends ConsumerWidget {
   }
 }
 
-enum _Action { edit, driver, expenses, status, archive, restore }
+enum _Action { edit, driver, jama, expenses, status, archive, restore }
 
 class _StatusLabel extends StatelessWidget {
   const new({required this.text, required this.color});

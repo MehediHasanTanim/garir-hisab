@@ -252,3 +252,65 @@ class SyncIssues extends Table {
   @override
   Set<Column<Object>> get primaryKey => {entity, rowId, direction};
 }
+
+/// What a jama driver owes for one due day. Created by the generator, never
+/// edited by hand except to waive. What was paid is not stored here; it is the
+/// sum of [JamaAllocations], so a payment never edits an entry (which keeps
+/// sync conflict-free).
+@DataClassName('JamaEntryRow')
+class JamaEntries extends Table with SyncedColumns {
+  TextColumn get assignmentId => text().references(Assignments, #id)();
+  TextColumn get vehicleId => text().references(Vehicles, #id)();
+  TextColumn get driverId => text().references(Drivers, #id)();
+  IntColumn get dueDay => integer()();
+  IntColumn get expectedMinor => integer()();
+
+  /// Forgiven part of [expectedMinor] (garage waiver, or waived by the owner).
+  IntColumn get waivedMinor => integer().withDefault(const Constant(0))();
+  TextColumn get note => text().nullable()();
+
+  @override
+  List<Set<Column<Object>>> get uniqueKeys => [
+    {assignmentId, dueDay},
+  ];
+}
+
+/// Money a jama driver handed over, on one day; applied to entries through
+/// [JamaAllocations].
+@DataClassName('JamaPaymentRow')
+class JamaPayments extends Table with SyncedColumns {
+  TextColumn get assignmentId => text().references(Assignments, #id)();
+  TextColumn get vehicleId => text().references(Vehicles, #id)();
+  TextColumn get driverId => text().references(Drivers, #id)();
+  IntColumn get paidDay => integer()();
+  IntColumn get amountMinor => integer()();
+  TextColumn get note => text().nullable()();
+}
+
+@DataClassName('JamaAllocationRow')
+class JamaAllocations extends Table with SyncedColumns {
+  TextColumn get paymentId => text().references(JamaPayments, #id)();
+  TextColumn get entryId => text().references(JamaEntries, #id)();
+  IntColumn get amountMinor => integer()();
+}
+
+/// Security deposit movements. kind: received | refund | deduct.
+@DataClassName('JamaDepositRow')
+class JamaDeposits extends Table with SyncedColumns {
+  TextColumn get assignmentId => text().references(Assignments, #id)();
+  TextColumn get kind => text()();
+  IntColumn get amountMinor => integer()();
+  IntColumn get day => integer()();
+  TextColumn get note => text().nullable()();
+}
+
+/// Days a vehicle is off the road. mode: pause (no jama due) | waive (due,
+/// but forgiven).
+@DataClassName('JamaPauseRow')
+class JamaPauses extends Table with SyncedColumns {
+  TextColumn get vehicleId => text().references(Vehicles, #id)();
+  IntColumn get startDay => integer()();
+  IntColumn get endDay => integer().nullable()();
+  TextColumn get mode => text()();
+  TextColumn get note => text().nullable()();
+}

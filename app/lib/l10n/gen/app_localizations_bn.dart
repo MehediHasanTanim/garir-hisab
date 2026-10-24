@@ -1735,4 +1735,169 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get stmtMenu => 'হিসাব (PDF)';
+
+  @override
+  String get jamaTitle => 'জমা';
+
+  @override
+  String get jamaReportTitle => 'জমার রিপোর্ট';
+
+  @override
+  String get jamaNoDriver =>
+      'এই গাড়িতে এখনো জমার ড্রাইভার নেই। জমা পে-টাইপ দিয়ে ড্রাইভার দিন।';
+
+  @override
+  String jamaDriverLine(String name, String amount, String frequency) {
+    return '$name · $frequency $amount';
+  }
+
+  @override
+  String get jamaDaily => 'প্রতিদিন';
+
+  @override
+  String get jamaWeekly => 'প্রতি সপ্তাহে';
+
+  @override
+  String get jamaBaki => 'বাকি';
+
+  @override
+  String get jamaAllPaid => 'সব জমা হয়েছে';
+
+  @override
+  String jamaCollect(String amount) {
+    return '$amount জমা নিন';
+  }
+
+  @override
+  String get jamaOtherAmount => 'অন্য পরিমাণ';
+
+  @override
+  String get jamaCollectTitle => 'জমা পাওয়া গেছে';
+
+  @override
+  String jamaCollected(String amount) {
+    return '$amount জমা নেওয়া হয়েছে';
+  }
+
+  @override
+  String get jamaUndo => 'ফিরিয়ে নিন';
+
+  @override
+  String get jamaStatusPaid => 'পরিশোধ';
+
+  @override
+  String get jamaStatusPartial => 'আংশিক';
+
+  @override
+  String get jamaStatusUnpaid => 'বাকি';
+
+  @override
+  String get jamaStatusWaived => 'মাফ';
+
+  @override
+  String get jamaStatusOff => 'জমা নেই';
+
+  @override
+  String jamaDayDue(String amount) {
+    return 'বাকি: $amount';
+  }
+
+  @override
+  String jamaDayPaid(String amount) {
+    return 'জমা: $amount';
+  }
+
+  @override
+  String get jamaWaive => 'বাকি মাফ করুন';
+
+  @override
+  String get jamaWaived => 'মাফ করা হয়েছে';
+
+  @override
+  String get jamaPayments => 'জমার তালিকা';
+
+  @override
+  String get jamaVoid => 'এই জমা বাতিল করুন';
+
+  @override
+  String get jamaVoided => 'জমা বাতিল হয়েছে';
+
+  @override
+  String get jamaGarage => 'গাড়ি গ্যারেজে';
+
+  @override
+  String get jamaGarageStart => 'গাড়ি গ্যারেজে গেছে';
+
+  @override
+  String get jamaGaragePause => 'গ্যারেজে থাকলে জমা নেই';
+
+  @override
+  String get jamaGarageWaive => 'জমা ধরা হবে, কিন্তু মাফ';
+
+  @override
+  String jamaGarageSince(String date) {
+    return '$date থেকে';
+  }
+
+  @override
+  String jamaGaragePeriod(String from, String to) {
+    return '$from থেকে $to';
+  }
+
+  @override
+  String get jamaGarageBack => 'গাড়ি ফিরেছে';
+
+  @override
+  String get jamaDeposit => 'জামানত';
+
+  @override
+  String jamaDepositBalance(String amount) {
+    return 'জমা আছে: $amount';
+  }
+
+  @override
+  String get jamaDepositAdd => 'জামানত নিন';
+
+  @override
+  String get jamaDepositRefund => 'ফেরত দিন';
+
+  @override
+  String get jamaDepositDeduct => 'কেটে নিন';
+
+  @override
+  String get jamaExpected => 'পাওনা';
+
+  @override
+  String get jamaCollectedLabel => 'আদায়';
+
+  @override
+  String jamaRate(String percent) {
+    return 'পাওনার $percent% আদায়';
+  }
+
+  @override
+  String get jamaDefaulters => 'জমা বাকি যাদের';
+
+  @override
+  String get jamaNoDefaulters => 'কেউ বাকি নেই।';
+
+  @override
+  String jamaDefaulterLine(String days, String date) {
+    return '$days দিন বাকি, $date থেকে';
+  }
+
+  @override
+  String get jamaNoData => 'এই মাসে কোনো জমা নেই';
+
+  @override
+  String get jamaErrExceeds => 'বাকির চেয়ে বেশি দেওয়া যাবে না।';
+
+  @override
+  String get jamaErrNothing => 'এখন কিছু বাকি নেই।';
+
+  @override
+  String get jamaErrDeposit => 'জামানতের চেয়ে বেশি ফেরত দেওয়া যাবে না।';
+
+  @override
+  String get jamaErrGeneric => 'সেভ করা যায়নি। আবার চেষ্টা করুন।';
 }

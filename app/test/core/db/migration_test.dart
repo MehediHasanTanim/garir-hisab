@@ -11,6 +11,7 @@ import '../../generated_migrations/app/generated/schema_v3.dart' as v3;
 import '../../generated_migrations/app/generated/schema_v4.dart' as v4;
 import '../../generated_migrations/app/generated/schema_v5.dart' as v5;
 import '../../generated_migrations/app/generated/schema_v6.dart' as v6;
+import '../../generated_migrations/app/generated/schema_v7.dart' as v7;
 
 /// Data-preservation tests for real upgrades. The generated
 /// `test/generated_migrations/app/migration_test.dart` covers pure schema
@@ -183,6 +184,39 @@ void main() {
           await newDb.customSelect('SELECT 1 FROM sync_issues').get(),
           isEmpty,
         );
+      },
+    );
+  });
+
+  test('v6 -> v7 adds the jama tables and keeps data', () async {
+    await verifier.testWithDataIntegrity(
+      oldVersion: 6,
+      newVersion: 7,
+      createOld: v6.DatabaseAtV6.new,
+      createNew: v7.DatabaseAtV7.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch.customStatement(
+          'INSERT INTO vehicles (id, owner_id, created_at, updated_at, rev, '
+          'dirty, nickname, type, fuel_type, business_model, status, '
+          "archived) VALUES ('v1', 'local', 1, 1, 0, 0, 'Rahim CNG', 'cng', "
+          "'cng', 'jama', 'active', 0)",
+        );
+      },
+      validateItems: (newDb) async {
+        final rows = await newDb
+            .customSelect('SELECT nickname FROM vehicles')
+            .get();
+        expect(rows.single.read<String>('nickname'), 'Rahim CNG');
+        for (final t in [
+          'jama_entries',
+          'jama_payments',
+          'jama_allocations',
+          'jama_deposits',
+          'jama_pauses',
+        ]) {
+          expect(await newDb.customSelect('SELECT 1 FROM $t').get(), isEmpty);
+        }
       },
     );
   });

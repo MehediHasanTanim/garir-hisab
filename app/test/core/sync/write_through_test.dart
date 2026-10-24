@@ -4,6 +4,8 @@ import 'package:vehicle_khata/core/sync/sync_store.dart';
 import 'package:vehicle_khata/core/time/calendar_day.dart';
 import 'package:vehicle_khata/features/drivers/domain/attendance.dart';
 import 'package:vehicle_khata/features/drivers/domain/driver.dart';
+import 'package:vehicle_khata/features/drivers/domain/pay_model.dart';
+import 'package:vehicle_khata/features/jama/data/jama_repository.dart';
 import 'package:vehicle_khata/features/trips/domain/trip.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle_enums.dart';
 
@@ -231,6 +233,57 @@ void main() {
       ),
     );
     await expectChangesDirty('trip delete', () => fx.trips.delete(trip));
+  });
+
+  test('jama', () async {
+    final jv = await fx.vehicle(name: 'Jama CNG', model: BusinessModel.jama);
+    final jd = await fx.driver(name: 'Rahim');
+    final ja = await fx.assignments.assign(
+      vehicleId: jv,
+      driverId: jd,
+      payModel: const JamaPay(amount: Money.taka(600)),
+      start: day(2026, 3, 1),
+    );
+    await expectChangesDirty(
+      'jama generate',
+      () => fx.jama.generate(day(2026, 3, 5)),
+    );
+    late String payment;
+    await expectChangesDirty('jama collect', () async {
+      payment = await fx.jama.collect(
+        assignmentId: ja,
+        amount: const Money.taka(900),
+        day: day(2026, 3, 5),
+        today: day(2026, 3, 5),
+      );
+    });
+    final entry = (await fx.jama.entriesForVehicle(
+      jv,
+      DayRange.month(2026, 3),
+    ))[3];
+    await expectChangesDirty('jama waive', () => fx.jama.waive(entry.id));
+    await expectChangesDirty('jama void', () => fx.jama.voidPayment(payment));
+    late String pause;
+    await expectChangesDirty('garage start', () async {
+      pause = await fx.jama.startGarage(
+        vehicleId: jv,
+        start: day(2026, 3, 4),
+        mode: GarageMode.pause,
+      );
+    });
+    await expectChangesDirty(
+      'garage end',
+      () => fx.jama.endGarage(pause, day(2026, 3, 4)),
+    );
+    await expectChangesDirty(
+      'deposit',
+      () => fx.jama.addDeposit(
+        assignmentId: ja,
+        kind: DepositKind.received,
+        amount: const Money.taka(5000),
+        day: day(2026, 3, 1),
+      ),
+    );
   });
 }
 

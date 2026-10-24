@@ -13,7 +13,9 @@ class AppShell extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Starts background sync (no-op without a backend) for the app's lifetime.
-    ref.watch(syncEngineProvider);
+    ref
+      ..watch(syncEngineProvider)
+      ..watch(jamaGeneratorProvider);
     final l10n = AppLocalizations.of(context);
     return Scaffold(
       body: navigationShell,

@@ -2406,5 +2406,259 @@
   "stmtMenu": "Statement (PDF)",
   "@stmtMenu": {
     "description": "stmtMenu"
+  },
+  "jamaTitle": "Jama",
+  "@jamaTitle": {
+    "description": "jamaTitle"
+  },
+  "jamaReportTitle": "Jama report",
+  "@jamaReportTitle": {
+    "description": "jamaReportTitle"
+  },
+  "jamaNoDriver": "No jama driver on this vehicle yet. Assign one with a jama pay type.",
+  "@jamaNoDriver": {
+    "description": "jamaNoDriver"
+  },
+  "jamaDriverLine": "{name} · {amount} {frequency}",
+  "@jamaDriverLine": {
+    "description": "jamaDriverLine",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      },
+      "frequency": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaDaily": "daily",
+  "@jamaDaily": {
+    "description": "jamaDaily"
+  },
+  "jamaWeekly": "weekly",
+  "@jamaWeekly": {
+    "description": "jamaWeekly"
+  },
+  "jamaBaki": "Baki (owed)",
+  "@jamaBaki": {
+    "description": "jamaBaki"
+  },
+  "jamaAllPaid": "All paid",
+  "@jamaAllPaid": {
+    "description": "jamaAllPaid"
+  },
+  "jamaCollect": "Collect {amount}",
+  "@jamaCollect": {
+    "description": "jamaCollect",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaOtherAmount": "Other amount",
+  "@jamaOtherAmount": {
+    "description": "jamaOtherAmount"
+  },
+  "jamaCollectTitle": "Jama received",
+  "@jamaCollectTitle": {
+    "description": "jamaCollectTitle"
+  },
+  "jamaCollected": "Collected {amount}",
+  "@jamaCollected": {
+    "description": "jamaCollected",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaUndo": "Undo",
+  "@jamaUndo": {
+    "description": "jamaUndo"
+  },
+  "jamaStatusPaid": "Paid",
+  "@jamaStatusPaid": {
+    "description": "jamaStatusPaid"
+  },
+  "jamaStatusPartial": "Partly paid",
+  "@jamaStatusPartial": {
+    "description": "jamaStatusPartial"
+  },
+  "jamaStatusUnpaid": "Not paid",
+  "@jamaStatusUnpaid": {
+    "description": "jamaStatusUnpaid"
+  },
+  "jamaStatusWaived": "Waived",
+  "@jamaStatusWaived": {
+    "description": "jamaStatusWaived"
+  },
+  "jamaStatusOff": "No jama",
+  "@jamaStatusOff": {
+    "description": "jamaStatusOff"
+  },
+  "jamaDayDue": "Still owed: {amount}",
+  "@jamaDayDue": {
+    "description": "jamaDayDue",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaDayPaid": "Paid: {amount}",
+  "@jamaDayPaid": {
+    "description": "jamaDayPaid",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaWaive": "Waive what is owed",
+  "@jamaWaive": {
+    "description": "jamaWaive"
+  },
+  "jamaWaived": "Waived",
+  "@jamaWaived": {
+    "description": "jamaWaived"
+  },
+  "jamaPayments": "Payments",
+  "@jamaPayments": {
+    "description": "jamaPayments"
+  },
+  "jamaVoid": "Cancel this payment",
+  "@jamaVoid": {
+    "description": "jamaVoid"
+  },
+  "jamaVoided": "Payment cancelled",
+  "@jamaVoided": {
+    "description": "jamaVoided"
+  },
+  "jamaGarage": "Vehicle off the road",
+  "@jamaGarage": {
+    "description": "jamaGarage"
+  },
+  "jamaGarageStart": "Vehicle is in the garage",
+  "@jamaGarageStart": {
+    "description": "jamaGarageStart"
+  },
+  "jamaGaragePause": "No jama while off the road",
+  "@jamaGaragePause": {
+    "description": "jamaGaragePause"
+  },
+  "jamaGarageWaive": "Jama due, but forgiven",
+  "@jamaGarageWaive": {
+    "description": "jamaGarageWaive"
+  },
+  "jamaGarageSince": "Since {date}",
+  "@jamaGarageSince": {
+    "description": "jamaGarageSince",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaGaragePeriod": "{from} to {to}",
+  "@jamaGaragePeriod": {
+    "description": "jamaGaragePeriod",
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaGarageBack": "Back on the road",
+  "@jamaGarageBack": {
+    "description": "jamaGarageBack"
+  },
+  "jamaDeposit": "Security deposit",
+  "@jamaDeposit": {
+    "description": "jamaDeposit"
+  },
+  "jamaDepositBalance": "Held: {amount}",
+  "@jamaDepositBalance": {
+    "description": "jamaDepositBalance",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaDepositAdd": "Add deposit",
+  "@jamaDepositAdd": {
+    "description": "jamaDepositAdd"
+  },
+  "jamaDepositRefund": "Refund",
+  "@jamaDepositRefund": {
+    "description": "jamaDepositRefund"
+  },
+  "jamaDepositDeduct": "Deduct",
+  "@jamaDepositDeduct": {
+    "description": "jamaDepositDeduct"
+  },
+  "jamaExpected": "Expected",
+  "@jamaExpected": {
+    "description": "jamaExpected"
+  },
+  "jamaCollectedLabel": "Collected",
+  "@jamaCollectedLabel": {
+    "description": "jamaCollectedLabel"
+  },
+  "jamaRate": "Collected {percent}% of what was due",
+  "@jamaRate": {
+    "description": "jamaRate",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaDefaulters": "Behind on jama",
+  "@jamaDefaulters": {
+    "description": "jamaDefaulters"
+  },
+  "jamaNoDefaulters": "Nobody is behind.",
+  "@jamaNoDefaulters": {
+    "description": "jamaNoDefaulters"
+  },
+  "jamaDefaulterLine": "{days} days missed, since {date}",
+  "@jamaDefaulterLine": {
+    "description": "jamaDefaulterLine",
+    "placeholders": {
+      "days": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "jamaNoData": "No jama in this month",
+  "@jamaNoData": {
+    "description": "jamaNoData"
+  },
+  "jamaErrExceeds": "That is more than is owed.",
+  "@jamaErrExceeds": {
+    "description": "jamaErrExceeds"
+  },
+  "jamaErrNothing": "Nothing is owed right now.",
+  "@jamaErrNothing": {
+    "description": "jamaErrNothing"
+  },
+  "jamaErrDeposit": "That is more than the deposit held.",
+  "@jamaErrDeposit": {
+    "description": "jamaErrDeposit"
+  },
+  "jamaErrGeneric": "Could not save. Please try again.",
+  "@jamaErrGeneric": {
+    "description": "jamaErrGeneric"
   }
 }

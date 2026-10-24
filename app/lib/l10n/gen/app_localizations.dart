@@ -3307,6 +3307,294 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Statement (PDF)'**
   String get stmtMenu;
+
+  /// jamaTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Jama'**
+  String get jamaTitle;
+
+  /// jamaReportTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Jama report'**
+  String get jamaReportTitle;
+
+  /// jamaNoDriver
+  ///
+  /// In en, this message translates to:
+  /// **'No jama driver on this vehicle yet. Assign one with a jama pay type.'**
+  String get jamaNoDriver;
+
+  /// jamaDriverLine
+  ///
+  /// In en, this message translates to:
+  /// **'{name} · {amount} {frequency}'**
+  String jamaDriverLine(String name, String amount, String frequency);
+
+  /// jamaDaily
+  ///
+  /// In en, this message translates to:
+  /// **'daily'**
+  String get jamaDaily;
+
+  /// jamaWeekly
+  ///
+  /// In en, this message translates to:
+  /// **'weekly'**
+  String get jamaWeekly;
+
+  /// jamaBaki
+  ///
+  /// In en, this message translates to:
+  /// **'Baki (owed)'**
+  String get jamaBaki;
+
+  /// jamaAllPaid
+  ///
+  /// In en, this message translates to:
+  /// **'All paid'**
+  String get jamaAllPaid;
+
+  /// jamaCollect
+  ///
+  /// In en, this message translates to:
+  /// **'Collect {amount}'**
+  String jamaCollect(String amount);
+
+  /// jamaOtherAmount
+  ///
+  /// In en, this message translates to:
+  /// **'Other amount'**
+  String get jamaOtherAmount;
+
+  /// jamaCollectTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Jama received'**
+  String get jamaCollectTitle;
+
+  /// jamaCollected
+  ///
+  /// In en, this message translates to:
+  /// **'Collected {amount}'**
+  String jamaCollected(String amount);
+
+  /// jamaUndo
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get jamaUndo;
+
+  /// jamaStatusPaid
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get jamaStatusPaid;
+
+  /// jamaStatusPartial
+  ///
+  /// In en, this message translates to:
+  /// **'Partly paid'**
+  String get jamaStatusPartial;
+
+  /// jamaStatusUnpaid
+  ///
+  /// In en, this message translates to:
+  /// **'Not paid'**
+  String get jamaStatusUnpaid;
+
+  /// jamaStatusWaived
+  ///
+  /// In en, this message translates to:
+  /// **'Waived'**
+  String get jamaStatusWaived;
+
+  /// jamaStatusOff
+  ///
+  /// In en, this message translates to:
+  /// **'No jama'**
+  String get jamaStatusOff;
+
+  /// jamaDayDue
+  ///
+  /// In en, this message translates to:
+  /// **'Still owed: {amount}'**
+  String jamaDayDue(String amount);
+
+  /// jamaDayPaid
+  ///
+  /// In en, this message translates to:
+  /// **'Paid: {amount}'**
+  String jamaDayPaid(String amount);
+
+  /// jamaWaive
+  ///
+  /// In en, this message translates to:
+  /// **'Waive what is owed'**
+  String get jamaWaive;
+
+  /// jamaWaived
+  ///
+  /// In en, this message translates to:
+  /// **'Waived'**
+  String get jamaWaived;
+
+  /// jamaPayments
+  ///
+  /// In en, this message translates to:
+  /// **'Payments'**
+  String get jamaPayments;
+
+  /// jamaVoid
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this payment'**
+  String get jamaVoid;
+
+  /// jamaVoided
+  ///
+  /// In en, this message translates to:
+  /// **'Payment cancelled'**
+  String get jamaVoided;
+
+  /// jamaGarage
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle off the road'**
+  String get jamaGarage;
+
+  /// jamaGarageStart
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle is in the garage'**
+  String get jamaGarageStart;
+
+  /// jamaGaragePause
+  ///
+  /// In en, this message translates to:
+  /// **'No jama while off the road'**
+  String get jamaGaragePause;
+
+  /// jamaGarageWaive
+  ///
+  /// In en, this message translates to:
+  /// **'Jama due, but forgiven'**
+  String get jamaGarageWaive;
+
+  /// jamaGarageSince
+  ///
+  /// In en, this message translates to:
+  /// **'Since {date}'**
+  String jamaGarageSince(String date);
+
+  /// jamaGaragePeriod
+  ///
+  /// In en, this message translates to:
+  /// **'{from} to {to}'**
+  String jamaGaragePeriod(String from, String to);
+
+  /// jamaGarageBack
+  ///
+  /// In en, this message translates to:
+  /// **'Back on the road'**
+  String get jamaGarageBack;
+
+  /// jamaDeposit
+  ///
+  /// In en, this message translates to:
+  /// **'Security deposit'**
+  String get jamaDeposit;
+
+  /// jamaDepositBalance
+  ///
+  /// In en, this message translates to:
+  /// **'Held: {amount}'**
+  String jamaDepositBalance(String amount);
+
+  /// jamaDepositAdd
+  ///
+  /// In en, this message translates to:
+  /// **'Add deposit'**
+  String get jamaDepositAdd;
+
+  /// jamaDepositRefund
+  ///
+  /// In en, this message translates to:
+  /// **'Refund'**
+  String get jamaDepositRefund;
+
+  /// jamaDepositDeduct
+  ///
+  /// In en, this message translates to:
+  /// **'Deduct'**
+  String get jamaDepositDeduct;
+
+  /// jamaExpected
+  ///
+  /// In en, this message translates to:
+  /// **'Expected'**
+  String get jamaExpected;
+
+  /// jamaCollectedLabel
+  ///
+  /// In en, this message translates to:
+  /// **'Collected'**
+  String get jamaCollectedLabel;
+
+  /// jamaRate
+  ///
+  /// In en, this message translates to:
+  /// **'Collected {percent}% of what was due'**
+  String jamaRate(String percent);
+
+  /// jamaDefaulters
+  ///
+  /// In en, this message translates to:
+  /// **'Behind on jama'**
+  String get jamaDefaulters;
+
+  /// jamaNoDefaulters
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody is behind.'**
+  String get jamaNoDefaulters;
+
+  /// jamaDefaulterLine
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days missed, since {date}'**
+  String jamaDefaulterLine(String days, String date);
+
+  /// jamaNoData
+  ///
+  /// In en, this message translates to:
+  /// **'No jama in this month'**
+  String get jamaNoData;
+
+  /// jamaErrExceeds
+  ///
+  /// In en, this message translates to:
+  /// **'That is more than is owed.'**
+  String get jamaErrExceeds;
+
+  /// jamaErrNothing
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is owed right now.'**
+  String get jamaErrNothing;
+
+  /// jamaErrDeposit
+  ///
+  /// In en, this message translates to:
+  /// **'That is more than the deposit held.'**
+  String get jamaErrDeposit;
+
+  /// jamaErrGeneric
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save. Please try again.'**
+  String get jamaErrGeneric;
 }
 
 class _AppLocalizationsDelegate

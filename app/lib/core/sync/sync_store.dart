@@ -17,6 +17,11 @@ const syncTableOrder = [
   'trips',
   'expenses',
   'day_logs',
+  'jama_entries',
+  'jama_payments',
+  'jama_allocations',
+  'jama_deposits',
+  'jama_pauses',
 ];
 
 /// Tables whose changes affect the derived daily rollups.

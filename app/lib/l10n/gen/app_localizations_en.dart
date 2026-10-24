@@ -1737,4 +1737,169 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get stmtMenu => 'Statement (PDF)';
+
+  @override
+  String get jamaTitle => 'Jama';
+
+  @override
+  String get jamaReportTitle => 'Jama report';
+
+  @override
+  String get jamaNoDriver =>
+      'No jama driver on this vehicle yet. Assign one with a jama pay type.';
+
+  @override
+  String jamaDriverLine(String name, String amount, String frequency) {
+    return '$name · $amount $frequency';
+  }
+
+  @override
+  String get jamaDaily => 'daily';
+
+  @override
+  String get jamaWeekly => 'weekly';
+
+  @override
+  String get jamaBaki => 'Baki (owed)';
+
+  @override
+  String get jamaAllPaid => 'All paid';
+
+  @override
+  String jamaCollect(String amount) {
+    return 'Collect $amount';
+  }
+
+  @override
+  String get jamaOtherAmount => 'Other amount';
+
+  @override
+  String get jamaCollectTitle => 'Jama received';
+
+  @override
+  String jamaCollected(String amount) {
+    return 'Collected $amount';
+  }
+
+  @override
+  String get jamaUndo => 'Undo';
+
+  @override
+  String get jamaStatusPaid => 'Paid';
+
+  @override
+  String get jamaStatusPartial => 'Partly paid';
+
+  @override
+  String get jamaStatusUnpaid => 'Not paid';
+
+  @override
+  String get jamaStatusWaived => 'Waived';
+
+  @override
+  String get jamaStatusOff => 'No jama';
+
+  @override
+  String jamaDayDue(String amount) {
+    return 'Still owed: $amount';
+  }
+
+  @override
+  String jamaDayPaid(String amount) {
+    return 'Paid: $amount';
+  }
+
+  @override
+  String get jamaWaive => 'Waive what is owed';
+
+  @override
+  String get jamaWaived => 'Waived';
+
+  @override
+  String get jamaPayments => 'Payments';
+
+  @override
+  String get jamaVoid => 'Cancel this payment';
+
+  @override
+  String get jamaVoided => 'Payment cancelled';
+
+  @override
+  String get jamaGarage => 'Vehicle off the road';
+
+  @override
+  String get jamaGarageStart => 'Vehicle is in the garage';
+
+  @override
+  String get jamaGaragePause => 'No jama while off the road';
+
+  @override
+  String get jamaGarageWaive => 'Jama due, but forgiven';
+
+  @override
+  String jamaGarageSince(String date) {
+    return 'Since $date';
+  }
+
+  @override
+  String jamaGaragePeriod(String from, String to) {
+    return '$from to $to';
+  }
+
+  @override
+  String get jamaGarageBack => 'Back on the road';
+
+  @override
+  String get jamaDeposit => 'Security deposit';
+
+  @override
+  String jamaDepositBalance(String amount) {
+    return 'Held: $amount';
+  }
+
+  @override
+  String get jamaDepositAdd => 'Add deposit';
+
+  @override
+  String get jamaDepositRefund => 'Refund';
+
+  @override
+  String get jamaDepositDeduct => 'Deduct';
+
+  @override
+  String get jamaExpected => 'Expected';
+
+  @override
+  String get jamaCollectedLabel => 'Collected';
+
+  @override
+  String jamaRate(String percent) {
+    return 'Collected $percent% of what was due';
+  }
+
+  @override
+  String get jamaDefaulters => 'Behind on jama';
+
+  @override
+  String get jamaNoDefaulters => 'Nobody is behind.';
+
+  @override
+  String jamaDefaulterLine(String days, String date) {
+    return '$days days missed, since $date';
+  }
+
+  @override
+  String get jamaNoData => 'No jama in this month';
+
+  @override
+  String get jamaErrExceeds => 'That is more than is owed.';
+
+  @override
+  String get jamaErrNothing => 'Nothing is owed right now.';
+
+  @override
+  String get jamaErrDeposit => 'That is more than the deposit held.';
+
+  @override
+  String get jamaErrGeneric => 'Could not save. Please try again.';
 }

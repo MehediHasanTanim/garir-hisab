@@ -11474,6 +11474,3618 @@ class SyncIssuesCompanion extends UpdateCompanion<SyncIssueRow> {
   }
 }
 
+class $JamaEntriesTable extends JamaEntries
+    with TableInfo<$JamaEntriesTable, JamaEntryRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $JamaEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: newId,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('local'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<int> createdAt = GeneratedColumn<int>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<int> updatedAt = GeneratedColumn<int>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<int> deletedAt = GeneratedColumn<int>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revMeta = const VerificationMeta('rev');
+  @override
+  late final GeneratedColumn<int> rev = GeneratedColumn<int>(
+    'rev',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dirtyMeta = const VerificationMeta('dirty');
+  @override
+  late final GeneratedColumn<bool> dirty = GeneratedColumn<bool>(
+    'dirty',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("dirty" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _assignmentIdMeta = const VerificationMeta(
+    'assignmentId',
+  );
+  @override
+  late final GeneratedColumn<String> assignmentId = GeneratedColumn<String>(
+    'assignment_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES assignments (id)',
+    ),
+  );
+  static const VerificationMeta _vehicleIdMeta = const VerificationMeta(
+    'vehicleId',
+  );
+  @override
+  late final GeneratedColumn<String> vehicleId = GeneratedColumn<String>(
+    'vehicle_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES vehicles (id)',
+    ),
+  );
+  static const VerificationMeta _driverIdMeta = const VerificationMeta(
+    'driverId',
+  );
+  @override
+  late final GeneratedColumn<String> driverId = GeneratedColumn<String>(
+    'driver_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES drivers (id)',
+    ),
+  );
+  static const VerificationMeta _dueDayMeta = const VerificationMeta('dueDay');
+  @override
+  late final GeneratedColumn<int> dueDay = GeneratedColumn<int>(
+    'due_day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _expectedMinorMeta = const VerificationMeta(
+    'expectedMinor',
+  );
+  @override
+  late final GeneratedColumn<int> expectedMinor = GeneratedColumn<int>(
+    'expected_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _waivedMinorMeta = const VerificationMeta(
+    'waivedMinor',
+  );
+  @override
+  late final GeneratedColumn<int> waivedMinor = GeneratedColumn<int>(
+    'waived_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    assignmentId,
+    vehicleId,
+    driverId,
+    dueDay,
+    expectedMinor,
+    waivedMinor,
+    note,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'jama_entries';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<JamaEntryRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('rev')) {
+      context.handle(
+        _revMeta,
+        rev.isAcceptableOrUnknown(data['rev']!, _revMeta),
+      );
+    }
+    if (data.containsKey('dirty')) {
+      context.handle(
+        _dirtyMeta,
+        dirty.isAcceptableOrUnknown(data['dirty']!, _dirtyMeta),
+      );
+    }
+    if (data.containsKey('assignment_id')) {
+      context.handle(
+        _assignmentIdMeta,
+        assignmentId.isAcceptableOrUnknown(
+          data['assignment_id']!,
+          _assignmentIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_assignmentIdMeta);
+    }
+    if (data.containsKey('vehicle_id')) {
+      context.handle(
+        _vehicleIdMeta,
+        vehicleId.isAcceptableOrUnknown(data['vehicle_id']!, _vehicleIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_vehicleIdMeta);
+    }
+    if (data.containsKey('driver_id')) {
+      context.handle(
+        _driverIdMeta,
+        driverId.isAcceptableOrUnknown(data['driver_id']!, _driverIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_driverIdMeta);
+    }
+    if (data.containsKey('due_day')) {
+      context.handle(
+        _dueDayMeta,
+        dueDay.isAcceptableOrUnknown(data['due_day']!, _dueDayMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_dueDayMeta);
+    }
+    if (data.containsKey('expected_minor')) {
+      context.handle(
+        _expectedMinorMeta,
+        expectedMinor.isAcceptableOrUnknown(
+          data['expected_minor']!,
+          _expectedMinorMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_expectedMinorMeta);
+    }
+    if (data.containsKey('waived_minor')) {
+      context.handle(
+        _waivedMinorMeta,
+        waivedMinor.isAcceptableOrUnknown(
+          data['waived_minor']!,
+          _waivedMinorMeta,
+        ),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  List<Set<GeneratedColumn>> get uniqueKeys => [
+    {assignmentId, dueDay},
+  ];
+  @override
+  JamaEntryRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return JamaEntryRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      rev: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rev'],
+      )!,
+      dirty: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}dirty'],
+      )!,
+      assignmentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}assignment_id'],
+      )!,
+      vehicleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}vehicle_id'],
+      )!,
+      driverId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}driver_id'],
+      )!,
+      dueDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}due_day'],
+      )!,
+      expectedMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}expected_minor'],
+      )!,
+      waivedMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}waived_minor'],
+      )!,
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+    );
+  }
+
+  @override
+  $JamaEntriesTable createAlias(String alias) {
+    return $JamaEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class JamaEntryRow extends DataClass implements Insertable<JamaEntryRow> {
+  final String id;
+
+  /// Tenant key. `local` until the user signs in and the data is claimed.
+  final String ownerId;
+
+  /// Epoch milliseconds, UTC.
+  final int createdAt;
+  final int updatedAt;
+
+  /// Tombstone; non-null means soft-deleted.
+  final int? deletedAt;
+
+  /// Local monotonic revision, bumped on every write.
+  final int rev;
+
+  /// True while the row has changes not yet pushed.
+  final bool dirty;
+  final String assignmentId;
+  final String vehicleId;
+  final String driverId;
+  final int dueDay;
+  final int expectedMinor;
+
+  /// Forgiven part of [expectedMinor] (garage waiver, or waived by the owner).
+  final int waivedMinor;
+  final String? note;
+  const JamaEntryRow({
+    required this.id,
+    required this.ownerId,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.rev,
+    required this.dirty,
+    required this.assignmentId,
+    required this.vehicleId,
+    required this.driverId,
+    required this.dueDay,
+    required this.expectedMinor,
+    required this.waivedMinor,
+    this.note,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['created_at'] = Variable<int>(createdAt);
+    map['updated_at'] = Variable<int>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<int>(deletedAt);
+    }
+    map['rev'] = Variable<int>(rev);
+    map['dirty'] = Variable<bool>(dirty);
+    map['assignment_id'] = Variable<String>(assignmentId);
+    map['vehicle_id'] = Variable<String>(vehicleId);
+    map['driver_id'] = Variable<String>(driverId);
+    map['due_day'] = Variable<int>(dueDay);
+    map['expected_minor'] = Variable<int>(expectedMinor);
+    map['waived_minor'] = Variable<int>(waivedMinor);
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    return map;
+  }
+
+  JamaEntriesCompanion toCompanion(bool nullToAbsent) {
+    return JamaEntriesCompanion(
+      id: Value(id),
+      ownerId: Value(ownerId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      rev: Value(rev),
+      dirty: Value(dirty),
+      assignmentId: Value(assignmentId),
+      vehicleId: Value(vehicleId),
+      driverId: Value(driverId),
+      dueDay: Value(dueDay),
+      expectedMinor: Value(expectedMinor),
+      waivedMinor: Value(waivedMinor),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+    );
+  }
+
+  factory JamaEntryRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return JamaEntryRow(
+      id: serializer.fromJson<String>(json['id']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      createdAt: serializer.fromJson<int>(json['createdAt']),
+      updatedAt: serializer.fromJson<int>(json['updatedAt']),
+      deletedAt: serializer.fromJson<int?>(json['deletedAt']),
+      rev: serializer.fromJson<int>(json['rev']),
+      dirty: serializer.fromJson<bool>(json['dirty']),
+      assignmentId: serializer.fromJson<String>(json['assignmentId']),
+      vehicleId: serializer.fromJson<String>(json['vehicleId']),
+      driverId: serializer.fromJson<String>(json['driverId']),
+      dueDay: serializer.fromJson<int>(json['dueDay']),
+      expectedMinor: serializer.fromJson<int>(json['expectedMinor']),
+      waivedMinor: serializer.fromJson<int>(json['waivedMinor']),
+      note: serializer.fromJson<String?>(json['note']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'createdAt': serializer.toJson<int>(createdAt),
+      'updatedAt': serializer.toJson<int>(updatedAt),
+      'deletedAt': serializer.toJson<int?>(deletedAt),
+      'rev': serializer.toJson<int>(rev),
+      'dirty': serializer.toJson<bool>(dirty),
+      'assignmentId': serializer.toJson<String>(assignmentId),
+      'vehicleId': serializer.toJson<String>(vehicleId),
+      'driverId': serializer.toJson<String>(driverId),
+      'dueDay': serializer.toJson<int>(dueDay),
+      'expectedMinor': serializer.toJson<int>(expectedMinor),
+      'waivedMinor': serializer.toJson<int>(waivedMinor),
+      'note': serializer.toJson<String?>(note),
+    };
+  }
+
+  JamaEntryRow copyWith({
+    String? id,
+    String? ownerId,
+    int? createdAt,
+    int? updatedAt,
+    Value<int?> deletedAt = const Value.absent(),
+    int? rev,
+    bool? dirty,
+    String? assignmentId,
+    String? vehicleId,
+    String? driverId,
+    int? dueDay,
+    int? expectedMinor,
+    int? waivedMinor,
+    Value<String?> note = const Value.absent(),
+  }) => JamaEntryRow(
+    id: id ?? this.id,
+    ownerId: ownerId ?? this.ownerId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    rev: rev ?? this.rev,
+    dirty: dirty ?? this.dirty,
+    assignmentId: assignmentId ?? this.assignmentId,
+    vehicleId: vehicleId ?? this.vehicleId,
+    driverId: driverId ?? this.driverId,
+    dueDay: dueDay ?? this.dueDay,
+    expectedMinor: expectedMinor ?? this.expectedMinor,
+    waivedMinor: waivedMinor ?? this.waivedMinor,
+    note: note.present ? note.value : this.note,
+  );
+  JamaEntryRow copyWithCompanion(JamaEntriesCompanion data) {
+    return JamaEntryRow(
+      id: data.id.present ? data.id.value : this.id,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      rev: data.rev.present ? data.rev.value : this.rev,
+      dirty: data.dirty.present ? data.dirty.value : this.dirty,
+      assignmentId: data.assignmentId.present
+          ? data.assignmentId.value
+          : this.assignmentId,
+      vehicleId: data.vehicleId.present ? data.vehicleId.value : this.vehicleId,
+      driverId: data.driverId.present ? data.driverId.value : this.driverId,
+      dueDay: data.dueDay.present ? data.dueDay.value : this.dueDay,
+      expectedMinor: data.expectedMinor.present
+          ? data.expectedMinor.value
+          : this.expectedMinor,
+      waivedMinor: data.waivedMinor.present
+          ? data.waivedMinor.value
+          : this.waivedMinor,
+      note: data.note.present ? data.note.value : this.note,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaEntryRow(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('assignmentId: $assignmentId, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('driverId: $driverId, ')
+          ..write('dueDay: $dueDay, ')
+          ..write('expectedMinor: $expectedMinor, ')
+          ..write('waivedMinor: $waivedMinor, ')
+          ..write('note: $note')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    assignmentId,
+    vehicleId,
+    driverId,
+    dueDay,
+    expectedMinor,
+    waivedMinor,
+    note,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is JamaEntryRow &&
+          other.id == this.id &&
+          other.ownerId == this.ownerId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt &&
+          other.rev == this.rev &&
+          other.dirty == this.dirty &&
+          other.assignmentId == this.assignmentId &&
+          other.vehicleId == this.vehicleId &&
+          other.driverId == this.driverId &&
+          other.dueDay == this.dueDay &&
+          other.expectedMinor == this.expectedMinor &&
+          other.waivedMinor == this.waivedMinor &&
+          other.note == this.note);
+}
+
+class JamaEntriesCompanion extends UpdateCompanion<JamaEntryRow> {
+  final Value<String> id;
+  final Value<String> ownerId;
+  final Value<int> createdAt;
+  final Value<int> updatedAt;
+  final Value<int?> deletedAt;
+  final Value<int> rev;
+  final Value<bool> dirty;
+  final Value<String> assignmentId;
+  final Value<String> vehicleId;
+  final Value<String> driverId;
+  final Value<int> dueDay;
+  final Value<int> expectedMinor;
+  final Value<int> waivedMinor;
+  final Value<String?> note;
+  final Value<int> rowid;
+  const JamaEntriesCompanion({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    this.assignmentId = const Value.absent(),
+    this.vehicleId = const Value.absent(),
+    this.driverId = const Value.absent(),
+    this.dueDay = const Value.absent(),
+    this.expectedMinor = const Value.absent(),
+    this.waivedMinor = const Value.absent(),
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  JamaEntriesCompanion.insert({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    required String assignmentId,
+    required String vehicleId,
+    required String driverId,
+    required int dueDay,
+    required int expectedMinor,
+    this.waivedMinor = const Value.absent(),
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : assignmentId = Value(assignmentId),
+       vehicleId = Value(vehicleId),
+       driverId = Value(driverId),
+       dueDay = Value(dueDay),
+       expectedMinor = Value(expectedMinor);
+  static Insertable<JamaEntryRow> custom({
+    Expression<String>? id,
+    Expression<String>? ownerId,
+    Expression<int>? createdAt,
+    Expression<int>? updatedAt,
+    Expression<int>? deletedAt,
+    Expression<int>? rev,
+    Expression<bool>? dirty,
+    Expression<String>? assignmentId,
+    Expression<String>? vehicleId,
+    Expression<String>? driverId,
+    Expression<int>? dueDay,
+    Expression<int>? expectedMinor,
+    Expression<int>? waivedMinor,
+    Expression<String>? note,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rev != null) 'rev': rev,
+      if (dirty != null) 'dirty': dirty,
+      if (assignmentId != null) 'assignment_id': assignmentId,
+      if (vehicleId != null) 'vehicle_id': vehicleId,
+      if (driverId != null) 'driver_id': driverId,
+      if (dueDay != null) 'due_day': dueDay,
+      if (expectedMinor != null) 'expected_minor': expectedMinor,
+      if (waivedMinor != null) 'waived_minor': waivedMinor,
+      if (note != null) 'note': note,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  JamaEntriesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? ownerId,
+    Value<int>? createdAt,
+    Value<int>? updatedAt,
+    Value<int?>? deletedAt,
+    Value<int>? rev,
+    Value<bool>? dirty,
+    Value<String>? assignmentId,
+    Value<String>? vehicleId,
+    Value<String>? driverId,
+    Value<int>? dueDay,
+    Value<int>? expectedMinor,
+    Value<int>? waivedMinor,
+    Value<String?>? note,
+    Value<int>? rowid,
+  }) {
+    return JamaEntriesCompanion(
+      id: id ?? this.id,
+      ownerId: ownerId ?? this.ownerId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rev: rev ?? this.rev,
+      dirty: dirty ?? this.dirty,
+      assignmentId: assignmentId ?? this.assignmentId,
+      vehicleId: vehicleId ?? this.vehicleId,
+      driverId: driverId ?? this.driverId,
+      dueDay: dueDay ?? this.dueDay,
+      expectedMinor: expectedMinor ?? this.expectedMinor,
+      waivedMinor: waivedMinor ?? this.waivedMinor,
+      note: note ?? this.note,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<int>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<int>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<int>(deletedAt.value);
+    }
+    if (rev.present) {
+      map['rev'] = Variable<int>(rev.value);
+    }
+    if (dirty.present) {
+      map['dirty'] = Variable<bool>(dirty.value);
+    }
+    if (assignmentId.present) {
+      map['assignment_id'] = Variable<String>(assignmentId.value);
+    }
+    if (vehicleId.present) {
+      map['vehicle_id'] = Variable<String>(vehicleId.value);
+    }
+    if (driverId.present) {
+      map['driver_id'] = Variable<String>(driverId.value);
+    }
+    if (dueDay.present) {
+      map['due_day'] = Variable<int>(dueDay.value);
+    }
+    if (expectedMinor.present) {
+      map['expected_minor'] = Variable<int>(expectedMinor.value);
+    }
+    if (waivedMinor.present) {
+      map['waived_minor'] = Variable<int>(waivedMinor.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaEntriesCompanion(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('assignmentId: $assignmentId, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('driverId: $driverId, ')
+          ..write('dueDay: $dueDay, ')
+          ..write('expectedMinor: $expectedMinor, ')
+          ..write('waivedMinor: $waivedMinor, ')
+          ..write('note: $note, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $JamaPaymentsTable extends JamaPayments
+    with TableInfo<$JamaPaymentsTable, JamaPaymentRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $JamaPaymentsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: newId,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('local'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<int> createdAt = GeneratedColumn<int>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<int> updatedAt = GeneratedColumn<int>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<int> deletedAt = GeneratedColumn<int>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revMeta = const VerificationMeta('rev');
+  @override
+  late final GeneratedColumn<int> rev = GeneratedColumn<int>(
+    'rev',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dirtyMeta = const VerificationMeta('dirty');
+  @override
+  late final GeneratedColumn<bool> dirty = GeneratedColumn<bool>(
+    'dirty',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("dirty" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _assignmentIdMeta = const VerificationMeta(
+    'assignmentId',
+  );
+  @override
+  late final GeneratedColumn<String> assignmentId = GeneratedColumn<String>(
+    'assignment_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES assignments (id)',
+    ),
+  );
+  static const VerificationMeta _vehicleIdMeta = const VerificationMeta(
+    'vehicleId',
+  );
+  @override
+  late final GeneratedColumn<String> vehicleId = GeneratedColumn<String>(
+    'vehicle_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES vehicles (id)',
+    ),
+  );
+  static const VerificationMeta _driverIdMeta = const VerificationMeta(
+    'driverId',
+  );
+  @override
+  late final GeneratedColumn<String> driverId = GeneratedColumn<String>(
+    'driver_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES drivers (id)',
+    ),
+  );
+  static const VerificationMeta _paidDayMeta = const VerificationMeta(
+    'paidDay',
+  );
+  @override
+  late final GeneratedColumn<int> paidDay = GeneratedColumn<int>(
+    'paid_day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountMinorMeta = const VerificationMeta(
+    'amountMinor',
+  );
+  @override
+  late final GeneratedColumn<int> amountMinor = GeneratedColumn<int>(
+    'amount_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    assignmentId,
+    vehicleId,
+    driverId,
+    paidDay,
+    amountMinor,
+    note,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'jama_payments';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<JamaPaymentRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('rev')) {
+      context.handle(
+        _revMeta,
+        rev.isAcceptableOrUnknown(data['rev']!, _revMeta),
+      );
+    }
+    if (data.containsKey('dirty')) {
+      context.handle(
+        _dirtyMeta,
+        dirty.isAcceptableOrUnknown(data['dirty']!, _dirtyMeta),
+      );
+    }
+    if (data.containsKey('assignment_id')) {
+      context.handle(
+        _assignmentIdMeta,
+        assignmentId.isAcceptableOrUnknown(
+          data['assignment_id']!,
+          _assignmentIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_assignmentIdMeta);
+    }
+    if (data.containsKey('vehicle_id')) {
+      context.handle(
+        _vehicleIdMeta,
+        vehicleId.isAcceptableOrUnknown(data['vehicle_id']!, _vehicleIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_vehicleIdMeta);
+    }
+    if (data.containsKey('driver_id')) {
+      context.handle(
+        _driverIdMeta,
+        driverId.isAcceptableOrUnknown(data['driver_id']!, _driverIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_driverIdMeta);
+    }
+    if (data.containsKey('paid_day')) {
+      context.handle(
+        _paidDayMeta,
+        paidDay.isAcceptableOrUnknown(data['paid_day']!, _paidDayMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_paidDayMeta);
+    }
+    if (data.containsKey('amount_minor')) {
+      context.handle(
+        _amountMinorMeta,
+        amountMinor.isAcceptableOrUnknown(
+          data['amount_minor']!,
+          _amountMinorMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountMinorMeta);
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  JamaPaymentRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return JamaPaymentRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      rev: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rev'],
+      )!,
+      dirty: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}dirty'],
+      )!,
+      assignmentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}assignment_id'],
+      )!,
+      vehicleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}vehicle_id'],
+      )!,
+      driverId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}driver_id'],
+      )!,
+      paidDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}paid_day'],
+      )!,
+      amountMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_minor'],
+      )!,
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+    );
+  }
+
+  @override
+  $JamaPaymentsTable createAlias(String alias) {
+    return $JamaPaymentsTable(attachedDatabase, alias);
+  }
+}
+
+class JamaPaymentRow extends DataClass implements Insertable<JamaPaymentRow> {
+  final String id;
+
+  /// Tenant key. `local` until the user signs in and the data is claimed.
+  final String ownerId;
+
+  /// Epoch milliseconds, UTC.
+  final int createdAt;
+  final int updatedAt;
+
+  /// Tombstone; non-null means soft-deleted.
+  final int? deletedAt;
+
+  /// Local monotonic revision, bumped on every write.
+  final int rev;
+
+  /// True while the row has changes not yet pushed.
+  final bool dirty;
+  final String assignmentId;
+  final String vehicleId;
+  final String driverId;
+  final int paidDay;
+  final int amountMinor;
+  final String? note;
+  const JamaPaymentRow({
+    required this.id,
+    required this.ownerId,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.rev,
+    required this.dirty,
+    required this.assignmentId,
+    required this.vehicleId,
+    required this.driverId,
+    required this.paidDay,
+    required this.amountMinor,
+    this.note,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['created_at'] = Variable<int>(createdAt);
+    map['updated_at'] = Variable<int>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<int>(deletedAt);
+    }
+    map['rev'] = Variable<int>(rev);
+    map['dirty'] = Variable<bool>(dirty);
+    map['assignment_id'] = Variable<String>(assignmentId);
+    map['vehicle_id'] = Variable<String>(vehicleId);
+    map['driver_id'] = Variable<String>(driverId);
+    map['paid_day'] = Variable<int>(paidDay);
+    map['amount_minor'] = Variable<int>(amountMinor);
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    return map;
+  }
+
+  JamaPaymentsCompanion toCompanion(bool nullToAbsent) {
+    return JamaPaymentsCompanion(
+      id: Value(id),
+      ownerId: Value(ownerId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      rev: Value(rev),
+      dirty: Value(dirty),
+      assignmentId: Value(assignmentId),
+      vehicleId: Value(vehicleId),
+      driverId: Value(driverId),
+      paidDay: Value(paidDay),
+      amountMinor: Value(amountMinor),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+    );
+  }
+
+  factory JamaPaymentRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return JamaPaymentRow(
+      id: serializer.fromJson<String>(json['id']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      createdAt: serializer.fromJson<int>(json['createdAt']),
+      updatedAt: serializer.fromJson<int>(json['updatedAt']),
+      deletedAt: serializer.fromJson<int?>(json['deletedAt']),
+      rev: serializer.fromJson<int>(json['rev']),
+      dirty: serializer.fromJson<bool>(json['dirty']),
+      assignmentId: serializer.fromJson<String>(json['assignmentId']),
+      vehicleId: serializer.fromJson<String>(json['vehicleId']),
+      driverId: serializer.fromJson<String>(json['driverId']),
+      paidDay: serializer.fromJson<int>(json['paidDay']),
+      amountMinor: serializer.fromJson<int>(json['amountMinor']),
+      note: serializer.fromJson<String?>(json['note']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'createdAt': serializer.toJson<int>(createdAt),
+      'updatedAt': serializer.toJson<int>(updatedAt),
+      'deletedAt': serializer.toJson<int?>(deletedAt),
+      'rev': serializer.toJson<int>(rev),
+      'dirty': serializer.toJson<bool>(dirty),
+      'assignmentId': serializer.toJson<String>(assignmentId),
+      'vehicleId': serializer.toJson<String>(vehicleId),
+      'driverId': serializer.toJson<String>(driverId),
+      'paidDay': serializer.toJson<int>(paidDay),
+      'amountMinor': serializer.toJson<int>(amountMinor),
+      'note': serializer.toJson<String?>(note),
+    };
+  }
+
+  JamaPaymentRow copyWith({
+    String? id,
+    String? ownerId,
+    int? createdAt,
+    int? updatedAt,
+    Value<int?> deletedAt = const Value.absent(),
+    int? rev,
+    bool? dirty,
+    String? assignmentId,
+    String? vehicleId,
+    String? driverId,
+    int? paidDay,
+    int? amountMinor,
+    Value<String?> note = const Value.absent(),
+  }) => JamaPaymentRow(
+    id: id ?? this.id,
+    ownerId: ownerId ?? this.ownerId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    rev: rev ?? this.rev,
+    dirty: dirty ?? this.dirty,
+    assignmentId: assignmentId ?? this.assignmentId,
+    vehicleId: vehicleId ?? this.vehicleId,
+    driverId: driverId ?? this.driverId,
+    paidDay: paidDay ?? this.paidDay,
+    amountMinor: amountMinor ?? this.amountMinor,
+    note: note.present ? note.value : this.note,
+  );
+  JamaPaymentRow copyWithCompanion(JamaPaymentsCompanion data) {
+    return JamaPaymentRow(
+      id: data.id.present ? data.id.value : this.id,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      rev: data.rev.present ? data.rev.value : this.rev,
+      dirty: data.dirty.present ? data.dirty.value : this.dirty,
+      assignmentId: data.assignmentId.present
+          ? data.assignmentId.value
+          : this.assignmentId,
+      vehicleId: data.vehicleId.present ? data.vehicleId.value : this.vehicleId,
+      driverId: data.driverId.present ? data.driverId.value : this.driverId,
+      paidDay: data.paidDay.present ? data.paidDay.value : this.paidDay,
+      amountMinor: data.amountMinor.present
+          ? data.amountMinor.value
+          : this.amountMinor,
+      note: data.note.present ? data.note.value : this.note,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaPaymentRow(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('assignmentId: $assignmentId, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('driverId: $driverId, ')
+          ..write('paidDay: $paidDay, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('note: $note')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    assignmentId,
+    vehicleId,
+    driverId,
+    paidDay,
+    amountMinor,
+    note,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is JamaPaymentRow &&
+          other.id == this.id &&
+          other.ownerId == this.ownerId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt &&
+          other.rev == this.rev &&
+          other.dirty == this.dirty &&
+          other.assignmentId == this.assignmentId &&
+          other.vehicleId == this.vehicleId &&
+          other.driverId == this.driverId &&
+          other.paidDay == this.paidDay &&
+          other.amountMinor == this.amountMinor &&
+          other.note == this.note);
+}
+
+class JamaPaymentsCompanion extends UpdateCompanion<JamaPaymentRow> {
+  final Value<String> id;
+  final Value<String> ownerId;
+  final Value<int> createdAt;
+  final Value<int> updatedAt;
+  final Value<int?> deletedAt;
+  final Value<int> rev;
+  final Value<bool> dirty;
+  final Value<String> assignmentId;
+  final Value<String> vehicleId;
+  final Value<String> driverId;
+  final Value<int> paidDay;
+  final Value<int> amountMinor;
+  final Value<String?> note;
+  final Value<int> rowid;
+  const JamaPaymentsCompanion({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    this.assignmentId = const Value.absent(),
+    this.vehicleId = const Value.absent(),
+    this.driverId = const Value.absent(),
+    this.paidDay = const Value.absent(),
+    this.amountMinor = const Value.absent(),
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  JamaPaymentsCompanion.insert({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    required String assignmentId,
+    required String vehicleId,
+    required String driverId,
+    required int paidDay,
+    required int amountMinor,
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : assignmentId = Value(assignmentId),
+       vehicleId = Value(vehicleId),
+       driverId = Value(driverId),
+       paidDay = Value(paidDay),
+       amountMinor = Value(amountMinor);
+  static Insertable<JamaPaymentRow> custom({
+    Expression<String>? id,
+    Expression<String>? ownerId,
+    Expression<int>? createdAt,
+    Expression<int>? updatedAt,
+    Expression<int>? deletedAt,
+    Expression<int>? rev,
+    Expression<bool>? dirty,
+    Expression<String>? assignmentId,
+    Expression<String>? vehicleId,
+    Expression<String>? driverId,
+    Expression<int>? paidDay,
+    Expression<int>? amountMinor,
+    Expression<String>? note,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rev != null) 'rev': rev,
+      if (dirty != null) 'dirty': dirty,
+      if (assignmentId != null) 'assignment_id': assignmentId,
+      if (vehicleId != null) 'vehicle_id': vehicleId,
+      if (driverId != null) 'driver_id': driverId,
+      if (paidDay != null) 'paid_day': paidDay,
+      if (amountMinor != null) 'amount_minor': amountMinor,
+      if (note != null) 'note': note,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  JamaPaymentsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? ownerId,
+    Value<int>? createdAt,
+    Value<int>? updatedAt,
+    Value<int?>? deletedAt,
+    Value<int>? rev,
+    Value<bool>? dirty,
+    Value<String>? assignmentId,
+    Value<String>? vehicleId,
+    Value<String>? driverId,
+    Value<int>? paidDay,
+    Value<int>? amountMinor,
+    Value<String?>? note,
+    Value<int>? rowid,
+  }) {
+    return JamaPaymentsCompanion(
+      id: id ?? this.id,
+      ownerId: ownerId ?? this.ownerId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rev: rev ?? this.rev,
+      dirty: dirty ?? this.dirty,
+      assignmentId: assignmentId ?? this.assignmentId,
+      vehicleId: vehicleId ?? this.vehicleId,
+      driverId: driverId ?? this.driverId,
+      paidDay: paidDay ?? this.paidDay,
+      amountMinor: amountMinor ?? this.amountMinor,
+      note: note ?? this.note,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<int>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<int>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<int>(deletedAt.value);
+    }
+    if (rev.present) {
+      map['rev'] = Variable<int>(rev.value);
+    }
+    if (dirty.present) {
+      map['dirty'] = Variable<bool>(dirty.value);
+    }
+    if (assignmentId.present) {
+      map['assignment_id'] = Variable<String>(assignmentId.value);
+    }
+    if (vehicleId.present) {
+      map['vehicle_id'] = Variable<String>(vehicleId.value);
+    }
+    if (driverId.present) {
+      map['driver_id'] = Variable<String>(driverId.value);
+    }
+    if (paidDay.present) {
+      map['paid_day'] = Variable<int>(paidDay.value);
+    }
+    if (amountMinor.present) {
+      map['amount_minor'] = Variable<int>(amountMinor.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaPaymentsCompanion(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('assignmentId: $assignmentId, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('driverId: $driverId, ')
+          ..write('paidDay: $paidDay, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('note: $note, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $JamaAllocationsTable extends JamaAllocations
+    with TableInfo<$JamaAllocationsTable, JamaAllocationRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $JamaAllocationsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: newId,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('local'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<int> createdAt = GeneratedColumn<int>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<int> updatedAt = GeneratedColumn<int>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<int> deletedAt = GeneratedColumn<int>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revMeta = const VerificationMeta('rev');
+  @override
+  late final GeneratedColumn<int> rev = GeneratedColumn<int>(
+    'rev',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dirtyMeta = const VerificationMeta('dirty');
+  @override
+  late final GeneratedColumn<bool> dirty = GeneratedColumn<bool>(
+    'dirty',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("dirty" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _paymentIdMeta = const VerificationMeta(
+    'paymentId',
+  );
+  @override
+  late final GeneratedColumn<String> paymentId = GeneratedColumn<String>(
+    'payment_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES jama_payments (id)',
+    ),
+  );
+  static const VerificationMeta _entryIdMeta = const VerificationMeta(
+    'entryId',
+  );
+  @override
+  late final GeneratedColumn<String> entryId = GeneratedColumn<String>(
+    'entry_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES jama_entries (id)',
+    ),
+  );
+  static const VerificationMeta _amountMinorMeta = const VerificationMeta(
+    'amountMinor',
+  );
+  @override
+  late final GeneratedColumn<int> amountMinor = GeneratedColumn<int>(
+    'amount_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    paymentId,
+    entryId,
+    amountMinor,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'jama_allocations';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<JamaAllocationRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('rev')) {
+      context.handle(
+        _revMeta,
+        rev.isAcceptableOrUnknown(data['rev']!, _revMeta),
+      );
+    }
+    if (data.containsKey('dirty')) {
+      context.handle(
+        _dirtyMeta,
+        dirty.isAcceptableOrUnknown(data['dirty']!, _dirtyMeta),
+      );
+    }
+    if (data.containsKey('payment_id')) {
+      context.handle(
+        _paymentIdMeta,
+        paymentId.isAcceptableOrUnknown(data['payment_id']!, _paymentIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_paymentIdMeta);
+    }
+    if (data.containsKey('entry_id')) {
+      context.handle(
+        _entryIdMeta,
+        entryId.isAcceptableOrUnknown(data['entry_id']!, _entryIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_entryIdMeta);
+    }
+    if (data.containsKey('amount_minor')) {
+      context.handle(
+        _amountMinorMeta,
+        amountMinor.isAcceptableOrUnknown(
+          data['amount_minor']!,
+          _amountMinorMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountMinorMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  JamaAllocationRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return JamaAllocationRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      rev: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rev'],
+      )!,
+      dirty: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}dirty'],
+      )!,
+      paymentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payment_id'],
+      )!,
+      entryId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}entry_id'],
+      )!,
+      amountMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_minor'],
+      )!,
+    );
+  }
+
+  @override
+  $JamaAllocationsTable createAlias(String alias) {
+    return $JamaAllocationsTable(attachedDatabase, alias);
+  }
+}
+
+class JamaAllocationRow extends DataClass
+    implements Insertable<JamaAllocationRow> {
+  final String id;
+
+  /// Tenant key. `local` until the user signs in and the data is claimed.
+  final String ownerId;
+
+  /// Epoch milliseconds, UTC.
+  final int createdAt;
+  final int updatedAt;
+
+  /// Tombstone; non-null means soft-deleted.
+  final int? deletedAt;
+
+  /// Local monotonic revision, bumped on every write.
+  final int rev;
+
+  /// True while the row has changes not yet pushed.
+  final bool dirty;
+  final String paymentId;
+  final String entryId;
+  final int amountMinor;
+  const JamaAllocationRow({
+    required this.id,
+    required this.ownerId,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.rev,
+    required this.dirty,
+    required this.paymentId,
+    required this.entryId,
+    required this.amountMinor,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['created_at'] = Variable<int>(createdAt);
+    map['updated_at'] = Variable<int>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<int>(deletedAt);
+    }
+    map['rev'] = Variable<int>(rev);
+    map['dirty'] = Variable<bool>(dirty);
+    map['payment_id'] = Variable<String>(paymentId);
+    map['entry_id'] = Variable<String>(entryId);
+    map['amount_minor'] = Variable<int>(amountMinor);
+    return map;
+  }
+
+  JamaAllocationsCompanion toCompanion(bool nullToAbsent) {
+    return JamaAllocationsCompanion(
+      id: Value(id),
+      ownerId: Value(ownerId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      rev: Value(rev),
+      dirty: Value(dirty),
+      paymentId: Value(paymentId),
+      entryId: Value(entryId),
+      amountMinor: Value(amountMinor),
+    );
+  }
+
+  factory JamaAllocationRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return JamaAllocationRow(
+      id: serializer.fromJson<String>(json['id']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      createdAt: serializer.fromJson<int>(json['createdAt']),
+      updatedAt: serializer.fromJson<int>(json['updatedAt']),
+      deletedAt: serializer.fromJson<int?>(json['deletedAt']),
+      rev: serializer.fromJson<int>(json['rev']),
+      dirty: serializer.fromJson<bool>(json['dirty']),
+      paymentId: serializer.fromJson<String>(json['paymentId']),
+      entryId: serializer.fromJson<String>(json['entryId']),
+      amountMinor: serializer.fromJson<int>(json['amountMinor']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'createdAt': serializer.toJson<int>(createdAt),
+      'updatedAt': serializer.toJson<int>(updatedAt),
+      'deletedAt': serializer.toJson<int?>(deletedAt),
+      'rev': serializer.toJson<int>(rev),
+      'dirty': serializer.toJson<bool>(dirty),
+      'paymentId': serializer.toJson<String>(paymentId),
+      'entryId': serializer.toJson<String>(entryId),
+      'amountMinor': serializer.toJson<int>(amountMinor),
+    };
+  }
+
+  JamaAllocationRow copyWith({
+    String? id,
+    String? ownerId,
+    int? createdAt,
+    int? updatedAt,
+    Value<int?> deletedAt = const Value.absent(),
+    int? rev,
+    bool? dirty,
+    String? paymentId,
+    String? entryId,
+    int? amountMinor,
+  }) => JamaAllocationRow(
+    id: id ?? this.id,
+    ownerId: ownerId ?? this.ownerId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    rev: rev ?? this.rev,
+    dirty: dirty ?? this.dirty,
+    paymentId: paymentId ?? this.paymentId,
+    entryId: entryId ?? this.entryId,
+    amountMinor: amountMinor ?? this.amountMinor,
+  );
+  JamaAllocationRow copyWithCompanion(JamaAllocationsCompanion data) {
+    return JamaAllocationRow(
+      id: data.id.present ? data.id.value : this.id,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      rev: data.rev.present ? data.rev.value : this.rev,
+      dirty: data.dirty.present ? data.dirty.value : this.dirty,
+      paymentId: data.paymentId.present ? data.paymentId.value : this.paymentId,
+      entryId: data.entryId.present ? data.entryId.value : this.entryId,
+      amountMinor: data.amountMinor.present
+          ? data.amountMinor.value
+          : this.amountMinor,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaAllocationRow(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('paymentId: $paymentId, ')
+          ..write('entryId: $entryId, ')
+          ..write('amountMinor: $amountMinor')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    paymentId,
+    entryId,
+    amountMinor,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is JamaAllocationRow &&
+          other.id == this.id &&
+          other.ownerId == this.ownerId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt &&
+          other.rev == this.rev &&
+          other.dirty == this.dirty &&
+          other.paymentId == this.paymentId &&
+          other.entryId == this.entryId &&
+          other.amountMinor == this.amountMinor);
+}
+
+class JamaAllocationsCompanion extends UpdateCompanion<JamaAllocationRow> {
+  final Value<String> id;
+  final Value<String> ownerId;
+  final Value<int> createdAt;
+  final Value<int> updatedAt;
+  final Value<int?> deletedAt;
+  final Value<int> rev;
+  final Value<bool> dirty;
+  final Value<String> paymentId;
+  final Value<String> entryId;
+  final Value<int> amountMinor;
+  final Value<int> rowid;
+  const JamaAllocationsCompanion({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    this.paymentId = const Value.absent(),
+    this.entryId = const Value.absent(),
+    this.amountMinor = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  JamaAllocationsCompanion.insert({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    required String paymentId,
+    required String entryId,
+    required int amountMinor,
+    this.rowid = const Value.absent(),
+  }) : paymentId = Value(paymentId),
+       entryId = Value(entryId),
+       amountMinor = Value(amountMinor);
+  static Insertable<JamaAllocationRow> custom({
+    Expression<String>? id,
+    Expression<String>? ownerId,
+    Expression<int>? createdAt,
+    Expression<int>? updatedAt,
+    Expression<int>? deletedAt,
+    Expression<int>? rev,
+    Expression<bool>? dirty,
+    Expression<String>? paymentId,
+    Expression<String>? entryId,
+    Expression<int>? amountMinor,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rev != null) 'rev': rev,
+      if (dirty != null) 'dirty': dirty,
+      if (paymentId != null) 'payment_id': paymentId,
+      if (entryId != null) 'entry_id': entryId,
+      if (amountMinor != null) 'amount_minor': amountMinor,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  JamaAllocationsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? ownerId,
+    Value<int>? createdAt,
+    Value<int>? updatedAt,
+    Value<int?>? deletedAt,
+    Value<int>? rev,
+    Value<bool>? dirty,
+    Value<String>? paymentId,
+    Value<String>? entryId,
+    Value<int>? amountMinor,
+    Value<int>? rowid,
+  }) {
+    return JamaAllocationsCompanion(
+      id: id ?? this.id,
+      ownerId: ownerId ?? this.ownerId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rev: rev ?? this.rev,
+      dirty: dirty ?? this.dirty,
+      paymentId: paymentId ?? this.paymentId,
+      entryId: entryId ?? this.entryId,
+      amountMinor: amountMinor ?? this.amountMinor,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<int>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<int>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<int>(deletedAt.value);
+    }
+    if (rev.present) {
+      map['rev'] = Variable<int>(rev.value);
+    }
+    if (dirty.present) {
+      map['dirty'] = Variable<bool>(dirty.value);
+    }
+    if (paymentId.present) {
+      map['payment_id'] = Variable<String>(paymentId.value);
+    }
+    if (entryId.present) {
+      map['entry_id'] = Variable<String>(entryId.value);
+    }
+    if (amountMinor.present) {
+      map['amount_minor'] = Variable<int>(amountMinor.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaAllocationsCompanion(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('paymentId: $paymentId, ')
+          ..write('entryId: $entryId, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $JamaDepositsTable extends JamaDeposits
+    with TableInfo<$JamaDepositsTable, JamaDepositRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $JamaDepositsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: newId,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('local'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<int> createdAt = GeneratedColumn<int>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<int> updatedAt = GeneratedColumn<int>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<int> deletedAt = GeneratedColumn<int>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revMeta = const VerificationMeta('rev');
+  @override
+  late final GeneratedColumn<int> rev = GeneratedColumn<int>(
+    'rev',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dirtyMeta = const VerificationMeta('dirty');
+  @override
+  late final GeneratedColumn<bool> dirty = GeneratedColumn<bool>(
+    'dirty',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("dirty" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _assignmentIdMeta = const VerificationMeta(
+    'assignmentId',
+  );
+  @override
+  late final GeneratedColumn<String> assignmentId = GeneratedColumn<String>(
+    'assignment_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES assignments (id)',
+    ),
+  );
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountMinorMeta = const VerificationMeta(
+    'amountMinor',
+  );
+  @override
+  late final GeneratedColumn<int> amountMinor = GeneratedColumn<int>(
+    'amount_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _dayMeta = const VerificationMeta('day');
+  @override
+  late final GeneratedColumn<int> day = GeneratedColumn<int>(
+    'day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    assignmentId,
+    kind,
+    amountMinor,
+    day,
+    note,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'jama_deposits';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<JamaDepositRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('rev')) {
+      context.handle(
+        _revMeta,
+        rev.isAcceptableOrUnknown(data['rev']!, _revMeta),
+      );
+    }
+    if (data.containsKey('dirty')) {
+      context.handle(
+        _dirtyMeta,
+        dirty.isAcceptableOrUnknown(data['dirty']!, _dirtyMeta),
+      );
+    }
+    if (data.containsKey('assignment_id')) {
+      context.handle(
+        _assignmentIdMeta,
+        assignmentId.isAcceptableOrUnknown(
+          data['assignment_id']!,
+          _assignmentIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_assignmentIdMeta);
+    }
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_kindMeta);
+    }
+    if (data.containsKey('amount_minor')) {
+      context.handle(
+        _amountMinorMeta,
+        amountMinor.isAcceptableOrUnknown(
+          data['amount_minor']!,
+          _amountMinorMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountMinorMeta);
+    }
+    if (data.containsKey('day')) {
+      context.handle(
+        _dayMeta,
+        day.isAcceptableOrUnknown(data['day']!, _dayMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_dayMeta);
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  JamaDepositRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return JamaDepositRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      rev: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rev'],
+      )!,
+      dirty: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}dirty'],
+      )!,
+      assignmentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}assignment_id'],
+      )!,
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      amountMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_minor'],
+      )!,
+      day: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}day'],
+      )!,
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+    );
+  }
+
+  @override
+  $JamaDepositsTable createAlias(String alias) {
+    return $JamaDepositsTable(attachedDatabase, alias);
+  }
+}
+
+class JamaDepositRow extends DataClass implements Insertable<JamaDepositRow> {
+  final String id;
+
+  /// Tenant key. `local` until the user signs in and the data is claimed.
+  final String ownerId;
+
+  /// Epoch milliseconds, UTC.
+  final int createdAt;
+  final int updatedAt;
+
+  /// Tombstone; non-null means soft-deleted.
+  final int? deletedAt;
+
+  /// Local monotonic revision, bumped on every write.
+  final int rev;
+
+  /// True while the row has changes not yet pushed.
+  final bool dirty;
+  final String assignmentId;
+  final String kind;
+  final int amountMinor;
+  final int day;
+  final String? note;
+  const JamaDepositRow({
+    required this.id,
+    required this.ownerId,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.rev,
+    required this.dirty,
+    required this.assignmentId,
+    required this.kind,
+    required this.amountMinor,
+    required this.day,
+    this.note,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['created_at'] = Variable<int>(createdAt);
+    map['updated_at'] = Variable<int>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<int>(deletedAt);
+    }
+    map['rev'] = Variable<int>(rev);
+    map['dirty'] = Variable<bool>(dirty);
+    map['assignment_id'] = Variable<String>(assignmentId);
+    map['kind'] = Variable<String>(kind);
+    map['amount_minor'] = Variable<int>(amountMinor);
+    map['day'] = Variable<int>(day);
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    return map;
+  }
+
+  JamaDepositsCompanion toCompanion(bool nullToAbsent) {
+    return JamaDepositsCompanion(
+      id: Value(id),
+      ownerId: Value(ownerId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      rev: Value(rev),
+      dirty: Value(dirty),
+      assignmentId: Value(assignmentId),
+      kind: Value(kind),
+      amountMinor: Value(amountMinor),
+      day: Value(day),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+    );
+  }
+
+  factory JamaDepositRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return JamaDepositRow(
+      id: serializer.fromJson<String>(json['id']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      createdAt: serializer.fromJson<int>(json['createdAt']),
+      updatedAt: serializer.fromJson<int>(json['updatedAt']),
+      deletedAt: serializer.fromJson<int?>(json['deletedAt']),
+      rev: serializer.fromJson<int>(json['rev']),
+      dirty: serializer.fromJson<bool>(json['dirty']),
+      assignmentId: serializer.fromJson<String>(json['assignmentId']),
+      kind: serializer.fromJson<String>(json['kind']),
+      amountMinor: serializer.fromJson<int>(json['amountMinor']),
+      day: serializer.fromJson<int>(json['day']),
+      note: serializer.fromJson<String?>(json['note']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'createdAt': serializer.toJson<int>(createdAt),
+      'updatedAt': serializer.toJson<int>(updatedAt),
+      'deletedAt': serializer.toJson<int?>(deletedAt),
+      'rev': serializer.toJson<int>(rev),
+      'dirty': serializer.toJson<bool>(dirty),
+      'assignmentId': serializer.toJson<String>(assignmentId),
+      'kind': serializer.toJson<String>(kind),
+      'amountMinor': serializer.toJson<int>(amountMinor),
+      'day': serializer.toJson<int>(day),
+      'note': serializer.toJson<String?>(note),
+    };
+  }
+
+  JamaDepositRow copyWith({
+    String? id,
+    String? ownerId,
+    int? createdAt,
+    int? updatedAt,
+    Value<int?> deletedAt = const Value.absent(),
+    int? rev,
+    bool? dirty,
+    String? assignmentId,
+    String? kind,
+    int? amountMinor,
+    int? day,
+    Value<String?> note = const Value.absent(),
+  }) => JamaDepositRow(
+    id: id ?? this.id,
+    ownerId: ownerId ?? this.ownerId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    rev: rev ?? this.rev,
+    dirty: dirty ?? this.dirty,
+    assignmentId: assignmentId ?? this.assignmentId,
+    kind: kind ?? this.kind,
+    amountMinor: amountMinor ?? this.amountMinor,
+    day: day ?? this.day,
+    note: note.present ? note.value : this.note,
+  );
+  JamaDepositRow copyWithCompanion(JamaDepositsCompanion data) {
+    return JamaDepositRow(
+      id: data.id.present ? data.id.value : this.id,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      rev: data.rev.present ? data.rev.value : this.rev,
+      dirty: data.dirty.present ? data.dirty.value : this.dirty,
+      assignmentId: data.assignmentId.present
+          ? data.assignmentId.value
+          : this.assignmentId,
+      kind: data.kind.present ? data.kind.value : this.kind,
+      amountMinor: data.amountMinor.present
+          ? data.amountMinor.value
+          : this.amountMinor,
+      day: data.day.present ? data.day.value : this.day,
+      note: data.note.present ? data.note.value : this.note,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaDepositRow(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('assignmentId: $assignmentId, ')
+          ..write('kind: $kind, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('day: $day, ')
+          ..write('note: $note')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    assignmentId,
+    kind,
+    amountMinor,
+    day,
+    note,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is JamaDepositRow &&
+          other.id == this.id &&
+          other.ownerId == this.ownerId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt &&
+          other.rev == this.rev &&
+          other.dirty == this.dirty &&
+          other.assignmentId == this.assignmentId &&
+          other.kind == this.kind &&
+          other.amountMinor == this.amountMinor &&
+          other.day == this.day &&
+          other.note == this.note);
+}
+
+class JamaDepositsCompanion extends UpdateCompanion<JamaDepositRow> {
+  final Value<String> id;
+  final Value<String> ownerId;
+  final Value<int> createdAt;
+  final Value<int> updatedAt;
+  final Value<int?> deletedAt;
+  final Value<int> rev;
+  final Value<bool> dirty;
+  final Value<String> assignmentId;
+  final Value<String> kind;
+  final Value<int> amountMinor;
+  final Value<int> day;
+  final Value<String?> note;
+  final Value<int> rowid;
+  const JamaDepositsCompanion({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    this.assignmentId = const Value.absent(),
+    this.kind = const Value.absent(),
+    this.amountMinor = const Value.absent(),
+    this.day = const Value.absent(),
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  JamaDepositsCompanion.insert({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    required String assignmentId,
+    required String kind,
+    required int amountMinor,
+    required int day,
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : assignmentId = Value(assignmentId),
+       kind = Value(kind),
+       amountMinor = Value(amountMinor),
+       day = Value(day);
+  static Insertable<JamaDepositRow> custom({
+    Expression<String>? id,
+    Expression<String>? ownerId,
+    Expression<int>? createdAt,
+    Expression<int>? updatedAt,
+    Expression<int>? deletedAt,
+    Expression<int>? rev,
+    Expression<bool>? dirty,
+    Expression<String>? assignmentId,
+    Expression<String>? kind,
+    Expression<int>? amountMinor,
+    Expression<int>? day,
+    Expression<String>? note,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rev != null) 'rev': rev,
+      if (dirty != null) 'dirty': dirty,
+      if (assignmentId != null) 'assignment_id': assignmentId,
+      if (kind != null) 'kind': kind,
+      if (amountMinor != null) 'amount_minor': amountMinor,
+      if (day != null) 'day': day,
+      if (note != null) 'note': note,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  JamaDepositsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? ownerId,
+    Value<int>? createdAt,
+    Value<int>? updatedAt,
+    Value<int?>? deletedAt,
+    Value<int>? rev,
+    Value<bool>? dirty,
+    Value<String>? assignmentId,
+    Value<String>? kind,
+    Value<int>? amountMinor,
+    Value<int>? day,
+    Value<String?>? note,
+    Value<int>? rowid,
+  }) {
+    return JamaDepositsCompanion(
+      id: id ?? this.id,
+      ownerId: ownerId ?? this.ownerId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rev: rev ?? this.rev,
+      dirty: dirty ?? this.dirty,
+      assignmentId: assignmentId ?? this.assignmentId,
+      kind: kind ?? this.kind,
+      amountMinor: amountMinor ?? this.amountMinor,
+      day: day ?? this.day,
+      note: note ?? this.note,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<int>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<int>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<int>(deletedAt.value);
+    }
+    if (rev.present) {
+      map['rev'] = Variable<int>(rev.value);
+    }
+    if (dirty.present) {
+      map['dirty'] = Variable<bool>(dirty.value);
+    }
+    if (assignmentId.present) {
+      map['assignment_id'] = Variable<String>(assignmentId.value);
+    }
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (amountMinor.present) {
+      map['amount_minor'] = Variable<int>(amountMinor.value);
+    }
+    if (day.present) {
+      map['day'] = Variable<int>(day.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaDepositsCompanion(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('assignmentId: $assignmentId, ')
+          ..write('kind: $kind, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('day: $day, ')
+          ..write('note: $note, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $JamaPausesTable extends JamaPauses
+    with TableInfo<$JamaPausesTable, JamaPauseRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $JamaPausesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: newId,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('local'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<int> createdAt = GeneratedColumn<int>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<int> updatedAt = GeneratedColumn<int>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<int> deletedAt = GeneratedColumn<int>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revMeta = const VerificationMeta('rev');
+  @override
+  late final GeneratedColumn<int> rev = GeneratedColumn<int>(
+    'rev',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dirtyMeta = const VerificationMeta('dirty');
+  @override
+  late final GeneratedColumn<bool> dirty = GeneratedColumn<bool>(
+    'dirty',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("dirty" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _vehicleIdMeta = const VerificationMeta(
+    'vehicleId',
+  );
+  @override
+  late final GeneratedColumn<String> vehicleId = GeneratedColumn<String>(
+    'vehicle_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES vehicles (id)',
+    ),
+  );
+  static const VerificationMeta _startDayMeta = const VerificationMeta(
+    'startDay',
+  );
+  @override
+  late final GeneratedColumn<int> startDay = GeneratedColumn<int>(
+    'start_day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _endDayMeta = const VerificationMeta('endDay');
+  @override
+  late final GeneratedColumn<int> endDay = GeneratedColumn<int>(
+    'end_day',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _modeMeta = const VerificationMeta('mode');
+  @override
+  late final GeneratedColumn<String> mode = GeneratedColumn<String>(
+    'mode',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    vehicleId,
+    startDay,
+    endDay,
+    mode,
+    note,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'jama_pauses';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<JamaPauseRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('rev')) {
+      context.handle(
+        _revMeta,
+        rev.isAcceptableOrUnknown(data['rev']!, _revMeta),
+      );
+    }
+    if (data.containsKey('dirty')) {
+      context.handle(
+        _dirtyMeta,
+        dirty.isAcceptableOrUnknown(data['dirty']!, _dirtyMeta),
+      );
+    }
+    if (data.containsKey('vehicle_id')) {
+      context.handle(
+        _vehicleIdMeta,
+        vehicleId.isAcceptableOrUnknown(data['vehicle_id']!, _vehicleIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_vehicleIdMeta);
+    }
+    if (data.containsKey('start_day')) {
+      context.handle(
+        _startDayMeta,
+        startDay.isAcceptableOrUnknown(data['start_day']!, _startDayMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_startDayMeta);
+    }
+    if (data.containsKey('end_day')) {
+      context.handle(
+        _endDayMeta,
+        endDay.isAcceptableOrUnknown(data['end_day']!, _endDayMeta),
+      );
+    }
+    if (data.containsKey('mode')) {
+      context.handle(
+        _modeMeta,
+        mode.isAcceptableOrUnknown(data['mode']!, _modeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_modeMeta);
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  JamaPauseRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return JamaPauseRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      rev: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rev'],
+      )!,
+      dirty: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}dirty'],
+      )!,
+      vehicleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}vehicle_id'],
+      )!,
+      startDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}start_day'],
+      )!,
+      endDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}end_day'],
+      ),
+      mode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}mode'],
+      )!,
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+    );
+  }
+
+  @override
+  $JamaPausesTable createAlias(String alias) {
+    return $JamaPausesTable(attachedDatabase, alias);
+  }
+}
+
+class JamaPauseRow extends DataClass implements Insertable<JamaPauseRow> {
+  final String id;
+
+  /// Tenant key. `local` until the user signs in and the data is claimed.
+  final String ownerId;
+
+  /// Epoch milliseconds, UTC.
+  final int createdAt;
+  final int updatedAt;
+
+  /// Tombstone; non-null means soft-deleted.
+  final int? deletedAt;
+
+  /// Local monotonic revision, bumped on every write.
+  final int rev;
+
+  /// True while the row has changes not yet pushed.
+  final bool dirty;
+  final String vehicleId;
+  final int startDay;
+  final int? endDay;
+  final String mode;
+  final String? note;
+  const JamaPauseRow({
+    required this.id,
+    required this.ownerId,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.rev,
+    required this.dirty,
+    required this.vehicleId,
+    required this.startDay,
+    this.endDay,
+    required this.mode,
+    this.note,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['created_at'] = Variable<int>(createdAt);
+    map['updated_at'] = Variable<int>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<int>(deletedAt);
+    }
+    map['rev'] = Variable<int>(rev);
+    map['dirty'] = Variable<bool>(dirty);
+    map['vehicle_id'] = Variable<String>(vehicleId);
+    map['start_day'] = Variable<int>(startDay);
+    if (!nullToAbsent || endDay != null) {
+      map['end_day'] = Variable<int>(endDay);
+    }
+    map['mode'] = Variable<String>(mode);
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    return map;
+  }
+
+  JamaPausesCompanion toCompanion(bool nullToAbsent) {
+    return JamaPausesCompanion(
+      id: Value(id),
+      ownerId: Value(ownerId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      rev: Value(rev),
+      dirty: Value(dirty),
+      vehicleId: Value(vehicleId),
+      startDay: Value(startDay),
+      endDay: endDay == null && nullToAbsent
+          ? const Value.absent()
+          : Value(endDay),
+      mode: Value(mode),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+    );
+  }
+
+  factory JamaPauseRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return JamaPauseRow(
+      id: serializer.fromJson<String>(json['id']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      createdAt: serializer.fromJson<int>(json['createdAt']),
+      updatedAt: serializer.fromJson<int>(json['updatedAt']),
+      deletedAt: serializer.fromJson<int?>(json['deletedAt']),
+      rev: serializer.fromJson<int>(json['rev']),
+      dirty: serializer.fromJson<bool>(json['dirty']),
+      vehicleId: serializer.fromJson<String>(json['vehicleId']),
+      startDay: serializer.fromJson<int>(json['startDay']),
+      endDay: serializer.fromJson<int?>(json['endDay']),
+      mode: serializer.fromJson<String>(json['mode']),
+      note: serializer.fromJson<String?>(json['note']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'createdAt': serializer.toJson<int>(createdAt),
+      'updatedAt': serializer.toJson<int>(updatedAt),
+      'deletedAt': serializer.toJson<int?>(deletedAt),
+      'rev': serializer.toJson<int>(rev),
+      'dirty': serializer.toJson<bool>(dirty),
+      'vehicleId': serializer.toJson<String>(vehicleId),
+      'startDay': serializer.toJson<int>(startDay),
+      'endDay': serializer.toJson<int?>(endDay),
+      'mode': serializer.toJson<String>(mode),
+      'note': serializer.toJson<String?>(note),
+    };
+  }
+
+  JamaPauseRow copyWith({
+    String? id,
+    String? ownerId,
+    int? createdAt,
+    int? updatedAt,
+    Value<int?> deletedAt = const Value.absent(),
+    int? rev,
+    bool? dirty,
+    String? vehicleId,
+    int? startDay,
+    Value<int?> endDay = const Value.absent(),
+    String? mode,
+    Value<String?> note = const Value.absent(),
+  }) => JamaPauseRow(
+    id: id ?? this.id,
+    ownerId: ownerId ?? this.ownerId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    rev: rev ?? this.rev,
+    dirty: dirty ?? this.dirty,
+    vehicleId: vehicleId ?? this.vehicleId,
+    startDay: startDay ?? this.startDay,
+    endDay: endDay.present ? endDay.value : this.endDay,
+    mode: mode ?? this.mode,
+    note: note.present ? note.value : this.note,
+  );
+  JamaPauseRow copyWithCompanion(JamaPausesCompanion data) {
+    return JamaPauseRow(
+      id: data.id.present ? data.id.value : this.id,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      rev: data.rev.present ? data.rev.value : this.rev,
+      dirty: data.dirty.present ? data.dirty.value : this.dirty,
+      vehicleId: data.vehicleId.present ? data.vehicleId.value : this.vehicleId,
+      startDay: data.startDay.present ? data.startDay.value : this.startDay,
+      endDay: data.endDay.present ? data.endDay.value : this.endDay,
+      mode: data.mode.present ? data.mode.value : this.mode,
+      note: data.note.present ? data.note.value : this.note,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaPauseRow(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('startDay: $startDay, ')
+          ..write('endDay: $endDay, ')
+          ..write('mode: $mode, ')
+          ..write('note: $note')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    vehicleId,
+    startDay,
+    endDay,
+    mode,
+    note,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is JamaPauseRow &&
+          other.id == this.id &&
+          other.ownerId == this.ownerId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt &&
+          other.rev == this.rev &&
+          other.dirty == this.dirty &&
+          other.vehicleId == this.vehicleId &&
+          other.startDay == this.startDay &&
+          other.endDay == this.endDay &&
+          other.mode == this.mode &&
+          other.note == this.note);
+}
+
+class JamaPausesCompanion extends UpdateCompanion<JamaPauseRow> {
+  final Value<String> id;
+  final Value<String> ownerId;
+  final Value<int> createdAt;
+  final Value<int> updatedAt;
+  final Value<int?> deletedAt;
+  final Value<int> rev;
+  final Value<bool> dirty;
+  final Value<String> vehicleId;
+  final Value<int> startDay;
+  final Value<int?> endDay;
+  final Value<String> mode;
+  final Value<String?> note;
+  final Value<int> rowid;
+  const JamaPausesCompanion({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    this.vehicleId = const Value.absent(),
+    this.startDay = const Value.absent(),
+    this.endDay = const Value.absent(),
+    this.mode = const Value.absent(),
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  JamaPausesCompanion.insert({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    required String vehicleId,
+    required int startDay,
+    this.endDay = const Value.absent(),
+    required String mode,
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : vehicleId = Value(vehicleId),
+       startDay = Value(startDay),
+       mode = Value(mode);
+  static Insertable<JamaPauseRow> custom({
+    Expression<String>? id,
+    Expression<String>? ownerId,
+    Expression<int>? createdAt,
+    Expression<int>? updatedAt,
+    Expression<int>? deletedAt,
+    Expression<int>? rev,
+    Expression<bool>? dirty,
+    Expression<String>? vehicleId,
+    Expression<int>? startDay,
+    Expression<int>? endDay,
+    Expression<String>? mode,
+    Expression<String>? note,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rev != null) 'rev': rev,
+      if (dirty != null) 'dirty': dirty,
+      if (vehicleId != null) 'vehicle_id': vehicleId,
+      if (startDay != null) 'start_day': startDay,
+      if (endDay != null) 'end_day': endDay,
+      if (mode != null) 'mode': mode,
+      if (note != null) 'note': note,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  JamaPausesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? ownerId,
+    Value<int>? createdAt,
+    Value<int>? updatedAt,
+    Value<int?>? deletedAt,
+    Value<int>? rev,
+    Value<bool>? dirty,
+    Value<String>? vehicleId,
+    Value<int>? startDay,
+    Value<int?>? endDay,
+    Value<String>? mode,
+    Value<String?>? note,
+    Value<int>? rowid,
+  }) {
+    return JamaPausesCompanion(
+      id: id ?? this.id,
+      ownerId: ownerId ?? this.ownerId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rev: rev ?? this.rev,
+      dirty: dirty ?? this.dirty,
+      vehicleId: vehicleId ?? this.vehicleId,
+      startDay: startDay ?? this.startDay,
+      endDay: endDay ?? this.endDay,
+      mode: mode ?? this.mode,
+      note: note ?? this.note,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<int>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<int>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<int>(deletedAt.value);
+    }
+    if (rev.present) {
+      map['rev'] = Variable<int>(rev.value);
+    }
+    if (dirty.present) {
+      map['dirty'] = Variable<bool>(dirty.value);
+    }
+    if (vehicleId.present) {
+      map['vehicle_id'] = Variable<String>(vehicleId.value);
+    }
+    if (startDay.present) {
+      map['start_day'] = Variable<int>(startDay.value);
+    }
+    if (endDay.present) {
+      map['end_day'] = Variable<int>(endDay.value);
+    }
+    if (mode.present) {
+      map['mode'] = Variable<String>(mode.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('JamaPausesCompanion(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('startDay: $startDay, ')
+          ..write('endDay: $endDay, ')
+          ..write('mode: $mode, ')
+          ..write('note: $note, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -11495,6 +15107,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $DailyRollupsTable dailyRollups = $DailyRollupsTable(this);
   late final $SyncMetaTable syncMeta = $SyncMetaTable(this);
   late final $SyncIssuesTable syncIssues = $SyncIssuesTable(this);
+  late final $JamaEntriesTable jamaEntries = $JamaEntriesTable(this);
+  late final $JamaPaymentsTable jamaPayments = $JamaPaymentsTable(this);
+  late final $JamaAllocationsTable jamaAllocations = $JamaAllocationsTable(
+    this,
+  );
+  late final $JamaDepositsTable jamaDeposits = $JamaDepositsTable(this);
+  late final $JamaPausesTable jamaPauses = $JamaPausesTable(this);
   late final Index tripsByVehicleTime = Index(
     'trips_by_vehicle_time',
     'CREATE INDEX trips_by_vehicle_time ON trips (vehicle_id, started_at)',
@@ -11535,6 +15154,11 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     dailyRollups,
     syncMeta,
     syncIssues,
+    jamaEntries,
+    jamaPayments,
+    jamaAllocations,
+    jamaDeposits,
+    jamaPauses,
     tripsByVehicleTime,
     tripsByDay,
     expensesByVehicleTime,
@@ -12001,6 +15625,60 @@ final class $$VehiclesTableReferences
       manager.$state.copyWith(prefetchedData: cache),
     );
   }
+
+  static MultiTypedResultKey<$JamaEntriesTable, List<JamaEntryRow>>
+  _jamaEntriesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaEntries,
+    aliasName: 'vehicles__id__jama_entries__vehicle_id',
+  );
+
+  $$JamaEntriesTableProcessedTableManager get jamaEntriesRefs {
+    final manager = $$JamaEntriesTableTableManager(
+      $_db,
+      $_db.jamaEntries,
+    ).filter((f) => f.vehicleId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_jamaEntriesRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$JamaPaymentsTable, List<JamaPaymentRow>>
+  _jamaPaymentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaPayments,
+    aliasName: 'vehicles__id__jama_payments__vehicle_id',
+  );
+
+  $$JamaPaymentsTableProcessedTableManager get jamaPaymentsRefs {
+    final manager = $$JamaPaymentsTableTableManager(
+      $_db,
+      $_db.jamaPayments,
+    ).filter((f) => f.vehicleId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_jamaPaymentsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$JamaPausesTable, List<JamaPauseRow>>
+  _jamaPausesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaPauses,
+    aliasName: 'vehicles__id__jama_pauses__vehicle_id',
+  );
+
+  $$JamaPausesTableProcessedTableManager get jamaPausesRefs {
+    final manager = $$JamaPausesTableTableManager(
+      $_db,
+      $_db.jamaPauses,
+    ).filter((f) => f.vehicleId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_jamaPausesRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
 }
 
 class $$VehiclesTableFilterComposer
@@ -12207,6 +15885,81 @@ class $$VehiclesTableFilterComposer
           }) => $$DayLogsTableFilterComposer(
             $db: $db,
             $table: $db.dayLogs,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> jamaEntriesRefs(
+    Expression<bool> Function($$JamaEntriesTableFilterComposer f) f,
+  ) {
+    final $$JamaEntriesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaEntries,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaEntriesTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> jamaPaymentsRefs(
+    Expression<bool> Function($$JamaPaymentsTableFilterComposer f) f,
+  ) {
+    final $$JamaPaymentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaPayments,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPaymentsTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> jamaPausesRefs(
+    Expression<bool> Function($$JamaPausesTableFilterComposer f) f,
+  ) {
+    final $$JamaPausesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaPauses,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPausesTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaPauses,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -12502,6 +16255,81 @@ class $$VehiclesTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> jamaEntriesRefs<T extends Object>(
+    Expression<T> Function($$JamaEntriesTableAnnotationComposer a) f,
+  ) {
+    final $$JamaEntriesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaEntries,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaEntriesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> jamaPaymentsRefs<T extends Object>(
+    Expression<T> Function($$JamaPaymentsTableAnnotationComposer a) f,
+  ) {
+    final $$JamaPaymentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaPayments,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPaymentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> jamaPausesRefs<T extends Object>(
+    Expression<T> Function($$JamaPausesTableAnnotationComposer a) f,
+  ) {
+    final $$JamaPausesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaPauses,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPausesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaPauses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$VehiclesTableTableManager
@@ -12522,6 +16350,9 @@ class $$VehiclesTableTableManager
             bool tripsRefs,
             bool expensesRefs,
             bool dayLogsRefs,
+            bool jamaEntriesRefs,
+            bool jamaPaymentsRefs,
+            bool jamaPausesRefs,
           })
         > {
   $$VehiclesTableTableManager(_$AppDatabase db, $VehiclesTable table)
@@ -12641,6 +16472,9 @@ class $$VehiclesTableTableManager
                 tripsRefs = false,
                 expensesRefs = false,
                 dayLogsRefs = false,
+                jamaEntriesRefs = false,
+                jamaPaymentsRefs = false,
+                jamaPausesRefs = false,
               }) {
                 return PrefetchHooks(
                   db: db,
@@ -12649,6 +16483,9 @@ class $$VehiclesTableTableManager
                     if (tripsRefs) db.trips,
                     if (expensesRefs) db.expenses,
                     if (dayLogsRefs) db.dayLogs,
+                    if (jamaEntriesRefs) db.jamaEntries,
+                    if (jamaPaymentsRefs) db.jamaPayments,
+                    if (jamaPausesRefs) db.jamaPauses,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
@@ -12737,6 +16574,69 @@ class $$VehiclesTableTableManager
                               ),
                           typedResults: items,
                         ),
+                      if (jamaEntriesRefs)
+                        await $_getPrefetchedData<
+                          VehicleRow,
+                          $VehiclesTable,
+                          JamaEntryRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$VehiclesTableReferences
+                              ._jamaEntriesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$VehiclesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaEntriesRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.vehicleId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (jamaPaymentsRefs)
+                        await $_getPrefetchedData<
+                          VehicleRow,
+                          $VehiclesTable,
+                          JamaPaymentRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$VehiclesTableReferences
+                              ._jamaPaymentsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$VehiclesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaPaymentsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.vehicleId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (jamaPausesRefs)
+                        await $_getPrefetchedData<
+                          VehicleRow,
+                          $VehiclesTable,
+                          JamaPauseRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$VehiclesTableReferences
+                              ._jamaPausesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$VehiclesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaPausesRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.vehicleId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -12762,6 +16662,9 @@ typedef $$VehiclesTableProcessedTableManager =
         bool tripsRefs,
         bool expensesRefs,
         bool dayLogsRefs,
+        bool jamaEntriesRefs,
+        bool jamaPaymentsRefs,
+        bool jamaPausesRefs,
       })
     >;
 typedef $$DriversTableCreateCompanionBuilder = DriversCompanion Function({
@@ -12918,6 +16821,42 @@ final class $$DriversTableReferences
     ).filter((f) => f.driverId.id.sqlEquals($_itemColumn<String>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_dayLogsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$JamaEntriesTable, List<JamaEntryRow>>
+  _jamaEntriesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaEntries,
+    aliasName: 'drivers__id__jama_entries__driver_id',
+  );
+
+  $$JamaEntriesTableProcessedTableManager get jamaEntriesRefs {
+    final manager = $$JamaEntriesTableTableManager(
+      $_db,
+      $_db.jamaEntries,
+    ).filter((f) => f.driverId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_jamaEntriesRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$JamaPaymentsTable, List<JamaPaymentRow>>
+  _jamaPaymentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaPayments,
+    aliasName: 'drivers__id__jama_payments__driver_id',
+  );
+
+  $$JamaPaymentsTableProcessedTableManager get jamaPaymentsRefs {
+    final manager = $$JamaPaymentsTableTableManager(
+      $_db,
+      $_db.jamaPayments,
+    ).filter((f) => f.driverId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_jamaPaymentsRefsTable($_db));
     return ProcessedTableManager(
       manager.$state.copyWith(prefetchedData: cache),
     );
@@ -13160,6 +17099,56 @@ class $$DriversTableFilterComposer
           }) => $$DayLogsTableFilterComposer(
             $db: $db,
             $table: $db.dayLogs,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> jamaEntriesRefs(
+    Expression<bool> Function($$JamaEntriesTableFilterComposer f) f,
+  ) {
+    final $$JamaEntriesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaEntries,
+      getReferencedColumn: (t) => t.driverId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaEntriesTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> jamaPaymentsRefs(
+    Expression<bool> Function($$JamaPaymentsTableFilterComposer f) f,
+  ) {
+    final $$JamaPaymentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaPayments,
+      getReferencedColumn: (t) => t.driverId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPaymentsTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaPayments,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -13481,6 +17470,56 @@ class $$DriversTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> jamaEntriesRefs<T extends Object>(
+    Expression<T> Function($$JamaEntriesTableAnnotationComposer a) f,
+  ) {
+    final $$JamaEntriesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaEntries,
+      getReferencedColumn: (t) => t.driverId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaEntriesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> jamaPaymentsRefs<T extends Object>(
+    Expression<T> Function($$JamaPaymentsTableAnnotationComposer a) f,
+  ) {
+    final $$JamaPaymentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaPayments,
+      getReferencedColumn: (t) => t.driverId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPaymentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$DriversTableTableManager
@@ -13503,6 +17542,8 @@ class $$DriversTableTableManager
             bool payoutsRefs,
             bool tripsRefs,
             bool dayLogsRefs,
+            bool jamaEntriesRefs,
+            bool jamaPaymentsRefs,
           })
         > {
   $$DriversTableTableManager(_$AppDatabase db, $DriversTable table)
@@ -13612,6 +17653,8 @@ class $$DriversTableTableManager
                 payoutsRefs = false,
                 tripsRefs = false,
                 dayLogsRefs = false,
+                jamaEntriesRefs = false,
+                jamaPaymentsRefs = false,
               }) {
                 return PrefetchHooks(
                   db: db,
@@ -13622,6 +17665,8 @@ class $$DriversTableTableManager
                     if (payoutsRefs) db.payouts,
                     if (tripsRefs) db.trips,
                     if (dayLogsRefs) db.dayLogs,
+                    if (jamaEntriesRefs) db.jamaEntries,
+                    if (jamaPaymentsRefs) db.jamaPayments,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
@@ -13748,6 +17793,48 @@ class $$DriversTableTableManager
                               ),
                           typedResults: items,
                         ),
+                      if (jamaEntriesRefs)
+                        await $_getPrefetchedData<
+                          DriverRow,
+                          $DriversTable,
+                          JamaEntryRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$DriversTableReferences
+                              ._jamaEntriesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$DriversTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaEntriesRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.driverId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (jamaPaymentsRefs)
+                        await $_getPrefetchedData<
+                          DriverRow,
+                          $DriversTable,
+                          JamaPaymentRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$DriversTableReferences
+                              ._jamaPaymentsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$DriversTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaPaymentsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.driverId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -13775,6 +17862,8 @@ typedef $$DriversTableProcessedTableManager =
         bool payoutsRefs,
         bool tripsRefs,
         bool dayLogsRefs,
+        bool jamaEntriesRefs,
+        bool jamaPaymentsRefs,
       })
     >;
 typedef $$AssignmentsTableCreateCompanionBuilder =
@@ -13864,6 +17953,60 @@ final class $$AssignmentsTableReferences
     ).filter((f) => f.assignmentId.id.sqlEquals($_itemColumn<String>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_payoutsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$JamaEntriesTable, List<JamaEntryRow>>
+  _jamaEntriesRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaEntries,
+    aliasName: 'assignments__id__jama_entries__assignment_id',
+  );
+
+  $$JamaEntriesTableProcessedTableManager get jamaEntriesRefs {
+    final manager = $$JamaEntriesTableTableManager(
+      $_db,
+      $_db.jamaEntries,
+    ).filter((f) => f.assignmentId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_jamaEntriesRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$JamaPaymentsTable, List<JamaPaymentRow>>
+  _jamaPaymentsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaPayments,
+    aliasName: 'assignments__id__jama_payments__assignment_id',
+  );
+
+  $$JamaPaymentsTableProcessedTableManager get jamaPaymentsRefs {
+    final manager = $$JamaPaymentsTableTableManager(
+      $_db,
+      $_db.jamaPayments,
+    ).filter((f) => f.assignmentId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_jamaPaymentsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$JamaDepositsTable, List<JamaDepositRow>>
+  _jamaDepositsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaDeposits,
+    aliasName: 'assignments__id__jama_deposits__assignment_id',
+  );
+
+  $$JamaDepositsTableProcessedTableManager get jamaDepositsRefs {
+    final manager = $$JamaDepositsTableTableManager(
+      $_db,
+      $_db.jamaDeposits,
+    ).filter((f) => f.assignmentId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_jamaDepositsRefsTable($_db));
     return ProcessedTableManager(
       manager.$state.copyWith(prefetchedData: cache),
     );
@@ -13996,6 +18139,81 @@ class $$AssignmentsTableFilterComposer
           }) => $$PayoutsTableFilterComposer(
             $db: $db,
             $table: $db.payouts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> jamaEntriesRefs(
+    Expression<bool> Function($$JamaEntriesTableFilterComposer f) f,
+  ) {
+    final $$JamaEntriesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaEntries,
+      getReferencedColumn: (t) => t.assignmentId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaEntriesTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> jamaPaymentsRefs(
+    Expression<bool> Function($$JamaPaymentsTableFilterComposer f) f,
+  ) {
+    final $$JamaPaymentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaPayments,
+      getReferencedColumn: (t) => t.assignmentId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPaymentsTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> jamaDepositsRefs(
+    Expression<bool> Function($$JamaDepositsTableFilterComposer f) f,
+  ) {
+    final $$JamaDepositsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaDeposits,
+      getReferencedColumn: (t) => t.assignmentId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaDepositsTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaDeposits,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -14233,6 +18451,81 @@ class $$AssignmentsTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> jamaEntriesRefs<T extends Object>(
+    Expression<T> Function($$JamaEntriesTableAnnotationComposer a) f,
+  ) {
+    final $$JamaEntriesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaEntries,
+      getReferencedColumn: (t) => t.assignmentId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaEntriesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> jamaPaymentsRefs<T extends Object>(
+    Expression<T> Function($$JamaPaymentsTableAnnotationComposer a) f,
+  ) {
+    final $$JamaPaymentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaPayments,
+      getReferencedColumn: (t) => t.assignmentId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPaymentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> jamaDepositsRefs<T extends Object>(
+    Expression<T> Function($$JamaDepositsTableAnnotationComposer a) f,
+  ) {
+    final $$JamaDepositsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaDeposits,
+      getReferencedColumn: (t) => t.assignmentId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaDepositsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaDeposits,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$AssignmentsTableTableManager
@@ -14252,6 +18545,9 @@ class $$AssignmentsTableTableManager
             bool vehicleId,
             bool driverId,
             bool payoutsRefs,
+            bool jamaEntriesRefs,
+            bool jamaPaymentsRefs,
+            bool jamaDepositsRefs,
           })
         > {
   $$AssignmentsTableTableManager(_$AppDatabase db, $AssignmentsTable table)
@@ -14338,10 +18634,22 @@ class $$AssignmentsTableTableManager
               )
               .toList(),
           prefetchHooksCallback:
-              ({vehicleId = false, driverId = false, payoutsRefs = false}) {
+              ({
+                vehicleId = false,
+                driverId = false,
+                payoutsRefs = false,
+                jamaEntriesRefs = false,
+                jamaPaymentsRefs = false,
+                jamaDepositsRefs = false,
+              }) {
                 return PrefetchHooks(
                   db: db,
-                  explicitlyWatchedTables: [if (payoutsRefs) db.payouts],
+                  explicitlyWatchedTables: [
+                    if (payoutsRefs) db.payouts,
+                    if (jamaEntriesRefs) db.jamaEntries,
+                    if (jamaPaymentsRefs) db.jamaPayments,
+                    if (jamaDepositsRefs) db.jamaDeposits,
+                  ],
                   addJoins:
                       <
                         T extends TableManagerState<
@@ -14406,6 +18714,69 @@ class $$AssignmentsTableTableManager
                               ),
                           typedResults: items,
                         ),
+                      if (jamaEntriesRefs)
+                        await $_getPrefetchedData<
+                          AssignmentRow,
+                          $AssignmentsTable,
+                          JamaEntryRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$AssignmentsTableReferences
+                              ._jamaEntriesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$AssignmentsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaEntriesRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.assignmentId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (jamaPaymentsRefs)
+                        await $_getPrefetchedData<
+                          AssignmentRow,
+                          $AssignmentsTable,
+                          JamaPaymentRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$AssignmentsTableReferences
+                              ._jamaPaymentsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$AssignmentsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaPaymentsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.assignmentId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (jamaDepositsRefs)
+                        await $_getPrefetchedData<
+                          AssignmentRow,
+                          $AssignmentsTable,
+                          JamaDepositRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$AssignmentsTableReferences
+                              ._jamaDepositsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$AssignmentsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaDepositsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.assignmentId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -14426,7 +18797,14 @@ typedef $$AssignmentsTableProcessedTableManager =
       $$AssignmentsTableUpdateCompanionBuilder,
       (AssignmentRow, $$AssignmentsTableReferences),
       AssignmentRow,
-      PrefetchHooks Function({bool vehicleId, bool driverId, bool payoutsRefs})
+      PrefetchHooks Function({
+        bool vehicleId,
+        bool driverId,
+        bool payoutsRefs,
+        bool jamaEntriesRefs,
+        bool jamaPaymentsRefs,
+        bool jamaDepositsRefs,
+      })
     >;
 typedef $$AttendanceRecordsTableCreateCompanionBuilder =
     AttendanceRecordsCompanion Function({
@@ -19941,6 +24319,2927 @@ typedef $$SyncIssuesTableProcessedTableManager =
       SyncIssueRow,
       PrefetchHooks Function()
     >;
+typedef $$JamaEntriesTableCreateCompanionBuilder =
+    JamaEntriesCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      required String assignmentId,
+      required String vehicleId,
+      required String driverId,
+      required int dueDay,
+      required int expectedMinor,
+      Value<int> waivedMinor,
+      Value<String?> note,
+      Value<int> rowid,
+    });
+typedef $$JamaEntriesTableUpdateCompanionBuilder =
+    JamaEntriesCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      Value<String> assignmentId,
+      Value<String> vehicleId,
+      Value<String> driverId,
+      Value<int> dueDay,
+      Value<int> expectedMinor,
+      Value<int> waivedMinor,
+      Value<String?> note,
+      Value<int> rowid,
+    });
+
+final class $$JamaEntriesTableReferences
+    extends BaseReferences<_$AppDatabase, $JamaEntriesTable, JamaEntryRow> {
+  $$JamaEntriesTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $AssignmentsTable _assignmentIdTable(_$AppDatabase db) => db
+      .assignments
+      .createAlias('jama_entries__assignment_id__assignments__id');
+
+  $$AssignmentsTableProcessedTableManager get assignmentId {
+    final $_column = $_itemColumn<String>('assignment_id')!;
+
+    final manager = $$AssignmentsTableTableManager(
+      $_db,
+      $_db.assignments,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_assignmentIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $VehiclesTable _vehicleIdTable(_$AppDatabase db) =>
+      db.vehicles.createAlias('jama_entries__vehicle_id__vehicles__id');
+
+  $$VehiclesTableProcessedTableManager get vehicleId {
+    final $_column = $_itemColumn<String>('vehicle_id')!;
+
+    final manager = $$VehiclesTableTableManager(
+      $_db,
+      $_db.vehicles,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_vehicleIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $DriversTable _driverIdTable(_$AppDatabase db) =>
+      db.drivers.createAlias('jama_entries__driver_id__drivers__id');
+
+  $$DriversTableProcessedTableManager get driverId {
+    final $_column = $_itemColumn<String>('driver_id')!;
+
+    final manager = $$DriversTableTableManager(
+      $_db,
+      $_db.drivers,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_driverIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static MultiTypedResultKey<$JamaAllocationsTable, List<JamaAllocationRow>>
+  _jamaAllocationsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaAllocations,
+    aliasName: 'jama_entries__id__jama_allocations__entry_id',
+  );
+
+  $$JamaAllocationsTableProcessedTableManager get jamaAllocationsRefs {
+    final manager = $$JamaAllocationsTableTableManager(
+      $_db,
+      $_db.jamaAllocations,
+    ).filter((f) => f.entryId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _jamaAllocationsRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$JamaEntriesTableFilterComposer
+    extends Composer<_$AppDatabase, $JamaEntriesTable> {
+  $$JamaEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get dueDay => $composableBuilder(
+    column: $table.dueDay,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get expectedMinor => $composableBuilder(
+    column: $table.expectedMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get waivedMinor => $composableBuilder(
+    column: $table.waivedMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$AssignmentsTableFilterComposer get assignmentId {
+    final $$AssignmentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.assignmentId,
+      referencedTable: $db.assignments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssignmentsTableFilterComposer(
+            $db: $db,
+            $table: $db.assignments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$VehiclesTableFilterComposer get vehicleId {
+    final $$VehiclesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableFilterComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DriversTableFilterComposer get driverId {
+    final $$DriversTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.driverId,
+      referencedTable: $db.drivers,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DriversTableFilterComposer(
+            $db: $db,
+            $table: $db.drivers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<bool> jamaAllocationsRefs(
+    Expression<bool> Function($$JamaAllocationsTableFilterComposer f) f,
+  ) {
+    final $$JamaAllocationsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaAllocations,
+      getReferencedColumn: (t) => t.entryId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaAllocationsTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaAllocations,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$JamaEntriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $JamaEntriesTable> {
+  $$JamaEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get dueDay => $composableBuilder(
+    column: $table.dueDay,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get expectedMinor => $composableBuilder(
+    column: $table.expectedMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get waivedMinor => $composableBuilder(
+    column: $table.waivedMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$AssignmentsTableOrderingComposer get assignmentId {
+    final $$AssignmentsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.assignmentId,
+      referencedTable: $db.assignments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssignmentsTableOrderingComposer(
+            $db: $db,
+            $table: $db.assignments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$VehiclesTableOrderingComposer get vehicleId {
+    final $$VehiclesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableOrderingComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DriversTableOrderingComposer get driverId {
+    final $$DriversTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.driverId,
+      referencedTable: $db.drivers,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DriversTableOrderingComposer(
+            $db: $db,
+            $table: $db.drivers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaEntriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $JamaEntriesTable> {
+  $$JamaEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get rev =>
+      $composableBuilder(column: $table.rev, builder: (column) => column);
+
+  GeneratedColumn<bool> get dirty =>
+      $composableBuilder(column: $table.dirty, builder: (column) => column);
+
+  GeneratedColumn<int> get dueDay =>
+      $composableBuilder(column: $table.dueDay, builder: (column) => column);
+
+  GeneratedColumn<int> get expectedMinor => $composableBuilder(
+    column: $table.expectedMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get waivedMinor => $composableBuilder(
+    column: $table.waivedMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  $$AssignmentsTableAnnotationComposer get assignmentId {
+    final $$AssignmentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.assignmentId,
+      referencedTable: $db.assignments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssignmentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.assignments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$VehiclesTableAnnotationComposer get vehicleId {
+    final $$VehiclesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DriversTableAnnotationComposer get driverId {
+    final $$DriversTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.driverId,
+      referencedTable: $db.drivers,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DriversTableAnnotationComposer(
+            $db: $db,
+            $table: $db.drivers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<T> jamaAllocationsRefs<T extends Object>(
+    Expression<T> Function($$JamaAllocationsTableAnnotationComposer a) f,
+  ) {
+    final $$JamaAllocationsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaAllocations,
+      getReferencedColumn: (t) => t.entryId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaAllocationsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaAllocations,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$JamaEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $JamaEntriesTable,
+          JamaEntryRow,
+          $$JamaEntriesTableFilterComposer,
+          $$JamaEntriesTableOrderingComposer,
+          $$JamaEntriesTableAnnotationComposer,
+          $$JamaEntriesTableCreateCompanionBuilder,
+          $$JamaEntriesTableUpdateCompanionBuilder,
+          (JamaEntryRow, $$JamaEntriesTableReferences),
+          JamaEntryRow,
+          PrefetchHooks Function({
+            bool assignmentId,
+            bool vehicleId,
+            bool driverId,
+            bool jamaAllocationsRefs,
+          })
+        > {
+  $$JamaEntriesTableTableManager(_$AppDatabase db, $JamaEntriesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$JamaEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$JamaEntriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$JamaEntriesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                Value<String> assignmentId = const Value.absent(),
+                Value<String> vehicleId = const Value.absent(),
+                Value<String> driverId = const Value.absent(),
+                Value<int> dueDay = const Value.absent(),
+                Value<int> expectedMinor = const Value.absent(),
+                Value<int> waivedMinor = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JamaEntriesCompanion(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                assignmentId: assignmentId,
+                vehicleId: vehicleId,
+                driverId: driverId,
+                dueDay: dueDay,
+                expectedMinor: expectedMinor,
+                waivedMinor: waivedMinor,
+                note: note,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                required String assignmentId,
+                required String vehicleId,
+                required String driverId,
+                required int dueDay,
+                required int expectedMinor,
+                Value<int> waivedMinor = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JamaEntriesCompanion.insert(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                assignmentId: assignmentId,
+                vehicleId: vehicleId,
+                driverId: driverId,
+                dueDay: dueDay,
+                expectedMinor: expectedMinor,
+                waivedMinor: waivedMinor,
+                note: note,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$JamaEntriesTable, JamaEntryRow>(table),
+                  $$JamaEntriesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                assignmentId = false,
+                vehicleId = false,
+                driverId = false,
+                jamaAllocationsRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (jamaAllocationsRefs) db.jamaAllocations,
+                  ],
+                  addJoins:
+                      <
+                        T extends TableManagerState<
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic
+                        >
+                      >(state) {
+                        if (assignmentId) {
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.assignmentId,
+                            referencedTable: $$JamaEntriesTableReferences
+                                ._assignmentIdTable(db),
+                            referencedColumn: $$JamaEntriesTableReferences
+                                ._assignmentIdTable(db)
+                                .id,
+                          ) as T;
+                        }
+                        if (vehicleId) {
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.vehicleId,
+                            referencedTable: $$JamaEntriesTableReferences
+                                ._vehicleIdTable(db),
+                            referencedColumn: $$JamaEntriesTableReferences
+                                ._vehicleIdTable(db)
+                                .id,
+                          ) as T;
+                        }
+                        if (driverId) {
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.driverId,
+                            referencedTable: $$JamaEntriesTableReferences
+                                ._driverIdTable(db),
+                            referencedColumn: $$JamaEntriesTableReferences
+                                ._driverIdTable(db)
+                                .id,
+                          ) as T;
+                        }
+
+                        return state;
+                      },
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (jamaAllocationsRefs)
+                        await $_getPrefetchedData<
+                          JamaEntryRow,
+                          $JamaEntriesTable,
+                          JamaAllocationRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$JamaEntriesTableReferences
+                              ._jamaAllocationsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$JamaEntriesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaAllocationsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.entryId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
+              },
+        ),
+      );
+}
+
+typedef $$JamaEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $JamaEntriesTable,
+      JamaEntryRow,
+      $$JamaEntriesTableFilterComposer,
+      $$JamaEntriesTableOrderingComposer,
+      $$JamaEntriesTableAnnotationComposer,
+      $$JamaEntriesTableCreateCompanionBuilder,
+      $$JamaEntriesTableUpdateCompanionBuilder,
+      (JamaEntryRow, $$JamaEntriesTableReferences),
+      JamaEntryRow,
+      PrefetchHooks Function({
+        bool assignmentId,
+        bool vehicleId,
+        bool driverId,
+        bool jamaAllocationsRefs,
+      })
+    >;
+typedef $$JamaPaymentsTableCreateCompanionBuilder =
+    JamaPaymentsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      required String assignmentId,
+      required String vehicleId,
+      required String driverId,
+      required int paidDay,
+      required int amountMinor,
+      Value<String?> note,
+      Value<int> rowid,
+    });
+typedef $$JamaPaymentsTableUpdateCompanionBuilder =
+    JamaPaymentsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      Value<String> assignmentId,
+      Value<String> vehicleId,
+      Value<String> driverId,
+      Value<int> paidDay,
+      Value<int> amountMinor,
+      Value<String?> note,
+      Value<int> rowid,
+    });
+
+final class $$JamaPaymentsTableReferences
+    extends BaseReferences<_$AppDatabase, $JamaPaymentsTable, JamaPaymentRow> {
+  $$JamaPaymentsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $AssignmentsTable _assignmentIdTable(_$AppDatabase db) => db
+      .assignments
+      .createAlias('jama_payments__assignment_id__assignments__id');
+
+  $$AssignmentsTableProcessedTableManager get assignmentId {
+    final $_column = $_itemColumn<String>('assignment_id')!;
+
+    final manager = $$AssignmentsTableTableManager(
+      $_db,
+      $_db.assignments,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_assignmentIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $VehiclesTable _vehicleIdTable(_$AppDatabase db) =>
+      db.vehicles.createAlias('jama_payments__vehicle_id__vehicles__id');
+
+  $$VehiclesTableProcessedTableManager get vehicleId {
+    final $_column = $_itemColumn<String>('vehicle_id')!;
+
+    final manager = $$VehiclesTableTableManager(
+      $_db,
+      $_db.vehicles,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_vehicleIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $DriversTable _driverIdTable(_$AppDatabase db) =>
+      db.drivers.createAlias('jama_payments__driver_id__drivers__id');
+
+  $$DriversTableProcessedTableManager get driverId {
+    final $_column = $_itemColumn<String>('driver_id')!;
+
+    final manager = $$DriversTableTableManager(
+      $_db,
+      $_db.drivers,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_driverIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static MultiTypedResultKey<$JamaAllocationsTable, List<JamaAllocationRow>>
+  _jamaAllocationsRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.jamaAllocations,
+    aliasName: 'jama_payments__id__jama_allocations__payment_id',
+  );
+
+  $$JamaAllocationsTableProcessedTableManager get jamaAllocationsRefs {
+    final manager = $$JamaAllocationsTableTableManager(
+      $_db,
+      $_db.jamaAllocations,
+    ).filter((f) => f.paymentId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _jamaAllocationsRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$JamaPaymentsTableFilterComposer
+    extends Composer<_$AppDatabase, $JamaPaymentsTable> {
+  $$JamaPaymentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get paidDay => $composableBuilder(
+    column: $table.paidDay,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$AssignmentsTableFilterComposer get assignmentId {
+    final $$AssignmentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.assignmentId,
+      referencedTable: $db.assignments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssignmentsTableFilterComposer(
+            $db: $db,
+            $table: $db.assignments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$VehiclesTableFilterComposer get vehicleId {
+    final $$VehiclesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableFilterComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DriversTableFilterComposer get driverId {
+    final $$DriversTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.driverId,
+      referencedTable: $db.drivers,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DriversTableFilterComposer(
+            $db: $db,
+            $table: $db.drivers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<bool> jamaAllocationsRefs(
+    Expression<bool> Function($$JamaAllocationsTableFilterComposer f) f,
+  ) {
+    final $$JamaAllocationsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaAllocations,
+      getReferencedColumn: (t) => t.paymentId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaAllocationsTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaAllocations,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$JamaPaymentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $JamaPaymentsTable> {
+  $$JamaPaymentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get paidDay => $composableBuilder(
+    column: $table.paidDay,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$AssignmentsTableOrderingComposer get assignmentId {
+    final $$AssignmentsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.assignmentId,
+      referencedTable: $db.assignments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssignmentsTableOrderingComposer(
+            $db: $db,
+            $table: $db.assignments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$VehiclesTableOrderingComposer get vehicleId {
+    final $$VehiclesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableOrderingComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DriversTableOrderingComposer get driverId {
+    final $$DriversTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.driverId,
+      referencedTable: $db.drivers,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DriversTableOrderingComposer(
+            $db: $db,
+            $table: $db.drivers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaPaymentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $JamaPaymentsTable> {
+  $$JamaPaymentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get rev =>
+      $composableBuilder(column: $table.rev, builder: (column) => column);
+
+  GeneratedColumn<bool> get dirty =>
+      $composableBuilder(column: $table.dirty, builder: (column) => column);
+
+  GeneratedColumn<int> get paidDay =>
+      $composableBuilder(column: $table.paidDay, builder: (column) => column);
+
+  GeneratedColumn<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  $$AssignmentsTableAnnotationComposer get assignmentId {
+    final $$AssignmentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.assignmentId,
+      referencedTable: $db.assignments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssignmentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.assignments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$VehiclesTableAnnotationComposer get vehicleId {
+    final $$VehiclesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DriversTableAnnotationComposer get driverId {
+    final $$DriversTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.driverId,
+      referencedTable: $db.drivers,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DriversTableAnnotationComposer(
+            $db: $db,
+            $table: $db.drivers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  Expression<T> jamaAllocationsRefs<T extends Object>(
+    Expression<T> Function($$JamaAllocationsTableAnnotationComposer a) f,
+  ) {
+    final $$JamaAllocationsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.jamaAllocations,
+      getReferencedColumn: (t) => t.paymentId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaAllocationsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaAllocations,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$JamaPaymentsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $JamaPaymentsTable,
+          JamaPaymentRow,
+          $$JamaPaymentsTableFilterComposer,
+          $$JamaPaymentsTableOrderingComposer,
+          $$JamaPaymentsTableAnnotationComposer,
+          $$JamaPaymentsTableCreateCompanionBuilder,
+          $$JamaPaymentsTableUpdateCompanionBuilder,
+          (JamaPaymentRow, $$JamaPaymentsTableReferences),
+          JamaPaymentRow,
+          PrefetchHooks Function({
+            bool assignmentId,
+            bool vehicleId,
+            bool driverId,
+            bool jamaAllocationsRefs,
+          })
+        > {
+  $$JamaPaymentsTableTableManager(_$AppDatabase db, $JamaPaymentsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$JamaPaymentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$JamaPaymentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$JamaPaymentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                Value<String> assignmentId = const Value.absent(),
+                Value<String> vehicleId = const Value.absent(),
+                Value<String> driverId = const Value.absent(),
+                Value<int> paidDay = const Value.absent(),
+                Value<int> amountMinor = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JamaPaymentsCompanion(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                assignmentId: assignmentId,
+                vehicleId: vehicleId,
+                driverId: driverId,
+                paidDay: paidDay,
+                amountMinor: amountMinor,
+                note: note,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                required String assignmentId,
+                required String vehicleId,
+                required String driverId,
+                required int paidDay,
+                required int amountMinor,
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JamaPaymentsCompanion.insert(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                assignmentId: assignmentId,
+                vehicleId: vehicleId,
+                driverId: driverId,
+                paidDay: paidDay,
+                amountMinor: amountMinor,
+                note: note,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$JamaPaymentsTable, JamaPaymentRow>(table),
+                  $$JamaPaymentsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback:
+              ({
+                assignmentId = false,
+                vehicleId = false,
+                driverId = false,
+                jamaAllocationsRefs = false,
+              }) {
+                return PrefetchHooks(
+                  db: db,
+                  explicitlyWatchedTables: [
+                    if (jamaAllocationsRefs) db.jamaAllocations,
+                  ],
+                  addJoins:
+                      <
+                        T extends TableManagerState<
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic,
+                          dynamic
+                        >
+                      >(state) {
+                        if (assignmentId) {
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.assignmentId,
+                            referencedTable: $$JamaPaymentsTableReferences
+                                ._assignmentIdTable(db),
+                            referencedColumn: $$JamaPaymentsTableReferences
+                                ._assignmentIdTable(db)
+                                .id,
+                          ) as T;
+                        }
+                        if (vehicleId) {
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.vehicleId,
+                            referencedTable: $$JamaPaymentsTableReferences
+                                ._vehicleIdTable(db),
+                            referencedColumn: $$JamaPaymentsTableReferences
+                                ._vehicleIdTable(db)
+                                .id,
+                          ) as T;
+                        }
+                        if (driverId) {
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.driverId,
+                            referencedTable: $$JamaPaymentsTableReferences
+                                ._driverIdTable(db),
+                            referencedColumn: $$JamaPaymentsTableReferences
+                                ._driverIdTable(db)
+                                .id,
+                          ) as T;
+                        }
+
+                        return state;
+                      },
+                  getPrefetchedDataCallback: (items) async {
+                    return [
+                      if (jamaAllocationsRefs)
+                        await $_getPrefetchedData<
+                          JamaPaymentRow,
+                          $JamaPaymentsTable,
+                          JamaAllocationRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$JamaPaymentsTableReferences
+                              ._jamaAllocationsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$JamaPaymentsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).jamaAllocationsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.paymentId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                    ];
+                  },
+                );
+              },
+        ),
+      );
+}
+
+typedef $$JamaPaymentsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $JamaPaymentsTable,
+      JamaPaymentRow,
+      $$JamaPaymentsTableFilterComposer,
+      $$JamaPaymentsTableOrderingComposer,
+      $$JamaPaymentsTableAnnotationComposer,
+      $$JamaPaymentsTableCreateCompanionBuilder,
+      $$JamaPaymentsTableUpdateCompanionBuilder,
+      (JamaPaymentRow, $$JamaPaymentsTableReferences),
+      JamaPaymentRow,
+      PrefetchHooks Function({
+        bool assignmentId,
+        bool vehicleId,
+        bool driverId,
+        bool jamaAllocationsRefs,
+      })
+    >;
+typedef $$JamaAllocationsTableCreateCompanionBuilder =
+    JamaAllocationsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      required String paymentId,
+      required String entryId,
+      required int amountMinor,
+      Value<int> rowid,
+    });
+typedef $$JamaAllocationsTableUpdateCompanionBuilder =
+    JamaAllocationsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      Value<String> paymentId,
+      Value<String> entryId,
+      Value<int> amountMinor,
+      Value<int> rowid,
+    });
+
+final class $$JamaAllocationsTableReferences
+    extends
+        BaseReferences<
+          _$AppDatabase,
+          $JamaAllocationsTable,
+          JamaAllocationRow
+        > {
+  $$JamaAllocationsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $JamaPaymentsTable _paymentIdTable(_$AppDatabase db) => db.jamaPayments
+      .createAlias('jama_allocations__payment_id__jama_payments__id');
+
+  $$JamaPaymentsTableProcessedTableManager get paymentId {
+    final $_column = $_itemColumn<String>('payment_id')!;
+
+    final manager = $$JamaPaymentsTableTableManager(
+      $_db,
+      $_db.jamaPayments,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_paymentIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $JamaEntriesTable _entryIdTable(_$AppDatabase db) => db.jamaEntries
+      .createAlias('jama_allocations__entry_id__jama_entries__id');
+
+  $$JamaEntriesTableProcessedTableManager get entryId {
+    final $_column = $_itemColumn<String>('entry_id')!;
+
+    final manager = $$JamaEntriesTableTableManager(
+      $_db,
+      $_db.jamaEntries,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_entryIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$JamaAllocationsTableFilterComposer
+    extends Composer<_$AppDatabase, $JamaAllocationsTable> {
+  $$JamaAllocationsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$JamaPaymentsTableFilterComposer get paymentId {
+    final $$JamaPaymentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.paymentId,
+      referencedTable: $db.jamaPayments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPaymentsTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$JamaEntriesTableFilterComposer get entryId {
+    final $$JamaEntriesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.entryId,
+      referencedTable: $db.jamaEntries,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaEntriesTableFilterComposer(
+            $db: $db,
+            $table: $db.jamaEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaAllocationsTableOrderingComposer
+    extends Composer<_$AppDatabase, $JamaAllocationsTable> {
+  $$JamaAllocationsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$JamaPaymentsTableOrderingComposer get paymentId {
+    final $$JamaPaymentsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.paymentId,
+      referencedTable: $db.jamaPayments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPaymentsTableOrderingComposer(
+            $db: $db,
+            $table: $db.jamaPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$JamaEntriesTableOrderingComposer get entryId {
+    final $$JamaEntriesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.entryId,
+      referencedTable: $db.jamaEntries,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaEntriesTableOrderingComposer(
+            $db: $db,
+            $table: $db.jamaEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaAllocationsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $JamaAllocationsTable> {
+  $$JamaAllocationsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get rev =>
+      $composableBuilder(column: $table.rev, builder: (column) => column);
+
+  GeneratedColumn<bool> get dirty =>
+      $composableBuilder(column: $table.dirty, builder: (column) => column);
+
+  GeneratedColumn<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => column,
+  );
+
+  $$JamaPaymentsTableAnnotationComposer get paymentId {
+    final $$JamaPaymentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.paymentId,
+      referencedTable: $db.jamaPayments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaPaymentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$JamaEntriesTableAnnotationComposer get entryId {
+    final $$JamaEntriesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.entryId,
+      referencedTable: $db.jamaEntries,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$JamaEntriesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.jamaEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaAllocationsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $JamaAllocationsTable,
+          JamaAllocationRow,
+          $$JamaAllocationsTableFilterComposer,
+          $$JamaAllocationsTableOrderingComposer,
+          $$JamaAllocationsTableAnnotationComposer,
+          $$JamaAllocationsTableCreateCompanionBuilder,
+          $$JamaAllocationsTableUpdateCompanionBuilder,
+          (JamaAllocationRow, $$JamaAllocationsTableReferences),
+          JamaAllocationRow,
+          PrefetchHooks Function({bool paymentId, bool entryId})
+        > {
+  $$JamaAllocationsTableTableManager(
+    _$AppDatabase db,
+    $JamaAllocationsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$JamaAllocationsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$JamaAllocationsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$JamaAllocationsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                Value<String> paymentId = const Value.absent(),
+                Value<String> entryId = const Value.absent(),
+                Value<int> amountMinor = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JamaAllocationsCompanion(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                paymentId: paymentId,
+                entryId: entryId,
+                amountMinor: amountMinor,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                required String paymentId,
+                required String entryId,
+                required int amountMinor,
+                Value<int> rowid = const Value.absent(),
+              }) => JamaAllocationsCompanion.insert(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                paymentId: paymentId,
+                entryId: entryId,
+                amountMinor: amountMinor,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$JamaAllocationsTable, JamaAllocationRow>(table),
+                  $$JamaAllocationsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({paymentId = false, entryId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (paymentId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.paymentId,
+                        referencedTable: $$JamaAllocationsTableReferences
+                            ._paymentIdTable(db),
+                        referencedColumn: $$JamaAllocationsTableReferences
+                            ._paymentIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+                    if (entryId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.entryId,
+                        referencedTable: $$JamaAllocationsTableReferences
+                            ._entryIdTable(db),
+                        referencedColumn: $$JamaAllocationsTableReferences
+                            ._entryIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$JamaAllocationsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $JamaAllocationsTable,
+      JamaAllocationRow,
+      $$JamaAllocationsTableFilterComposer,
+      $$JamaAllocationsTableOrderingComposer,
+      $$JamaAllocationsTableAnnotationComposer,
+      $$JamaAllocationsTableCreateCompanionBuilder,
+      $$JamaAllocationsTableUpdateCompanionBuilder,
+      (JamaAllocationRow, $$JamaAllocationsTableReferences),
+      JamaAllocationRow,
+      PrefetchHooks Function({bool paymentId, bool entryId})
+    >;
+typedef $$JamaDepositsTableCreateCompanionBuilder =
+    JamaDepositsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      required String assignmentId,
+      required String kind,
+      required int amountMinor,
+      required int day,
+      Value<String?> note,
+      Value<int> rowid,
+    });
+typedef $$JamaDepositsTableUpdateCompanionBuilder =
+    JamaDepositsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      Value<String> assignmentId,
+      Value<String> kind,
+      Value<int> amountMinor,
+      Value<int> day,
+      Value<String?> note,
+      Value<int> rowid,
+    });
+
+final class $$JamaDepositsTableReferences
+    extends BaseReferences<_$AppDatabase, $JamaDepositsTable, JamaDepositRow> {
+  $$JamaDepositsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $AssignmentsTable _assignmentIdTable(_$AppDatabase db) => db
+      .assignments
+      .createAlias('jama_deposits__assignment_id__assignments__id');
+
+  $$AssignmentsTableProcessedTableManager get assignmentId {
+    final $_column = $_itemColumn<String>('assignment_id')!;
+
+    final manager = $$AssignmentsTableTableManager(
+      $_db,
+      $_db.assignments,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_assignmentIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$JamaDepositsTableFilterComposer
+    extends Composer<_$AppDatabase, $JamaDepositsTable> {
+  $$JamaDepositsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get day => $composableBuilder(
+    column: $table.day,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$AssignmentsTableFilterComposer get assignmentId {
+    final $$AssignmentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.assignmentId,
+      referencedTable: $db.assignments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssignmentsTableFilterComposer(
+            $db: $db,
+            $table: $db.assignments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaDepositsTableOrderingComposer
+    extends Composer<_$AppDatabase, $JamaDepositsTable> {
+  $$JamaDepositsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get day => $composableBuilder(
+    column: $table.day,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$AssignmentsTableOrderingComposer get assignmentId {
+    final $$AssignmentsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.assignmentId,
+      referencedTable: $db.assignments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssignmentsTableOrderingComposer(
+            $db: $db,
+            $table: $db.assignments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaDepositsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $JamaDepositsTable> {
+  $$JamaDepositsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get rev =>
+      $composableBuilder(column: $table.rev, builder: (column) => column);
+
+  GeneratedColumn<bool> get dirty =>
+      $composableBuilder(column: $table.dirty, builder: (column) => column);
+
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get day =>
+      $composableBuilder(column: $table.day, builder: (column) => column);
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  $$AssignmentsTableAnnotationComposer get assignmentId {
+    final $$AssignmentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.assignmentId,
+      referencedTable: $db.assignments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssignmentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.assignments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaDepositsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $JamaDepositsTable,
+          JamaDepositRow,
+          $$JamaDepositsTableFilterComposer,
+          $$JamaDepositsTableOrderingComposer,
+          $$JamaDepositsTableAnnotationComposer,
+          $$JamaDepositsTableCreateCompanionBuilder,
+          $$JamaDepositsTableUpdateCompanionBuilder,
+          (JamaDepositRow, $$JamaDepositsTableReferences),
+          JamaDepositRow,
+          PrefetchHooks Function({bool assignmentId})
+        > {
+  $$JamaDepositsTableTableManager(_$AppDatabase db, $JamaDepositsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$JamaDepositsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$JamaDepositsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$JamaDepositsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                Value<String> assignmentId = const Value.absent(),
+                Value<String> kind = const Value.absent(),
+                Value<int> amountMinor = const Value.absent(),
+                Value<int> day = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JamaDepositsCompanion(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                assignmentId: assignmentId,
+                kind: kind,
+                amountMinor: amountMinor,
+                day: day,
+                note: note,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                required String assignmentId,
+                required String kind,
+                required int amountMinor,
+                required int day,
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JamaDepositsCompanion.insert(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                assignmentId: assignmentId,
+                kind: kind,
+                amountMinor: amountMinor,
+                day: day,
+                note: note,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$JamaDepositsTable, JamaDepositRow>(table),
+                  $$JamaDepositsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({assignmentId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (assignmentId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.assignmentId,
+                        referencedTable: $$JamaDepositsTableReferences
+                            ._assignmentIdTable(db),
+                        referencedColumn: $$JamaDepositsTableReferences
+                            ._assignmentIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$JamaDepositsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $JamaDepositsTable,
+      JamaDepositRow,
+      $$JamaDepositsTableFilterComposer,
+      $$JamaDepositsTableOrderingComposer,
+      $$JamaDepositsTableAnnotationComposer,
+      $$JamaDepositsTableCreateCompanionBuilder,
+      $$JamaDepositsTableUpdateCompanionBuilder,
+      (JamaDepositRow, $$JamaDepositsTableReferences),
+      JamaDepositRow,
+      PrefetchHooks Function({bool assignmentId})
+    >;
+typedef $$JamaPausesTableCreateCompanionBuilder = JamaPausesCompanion Function({
+  Value<String> id,
+  Value<String> ownerId,
+  Value<int> createdAt,
+  Value<int> updatedAt,
+  Value<int?> deletedAt,
+  Value<int> rev,
+  Value<bool> dirty,
+  required String vehicleId,
+  required int startDay,
+  Value<int?> endDay,
+  required String mode,
+  Value<String?> note,
+  Value<int> rowid,
+});
+typedef $$JamaPausesTableUpdateCompanionBuilder = JamaPausesCompanion Function({
+  Value<String> id,
+  Value<String> ownerId,
+  Value<int> createdAt,
+  Value<int> updatedAt,
+  Value<int?> deletedAt,
+  Value<int> rev,
+  Value<bool> dirty,
+  Value<String> vehicleId,
+  Value<int> startDay,
+  Value<int?> endDay,
+  Value<String> mode,
+  Value<String?> note,
+  Value<int> rowid,
+});
+
+final class $$JamaPausesTableReferences
+    extends BaseReferences<_$AppDatabase, $JamaPausesTable, JamaPauseRow> {
+  $$JamaPausesTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $VehiclesTable _vehicleIdTable(_$AppDatabase db) =>
+      db.vehicles.createAlias('jama_pauses__vehicle_id__vehicles__id');
+
+  $$VehiclesTableProcessedTableManager get vehicleId {
+    final $_column = $_itemColumn<String>('vehicle_id')!;
+
+    final manager = $$VehiclesTableTableManager(
+      $_db,
+      $_db.vehicles,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_vehicleIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$JamaPausesTableFilterComposer
+    extends Composer<_$AppDatabase, $JamaPausesTable> {
+  $$JamaPausesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get startDay => $composableBuilder(
+    column: $table.startDay,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get endDay => $composableBuilder(
+    column: $table.endDay,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get mode => $composableBuilder(
+    column: $table.mode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$VehiclesTableFilterComposer get vehicleId {
+    final $$VehiclesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableFilterComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaPausesTableOrderingComposer
+    extends Composer<_$AppDatabase, $JamaPausesTable> {
+  $$JamaPausesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get startDay => $composableBuilder(
+    column: $table.startDay,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get endDay => $composableBuilder(
+    column: $table.endDay,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get mode => $composableBuilder(
+    column: $table.mode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$VehiclesTableOrderingComposer get vehicleId {
+    final $$VehiclesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableOrderingComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaPausesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $JamaPausesTable> {
+  $$JamaPausesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get rev =>
+      $composableBuilder(column: $table.rev, builder: (column) => column);
+
+  GeneratedColumn<bool> get dirty =>
+      $composableBuilder(column: $table.dirty, builder: (column) => column);
+
+  GeneratedColumn<int> get startDay =>
+      $composableBuilder(column: $table.startDay, builder: (column) => column);
+
+  GeneratedColumn<int> get endDay =>
+      $composableBuilder(column: $table.endDay, builder: (column) => column);
+
+  GeneratedColumn<String> get mode =>
+      $composableBuilder(column: $table.mode, builder: (column) => column);
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  $$VehiclesTableAnnotationComposer get vehicleId {
+    final $$VehiclesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$JamaPausesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $JamaPausesTable,
+          JamaPauseRow,
+          $$JamaPausesTableFilterComposer,
+          $$JamaPausesTableOrderingComposer,
+          $$JamaPausesTableAnnotationComposer,
+          $$JamaPausesTableCreateCompanionBuilder,
+          $$JamaPausesTableUpdateCompanionBuilder,
+          (JamaPauseRow, $$JamaPausesTableReferences),
+          JamaPauseRow,
+          PrefetchHooks Function({bool vehicleId})
+        > {
+  $$JamaPausesTableTableManager(_$AppDatabase db, $JamaPausesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$JamaPausesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$JamaPausesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$JamaPausesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                Value<String> vehicleId = const Value.absent(),
+                Value<int> startDay = const Value.absent(),
+                Value<int?> endDay = const Value.absent(),
+                Value<String> mode = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JamaPausesCompanion(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                vehicleId: vehicleId,
+                startDay: startDay,
+                endDay: endDay,
+                mode: mode,
+                note: note,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                required String vehicleId,
+                required int startDay,
+                Value<int?> endDay = const Value.absent(),
+                required String mode,
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => JamaPausesCompanion.insert(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                vehicleId: vehicleId,
+                startDay: startDay,
+                endDay: endDay,
+                mode: mode,
+                note: note,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$JamaPausesTable, JamaPauseRow>(table),
+                  $$JamaPausesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({vehicleId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (vehicleId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.vehicleId,
+                        referencedTable: $$JamaPausesTableReferences
+                            ._vehicleIdTable(db),
+                        referencedColumn: $$JamaPausesTableReferences
+                            ._vehicleIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$JamaPausesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $JamaPausesTable,
+      JamaPauseRow,
+      $$JamaPausesTableFilterComposer,
+      $$JamaPausesTableOrderingComposer,
+      $$JamaPausesTableAnnotationComposer,
+      $$JamaPausesTableCreateCompanionBuilder,
+      $$JamaPausesTableUpdateCompanionBuilder,
+      (JamaPauseRow, $$JamaPausesTableReferences),
+      JamaPauseRow,
+      PrefetchHooks Function({bool vehicleId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -19978,4 +27277,14 @@ class $AppDatabaseManager {
       $$SyncMetaTableTableManager(_db, _db.syncMeta);
   $$SyncIssuesTableTableManager get syncIssues =>
       $$SyncIssuesTableTableManager(_db, _db.syncIssues);
+  $$JamaEntriesTableTableManager get jamaEntries =>
+      $$JamaEntriesTableTableManager(_db, _db.jamaEntries);
+  $$JamaPaymentsTableTableManager get jamaPayments =>
+      $$JamaPaymentsTableTableManager(_db, _db.jamaPayments);
+  $$JamaAllocationsTableTableManager get jamaAllocations =>
+      $$JamaAllocationsTableTableManager(_db, _db.jamaAllocations);
+  $$JamaDepositsTableTableManager get jamaDeposits =>
+      $$JamaDepositsTableTableManager(_db, _db.jamaDeposits);
+  $$JamaPausesTableTableManager get jamaPauses =>
+      $$JamaPausesTableTableManager(_db, _db.jamaPauses);
 }

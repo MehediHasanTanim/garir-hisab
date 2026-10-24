@@ -21,6 +21,8 @@ import 'package:vehicle_khata/features/expenses/presentation/vehicle_expenses_pa
 import 'package:vehicle_khata/features/export/presentation/export_page.dart';
 import 'package:vehicle_khata/features/gallery/presentation/gallery_page.dart';
 import 'package:vehicle_khata/features/home/presentation/home_page.dart';
+import 'package:vehicle_khata/features/jama/presentation/jama_page.dart';
+import 'package:vehicle_khata/features/jama/presentation/jama_report_page.dart';
 import 'package:vehicle_khata/features/more/presentation/more_page.dart';
 import 'package:vehicle_khata/features/onboarding/presentation/onboarding_page.dart';
 import 'package:vehicle_khata/features/reports/presentation/reports_page.dart';
@@ -169,6 +171,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         ],
       ),
       GoRoute(
+        path: '/vehicles/:id/jama',
+        builder: (_, state) => JamaPage(vehicleId: state.pathParameters['id']!),
+      ),
+      GoRoute(
         path: '/vehicles/:id/driver',
         builder: (_, state) =>
             VehicleDriverPage(vehicleId: state.pathParameters['id']!),
@@ -230,6 +236,10 @@ final routerProvider = Provider<GoRouter>((ref) {
                     builder: (_, _) => const AccountPage(),
                   ),
                   GoRoute(path: 'sync', builder: (_, _) => const SyncPage()),
+                  GoRoute(
+                    path: 'jama-report',
+                    builder: (_, _) => const JamaReportPage(),
+                  ),
                   GoRoute(
                     path: 'export',
                     builder: (_, _) => const ExportPage(),
