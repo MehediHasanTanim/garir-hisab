@@ -10,6 +10,9 @@ import 'package:vehicle_khata/features/drivers/data/driver_repository.dart';
 import 'package:vehicle_khata/features/drivers/data/payout_service.dart';
 import 'package:vehicle_khata/features/drivers/domain/driver.dart';
 import 'package:vehicle_khata/features/drivers/domain/pay_model.dart';
+import 'package:vehicle_khata/features/expenses/data/category_repository.dart';
+import 'package:vehicle_khata/features/expenses/data/expense_repository.dart';
+import 'package:vehicle_khata/features/trips/data/trip_repository.dart';
 import 'package:vehicle_khata/features/vehicles/data/vehicle_repository.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle_enums.dart';
@@ -28,11 +31,18 @@ class Fixture {
     assignments = AssignmentRepository(db);
     attendance = AttendanceRepository(db);
     advances = AdvanceRepository(db);
+    categories = CategoryRepository(db);
+    trips = TripRepository(db);
+    expenses = ExpenseRepository(
+      db,
+      clock: clock ?? () => DateTime.utc(2026, 4, 1, 9),
+    );
     payouts = PayoutService(
       db,
       assignments,
       attendance,
       advances,
+      trips: trips,
       clock: clock ?? () => DateTime.utc(2026, 4, 1, 9),
     );
   }
@@ -46,6 +56,9 @@ class Fixture {
   late final AttendanceRepository attendance;
   late final AdvanceRepository advances;
   late final PayoutService payouts;
+  late final CategoryRepository categories;
+  late final TripRepository trips;
+  late final ExpenseRepository expenses;
 
   Future<void> close() => db.close();
 

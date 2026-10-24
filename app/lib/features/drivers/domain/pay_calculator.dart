@@ -12,6 +12,7 @@ class PayInputs {
     this.tripCount = 0,
     this.totalFare = Money.zero,
     this.totalExpenses = Money.zero,
+    this.tripPay,
   });
 
   /// Explicitly marked days. Days not listed are "unmarked".
@@ -21,6 +22,11 @@ class PayInputs {
 
   /// Trip expenses, for commission calculated after expenses.
   final Money totalExpenses;
+
+  /// The pay already worked out trip by trip (including any amounts the owner
+  /// overrode). When set it replaces the per-trip and commission
+  /// calculations, which are then only a fallback.
+  final Money? tripPay;
 }
 
 enum PayLineKind { salary, wages, tripFees, commission }
@@ -61,7 +67,7 @@ PayResult calculatePay(PayModel model, DayRange period, PayInputs inputs) {
     PerTripPay(:final perTrip) => PayResult([
       PayLine(
         PayLineKind.tripFees,
-        perTrip * inputs.tripCount,
+        inputs.tripPay ?? perTrip * inputs.tripCount,
         quantity: inputs.tripCount,
       ),
     ]),
@@ -129,6 +135,8 @@ PayLine _wages(
 }
 
 PayLine _commission(int rateBps, CommissionBasis basis, PayInputs inputs) {
+  final stored = inputs.tripPay;
+  if (stored != null) return PayLine(PayLineKind.commission, stored);
   var base = inputs.totalFare;
   if (basis == CommissionBasis.afterExpenses) {
     base = inputs.totalFare - inputs.totalExpenses;

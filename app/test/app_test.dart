@@ -32,7 +32,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.text('No entries yet'), findsOneWidget);
+    expect(find.text('No trips yet'), findsOneWidget);
 
     await tester.tap(
       find.descendant(

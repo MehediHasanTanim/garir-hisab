@@ -28,11 +28,11 @@
   "@homeEmptyMessage": {
     "description": "homeEmptyMessage"
   },
-  "entriesEmptyTitle": "No entries yet",
+  "entriesEmptyTitle": "No trips yet",
   "@entriesEmptyTitle": {
     "description": "entriesEmptyTitle"
   },
-  "entriesEmptyMessage": "Trips and daily income will appear here.",
+  "entriesEmptyMessage": "Log a trip to see your income and profit.",
   "@entriesEmptyMessage": {
     "description": "entriesEmptyMessage"
   },
@@ -1194,7 +1194,7 @@
       }
     }
   },
-  "payoutTripsNote": "Trip earnings will be included once trip logging is available.",
+  "payoutTripsNote": "Trip pay is taken from the trips you log for this driver.",
   "@payoutTripsNote": {
     "description": "payoutTripsNote"
   },
@@ -1551,5 +1551,421 @@
   "errSelectDriver": "Choose a driver",
   "@errSelectDriver": {
     "description": "errSelectDriver"
+  },
+  "catFuel": "Fuel / CNG gas",
+  "@catFuel": {
+    "description": "catFuel"
+  },
+  "catToll": "Toll",
+  "@catToll": {
+    "description": "catToll"
+  },
+  "catParking": "Parking",
+  "@catParking": {
+    "description": "catParking"
+  },
+  "catHelper": "Helper",
+  "@catHelper": {
+    "description": "catHelper"
+  },
+  "catPolice": "Police / informal",
+  "@catPolice": {
+    "description": "catPolice"
+  },
+  "catFood": "Driver food",
+  "@catFood": {
+    "description": "catFood"
+  },
+  "catRepair": "Repair",
+  "@catRepair": {
+    "description": "catRepair"
+  },
+  "catParts": "Spare parts",
+  "@catParts": {
+    "description": "catParts"
+  },
+  "catTyre": "Tyre",
+  "@catTyre": {
+    "description": "catTyre"
+  },
+  "catService": "Oil change / service",
+  "@catService": {
+    "description": "catService"
+  },
+  "catWashing": "Washing",
+  "@catWashing": {
+    "description": "catWashing"
+  },
+  "catInsurance": "Insurance",
+  "@catInsurance": {
+    "description": "catInsurance"
+  },
+  "catRegistration": "Registration / tax token",
+  "@catRegistration": {
+    "description": "catRegistration"
+  },
+  "catLoan": "Loan installment",
+  "@catLoan": {
+    "description": "catLoan"
+  },
+  "catOther": "Other",
+  "@catOther": {
+    "description": "catOther"
+  },
+  "addTrip": "Add trip",
+  "@addTrip": {
+    "description": "addTrip"
+  },
+  "newTrip": "New trip",
+  "@newTrip": {
+    "description": "newTrip"
+  },
+  "editTrip": "Edit trip",
+  "@editTrip": {
+    "description": "editTrip"
+  },
+  "tripTitle": "Trip",
+  "@tripTitle": {
+    "description": "tripTitle"
+  },
+  "needVehicleFirst": "Add a vehicle before logging trips.",
+  "@needVehicleFirst": {
+    "description": "needVehicleFirst"
+  },
+  "noDriverOption": "No driver",
+  "@noDriverOption": {
+    "description": "noDriverOption"
+  },
+  "tripFare": "Fare",
+  "@tripFare": {
+    "description": "tripFare"
+  },
+  "tapToEnter": "Tap to enter",
+  "@tapToEnter": {
+    "description": "tapToEnter"
+  },
+  "tripFrom": "From",
+  "@tripFrom": {
+    "description": "tripFrom"
+  },
+  "tripTo": "To",
+  "@tripTo": {
+    "description": "tripTo"
+  },
+  "tripDistance": "Distance (km)",
+  "@tripDistance": {
+    "description": "tripDistance"
+  },
+  "tripLoad": "Load or passengers",
+  "@tripLoad": {
+    "description": "tripLoad"
+  },
+  "tripWhen": "Date and time",
+  "@tripWhen": {
+    "description": "tripWhen"
+  },
+  "expensesTitle": "Expenses",
+  "@expensesTitle": {
+    "description": "expensesTitle"
+  },
+  "addExpenseMore": "More",
+  "@addExpenseMore": {
+    "description": "addExpenseMore"
+  },
+  "noExpenses": "No expenses added",
+  "@noExpenses": {
+    "description": "noExpenses"
+  },
+  "expenseCategory": "Category",
+  "@expenseCategory": {
+    "description": "expenseCategory"
+  },
+  "paidBy": "Paid by",
+  "@paidBy": {
+    "description": "paidBy"
+  },
+  "paidByOwner": "Owner",
+  "@paidByOwner": {
+    "description": "paidByOwner"
+  },
+  "paidByDriver": "Driver",
+  "@paidByDriver": {
+    "description": "paidByDriver"
+  },
+  "paidByClient": "Client",
+  "@paidByClient": {
+    "description": "paidByClient"
+  },
+  "reimbursable": "I will pay the driver back",
+  "@reimbursable": {
+    "description": "reimbursable"
+  },
+  "fuelQty": "Quantity (litres or m³)",
+  "@fuelQty": {
+    "description": "fuelQty"
+  },
+  "odometer": "Odometer (km)",
+  "@odometer": {
+    "description": "odometer"
+  },
+  "receipt": "Receipt photo",
+  "@receipt": {
+    "description": "receipt"
+  },
+  "addReceipt": "Add receipt photo",
+  "@addReceipt": {
+    "description": "addReceipt"
+  },
+  "editExpense": "Edit expense",
+  "@editExpense": {
+    "description": "editExpense"
+  },
+  "addExpense": "Add expense",
+  "@addExpense": {
+    "description": "addExpense"
+  },
+  "newCategory": "New category…",
+  "@newCategory": {
+    "description": "newCategory"
+  },
+  "categoryName": "Category name",
+  "@categoryName": {
+    "description": "categoryName"
+  },
+  "paymentTitle": "Payment",
+  "@paymentTitle": {
+    "description": "paymentTitle"
+  },
+  "payPaid": "Paid",
+  "@payPaid": {
+    "description": "payPaid"
+  },
+  "payPartial": "Partly paid",
+  "@payPartial": {
+    "description": "payPartial"
+  },
+  "payUnpaid": "Unpaid",
+  "@payUnpaid": {
+    "description": "payUnpaid"
+  },
+  "amountReceived": "Amount received",
+  "@amountReceived": {
+    "description": "amountReceived"
+  },
+  "dueAmount": "Due {amount}",
+  "@dueAmount": {
+    "description": "dueAmount",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "errReceivedTooHigh": "Received cannot be more than the fare",
+  "@errReceivedTooHigh": {
+    "description": "errReceivedTooHigh"
+  },
+  "recordPayment": "Record payment",
+  "@recordPayment": {
+    "description": "recordPayment"
+  },
+  "paymentRecorded": "Payment recorded",
+  "@paymentRecorded": {
+    "description": "paymentRecorded"
+  },
+  "markFullyPaid": "Mark fully paid",
+  "@markFullyPaid": {
+    "description": "markFullyPaid"
+  },
+  "errPaymentInvalid": "Enter an amount up to {amount}",
+  "@errPaymentInvalid": {
+    "description": "errPaymentInvalid",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "driverPayLabel": "Driver pay",
+  "@driverPayLabel": {
+    "description": "driverPayLabel"
+  },
+  "driverPayAuto": "calculated",
+  "@driverPayAuto": {
+    "description": "driverPayAuto"
+  },
+  "driverPayCustom": "set by you",
+  "@driverPayCustom": {
+    "description": "driverPayCustom"
+  },
+  "resetToAuto": "Use calculated amount",
+  "@resetToAuto": {
+    "description": "resetToAuto"
+  },
+  "profitLabel": "Profit",
+  "@profitLabel": {
+    "description": "profitLabel"
+  },
+  "lossLabel": "Loss",
+  "@lossLabel": {
+    "description": "lossLabel"
+  },
+  "errFareRequired": "Enter the fare",
+  "@errFareRequired": {
+    "description": "errFareRequired"
+  },
+  "errDistanceInvalid": "Enter a valid distance",
+  "@errDistanceInvalid": {
+    "description": "errDistanceInvalid"
+  },
+  "errQtyInvalid": "Enter a valid quantity",
+  "@errQtyInvalid": {
+    "description": "errQtyInvalid"
+  },
+  "errOdoInvalid": "Enter a valid odometer reading",
+  "@errOdoInvalid": {
+    "description": "errOdoInvalid"
+  },
+  "errVehicleRequired": "Choose a vehicle",
+  "@errVehicleRequired": {
+    "description": "errVehicleRequired"
+  },
+  "repeatTrip": "Repeat trip",
+  "@repeatTrip": {
+    "description": "repeatTrip"
+  },
+  "addReturnLeg": "Add return leg",
+  "@addReturnLeg": {
+    "description": "addReturnLeg"
+  },
+  "returnLegBadge": "Return leg",
+  "@returnLegBadge": {
+    "description": "returnLegBadge"
+  },
+  "deleteTrip": "Delete trip",
+  "@deleteTrip": {
+    "description": "deleteTrip"
+  },
+  "deleteTripTitle": "Delete this trip?",
+  "@deleteTripTitle": {
+    "description": "deleteTripTitle"
+  },
+  "deleteTripBody": "The trip and its expenses are removed from your reports.",
+  "@deleteTripBody": {
+    "description": "deleteTripBody"
+  },
+  "tripDeleted": "Trip deleted",
+  "@tripDeleted": {
+    "description": "tripDeleted"
+  },
+  "tripSaved": "Trip saved",
+  "@tripSaved": {
+    "description": "tripSaved"
+  },
+  "tripNotFound": "Trip not found",
+  "@tripNotFound": {
+    "description": "tripNotFound"
+  },
+  "filterPeriodAll": "All time",
+  "@filterPeriodAll": {
+    "description": "filterPeriodAll"
+  },
+  "filterToday": "Today",
+  "@filterToday": {
+    "description": "filterToday"
+  },
+  "filterThisMonth": "This month",
+  "@filterThisMonth": {
+    "description": "filterThisMonth"
+  },
+  "filterLastMonth": "Last month",
+  "@filterLastMonth": {
+    "description": "filterLastMonth"
+  },
+  "filterVehicleAll": "All vehicles",
+  "@filterVehicleAll": {
+    "description": "filterVehicleAll"
+  },
+  "noTripsMatch": "No trips match these filters.",
+  "@noTripsMatch": {
+    "description": "noTripsMatch"
+  },
+  "vehicleExpenses": "Vehicle expenses",
+  "@vehicleExpenses": {
+    "description": "vehicleExpenses"
+  },
+  "vehicleExpensesEmptyTitle": "No expenses yet",
+  "@vehicleExpensesEmptyTitle": {
+    "description": "vehicleExpensesEmptyTitle"
+  },
+  "vehicleExpensesEmptyMessage": "Repairs, service, insurance and other costs of this vehicle go here.",
+  "@vehicleExpensesEmptyMessage": {
+    "description": "vehicleExpensesEmptyMessage"
+  },
+  "fuelEfficiency": "Fuel efficiency",
+  "@fuelEfficiency": {
+    "description": "fuelEfficiency"
+  },
+  "fuelEffAverage": "{value} km per litre / m³",
+  "@fuelEffAverage": {
+    "description": "fuelEffAverage",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "fuelCostPerKm": "{amount} per km",
+  "@fuelCostPerKm": {
+    "description": "fuelCostPerKm",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "fuelEffNeedMore": "Add two fuel entries with quantity and odometer to see efficiency.",
+  "@fuelEffNeedMore": {
+    "description": "fuelEffNeedMore"
+  },
+  "expenseDeleteTitle": "Delete this expense?",
+  "@expenseDeleteTitle": {
+    "description": "expenseDeleteTitle"
+  },
+  "expenseSaved": "Expense saved",
+  "@expenseSaved": {
+    "description": "expenseSaved"
+  },
+  "expenseDeleted": "Expense deleted",
+  "@expenseDeleted": {
+    "description": "expenseDeleted"
+  },
+  "expenseCategories": "Expense categories",
+  "@expenseCategories": {
+    "description": "expenseCategories"
+  },
+  "addCategory": "Add category",
+  "@addCategory": {
+    "description": "addCategory"
+  },
+  "renameCategory": "Rename",
+  "@renameCategory": {
+    "description": "renameCategory"
+  },
+  "categoriesHint": "Archived categories are hidden from new expenses but keep your old records.",
+  "@categoriesHint": {
+    "description": "categoriesHint"
+  },
+  "errCategoryDuplicate": "A category with this name already exists",
+  "@errCategoryDuplicate": {
+    "description": "errCategoryDuplicate"
+  },
+  "errCategoryEmpty": "Enter a name",
+  "@errCategoryEmpty": {
+    "description": "errCategoryEmpty"
+  },
+  "unitKm": "km",
+  "@unitKm": {
+    "description": "unitKm"
   }
 }

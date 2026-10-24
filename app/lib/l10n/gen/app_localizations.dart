@@ -143,13 +143,13 @@ abstract class AppLocalizations {
   /// entriesEmptyTitle
   ///
   /// In en, this message translates to:
-  /// **'No entries yet'**
+  /// **'No trips yet'**
   String get entriesEmptyTitle;
 
   /// entriesEmptyMessage
   ///
   /// In en, this message translates to:
-  /// **'Trips and daily income will appear here.'**
+  /// **'Log a trip to see your income and profit.'**
   String get entriesEmptyMessage;
 
   /// reportsEmptyTitle
@@ -1763,7 +1763,7 @@ abstract class AppLocalizations {
   /// payoutTripsNote
   ///
   /// In en, this message translates to:
-  /// **'Trip earnings will be included once trip logging is available.'**
+  /// **'Trip pay is taken from the trips you log for this driver.'**
   String get payoutTripsNote;
 
   /// payErrNotPayable
@@ -2161,6 +2161,600 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose a driver'**
   String get errSelectDriver;
+
+  /// catFuel
+  ///
+  /// In en, this message translates to:
+  /// **'Fuel / CNG gas'**
+  String get catFuel;
+
+  /// catToll
+  ///
+  /// In en, this message translates to:
+  /// **'Toll'**
+  String get catToll;
+
+  /// catParking
+  ///
+  /// In en, this message translates to:
+  /// **'Parking'**
+  String get catParking;
+
+  /// catHelper
+  ///
+  /// In en, this message translates to:
+  /// **'Helper'**
+  String get catHelper;
+
+  /// catPolice
+  ///
+  /// In en, this message translates to:
+  /// **'Police / informal'**
+  String get catPolice;
+
+  /// catFood
+  ///
+  /// In en, this message translates to:
+  /// **'Driver food'**
+  String get catFood;
+
+  /// catRepair
+  ///
+  /// In en, this message translates to:
+  /// **'Repair'**
+  String get catRepair;
+
+  /// catParts
+  ///
+  /// In en, this message translates to:
+  /// **'Spare parts'**
+  String get catParts;
+
+  /// catTyre
+  ///
+  /// In en, this message translates to:
+  /// **'Tyre'**
+  String get catTyre;
+
+  /// catService
+  ///
+  /// In en, this message translates to:
+  /// **'Oil change / service'**
+  String get catService;
+
+  /// catWashing
+  ///
+  /// In en, this message translates to:
+  /// **'Washing'**
+  String get catWashing;
+
+  /// catInsurance
+  ///
+  /// In en, this message translates to:
+  /// **'Insurance'**
+  String get catInsurance;
+
+  /// catRegistration
+  ///
+  /// In en, this message translates to:
+  /// **'Registration / tax token'**
+  String get catRegistration;
+
+  /// catLoan
+  ///
+  /// In en, this message translates to:
+  /// **'Loan installment'**
+  String get catLoan;
+
+  /// catOther
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get catOther;
+
+  /// addTrip
+  ///
+  /// In en, this message translates to:
+  /// **'Add trip'**
+  String get addTrip;
+
+  /// newTrip
+  ///
+  /// In en, this message translates to:
+  /// **'New trip'**
+  String get newTrip;
+
+  /// editTrip
+  ///
+  /// In en, this message translates to:
+  /// **'Edit trip'**
+  String get editTrip;
+
+  /// tripTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Trip'**
+  String get tripTitle;
+
+  /// needVehicleFirst
+  ///
+  /// In en, this message translates to:
+  /// **'Add a vehicle before logging trips.'**
+  String get needVehicleFirst;
+
+  /// noDriverOption
+  ///
+  /// In en, this message translates to:
+  /// **'No driver'**
+  String get noDriverOption;
+
+  /// tripFare
+  ///
+  /// In en, this message translates to:
+  /// **'Fare'**
+  String get tripFare;
+
+  /// tapToEnter
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to enter'**
+  String get tapToEnter;
+
+  /// tripFrom
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get tripFrom;
+
+  /// tripTo
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get tripTo;
+
+  /// tripDistance
+  ///
+  /// In en, this message translates to:
+  /// **'Distance (km)'**
+  String get tripDistance;
+
+  /// tripLoad
+  ///
+  /// In en, this message translates to:
+  /// **'Load or passengers'**
+  String get tripLoad;
+
+  /// tripWhen
+  ///
+  /// In en, this message translates to:
+  /// **'Date and time'**
+  String get tripWhen;
+
+  /// expensesTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get expensesTitle;
+
+  /// addExpenseMore
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get addExpenseMore;
+
+  /// noExpenses
+  ///
+  /// In en, this message translates to:
+  /// **'No expenses added'**
+  String get noExpenses;
+
+  /// expenseCategory
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get expenseCategory;
+
+  /// paidBy
+  ///
+  /// In en, this message translates to:
+  /// **'Paid by'**
+  String get paidBy;
+
+  /// paidByOwner
+  ///
+  /// In en, this message translates to:
+  /// **'Owner'**
+  String get paidByOwner;
+
+  /// paidByDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Driver'**
+  String get paidByDriver;
+
+  /// paidByClient
+  ///
+  /// In en, this message translates to:
+  /// **'Client'**
+  String get paidByClient;
+
+  /// reimbursable
+  ///
+  /// In en, this message translates to:
+  /// **'I will pay the driver back'**
+  String get reimbursable;
+
+  /// fuelQty
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity (litres or m³)'**
+  String get fuelQty;
+
+  /// odometer
+  ///
+  /// In en, this message translates to:
+  /// **'Odometer (km)'**
+  String get odometer;
+
+  /// receipt
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt photo'**
+  String get receipt;
+
+  /// addReceipt
+  ///
+  /// In en, this message translates to:
+  /// **'Add receipt photo'**
+  String get addReceipt;
+
+  /// editExpense
+  ///
+  /// In en, this message translates to:
+  /// **'Edit expense'**
+  String get editExpense;
+
+  /// addExpense
+  ///
+  /// In en, this message translates to:
+  /// **'Add expense'**
+  String get addExpense;
+
+  /// newCategory
+  ///
+  /// In en, this message translates to:
+  /// **'New category…'**
+  String get newCategory;
+
+  /// categoryName
+  ///
+  /// In en, this message translates to:
+  /// **'Category name'**
+  String get categoryName;
+
+  /// paymentTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get paymentTitle;
+
+  /// payPaid
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get payPaid;
+
+  /// payPartial
+  ///
+  /// In en, this message translates to:
+  /// **'Partly paid'**
+  String get payPartial;
+
+  /// payUnpaid
+  ///
+  /// In en, this message translates to:
+  /// **'Unpaid'**
+  String get payUnpaid;
+
+  /// amountReceived
+  ///
+  /// In en, this message translates to:
+  /// **'Amount received'**
+  String get amountReceived;
+
+  /// dueAmount
+  ///
+  /// In en, this message translates to:
+  /// **'Due {amount}'**
+  String dueAmount(String amount);
+
+  /// errReceivedTooHigh
+  ///
+  /// In en, this message translates to:
+  /// **'Received cannot be more than the fare'**
+  String get errReceivedTooHigh;
+
+  /// recordPayment
+  ///
+  /// In en, this message translates to:
+  /// **'Record payment'**
+  String get recordPayment;
+
+  /// paymentRecorded
+  ///
+  /// In en, this message translates to:
+  /// **'Payment recorded'**
+  String get paymentRecorded;
+
+  /// markFullyPaid
+  ///
+  /// In en, this message translates to:
+  /// **'Mark fully paid'**
+  String get markFullyPaid;
+
+  /// errPaymentInvalid
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount up to {amount}'**
+  String errPaymentInvalid(String amount);
+
+  /// driverPayLabel
+  ///
+  /// In en, this message translates to:
+  /// **'Driver pay'**
+  String get driverPayLabel;
+
+  /// driverPayAuto
+  ///
+  /// In en, this message translates to:
+  /// **'calculated'**
+  String get driverPayAuto;
+
+  /// driverPayCustom
+  ///
+  /// In en, this message translates to:
+  /// **'set by you'**
+  String get driverPayCustom;
+
+  /// resetToAuto
+  ///
+  /// In en, this message translates to:
+  /// **'Use calculated amount'**
+  String get resetToAuto;
+
+  /// profitLabel
+  ///
+  /// In en, this message translates to:
+  /// **'Profit'**
+  String get profitLabel;
+
+  /// lossLabel
+  ///
+  /// In en, this message translates to:
+  /// **'Loss'**
+  String get lossLabel;
+
+  /// errFareRequired
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the fare'**
+  String get errFareRequired;
+
+  /// errDistanceInvalid
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid distance'**
+  String get errDistanceInvalid;
+
+  /// errQtyInvalid
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid quantity'**
+  String get errQtyInvalid;
+
+  /// errOdoInvalid
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid odometer reading'**
+  String get errOdoInvalid;
+
+  /// errVehicleRequired
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a vehicle'**
+  String get errVehicleRequired;
+
+  /// repeatTrip
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat trip'**
+  String get repeatTrip;
+
+  /// addReturnLeg
+  ///
+  /// In en, this message translates to:
+  /// **'Add return leg'**
+  String get addReturnLeg;
+
+  /// returnLegBadge
+  ///
+  /// In en, this message translates to:
+  /// **'Return leg'**
+  String get returnLegBadge;
+
+  /// deleteTrip
+  ///
+  /// In en, this message translates to:
+  /// **'Delete trip'**
+  String get deleteTrip;
+
+  /// deleteTripTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this trip?'**
+  String get deleteTripTitle;
+
+  /// deleteTripBody
+  ///
+  /// In en, this message translates to:
+  /// **'The trip and its expenses are removed from your reports.'**
+  String get deleteTripBody;
+
+  /// tripDeleted
+  ///
+  /// In en, this message translates to:
+  /// **'Trip deleted'**
+  String get tripDeleted;
+
+  /// tripSaved
+  ///
+  /// In en, this message translates to:
+  /// **'Trip saved'**
+  String get tripSaved;
+
+  /// tripNotFound
+  ///
+  /// In en, this message translates to:
+  /// **'Trip not found'**
+  String get tripNotFound;
+
+  /// filterPeriodAll
+  ///
+  /// In en, this message translates to:
+  /// **'All time'**
+  String get filterPeriodAll;
+
+  /// filterToday
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get filterToday;
+
+  /// filterThisMonth
+  ///
+  /// In en, this message translates to:
+  /// **'This month'**
+  String get filterThisMonth;
+
+  /// filterLastMonth
+  ///
+  /// In en, this message translates to:
+  /// **'Last month'**
+  String get filterLastMonth;
+
+  /// filterVehicleAll
+  ///
+  /// In en, this message translates to:
+  /// **'All vehicles'**
+  String get filterVehicleAll;
+
+  /// noTripsMatch
+  ///
+  /// In en, this message translates to:
+  /// **'No trips match these filters.'**
+  String get noTripsMatch;
+
+  /// vehicleExpenses
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle expenses'**
+  String get vehicleExpenses;
+
+  /// vehicleExpensesEmptyTitle
+  ///
+  /// In en, this message translates to:
+  /// **'No expenses yet'**
+  String get vehicleExpensesEmptyTitle;
+
+  /// vehicleExpensesEmptyMessage
+  ///
+  /// In en, this message translates to:
+  /// **'Repairs, service, insurance and other costs of this vehicle go here.'**
+  String get vehicleExpensesEmptyMessage;
+
+  /// fuelEfficiency
+  ///
+  /// In en, this message translates to:
+  /// **'Fuel efficiency'**
+  String get fuelEfficiency;
+
+  /// fuelEffAverage
+  ///
+  /// In en, this message translates to:
+  /// **'{value} km per litre / m³'**
+  String fuelEffAverage(String value);
+
+  /// fuelCostPerKm
+  ///
+  /// In en, this message translates to:
+  /// **'{amount} per km'**
+  String fuelCostPerKm(String amount);
+
+  /// fuelEffNeedMore
+  ///
+  /// In en, this message translates to:
+  /// **'Add two fuel entries with quantity and odometer to see efficiency.'**
+  String get fuelEffNeedMore;
+
+  /// expenseDeleteTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this expense?'**
+  String get expenseDeleteTitle;
+
+  /// expenseSaved
+  ///
+  /// In en, this message translates to:
+  /// **'Expense saved'**
+  String get expenseSaved;
+
+  /// expenseDeleted
+  ///
+  /// In en, this message translates to:
+  /// **'Expense deleted'**
+  String get expenseDeleted;
+
+  /// expenseCategories
+  ///
+  /// In en, this message translates to:
+  /// **'Expense categories'**
+  String get expenseCategories;
+
+  /// addCategory
+  ///
+  /// In en, this message translates to:
+  /// **'Add category'**
+  String get addCategory;
+
+  /// renameCategory
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get renameCategory;
+
+  /// categoriesHint
+  ///
+  /// In en, this message translates to:
+  /// **'Archived categories are hidden from new expenses but keep your old records.'**
+  String get categoriesHint;
+
+  /// errCategoryDuplicate
+  ///
+  /// In en, this message translates to:
+  /// **'A category with this name already exists'**
+  String get errCategoryDuplicate;
+
+  /// errCategoryEmpty
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a name'**
+  String get errCategoryEmpty;
+
+  /// unitKm
+  ///
+  /// In en, this message translates to:
+  /// **'km'**
+  String get unitKm;
 }
 
 class _AppLocalizationsDelegate

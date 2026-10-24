@@ -32,10 +32,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Add your first vehicle to start tracking income.';
 
   @override
-  String get entriesEmptyTitle => 'No entries yet';
+  String get entriesEmptyTitle => 'No trips yet';
 
   @override
-  String get entriesEmptyMessage => 'Trips and daily income will appear here.';
+  String get entriesEmptyMessage => 'Log a trip to see your income and profit.';
 
   @override
   String get reportsEmptyTitle => 'No reports yet';
@@ -885,7 +885,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get payoutTripsNote =>
-      'Trip earnings will be included once trip logging is available.';
+      'Trip pay is taken from the trips you log for this driver.';
 
   @override
   String get payErrNotPayable =>
@@ -1120,4 +1120,313 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errSelectDriver => 'Choose a driver';
+
+  @override
+  String get catFuel => 'Fuel / CNG gas';
+
+  @override
+  String get catToll => 'Toll';
+
+  @override
+  String get catParking => 'Parking';
+
+  @override
+  String get catHelper => 'Helper';
+
+  @override
+  String get catPolice => 'Police / informal';
+
+  @override
+  String get catFood => 'Driver food';
+
+  @override
+  String get catRepair => 'Repair';
+
+  @override
+  String get catParts => 'Spare parts';
+
+  @override
+  String get catTyre => 'Tyre';
+
+  @override
+  String get catService => 'Oil change / service';
+
+  @override
+  String get catWashing => 'Washing';
+
+  @override
+  String get catInsurance => 'Insurance';
+
+  @override
+  String get catRegistration => 'Registration / tax token';
+
+  @override
+  String get catLoan => 'Loan installment';
+
+  @override
+  String get catOther => 'Other';
+
+  @override
+  String get addTrip => 'Add trip';
+
+  @override
+  String get newTrip => 'New trip';
+
+  @override
+  String get editTrip => 'Edit trip';
+
+  @override
+  String get tripTitle => 'Trip';
+
+  @override
+  String get needVehicleFirst => 'Add a vehicle before logging trips.';
+
+  @override
+  String get noDriverOption => 'No driver';
+
+  @override
+  String get tripFare => 'Fare';
+
+  @override
+  String get tapToEnter => 'Tap to enter';
+
+  @override
+  String get tripFrom => 'From';
+
+  @override
+  String get tripTo => 'To';
+
+  @override
+  String get tripDistance => 'Distance (km)';
+
+  @override
+  String get tripLoad => 'Load or passengers';
+
+  @override
+  String get tripWhen => 'Date and time';
+
+  @override
+  String get expensesTitle => 'Expenses';
+
+  @override
+  String get addExpenseMore => 'More';
+
+  @override
+  String get noExpenses => 'No expenses added';
+
+  @override
+  String get expenseCategory => 'Category';
+
+  @override
+  String get paidBy => 'Paid by';
+
+  @override
+  String get paidByOwner => 'Owner';
+
+  @override
+  String get paidByDriver => 'Driver';
+
+  @override
+  String get paidByClient => 'Client';
+
+  @override
+  String get reimbursable => 'I will pay the driver back';
+
+  @override
+  String get fuelQty => 'Quantity (litres or m³)';
+
+  @override
+  String get odometer => 'Odometer (km)';
+
+  @override
+  String get receipt => 'Receipt photo';
+
+  @override
+  String get addReceipt => 'Add receipt photo';
+
+  @override
+  String get editExpense => 'Edit expense';
+
+  @override
+  String get addExpense => 'Add expense';
+
+  @override
+  String get newCategory => 'New category…';
+
+  @override
+  String get categoryName => 'Category name';
+
+  @override
+  String get paymentTitle => 'Payment';
+
+  @override
+  String get payPaid => 'Paid';
+
+  @override
+  String get payPartial => 'Partly paid';
+
+  @override
+  String get payUnpaid => 'Unpaid';
+
+  @override
+  String get amountReceived => 'Amount received';
+
+  @override
+  String dueAmount(String amount) {
+    return 'Due $amount';
+  }
+
+  @override
+  String get errReceivedTooHigh => 'Received cannot be more than the fare';
+
+  @override
+  String get recordPayment => 'Record payment';
+
+  @override
+  String get paymentRecorded => 'Payment recorded';
+
+  @override
+  String get markFullyPaid => 'Mark fully paid';
+
+  @override
+  String errPaymentInvalid(String amount) {
+    return 'Enter an amount up to $amount';
+  }
+
+  @override
+  String get driverPayLabel => 'Driver pay';
+
+  @override
+  String get driverPayAuto => 'calculated';
+
+  @override
+  String get driverPayCustom => 'set by you';
+
+  @override
+  String get resetToAuto => 'Use calculated amount';
+
+  @override
+  String get profitLabel => 'Profit';
+
+  @override
+  String get lossLabel => 'Loss';
+
+  @override
+  String get errFareRequired => 'Enter the fare';
+
+  @override
+  String get errDistanceInvalid => 'Enter a valid distance';
+
+  @override
+  String get errQtyInvalid => 'Enter a valid quantity';
+
+  @override
+  String get errOdoInvalid => 'Enter a valid odometer reading';
+
+  @override
+  String get errVehicleRequired => 'Choose a vehicle';
+
+  @override
+  String get repeatTrip => 'Repeat trip';
+
+  @override
+  String get addReturnLeg => 'Add return leg';
+
+  @override
+  String get returnLegBadge => 'Return leg';
+
+  @override
+  String get deleteTrip => 'Delete trip';
+
+  @override
+  String get deleteTripTitle => 'Delete this trip?';
+
+  @override
+  String get deleteTripBody =>
+      'The trip and its expenses are removed from your reports.';
+
+  @override
+  String get tripDeleted => 'Trip deleted';
+
+  @override
+  String get tripSaved => 'Trip saved';
+
+  @override
+  String get tripNotFound => 'Trip not found';
+
+  @override
+  String get filterPeriodAll => 'All time';
+
+  @override
+  String get filterToday => 'Today';
+
+  @override
+  String get filterThisMonth => 'This month';
+
+  @override
+  String get filterLastMonth => 'Last month';
+
+  @override
+  String get filterVehicleAll => 'All vehicles';
+
+  @override
+  String get noTripsMatch => 'No trips match these filters.';
+
+  @override
+  String get vehicleExpenses => 'Vehicle expenses';
+
+  @override
+  String get vehicleExpensesEmptyTitle => 'No expenses yet';
+
+  @override
+  String get vehicleExpensesEmptyMessage =>
+      'Repairs, service, insurance and other costs of this vehicle go here.';
+
+  @override
+  String get fuelEfficiency => 'Fuel efficiency';
+
+  @override
+  String fuelEffAverage(String value) {
+    return '$value km per litre / m³';
+  }
+
+  @override
+  String fuelCostPerKm(String amount) {
+    return '$amount per km';
+  }
+
+  @override
+  String get fuelEffNeedMore =>
+      'Add two fuel entries with quantity and odometer to see efficiency.';
+
+  @override
+  String get expenseDeleteTitle => 'Delete this expense?';
+
+  @override
+  String get expenseSaved => 'Expense saved';
+
+  @override
+  String get expenseDeleted => 'Expense deleted';
+
+  @override
+  String get expenseCategories => 'Expense categories';
+
+  @override
+  String get addCategory => 'Add category';
+
+  @override
+  String get renameCategory => 'Rename';
+
+  @override
+  String get categoriesHint =>
+      'Archived categories are hidden from new expenses but keep your old records.';
+
+  @override
+  String get errCategoryDuplicate => 'A category with this name already exists';
+
+  @override
+  String get errCategoryEmpty => 'Enter a name';
+
+  @override
+  String get unitKm => 'km';
 }

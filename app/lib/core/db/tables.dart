@@ -3,6 +3,7 @@ import 'package:vehicle_khata/core/db/ids.dart';
 import 'package:vehicle_khata/core/db/synced_columns.dart';
 import 'package:vehicle_khata/features/drivers/domain/attendance.dart';
 import 'package:vehicle_khata/features/drivers/domain/driver.dart';
+import 'package:vehicle_khata/features/expenses/domain/expense.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle_enums.dart';
 
 /// Local record of every mutation (technical design §5.2).
@@ -125,4 +126,61 @@ class PayoutAdvanceAllocations extends Table with SyncedColumns {
   TextColumn get payoutId => text().references(Payouts, #id)();
   TextColumn get advanceId => text().references(Advances, #id)();
   IntColumn get amountMinor => integer()();
+}
+
+@DataClassName('ExpenseCategoryRow')
+class ExpenseCategories extends Table with SyncedColumns {
+  /// Built-in category key; NULL for custom categories.
+  TextColumn get key => text().nullable()();
+
+  /// Name of a custom category; NULL for built-in ones (localized instead).
+  TextColumn get name => text().nullable()();
+  IntColumn get sortOrder => integer().withDefault(const Constant(0))();
+  BoolColumn get archived => boolean().withDefault(const Constant(false))();
+}
+
+@DataClassName('TripRow')
+@TableIndex(name: 'trips_by_vehicle_time', columns: {#vehicleId, #startedAt})
+@TableIndex(name: 'trips_by_day', columns: {#tripDay})
+class Trips extends Table with SyncedColumns {
+  TextColumn get vehicleId => text().references(Vehicles, #id)();
+  TextColumn get driverId => text().nullable().references(Drivers, #id)();
+  IntColumn get startedAt => integer()();
+
+  /// Local calendar day (days since 1970-01-01), for grouping and filters.
+  IntColumn get tripDay => integer()();
+  TextColumn get fromPlace => text().nullable()();
+  TextColumn get toPlace => text().nullable()();
+
+  /// Distance in metres.
+  IntColumn get distanceM => integer().nullable()();
+  IntColumn get fareMinor => integer()();
+  IntColumn get receivedMinor => integer().withDefault(const Constant(0))();
+  IntColumn get driverPayMinor => integer().withDefault(const Constant(0))();
+  BoolColumn get driverPayOverridden =>
+      boolean().withDefault(const Constant(false))();
+  TextColumn get loadNote => text().nullable()();
+  TextColumn get note => text().nullable()();
+  TextColumn get returnOfTripId => text().nullable()();
+}
+
+@DataClassName('ExpenseRow')
+@TableIndex(name: 'expenses_by_vehicle_time', columns: {#vehicleId, #spentAt})
+@TableIndex(name: 'expenses_by_trip', columns: {#tripId})
+class Expenses extends Table with SyncedColumns {
+  TextColumn get vehicleId => text().references(Vehicles, #id)();
+  TextColumn get tripId => text().nullable().references(Trips, #id)();
+  TextColumn get categoryId => text().references(ExpenseCategories, #id)();
+  IntColumn get amountMinor => integer()();
+  IntColumn get spentAt => integer()();
+  TextColumn get paidBy => textEnum<PaidBy>()();
+  BoolColumn get reimbursable => boolean().withDefault(const Constant(false))();
+  TextColumn get note => text().nullable()();
+  TextColumn get receiptFile => text().nullable()();
+
+  /// Fuel quantity ×1000 (litres or m³).
+  IntColumn get qtyMilli => integer().nullable()();
+
+  /// Odometer in metres.
+  IntColumn get odometerM => integer().nullable()();
 }

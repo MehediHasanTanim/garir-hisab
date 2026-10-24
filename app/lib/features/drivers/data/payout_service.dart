@@ -12,6 +12,7 @@ import 'package:vehicle_khata/features/drivers/domain/driver.dart';
 import 'package:vehicle_khata/features/drivers/domain/pay_calculator.dart';
 import 'package:vehicle_khata/features/drivers/domain/pay_model.dart';
 import 'package:vehicle_khata/features/drivers/domain/payout_planner.dart';
+import 'package:vehicle_khata/features/trips/data/trip_repository.dart';
 
 enum PayoutError {
   assignmentNotFound,
@@ -75,13 +76,16 @@ class PayoutService {
     this._assignments,
     this._attendance,
     this._advances, {
+    this._trips,
     DateTime Function()? clock,
-  }) : _clock = clock ?? DateTime.now;
+  }) : // ignore: a private field cannot be a named formal.
+       _clock = clock ?? DateTime.now;
 
   final AppDatabase _db;
   final AssignmentRepository _assignments;
   final AttendanceRepository _attendance;
   final AdvanceRepository _advances;
+  final TripRepository? _trips;
   final DateTime Function() _clock;
 
   Stream<List<Payout>> watchForDriver(String driverId) {
@@ -128,12 +132,26 @@ class PayoutService {
     }
 
     final attendance = await _attendance.forRange(driverId, clipped);
-    // Trips (count, fares, expenses) arrive with the trip module; until then
-    // trip-based pay is zero.
+    // Trip-based pay comes from the pay worked out on each trip (which
+    // includes any amounts the owner overrode).
+    final trips = _trips;
+    final totals = trips == null
+        ? null
+        : await trips.totalsForDriver(
+            driverId: driverId,
+            vehicleId: assignment.vehicleId,
+            range: clipped,
+          );
     final pay = calculatePay(
       assignment.payModel,
       clipped,
-      PayInputs(attendance: attendance),
+      PayInputs(
+        attendance: attendance,
+        tripCount: totals?.count ?? 0,
+        totalFare: totals?.fare ?? Money.zero,
+        totalExpenses: totals?.ownerExpenses ?? Money.zero,
+        tripPay: totals?.driverPay,
+      ),
     );
     final plan = planPayout(
       earned: pay.earned,

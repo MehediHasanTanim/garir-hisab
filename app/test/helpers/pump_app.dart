@@ -102,6 +102,12 @@ Future<TestApp> pumpApp(
     ],
   );
   addTearDown(container.dispose);
+  // Drift schedules a zero-length timer when a watched query is cancelled.
+  // Unmount and pump so it fires inside this test, not the next one.
+  addTearDown(() async {
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(milliseconds: 50));
+  });
 
   await tester.pumpWidget(
     UncontrolledProviderScope(

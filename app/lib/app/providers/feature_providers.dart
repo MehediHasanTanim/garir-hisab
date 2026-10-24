@@ -13,8 +13,13 @@ import 'package:vehicle_khata/features/drivers/data/driver_repository.dart';
 import 'package:vehicle_khata/features/drivers/data/payout_service.dart';
 import 'package:vehicle_khata/features/drivers/domain/attendance.dart';
 import 'package:vehicle_khata/features/drivers/domain/driver.dart';
+import 'package:vehicle_khata/features/expenses/data/category_repository.dart';
+import 'package:vehicle_khata/features/expenses/data/expense_repository.dart';
+import 'package:vehicle_khata/features/expenses/domain/expense.dart';
 import 'package:vehicle_khata/features/onboarding/data/onboarding_repository.dart';
 import 'package:vehicle_khata/features/onboarding/domain/onboarding_state.dart';
+import 'package:vehicle_khata/features/trips/data/trip_repository.dart';
+import 'package:vehicle_khata/features/trips/domain/trip.dart';
 import 'package:vehicle_khata/features/vehicles/data/photo_store.dart';
 import 'package:vehicle_khata/features/vehicles/data/vehicle_repository.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle.dart';
@@ -58,6 +63,56 @@ final vehicleProvider = StreamProvider.autoDispose.family<Vehicle?, String>(
   (ref, id) => ref.watch(vehicleRepositoryProvider).watchOne(id),
 );
 
+// ---- Trips and expenses --------------------------------------------------
+
+final categoryRepositoryProvider = Provider<CategoryRepository>(
+  (ref) => CategoryRepository(ref.watch(appDatabaseProvider)),
+);
+
+final tripRepositoryProvider = Provider<TripRepository>(
+  (ref) => TripRepository(ref.watch(appDatabaseProvider)),
+);
+
+final expenseRepositoryProvider = Provider<ExpenseRepository>(
+  (ref) => ExpenseRepository(
+    ref.watch(appDatabaseProvider),
+    clock: ref.watch(clockProvider),
+  ),
+);
+
+/// Active categories, in display order.
+final categoriesProvider = StreamProvider.autoDispose<List<ExpenseCategory>>(
+  (ref) => ref.watch(categoryRepositoryProvider).watch(),
+);
+
+/// Every category including archived ones, to label old expenses.
+final allCategoriesProvider = StreamProvider.autoDispose<List<ExpenseCategory>>(
+  (ref) => ref.watch(categoryRepositoryProvider).watch(includeArchived: true),
+);
+
+final tripListProvider = StreamProvider.autoDispose
+    .family<List<TripSummary>, TripFilter>(
+      (ref, filter) => ref.watch(tripRepositoryProvider).watch(filter),
+    );
+
+final tripDetailProvider = StreamProvider.autoDispose
+    .family<TripDetail?, String>(
+      (ref, id) => ref.watch(tripRepositoryProvider).watchOne(id),
+    );
+
+final activeAssignmentProvider = StreamProvider.autoDispose
+    .family<AssignmentView?, String>(
+      (ref, vehicleId) => ref
+          .watch(assignmentRepositoryProvider)
+          .watchActiveForVehicle(vehicleId),
+    );
+
+final vehicleExpensesProvider = StreamProvider.autoDispose
+    .family<List<Expense>, String>(
+      (ref, vehicleId) =>
+          ref.watch(expenseRepositoryProvider).watchForVehicle(vehicleId),
+    );
+
 // ---- Drivers -------------------------------------------------------------
 
 final fieldCipherProvider = Provider<FieldCipher>(
@@ -89,6 +144,7 @@ final payoutServiceProvider = Provider<PayoutService>(
     ref.watch(assignmentRepositoryProvider),
     ref.watch(attendanceRepositoryProvider),
     ref.watch(advanceRepositoryProvider),
+    trips: ref.watch(tripRepositoryProvider),
     clock: ref.watch(clockProvider),
   ),
 );

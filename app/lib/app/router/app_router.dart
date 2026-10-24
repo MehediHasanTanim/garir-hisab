@@ -15,12 +15,16 @@ import 'package:vehicle_khata/features/drivers/presentation/drivers_page.dart';
 import 'package:vehicle_khata/features/drivers/presentation/payout_page.dart';
 import 'package:vehicle_khata/features/drivers/presentation/vehicle_driver_page.dart';
 import 'package:vehicle_khata/features/entries/presentation/entries_page.dart';
+import 'package:vehicle_khata/features/expenses/presentation/categories_page.dart';
+import 'package:vehicle_khata/features/expenses/presentation/vehicle_expenses_page.dart';
 import 'package:vehicle_khata/features/gallery/presentation/gallery_page.dart';
 import 'package:vehicle_khata/features/home/presentation/home_page.dart';
 import 'package:vehicle_khata/features/more/presentation/more_page.dart';
 import 'package:vehicle_khata/features/onboarding/presentation/onboarding_page.dart';
 import 'package:vehicle_khata/features/reports/presentation/reports_page.dart';
 import 'package:vehicle_khata/features/settings/presentation/settings_page.dart';
+import 'package:vehicle_khata/features/trips/presentation/trip_detail_page.dart';
+import 'package:vehicle_khata/features/trips/presentation/trip_form_page.dart';
 import 'package:vehicle_khata/features/vehicles/presentation/vehicle_form_page.dart';
 
 /// Route paths. Deep links (e.g. from notifications) use these directly.
@@ -36,6 +40,12 @@ abstract final class Routes {
   static const lock = '/lock';
   static const newVehicle = '/vehicles/new';
   static String editVehicle(String id) => '/vehicles/$id/edit';
+  static const categories = '/more/categories';
+  static const newTrip = '/trips/new';
+  static String trip(String id) => '/trips/$id';
+  static String editTrip(String id) => '/trips/$id/edit';
+  static String vehicleExpenses(String vehicleId) =>
+      '/vehicles/$vehicleId/expenses';
   static const drivers = '/drivers';
   static const newDriver = '/drivers/new';
   static String driver(String id) => '/drivers/$id';
@@ -96,6 +106,31 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/vehicles/:id/edit',
         builder: (_, state) =>
             VehicleFormPage(vehicleId: state.pathParameters['id']),
+      ),
+      GoRoute(
+        path: '/trips/new',
+        builder: (_, state) => TripFormPage(
+          vehicleId: state.uri.queryParameters['vehicle'],
+          repeatFrom: state.uri.queryParameters['repeat'],
+          returnOf: state.uri.queryParameters['returnOf'],
+        ),
+      ),
+      GoRoute(
+        path: '/trips/:id',
+        builder: (_, state) =>
+            TripDetailPage(tripId: state.pathParameters['id']!),
+        routes: [
+          GoRoute(
+            path: 'edit',
+            builder: (_, state) =>
+                TripFormPage(tripId: state.pathParameters['id']),
+          ),
+        ],
+      ),
+      GoRoute(
+        path: '/vehicles/:id/expenses',
+        builder: (_, state) =>
+            VehicleExpensesPage(vehicleId: state.pathParameters['id']!),
       ),
       GoRoute(path: Routes.drivers, builder: (_, _) => const DriversPage()),
       GoRoute(
@@ -171,6 +206,10 @@ final routerProvider = Provider<GoRouter>((ref) {
                   GoRoute(
                     path: 'settings',
                     builder: (_, _) => const SettingsPage(),
+                  ),
+                  GoRoute(
+                    path: 'categories',
+                    builder: (_, _) => const CategoriesPage(),
                   ),
                   GoRoute(
                     path: 'account',

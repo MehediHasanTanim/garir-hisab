@@ -241,9 +241,7 @@ void main() {
       withData: false,
     );
     expect(
-      find.text(
-        'Trip earnings will be included once trip logging is available.',
-      ),
+      find.text('Trip pay is taken from the trips you log for this driver.'),
       findsOneWidget,
     );
     final button = tester.widget<FilledButton>(

@@ -11,6 +11,7 @@ import 'package:vehicle_khata/core/db/synced_repository.dart';
 import 'package:vehicle_khata/core/db/tables.dart';
 import 'package:vehicle_khata/features/drivers/domain/attendance.dart';
 import 'package:vehicle_khata/features/drivers/domain/driver.dart';
+import 'package:vehicle_khata/features/expenses/domain/expense.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle_enums.dart';
 
 part 'app_database.g.dart';
@@ -33,6 +34,9 @@ QueryExecutor _openEncrypted(File file, String key) {
     Advances,
     Payouts,
     PayoutAdvanceAllocations,
+    ExpenseCategories,
+    Trips,
+    Expenses,
   ],
 )
 class AppDatabase extends _$AppDatabase with SyncedHelpers {
@@ -56,7 +60,7 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
   new file(File file, {required String key}) : super(_openEncrypted(file, key));
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -72,6 +76,15 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
         await m.createTable(schema.advances);
         await m.createTable(schema.payouts);
         await m.createTable(schema.payoutAdvanceAllocations);
+      },
+      from3To4: (m, schema) async {
+        await m.createTable(schema.expenseCategories);
+        await m.createTable(schema.trips);
+        await m.createIndex(schema.tripsByVehicleTime);
+        await m.createIndex(schema.tripsByDay);
+        await m.createTable(schema.expenses);
+        await m.createIndex(schema.expensesByVehicleTime);
+        await m.createIndex(schema.expensesByTrip);
       },
     ),
     beforeOpen: (details) async {

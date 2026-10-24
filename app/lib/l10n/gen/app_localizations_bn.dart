@@ -31,10 +31,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get homeEmptyMessage => 'আয় লিখতে প্রথম গাড়িটি যোগ করুন।';
 
   @override
-  String get entriesEmptyTitle => 'এখনো কোনো এন্ট্রি নেই';
+  String get entriesEmptyTitle => 'এখনো কোনো ট্রিপ নেই';
 
   @override
-  String get entriesEmptyMessage => 'ট্রিপ ও দৈনিক আয় এখানে দেখা যাবে।';
+  String get entriesEmptyMessage => 'আয় ও লাভ দেখতে একটি ট্রিপ লিখুন।';
 
   @override
   String get reportsEmptyTitle => 'এখনো কোনো রিপোর্ট নেই';
@@ -883,7 +883,8 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get payoutTripsNote => 'ট্রিপের আয় যোগ হবে ট্রিপ লেখার সুবিধা এলে।';
+  String get payoutTripsNote =>
+      'এই ড্রাইভারের জন্য লেখা ট্রিপ থেকে ট্রিপের বেতন ধরা হয়।';
 
   @override
   String get payErrNotPayable =>
@@ -1117,4 +1118,312 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get errSelectDriver => 'একজন ড্রাইভার বেছে নিন';
+
+  @override
+  String get catFuel => 'জ্বালানি / সিএনজি গ্যাস';
+
+  @override
+  String get catToll => 'টোল';
+
+  @override
+  String get catParking => 'পার্কিং';
+
+  @override
+  String get catHelper => 'হেল্পার';
+
+  @override
+  String get catPolice => 'পুলিশ / অনানুষ্ঠানিক';
+
+  @override
+  String get catFood => 'ড্রাইভারের খাবার';
+
+  @override
+  String get catRepair => 'মেরামত';
+
+  @override
+  String get catParts => 'যন্ত্রাংশ';
+
+  @override
+  String get catTyre => 'টায়ার';
+
+  @override
+  String get catService => 'তেল বদল / সার্ভিস';
+
+  @override
+  String get catWashing => 'ধোয়া';
+
+  @override
+  String get catInsurance => 'বীমা';
+
+  @override
+  String get catRegistration => 'রেজিস্ট্রেশন / ট্যাক্স টোকেন';
+
+  @override
+  String get catLoan => 'ঋণের কিস্তি';
+
+  @override
+  String get catOther => 'অন্যান্য';
+
+  @override
+  String get addTrip => 'ট্রিপ যোগ করুন';
+
+  @override
+  String get newTrip => 'নতুন ট্রিপ';
+
+  @override
+  String get editTrip => 'ট্রিপ সম্পাদনা';
+
+  @override
+  String get tripTitle => 'ট্রিপ';
+
+  @override
+  String get needVehicleFirst => 'ট্রিপ লেখার আগে একটি গাড়ি যোগ করুন।';
+
+  @override
+  String get noDriverOption => 'ড্রাইভার নেই';
+
+  @override
+  String get tripFare => 'ভাড়া';
+
+  @override
+  String get tapToEnter => 'লিখতে ট্যাপ করুন';
+
+  @override
+  String get tripFrom => 'কোথা থেকে';
+
+  @override
+  String get tripTo => 'কোথায়';
+
+  @override
+  String get tripDistance => 'দূরত্ব (কিমি)';
+
+  @override
+  String get tripLoad => 'মাল বা যাত্রী';
+
+  @override
+  String get tripWhen => 'তারিখ ও সময়';
+
+  @override
+  String get expensesTitle => 'খরচ';
+
+  @override
+  String get addExpenseMore => 'আরও';
+
+  @override
+  String get noExpenses => 'কোনো খরচ যোগ করা হয়নি';
+
+  @override
+  String get expenseCategory => 'খাত';
+
+  @override
+  String get paidBy => 'কে দিয়েছে';
+
+  @override
+  String get paidByOwner => 'মালিক';
+
+  @override
+  String get paidByDriver => 'ড্রাইভার';
+
+  @override
+  String get paidByClient => 'গ্রাহক';
+
+  @override
+  String get reimbursable => 'আমি ড্রাইভারকে ফেরত দেব';
+
+  @override
+  String get fuelQty => 'পরিমাণ (লিটার বা ঘনমিটার)';
+
+  @override
+  String get odometer => 'ওডোমিটার (কিমি)';
+
+  @override
+  String get receipt => 'রসিদের ছবি';
+
+  @override
+  String get addReceipt => 'রসিদের ছবি যোগ করুন';
+
+  @override
+  String get editExpense => 'খরচ সম্পাদনা';
+
+  @override
+  String get addExpense => 'খরচ যোগ করুন';
+
+  @override
+  String get newCategory => 'নতুন খাত…';
+
+  @override
+  String get categoryName => 'খাতের নাম';
+
+  @override
+  String get paymentTitle => 'টাকা পাওয়া';
+
+  @override
+  String get payPaid => 'পরিশোধিত';
+
+  @override
+  String get payPartial => 'আংশিক';
+
+  @override
+  String get payUnpaid => 'বাকি';
+
+  @override
+  String get amountReceived => 'যত টাকা পেয়েছেন';
+
+  @override
+  String dueAmount(String amount) {
+    return 'বাকি $amount';
+  }
+
+  @override
+  String get errReceivedTooHigh => 'ভাড়ার চেয়ে বেশি পাওয়া যায় না';
+
+  @override
+  String get recordPayment => 'টাকা পাওয়া লিখুন';
+
+  @override
+  String get paymentRecorded => 'টাকা পাওয়া লেখা হয়েছে';
+
+  @override
+  String get markFullyPaid => 'পুরো পরিশোধিত';
+
+  @override
+  String errPaymentInvalid(String amount) {
+    return '$amount পর্যন্ত পরিমাণ দিন';
+  }
+
+  @override
+  String get driverPayLabel => 'ড্রাইভারের পাওনা';
+
+  @override
+  String get driverPayAuto => 'হিসাব করা';
+
+  @override
+  String get driverPayCustom => 'আপনার দেওয়া';
+
+  @override
+  String get resetToAuto => 'হিসাব করা পরিমাণ ব্যবহার করুন';
+
+  @override
+  String get profitLabel => 'লাভ';
+
+  @override
+  String get lossLabel => 'লোকসান';
+
+  @override
+  String get errFareRequired => 'ভাড়া দিন';
+
+  @override
+  String get errDistanceInvalid => 'সঠিক দূরত্ব দিন';
+
+  @override
+  String get errQtyInvalid => 'সঠিক পরিমাণ দিন';
+
+  @override
+  String get errOdoInvalid => 'সঠিক ওডোমিটার রিডিং দিন';
+
+  @override
+  String get errVehicleRequired => 'একটি গাড়ি বেছে নিন';
+
+  @override
+  String get repeatTrip => 'আবার একই ট্রিপ';
+
+  @override
+  String get addReturnLeg => 'ফিরতি ট্রিপ যোগ করুন';
+
+  @override
+  String get returnLegBadge => 'ফিরতি ট্রিপ';
+
+  @override
+  String get deleteTrip => 'ট্রিপ মুছুন';
+
+  @override
+  String get deleteTripTitle => 'ট্রিপটি মুছবেন?';
+
+  @override
+  String get deleteTripBody => 'ট্রিপ ও তার খরচ রিপোর্ট থেকে বাদ যাবে।';
+
+  @override
+  String get tripDeleted => 'ট্রিপ মুছে ফেলা হয়েছে';
+
+  @override
+  String get tripSaved => 'ট্রিপ সংরক্ষণ করা হয়েছে';
+
+  @override
+  String get tripNotFound => 'ট্রিপ পাওয়া যায়নি';
+
+  @override
+  String get filterPeriodAll => 'সব সময়';
+
+  @override
+  String get filterToday => 'আজ';
+
+  @override
+  String get filterThisMonth => 'এই মাস';
+
+  @override
+  String get filterLastMonth => 'গত মাস';
+
+  @override
+  String get filterVehicleAll => 'সব গাড়ি';
+
+  @override
+  String get noTripsMatch => 'এই ফিল্টারে কোনো ট্রিপ নেই।';
+
+  @override
+  String get vehicleExpenses => 'গাড়ির খরচ';
+
+  @override
+  String get vehicleExpensesEmptyTitle => 'এখনো কোনো খরচ নেই';
+
+  @override
+  String get vehicleExpensesEmptyMessage =>
+      'এই গাড়ির মেরামত, সার্ভিস, বীমা ও অন্যান্য খরচ এখানে লিখুন।';
+
+  @override
+  String get fuelEfficiency => 'জ্বালানি দক্ষতা';
+
+  @override
+  String fuelEffAverage(String value) {
+    return 'প্রতি লিটার / ঘনমিটারে $value কিমি';
+  }
+
+  @override
+  String fuelCostPerKm(String amount) {
+    return 'প্রতি কিমিতে $amount';
+  }
+
+  @override
+  String get fuelEffNeedMore =>
+      'দক্ষতা দেখতে পরিমাণ ও ওডোমিটারসহ দুটি জ্বালানির খরচ লিখুন।';
+
+  @override
+  String get expenseDeleteTitle => 'খরচটি মুছবেন?';
+
+  @override
+  String get expenseSaved => 'খরচ সংরক্ষণ করা হয়েছে';
+
+  @override
+  String get expenseDeleted => 'খরচ মুছে ফেলা হয়েছে';
+
+  @override
+  String get expenseCategories => 'খরচের খাত';
+
+  @override
+  String get addCategory => 'খাত যোগ করুন';
+
+  @override
+  String get renameCategory => 'নাম বদলান';
+
+  @override
+  String get categoriesHint =>
+      'আর্কাইভ করা খাত নতুন খরচে দেখা যাবে না, কিন্তু পুরনো হিসাব থাকবে।';
+
+  @override
+  String get errCategoryDuplicate => 'এই নামের একটি খাত আছে';
+
+  @override
+  String get errCategoryEmpty => 'একটি নাম দিন';
+
+  @override
+  String get unitKm => 'কিমি';
 }
