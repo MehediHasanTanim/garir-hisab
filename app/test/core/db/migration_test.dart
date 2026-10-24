@@ -12,6 +12,7 @@ import '../../generated_migrations/app/generated/schema_v4.dart' as v4;
 import '../../generated_migrations/app/generated/schema_v5.dart' as v5;
 import '../../generated_migrations/app/generated/schema_v6.dart' as v6;
 import '../../generated_migrations/app/generated/schema_v7.dart' as v7;
+import '../../generated_migrations/app/generated/schema_v8.dart' as v8;
 
 /// Data-preservation tests for real upgrades. The generated
 /// `test/generated_migrations/app/migration_test.dart` covers pure schema
@@ -214,6 +215,37 @@ void main() {
           'jama_allocations',
           'jama_deposits',
           'jama_pauses',
+        ]) {
+          expect(await newDb.customSelect('SELECT 1 FROM $t').get(), isEmpty);
+        }
+      },
+    );
+  });
+
+  test('v7 -> v8 adds the ledger tables and keeps data', () async {
+    await verifier.testWithDataIntegrity(
+      oldVersion: 7,
+      newVersion: 8,
+      createOld: v7.DatabaseAtV7.new,
+      createNew: v8.DatabaseAtV8.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch.customStatement(
+          'INSERT INTO vehicles (id, owner_id, created_at, updated_at, rev, '
+          'dirty, nickname, type, fuel_type, business_model, status, '
+          "archived) VALUES ('v1', 'local', 1, 1, 0, 0, 'Rahim CNG', 'cng', "
+          "'cng', 'jama', 'active', 0)",
+        );
+      },
+      validateItems: (newDb) async {
+        final rows = await newDb
+            .customSelect('SELECT nickname FROM vehicles')
+            .get();
+        expect(rows.single.read<String>('nickname'), 'Rahim CNG');
+        for (final t in [
+          'ledger_entries',
+          'ledger_payments',
+          'ledger_allocations',
         ]) {
           expect(await newDb.customSelect('SELECT 1 FROM $t').get(), isEmpty);
         }

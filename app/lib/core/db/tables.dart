@@ -314,3 +314,52 @@ class JamaPauses extends Table with SyncedColumns {
   TextColumn get mode => text()();
   TextColumn get note => text().nullable()();
 }
+
+/// Append-only journal of who owes whom, per source record. Rows are never
+/// changed or deleted; a change in what is owed is a new row (positive: the
+/// party owes the owner, negative: the owner owes the party). The balance of
+/// a party is the sum of its rows.
+@DataClassName('LedgerEntryRow')
+@TableIndex(name: 'ledger_by_party', columns: {#partyType, #partyId})
+@TableIndex(name: 'ledger_by_ref', columns: {#refType, #refId})
+class LedgerEntries extends Table with SyncedColumns {
+  /// driver | customer
+  TextColumn get partyType => text()();
+
+  /// Empty for unnamed customers.
+  TextColumn get partyId => text().withDefault(const Constant(''))();
+
+  /// jama | advance | trip | expense
+  TextColumn get refType => text()();
+  TextColumn get refId => text()();
+
+  /// accrual | adjust | reversal
+  TextColumn get kind => text()();
+  IntColumn get amountMinor => integer()();
+
+  /// The day the debt arose (for ageing).
+  IntColumn get occurredDay => integer()();
+}
+
+/// Money paid or received against dues. Append-only: undoing one adds a row
+/// with [reversesId] set and the opposite amounts.
+@DataClassName('LedgerPaymentRow')
+class LedgerPayments extends Table with SyncedColumns {
+  TextColumn get partyType => text()();
+  TextColumn get partyId => text().withDefault(const Constant(''))();
+
+  /// in (received from the party) | out (paid to the party)
+  TextColumn get direction => text()();
+  IntColumn get amountMinor => integer()();
+  IntColumn get day => integer()();
+  TextColumn get note => text().nullable()();
+  TextColumn get reversesId => text().nullable()();
+}
+
+@DataClassName('LedgerAllocationRow')
+class LedgerAllocations extends Table with SyncedColumns {
+  TextColumn get paymentId => text().references(LedgerPayments, #id)();
+  TextColumn get refType => text()();
+  TextColumn get refId => text()();
+  IntColumn get amountMinor => integer()();
+}

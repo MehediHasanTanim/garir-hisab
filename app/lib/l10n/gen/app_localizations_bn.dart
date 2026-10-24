@@ -1900,4 +1900,101 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get jamaErrGeneric => 'সেভ করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get duesTitle => 'বাকি হিসাব';
+
+  @override
+  String get duesEmpty => 'কারও কাছে কিছু পাওনা নেই, কাউকে কিছু দেওয়াও নেই।';
+
+  @override
+  String get duesCustomers => 'গ্রাহক (নাম ছাড়া)';
+
+  @override
+  String duesOwesYou(String amount) {
+    return 'আপনার পাবেন $amount';
+  }
+
+  @override
+  String duesYouOwe(String amount) {
+    return 'আপনি দেবেন $amount';
+  }
+
+  @override
+  String get duesYouAreOwed => 'তাদের কাছে পাওনা';
+
+  @override
+  String get duesTheyAreOwed => 'তাদের পাওনা';
+
+  @override
+  String get duesAge07 => '০–৭ দিন';
+
+  @override
+  String get duesAge830 => '৮–৩০ দিন';
+
+  @override
+  String get duesAge30 => '৩০ দিনের বেশি';
+
+  @override
+  String get duesOpenItems => 'যা বাকি আছে';
+
+  @override
+  String get duesTypeJama => 'জমা';
+
+  @override
+  String get duesTypeAdvance => 'অগ্রিম';
+
+  @override
+  String get duesTypeTrip => 'বাকি ভাড়া';
+
+  @override
+  String get duesTypeExpense => 'খরচ ফেরত';
+
+  @override
+  String get duesReceive => 'টাকা পেলাম';
+
+  @override
+  String get duesPay => 'টাকা দিলাম';
+
+  @override
+  String get duesPayTitle => 'পরিমাণ';
+
+  @override
+  String get duesPaymentDone => 'লেনদেন সেভ হয়েছে';
+
+  @override
+  String get duesAppliedOldest => 'সবচেয়ে পুরনো বাকি থেকে আগে কাটা হয়েছে।';
+
+  @override
+  String get duesRemind => 'রিমাইন্ডার পাঠান';
+
+  @override
+  String duesReminderText(String name, String amount) {
+    return '$name, আপনার কাছে ৳ $amount বাকি আছে। সুবিধামতো দিয়ে দেবেন। ধন্যবাদ।';
+  }
+
+  @override
+  String get duesStatement => 'হিসাব শেয়ার করুন';
+
+  @override
+  String duesStatementHeader(String name) {
+    return '$name-এর হিসাব';
+  }
+
+  @override
+  String duesStatementBalance(String amount) {
+    return 'মোট বাকি: $amount';
+  }
+
+  @override
+  String get duesErrExceeds => 'বাকির চেয়ে বেশি দেওয়া যাবে না।';
+
+  @override
+  String get duesErrNothing => 'এখানে এখন কিছু দেওয়ার নেই।';
+
+  @override
+  String get duesErrGeneric => 'সেভ করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get duesAdvanceNote => 'অগ্রিম পরের পেআউট থেকে কাটা হবে।';
 }

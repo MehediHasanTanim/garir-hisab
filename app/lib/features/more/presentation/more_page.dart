@@ -41,6 +41,11 @@ class MorePage extends ConsumerWidget {
               onTap: () => context.go('/more/sync'),
             ),
           KhataListTile(
+            icon: Icons.account_balance_wallet_outlined,
+            title: l10n.duesTitle,
+            onTap: () => context.go('/more/dues'),
+          ),
+          KhataListTile(
             icon: Icons.event_available_outlined,
             title: l10n.jamaReportTitle,
             onTap: () => context.go('/more/jama-report'),

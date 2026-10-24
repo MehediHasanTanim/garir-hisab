@@ -1902,4 +1902,101 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get jamaErrGeneric => 'Could not save. Please try again.';
+
+  @override
+  String get duesTitle => 'Dues';
+
+  @override
+  String get duesEmpty => 'Nobody owes anything.';
+
+  @override
+  String get duesCustomers => 'Customers (no name)';
+
+  @override
+  String duesOwesYou(String amount) {
+    return 'owes you $amount';
+  }
+
+  @override
+  String duesYouOwe(String amount) {
+    return 'you owe $amount';
+  }
+
+  @override
+  String get duesYouAreOwed => 'They owe you';
+
+  @override
+  String get duesTheyAreOwed => 'You owe them';
+
+  @override
+  String get duesAge07 => '0–7 days';
+
+  @override
+  String get duesAge830 => '8–30 days';
+
+  @override
+  String get duesAge30 => 'Over 30 days';
+
+  @override
+  String get duesOpenItems => 'What is open';
+
+  @override
+  String get duesTypeJama => 'Jama';
+
+  @override
+  String get duesTypeAdvance => 'Advance';
+
+  @override
+  String get duesTypeTrip => 'Unpaid fare';
+
+  @override
+  String get duesTypeExpense => 'Expense to reimburse';
+
+  @override
+  String get duesReceive => 'Receive payment';
+
+  @override
+  String get duesPay => 'Pay them';
+
+  @override
+  String get duesPayTitle => 'Amount';
+
+  @override
+  String get duesPaymentDone => 'Payment recorded';
+
+  @override
+  String get duesAppliedOldest => 'Applied to the oldest items first.';
+
+  @override
+  String get duesRemind => 'Send reminder';
+
+  @override
+  String duesReminderText(String name, String amount) {
+    return 'Hello $name, you have ৳ $amount due. Please pay when you can. Thank you.';
+  }
+
+  @override
+  String get duesStatement => 'Share statement';
+
+  @override
+  String duesStatementHeader(String name) {
+    return 'Statement for $name';
+  }
+
+  @override
+  String duesStatementBalance(String amount) {
+    return 'Balance: $amount';
+  }
+
+  @override
+  String get duesErrExceeds => 'That is more than is owed.';
+
+  @override
+  String get duesErrNothing => 'Nothing can be paid here right now.';
+
+  @override
+  String get duesErrGeneric => 'Could not save. Please try again.';
+
+  @override
+  String get duesAdvanceNote => 'Advances are recovered from the next payout.';
 }

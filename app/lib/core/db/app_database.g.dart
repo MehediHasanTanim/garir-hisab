@@ -15086,6 +15086,2281 @@ class JamaPausesCompanion extends UpdateCompanion<JamaPauseRow> {
   }
 }
 
+class $LedgerEntriesTable extends LedgerEntries
+    with TableInfo<$LedgerEntriesTable, LedgerEntryRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LedgerEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: newId,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('local'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<int> createdAt = GeneratedColumn<int>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<int> updatedAt = GeneratedColumn<int>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<int> deletedAt = GeneratedColumn<int>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revMeta = const VerificationMeta('rev');
+  @override
+  late final GeneratedColumn<int> rev = GeneratedColumn<int>(
+    'rev',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dirtyMeta = const VerificationMeta('dirty');
+  @override
+  late final GeneratedColumn<bool> dirty = GeneratedColumn<bool>(
+    'dirty',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("dirty" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _partyTypeMeta = const VerificationMeta(
+    'partyType',
+  );
+  @override
+  late final GeneratedColumn<String> partyType = GeneratedColumn<String>(
+    'party_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _refTypeMeta = const VerificationMeta(
+    'refType',
+  );
+  @override
+  late final GeneratedColumn<String> refType = GeneratedColumn<String>(
+    'ref_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refIdMeta = const VerificationMeta('refId');
+  @override
+  late final GeneratedColumn<String> refId = GeneratedColumn<String>(
+    'ref_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountMinorMeta = const VerificationMeta(
+    'amountMinor',
+  );
+  @override
+  late final GeneratedColumn<int> amountMinor = GeneratedColumn<int>(
+    'amount_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _occurredDayMeta = const VerificationMeta(
+    'occurredDay',
+  );
+  @override
+  late final GeneratedColumn<int> occurredDay = GeneratedColumn<int>(
+    'occurred_day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    partyType,
+    partyId,
+    refType,
+    refId,
+    kind,
+    amountMinor,
+    occurredDay,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'ledger_entries';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LedgerEntryRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('rev')) {
+      context.handle(
+        _revMeta,
+        rev.isAcceptableOrUnknown(data['rev']!, _revMeta),
+      );
+    }
+    if (data.containsKey('dirty')) {
+      context.handle(
+        _dirtyMeta,
+        dirty.isAcceptableOrUnknown(data['dirty']!, _dirtyMeta),
+      );
+    }
+    if (data.containsKey('party_type')) {
+      context.handle(
+        _partyTypeMeta,
+        partyType.isAcceptableOrUnknown(data['party_type']!, _partyTypeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_partyTypeMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    }
+    if (data.containsKey('ref_type')) {
+      context.handle(
+        _refTypeMeta,
+        refType.isAcceptableOrUnknown(data['ref_type']!, _refTypeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_refTypeMeta);
+    }
+    if (data.containsKey('ref_id')) {
+      context.handle(
+        _refIdMeta,
+        refId.isAcceptableOrUnknown(data['ref_id']!, _refIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_refIdMeta);
+    }
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_kindMeta);
+    }
+    if (data.containsKey('amount_minor')) {
+      context.handle(
+        _amountMinorMeta,
+        amountMinor.isAcceptableOrUnknown(
+          data['amount_minor']!,
+          _amountMinorMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountMinorMeta);
+    }
+    if (data.containsKey('occurred_day')) {
+      context.handle(
+        _occurredDayMeta,
+        occurredDay.isAcceptableOrUnknown(
+          data['occurred_day']!,
+          _occurredDayMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_occurredDayMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LedgerEntryRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LedgerEntryRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      rev: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rev'],
+      )!,
+      dirty: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}dirty'],
+      )!,
+      partyType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_type'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      )!,
+      refType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ref_type'],
+      )!,
+      refId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ref_id'],
+      )!,
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      amountMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_minor'],
+      )!,
+      occurredDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}occurred_day'],
+      )!,
+    );
+  }
+
+  @override
+  $LedgerEntriesTable createAlias(String alias) {
+    return $LedgerEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class LedgerEntryRow extends DataClass implements Insertable<LedgerEntryRow> {
+  final String id;
+
+  /// Tenant key. `local` until the user signs in and the data is claimed.
+  final String ownerId;
+
+  /// Epoch milliseconds, UTC.
+  final int createdAt;
+  final int updatedAt;
+
+  /// Tombstone; non-null means soft-deleted.
+  final int? deletedAt;
+
+  /// Local monotonic revision, bumped on every write.
+  final int rev;
+
+  /// True while the row has changes not yet pushed.
+  final bool dirty;
+
+  /// driver | customer
+  final String partyType;
+
+  /// Empty for unnamed customers.
+  final String partyId;
+
+  /// jama | advance | trip | expense
+  final String refType;
+  final String refId;
+
+  /// accrual | adjust | reversal
+  final String kind;
+  final int amountMinor;
+
+  /// The day the debt arose (for ageing).
+  final int occurredDay;
+  const LedgerEntryRow({
+    required this.id,
+    required this.ownerId,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.rev,
+    required this.dirty,
+    required this.partyType,
+    required this.partyId,
+    required this.refType,
+    required this.refId,
+    required this.kind,
+    required this.amountMinor,
+    required this.occurredDay,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['created_at'] = Variable<int>(createdAt);
+    map['updated_at'] = Variable<int>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<int>(deletedAt);
+    }
+    map['rev'] = Variable<int>(rev);
+    map['dirty'] = Variable<bool>(dirty);
+    map['party_type'] = Variable<String>(partyType);
+    map['party_id'] = Variable<String>(partyId);
+    map['ref_type'] = Variable<String>(refType);
+    map['ref_id'] = Variable<String>(refId);
+    map['kind'] = Variable<String>(kind);
+    map['amount_minor'] = Variable<int>(amountMinor);
+    map['occurred_day'] = Variable<int>(occurredDay);
+    return map;
+  }
+
+  LedgerEntriesCompanion toCompanion(bool nullToAbsent) {
+    return LedgerEntriesCompanion(
+      id: Value(id),
+      ownerId: Value(ownerId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      rev: Value(rev),
+      dirty: Value(dirty),
+      partyType: Value(partyType),
+      partyId: Value(partyId),
+      refType: Value(refType),
+      refId: Value(refId),
+      kind: Value(kind),
+      amountMinor: Value(amountMinor),
+      occurredDay: Value(occurredDay),
+    );
+  }
+
+  factory LedgerEntryRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LedgerEntryRow(
+      id: serializer.fromJson<String>(json['id']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      createdAt: serializer.fromJson<int>(json['createdAt']),
+      updatedAt: serializer.fromJson<int>(json['updatedAt']),
+      deletedAt: serializer.fromJson<int?>(json['deletedAt']),
+      rev: serializer.fromJson<int>(json['rev']),
+      dirty: serializer.fromJson<bool>(json['dirty']),
+      partyType: serializer.fromJson<String>(json['partyType']),
+      partyId: serializer.fromJson<String>(json['partyId']),
+      refType: serializer.fromJson<String>(json['refType']),
+      refId: serializer.fromJson<String>(json['refId']),
+      kind: serializer.fromJson<String>(json['kind']),
+      amountMinor: serializer.fromJson<int>(json['amountMinor']),
+      occurredDay: serializer.fromJson<int>(json['occurredDay']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'createdAt': serializer.toJson<int>(createdAt),
+      'updatedAt': serializer.toJson<int>(updatedAt),
+      'deletedAt': serializer.toJson<int?>(deletedAt),
+      'rev': serializer.toJson<int>(rev),
+      'dirty': serializer.toJson<bool>(dirty),
+      'partyType': serializer.toJson<String>(partyType),
+      'partyId': serializer.toJson<String>(partyId),
+      'refType': serializer.toJson<String>(refType),
+      'refId': serializer.toJson<String>(refId),
+      'kind': serializer.toJson<String>(kind),
+      'amountMinor': serializer.toJson<int>(amountMinor),
+      'occurredDay': serializer.toJson<int>(occurredDay),
+    };
+  }
+
+  LedgerEntryRow copyWith({
+    String? id,
+    String? ownerId,
+    int? createdAt,
+    int? updatedAt,
+    Value<int?> deletedAt = const Value.absent(),
+    int? rev,
+    bool? dirty,
+    String? partyType,
+    String? partyId,
+    String? refType,
+    String? refId,
+    String? kind,
+    int? amountMinor,
+    int? occurredDay,
+  }) => LedgerEntryRow(
+    id: id ?? this.id,
+    ownerId: ownerId ?? this.ownerId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    rev: rev ?? this.rev,
+    dirty: dirty ?? this.dirty,
+    partyType: partyType ?? this.partyType,
+    partyId: partyId ?? this.partyId,
+    refType: refType ?? this.refType,
+    refId: refId ?? this.refId,
+    kind: kind ?? this.kind,
+    amountMinor: amountMinor ?? this.amountMinor,
+    occurredDay: occurredDay ?? this.occurredDay,
+  );
+  LedgerEntryRow copyWithCompanion(LedgerEntriesCompanion data) {
+    return LedgerEntryRow(
+      id: data.id.present ? data.id.value : this.id,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      rev: data.rev.present ? data.rev.value : this.rev,
+      dirty: data.dirty.present ? data.dirty.value : this.dirty,
+      partyType: data.partyType.present ? data.partyType.value : this.partyType,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      refType: data.refType.present ? data.refType.value : this.refType,
+      refId: data.refId.present ? data.refId.value : this.refId,
+      kind: data.kind.present ? data.kind.value : this.kind,
+      amountMinor: data.amountMinor.present
+          ? data.amountMinor.value
+          : this.amountMinor,
+      occurredDay: data.occurredDay.present
+          ? data.occurredDay.value
+          : this.occurredDay,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LedgerEntryRow(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('partyType: $partyType, ')
+          ..write('partyId: $partyId, ')
+          ..write('refType: $refType, ')
+          ..write('refId: $refId, ')
+          ..write('kind: $kind, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('occurredDay: $occurredDay')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    partyType,
+    partyId,
+    refType,
+    refId,
+    kind,
+    amountMinor,
+    occurredDay,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LedgerEntryRow &&
+          other.id == this.id &&
+          other.ownerId == this.ownerId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt &&
+          other.rev == this.rev &&
+          other.dirty == this.dirty &&
+          other.partyType == this.partyType &&
+          other.partyId == this.partyId &&
+          other.refType == this.refType &&
+          other.refId == this.refId &&
+          other.kind == this.kind &&
+          other.amountMinor == this.amountMinor &&
+          other.occurredDay == this.occurredDay);
+}
+
+class LedgerEntriesCompanion extends UpdateCompanion<LedgerEntryRow> {
+  final Value<String> id;
+  final Value<String> ownerId;
+  final Value<int> createdAt;
+  final Value<int> updatedAt;
+  final Value<int?> deletedAt;
+  final Value<int> rev;
+  final Value<bool> dirty;
+  final Value<String> partyType;
+  final Value<String> partyId;
+  final Value<String> refType;
+  final Value<String> refId;
+  final Value<String> kind;
+  final Value<int> amountMinor;
+  final Value<int> occurredDay;
+  final Value<int> rowid;
+  const LedgerEntriesCompanion({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    this.partyType = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.refType = const Value.absent(),
+    this.refId = const Value.absent(),
+    this.kind = const Value.absent(),
+    this.amountMinor = const Value.absent(),
+    this.occurredDay = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LedgerEntriesCompanion.insert({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    required String partyType,
+    this.partyId = const Value.absent(),
+    required String refType,
+    required String refId,
+    required String kind,
+    required int amountMinor,
+    required int occurredDay,
+    this.rowid = const Value.absent(),
+  }) : partyType = Value(partyType),
+       refType = Value(refType),
+       refId = Value(refId),
+       kind = Value(kind),
+       amountMinor = Value(amountMinor),
+       occurredDay = Value(occurredDay);
+  static Insertable<LedgerEntryRow> custom({
+    Expression<String>? id,
+    Expression<String>? ownerId,
+    Expression<int>? createdAt,
+    Expression<int>? updatedAt,
+    Expression<int>? deletedAt,
+    Expression<int>? rev,
+    Expression<bool>? dirty,
+    Expression<String>? partyType,
+    Expression<String>? partyId,
+    Expression<String>? refType,
+    Expression<String>? refId,
+    Expression<String>? kind,
+    Expression<int>? amountMinor,
+    Expression<int>? occurredDay,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rev != null) 'rev': rev,
+      if (dirty != null) 'dirty': dirty,
+      if (partyType != null) 'party_type': partyType,
+      if (partyId != null) 'party_id': partyId,
+      if (refType != null) 'ref_type': refType,
+      if (refId != null) 'ref_id': refId,
+      if (kind != null) 'kind': kind,
+      if (amountMinor != null) 'amount_minor': amountMinor,
+      if (occurredDay != null) 'occurred_day': occurredDay,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LedgerEntriesCompanion copyWith({
+    Value<String>? id,
+    Value<String>? ownerId,
+    Value<int>? createdAt,
+    Value<int>? updatedAt,
+    Value<int?>? deletedAt,
+    Value<int>? rev,
+    Value<bool>? dirty,
+    Value<String>? partyType,
+    Value<String>? partyId,
+    Value<String>? refType,
+    Value<String>? refId,
+    Value<String>? kind,
+    Value<int>? amountMinor,
+    Value<int>? occurredDay,
+    Value<int>? rowid,
+  }) {
+    return LedgerEntriesCompanion(
+      id: id ?? this.id,
+      ownerId: ownerId ?? this.ownerId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rev: rev ?? this.rev,
+      dirty: dirty ?? this.dirty,
+      partyType: partyType ?? this.partyType,
+      partyId: partyId ?? this.partyId,
+      refType: refType ?? this.refType,
+      refId: refId ?? this.refId,
+      kind: kind ?? this.kind,
+      amountMinor: amountMinor ?? this.amountMinor,
+      occurredDay: occurredDay ?? this.occurredDay,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<int>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<int>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<int>(deletedAt.value);
+    }
+    if (rev.present) {
+      map['rev'] = Variable<int>(rev.value);
+    }
+    if (dirty.present) {
+      map['dirty'] = Variable<bool>(dirty.value);
+    }
+    if (partyType.present) {
+      map['party_type'] = Variable<String>(partyType.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (refType.present) {
+      map['ref_type'] = Variable<String>(refType.value);
+    }
+    if (refId.present) {
+      map['ref_id'] = Variable<String>(refId.value);
+    }
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (amountMinor.present) {
+      map['amount_minor'] = Variable<int>(amountMinor.value);
+    }
+    if (occurredDay.present) {
+      map['occurred_day'] = Variable<int>(occurredDay.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LedgerEntriesCompanion(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('partyType: $partyType, ')
+          ..write('partyId: $partyId, ')
+          ..write('refType: $refType, ')
+          ..write('refId: $refId, ')
+          ..write('kind: $kind, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('occurredDay: $occurredDay, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $LedgerPaymentsTable extends LedgerPayments
+    with TableInfo<$LedgerPaymentsTable, LedgerPaymentRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LedgerPaymentsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: newId,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('local'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<int> createdAt = GeneratedColumn<int>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<int> updatedAt = GeneratedColumn<int>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<int> deletedAt = GeneratedColumn<int>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revMeta = const VerificationMeta('rev');
+  @override
+  late final GeneratedColumn<int> rev = GeneratedColumn<int>(
+    'rev',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dirtyMeta = const VerificationMeta('dirty');
+  @override
+  late final GeneratedColumn<bool> dirty = GeneratedColumn<bool>(
+    'dirty',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("dirty" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _partyTypeMeta = const VerificationMeta(
+    'partyType',
+  );
+  @override
+  late final GeneratedColumn<String> partyType = GeneratedColumn<String>(
+    'party_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _partyIdMeta = const VerificationMeta(
+    'partyId',
+  );
+  @override
+  late final GeneratedColumn<String> partyId = GeneratedColumn<String>(
+    'party_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _directionMeta = const VerificationMeta(
+    'direction',
+  );
+  @override
+  late final GeneratedColumn<String> direction = GeneratedColumn<String>(
+    'direction',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountMinorMeta = const VerificationMeta(
+    'amountMinor',
+  );
+  @override
+  late final GeneratedColumn<int> amountMinor = GeneratedColumn<int>(
+    'amount_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _dayMeta = const VerificationMeta('day');
+  @override
+  late final GeneratedColumn<int> day = GeneratedColumn<int>(
+    'day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _reversesIdMeta = const VerificationMeta(
+    'reversesId',
+  );
+  @override
+  late final GeneratedColumn<String> reversesId = GeneratedColumn<String>(
+    'reverses_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    partyType,
+    partyId,
+    direction,
+    amountMinor,
+    day,
+    note,
+    reversesId,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'ledger_payments';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LedgerPaymentRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('rev')) {
+      context.handle(
+        _revMeta,
+        rev.isAcceptableOrUnknown(data['rev']!, _revMeta),
+      );
+    }
+    if (data.containsKey('dirty')) {
+      context.handle(
+        _dirtyMeta,
+        dirty.isAcceptableOrUnknown(data['dirty']!, _dirtyMeta),
+      );
+    }
+    if (data.containsKey('party_type')) {
+      context.handle(
+        _partyTypeMeta,
+        partyType.isAcceptableOrUnknown(data['party_type']!, _partyTypeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_partyTypeMeta);
+    }
+    if (data.containsKey('party_id')) {
+      context.handle(
+        _partyIdMeta,
+        partyId.isAcceptableOrUnknown(data['party_id']!, _partyIdMeta),
+      );
+    }
+    if (data.containsKey('direction')) {
+      context.handle(
+        _directionMeta,
+        direction.isAcceptableOrUnknown(data['direction']!, _directionMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_directionMeta);
+    }
+    if (data.containsKey('amount_minor')) {
+      context.handle(
+        _amountMinorMeta,
+        amountMinor.isAcceptableOrUnknown(
+          data['amount_minor']!,
+          _amountMinorMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountMinorMeta);
+    }
+    if (data.containsKey('day')) {
+      context.handle(
+        _dayMeta,
+        day.isAcceptableOrUnknown(data['day']!, _dayMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_dayMeta);
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    if (data.containsKey('reverses_id')) {
+      context.handle(
+        _reversesIdMeta,
+        reversesId.isAcceptableOrUnknown(data['reverses_id']!, _reversesIdMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LedgerPaymentRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LedgerPaymentRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      rev: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rev'],
+      )!,
+      dirty: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}dirty'],
+      )!,
+      partyType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_type'],
+      )!,
+      partyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}party_id'],
+      )!,
+      direction: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}direction'],
+      )!,
+      amountMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_minor'],
+      )!,
+      day: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}day'],
+      )!,
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+      reversesId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}reverses_id'],
+      ),
+    );
+  }
+
+  @override
+  $LedgerPaymentsTable createAlias(String alias) {
+    return $LedgerPaymentsTable(attachedDatabase, alias);
+  }
+}
+
+class LedgerPaymentRow extends DataClass
+    implements Insertable<LedgerPaymentRow> {
+  final String id;
+
+  /// Tenant key. `local` until the user signs in and the data is claimed.
+  final String ownerId;
+
+  /// Epoch milliseconds, UTC.
+  final int createdAt;
+  final int updatedAt;
+
+  /// Tombstone; non-null means soft-deleted.
+  final int? deletedAt;
+
+  /// Local monotonic revision, bumped on every write.
+  final int rev;
+
+  /// True while the row has changes not yet pushed.
+  final bool dirty;
+  final String partyType;
+  final String partyId;
+
+  /// in (received from the party) | out (paid to the party)
+  final String direction;
+  final int amountMinor;
+  final int day;
+  final String? note;
+  final String? reversesId;
+  const LedgerPaymentRow({
+    required this.id,
+    required this.ownerId,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.rev,
+    required this.dirty,
+    required this.partyType,
+    required this.partyId,
+    required this.direction,
+    required this.amountMinor,
+    required this.day,
+    this.note,
+    this.reversesId,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['created_at'] = Variable<int>(createdAt);
+    map['updated_at'] = Variable<int>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<int>(deletedAt);
+    }
+    map['rev'] = Variable<int>(rev);
+    map['dirty'] = Variable<bool>(dirty);
+    map['party_type'] = Variable<String>(partyType);
+    map['party_id'] = Variable<String>(partyId);
+    map['direction'] = Variable<String>(direction);
+    map['amount_minor'] = Variable<int>(amountMinor);
+    map['day'] = Variable<int>(day);
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    if (!nullToAbsent || reversesId != null) {
+      map['reverses_id'] = Variable<String>(reversesId);
+    }
+    return map;
+  }
+
+  LedgerPaymentsCompanion toCompanion(bool nullToAbsent) {
+    return LedgerPaymentsCompanion(
+      id: Value(id),
+      ownerId: Value(ownerId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      rev: Value(rev),
+      dirty: Value(dirty),
+      partyType: Value(partyType),
+      partyId: Value(partyId),
+      direction: Value(direction),
+      amountMinor: Value(amountMinor),
+      day: Value(day),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+      reversesId: reversesId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(reversesId),
+    );
+  }
+
+  factory LedgerPaymentRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LedgerPaymentRow(
+      id: serializer.fromJson<String>(json['id']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      createdAt: serializer.fromJson<int>(json['createdAt']),
+      updatedAt: serializer.fromJson<int>(json['updatedAt']),
+      deletedAt: serializer.fromJson<int?>(json['deletedAt']),
+      rev: serializer.fromJson<int>(json['rev']),
+      dirty: serializer.fromJson<bool>(json['dirty']),
+      partyType: serializer.fromJson<String>(json['partyType']),
+      partyId: serializer.fromJson<String>(json['partyId']),
+      direction: serializer.fromJson<String>(json['direction']),
+      amountMinor: serializer.fromJson<int>(json['amountMinor']),
+      day: serializer.fromJson<int>(json['day']),
+      note: serializer.fromJson<String?>(json['note']),
+      reversesId: serializer.fromJson<String?>(json['reversesId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'createdAt': serializer.toJson<int>(createdAt),
+      'updatedAt': serializer.toJson<int>(updatedAt),
+      'deletedAt': serializer.toJson<int?>(deletedAt),
+      'rev': serializer.toJson<int>(rev),
+      'dirty': serializer.toJson<bool>(dirty),
+      'partyType': serializer.toJson<String>(partyType),
+      'partyId': serializer.toJson<String>(partyId),
+      'direction': serializer.toJson<String>(direction),
+      'amountMinor': serializer.toJson<int>(amountMinor),
+      'day': serializer.toJson<int>(day),
+      'note': serializer.toJson<String?>(note),
+      'reversesId': serializer.toJson<String?>(reversesId),
+    };
+  }
+
+  LedgerPaymentRow copyWith({
+    String? id,
+    String? ownerId,
+    int? createdAt,
+    int? updatedAt,
+    Value<int?> deletedAt = const Value.absent(),
+    int? rev,
+    bool? dirty,
+    String? partyType,
+    String? partyId,
+    String? direction,
+    int? amountMinor,
+    int? day,
+    Value<String?> note = const Value.absent(),
+    Value<String?> reversesId = const Value.absent(),
+  }) => LedgerPaymentRow(
+    id: id ?? this.id,
+    ownerId: ownerId ?? this.ownerId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    rev: rev ?? this.rev,
+    dirty: dirty ?? this.dirty,
+    partyType: partyType ?? this.partyType,
+    partyId: partyId ?? this.partyId,
+    direction: direction ?? this.direction,
+    amountMinor: amountMinor ?? this.amountMinor,
+    day: day ?? this.day,
+    note: note.present ? note.value : this.note,
+    reversesId: reversesId.present ? reversesId.value : this.reversesId,
+  );
+  LedgerPaymentRow copyWithCompanion(LedgerPaymentsCompanion data) {
+    return LedgerPaymentRow(
+      id: data.id.present ? data.id.value : this.id,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      rev: data.rev.present ? data.rev.value : this.rev,
+      dirty: data.dirty.present ? data.dirty.value : this.dirty,
+      partyType: data.partyType.present ? data.partyType.value : this.partyType,
+      partyId: data.partyId.present ? data.partyId.value : this.partyId,
+      direction: data.direction.present ? data.direction.value : this.direction,
+      amountMinor: data.amountMinor.present
+          ? data.amountMinor.value
+          : this.amountMinor,
+      day: data.day.present ? data.day.value : this.day,
+      note: data.note.present ? data.note.value : this.note,
+      reversesId: data.reversesId.present
+          ? data.reversesId.value
+          : this.reversesId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LedgerPaymentRow(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('partyType: $partyType, ')
+          ..write('partyId: $partyId, ')
+          ..write('direction: $direction, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('day: $day, ')
+          ..write('note: $note, ')
+          ..write('reversesId: $reversesId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    partyType,
+    partyId,
+    direction,
+    amountMinor,
+    day,
+    note,
+    reversesId,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LedgerPaymentRow &&
+          other.id == this.id &&
+          other.ownerId == this.ownerId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt &&
+          other.rev == this.rev &&
+          other.dirty == this.dirty &&
+          other.partyType == this.partyType &&
+          other.partyId == this.partyId &&
+          other.direction == this.direction &&
+          other.amountMinor == this.amountMinor &&
+          other.day == this.day &&
+          other.note == this.note &&
+          other.reversesId == this.reversesId);
+}
+
+class LedgerPaymentsCompanion extends UpdateCompanion<LedgerPaymentRow> {
+  final Value<String> id;
+  final Value<String> ownerId;
+  final Value<int> createdAt;
+  final Value<int> updatedAt;
+  final Value<int?> deletedAt;
+  final Value<int> rev;
+  final Value<bool> dirty;
+  final Value<String> partyType;
+  final Value<String> partyId;
+  final Value<String> direction;
+  final Value<int> amountMinor;
+  final Value<int> day;
+  final Value<String?> note;
+  final Value<String?> reversesId;
+  final Value<int> rowid;
+  const LedgerPaymentsCompanion({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    this.partyType = const Value.absent(),
+    this.partyId = const Value.absent(),
+    this.direction = const Value.absent(),
+    this.amountMinor = const Value.absent(),
+    this.day = const Value.absent(),
+    this.note = const Value.absent(),
+    this.reversesId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LedgerPaymentsCompanion.insert({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    required String partyType,
+    this.partyId = const Value.absent(),
+    required String direction,
+    required int amountMinor,
+    required int day,
+    this.note = const Value.absent(),
+    this.reversesId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : partyType = Value(partyType),
+       direction = Value(direction),
+       amountMinor = Value(amountMinor),
+       day = Value(day);
+  static Insertable<LedgerPaymentRow> custom({
+    Expression<String>? id,
+    Expression<String>? ownerId,
+    Expression<int>? createdAt,
+    Expression<int>? updatedAt,
+    Expression<int>? deletedAt,
+    Expression<int>? rev,
+    Expression<bool>? dirty,
+    Expression<String>? partyType,
+    Expression<String>? partyId,
+    Expression<String>? direction,
+    Expression<int>? amountMinor,
+    Expression<int>? day,
+    Expression<String>? note,
+    Expression<String>? reversesId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rev != null) 'rev': rev,
+      if (dirty != null) 'dirty': dirty,
+      if (partyType != null) 'party_type': partyType,
+      if (partyId != null) 'party_id': partyId,
+      if (direction != null) 'direction': direction,
+      if (amountMinor != null) 'amount_minor': amountMinor,
+      if (day != null) 'day': day,
+      if (note != null) 'note': note,
+      if (reversesId != null) 'reverses_id': reversesId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LedgerPaymentsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? ownerId,
+    Value<int>? createdAt,
+    Value<int>? updatedAt,
+    Value<int?>? deletedAt,
+    Value<int>? rev,
+    Value<bool>? dirty,
+    Value<String>? partyType,
+    Value<String>? partyId,
+    Value<String>? direction,
+    Value<int>? amountMinor,
+    Value<int>? day,
+    Value<String?>? note,
+    Value<String?>? reversesId,
+    Value<int>? rowid,
+  }) {
+    return LedgerPaymentsCompanion(
+      id: id ?? this.id,
+      ownerId: ownerId ?? this.ownerId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rev: rev ?? this.rev,
+      dirty: dirty ?? this.dirty,
+      partyType: partyType ?? this.partyType,
+      partyId: partyId ?? this.partyId,
+      direction: direction ?? this.direction,
+      amountMinor: amountMinor ?? this.amountMinor,
+      day: day ?? this.day,
+      note: note ?? this.note,
+      reversesId: reversesId ?? this.reversesId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<int>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<int>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<int>(deletedAt.value);
+    }
+    if (rev.present) {
+      map['rev'] = Variable<int>(rev.value);
+    }
+    if (dirty.present) {
+      map['dirty'] = Variable<bool>(dirty.value);
+    }
+    if (partyType.present) {
+      map['party_type'] = Variable<String>(partyType.value);
+    }
+    if (partyId.present) {
+      map['party_id'] = Variable<String>(partyId.value);
+    }
+    if (direction.present) {
+      map['direction'] = Variable<String>(direction.value);
+    }
+    if (amountMinor.present) {
+      map['amount_minor'] = Variable<int>(amountMinor.value);
+    }
+    if (day.present) {
+      map['day'] = Variable<int>(day.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (reversesId.present) {
+      map['reverses_id'] = Variable<String>(reversesId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LedgerPaymentsCompanion(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('partyType: $partyType, ')
+          ..write('partyId: $partyId, ')
+          ..write('direction: $direction, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('day: $day, ')
+          ..write('note: $note, ')
+          ..write('reversesId: $reversesId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $LedgerAllocationsTable extends LedgerAllocations
+    with TableInfo<$LedgerAllocationsTable, LedgerAllocationRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LedgerAllocationsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: newId,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('local'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<int> createdAt = GeneratedColumn<int>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<int> updatedAt = GeneratedColumn<int>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<int> deletedAt = GeneratedColumn<int>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revMeta = const VerificationMeta('rev');
+  @override
+  late final GeneratedColumn<int> rev = GeneratedColumn<int>(
+    'rev',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dirtyMeta = const VerificationMeta('dirty');
+  @override
+  late final GeneratedColumn<bool> dirty = GeneratedColumn<bool>(
+    'dirty',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("dirty" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _paymentIdMeta = const VerificationMeta(
+    'paymentId',
+  );
+  @override
+  late final GeneratedColumn<String> paymentId = GeneratedColumn<String>(
+    'payment_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES ledger_payments (id)',
+    ),
+  );
+  static const VerificationMeta _refTypeMeta = const VerificationMeta(
+    'refType',
+  );
+  @override
+  late final GeneratedColumn<String> refType = GeneratedColumn<String>(
+    'ref_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _refIdMeta = const VerificationMeta('refId');
+  @override
+  late final GeneratedColumn<String> refId = GeneratedColumn<String>(
+    'ref_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountMinorMeta = const VerificationMeta(
+    'amountMinor',
+  );
+  @override
+  late final GeneratedColumn<int> amountMinor = GeneratedColumn<int>(
+    'amount_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    paymentId,
+    refType,
+    refId,
+    amountMinor,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'ledger_allocations';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LedgerAllocationRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('rev')) {
+      context.handle(
+        _revMeta,
+        rev.isAcceptableOrUnknown(data['rev']!, _revMeta),
+      );
+    }
+    if (data.containsKey('dirty')) {
+      context.handle(
+        _dirtyMeta,
+        dirty.isAcceptableOrUnknown(data['dirty']!, _dirtyMeta),
+      );
+    }
+    if (data.containsKey('payment_id')) {
+      context.handle(
+        _paymentIdMeta,
+        paymentId.isAcceptableOrUnknown(data['payment_id']!, _paymentIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_paymentIdMeta);
+    }
+    if (data.containsKey('ref_type')) {
+      context.handle(
+        _refTypeMeta,
+        refType.isAcceptableOrUnknown(data['ref_type']!, _refTypeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_refTypeMeta);
+    }
+    if (data.containsKey('ref_id')) {
+      context.handle(
+        _refIdMeta,
+        refId.isAcceptableOrUnknown(data['ref_id']!, _refIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_refIdMeta);
+    }
+    if (data.containsKey('amount_minor')) {
+      context.handle(
+        _amountMinorMeta,
+        amountMinor.isAcceptableOrUnknown(
+          data['amount_minor']!,
+          _amountMinorMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountMinorMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LedgerAllocationRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LedgerAllocationRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      rev: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rev'],
+      )!,
+      dirty: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}dirty'],
+      )!,
+      paymentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payment_id'],
+      )!,
+      refType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ref_type'],
+      )!,
+      refId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ref_id'],
+      )!,
+      amountMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_minor'],
+      )!,
+    );
+  }
+
+  @override
+  $LedgerAllocationsTable createAlias(String alias) {
+    return $LedgerAllocationsTable(attachedDatabase, alias);
+  }
+}
+
+class LedgerAllocationRow extends DataClass
+    implements Insertable<LedgerAllocationRow> {
+  final String id;
+
+  /// Tenant key. `local` until the user signs in and the data is claimed.
+  final String ownerId;
+
+  /// Epoch milliseconds, UTC.
+  final int createdAt;
+  final int updatedAt;
+
+  /// Tombstone; non-null means soft-deleted.
+  final int? deletedAt;
+
+  /// Local monotonic revision, bumped on every write.
+  final int rev;
+
+  /// True while the row has changes not yet pushed.
+  final bool dirty;
+  final String paymentId;
+  final String refType;
+  final String refId;
+  final int amountMinor;
+  const LedgerAllocationRow({
+    required this.id,
+    required this.ownerId,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.rev,
+    required this.dirty,
+    required this.paymentId,
+    required this.refType,
+    required this.refId,
+    required this.amountMinor,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['created_at'] = Variable<int>(createdAt);
+    map['updated_at'] = Variable<int>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<int>(deletedAt);
+    }
+    map['rev'] = Variable<int>(rev);
+    map['dirty'] = Variable<bool>(dirty);
+    map['payment_id'] = Variable<String>(paymentId);
+    map['ref_type'] = Variable<String>(refType);
+    map['ref_id'] = Variable<String>(refId);
+    map['amount_minor'] = Variable<int>(amountMinor);
+    return map;
+  }
+
+  LedgerAllocationsCompanion toCompanion(bool nullToAbsent) {
+    return LedgerAllocationsCompanion(
+      id: Value(id),
+      ownerId: Value(ownerId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      rev: Value(rev),
+      dirty: Value(dirty),
+      paymentId: Value(paymentId),
+      refType: Value(refType),
+      refId: Value(refId),
+      amountMinor: Value(amountMinor),
+    );
+  }
+
+  factory LedgerAllocationRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LedgerAllocationRow(
+      id: serializer.fromJson<String>(json['id']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      createdAt: serializer.fromJson<int>(json['createdAt']),
+      updatedAt: serializer.fromJson<int>(json['updatedAt']),
+      deletedAt: serializer.fromJson<int?>(json['deletedAt']),
+      rev: serializer.fromJson<int>(json['rev']),
+      dirty: serializer.fromJson<bool>(json['dirty']),
+      paymentId: serializer.fromJson<String>(json['paymentId']),
+      refType: serializer.fromJson<String>(json['refType']),
+      refId: serializer.fromJson<String>(json['refId']),
+      amountMinor: serializer.fromJson<int>(json['amountMinor']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'createdAt': serializer.toJson<int>(createdAt),
+      'updatedAt': serializer.toJson<int>(updatedAt),
+      'deletedAt': serializer.toJson<int?>(deletedAt),
+      'rev': serializer.toJson<int>(rev),
+      'dirty': serializer.toJson<bool>(dirty),
+      'paymentId': serializer.toJson<String>(paymentId),
+      'refType': serializer.toJson<String>(refType),
+      'refId': serializer.toJson<String>(refId),
+      'amountMinor': serializer.toJson<int>(amountMinor),
+    };
+  }
+
+  LedgerAllocationRow copyWith({
+    String? id,
+    String? ownerId,
+    int? createdAt,
+    int? updatedAt,
+    Value<int?> deletedAt = const Value.absent(),
+    int? rev,
+    bool? dirty,
+    String? paymentId,
+    String? refType,
+    String? refId,
+    int? amountMinor,
+  }) => LedgerAllocationRow(
+    id: id ?? this.id,
+    ownerId: ownerId ?? this.ownerId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    rev: rev ?? this.rev,
+    dirty: dirty ?? this.dirty,
+    paymentId: paymentId ?? this.paymentId,
+    refType: refType ?? this.refType,
+    refId: refId ?? this.refId,
+    amountMinor: amountMinor ?? this.amountMinor,
+  );
+  LedgerAllocationRow copyWithCompanion(LedgerAllocationsCompanion data) {
+    return LedgerAllocationRow(
+      id: data.id.present ? data.id.value : this.id,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      rev: data.rev.present ? data.rev.value : this.rev,
+      dirty: data.dirty.present ? data.dirty.value : this.dirty,
+      paymentId: data.paymentId.present ? data.paymentId.value : this.paymentId,
+      refType: data.refType.present ? data.refType.value : this.refType,
+      refId: data.refId.present ? data.refId.value : this.refId,
+      amountMinor: data.amountMinor.present
+          ? data.amountMinor.value
+          : this.amountMinor,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LedgerAllocationRow(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('paymentId: $paymentId, ')
+          ..write('refType: $refType, ')
+          ..write('refId: $refId, ')
+          ..write('amountMinor: $amountMinor')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    paymentId,
+    refType,
+    refId,
+    amountMinor,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LedgerAllocationRow &&
+          other.id == this.id &&
+          other.ownerId == this.ownerId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt &&
+          other.rev == this.rev &&
+          other.dirty == this.dirty &&
+          other.paymentId == this.paymentId &&
+          other.refType == this.refType &&
+          other.refId == this.refId &&
+          other.amountMinor == this.amountMinor);
+}
+
+class LedgerAllocationsCompanion extends UpdateCompanion<LedgerAllocationRow> {
+  final Value<String> id;
+  final Value<String> ownerId;
+  final Value<int> createdAt;
+  final Value<int> updatedAt;
+  final Value<int?> deletedAt;
+  final Value<int> rev;
+  final Value<bool> dirty;
+  final Value<String> paymentId;
+  final Value<String> refType;
+  final Value<String> refId;
+  final Value<int> amountMinor;
+  final Value<int> rowid;
+  const LedgerAllocationsCompanion({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    this.paymentId = const Value.absent(),
+    this.refType = const Value.absent(),
+    this.refId = const Value.absent(),
+    this.amountMinor = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LedgerAllocationsCompanion.insert({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    required String paymentId,
+    required String refType,
+    required String refId,
+    required int amountMinor,
+    this.rowid = const Value.absent(),
+  }) : paymentId = Value(paymentId),
+       refType = Value(refType),
+       refId = Value(refId),
+       amountMinor = Value(amountMinor);
+  static Insertable<LedgerAllocationRow> custom({
+    Expression<String>? id,
+    Expression<String>? ownerId,
+    Expression<int>? createdAt,
+    Expression<int>? updatedAt,
+    Expression<int>? deletedAt,
+    Expression<int>? rev,
+    Expression<bool>? dirty,
+    Expression<String>? paymentId,
+    Expression<String>? refType,
+    Expression<String>? refId,
+    Expression<int>? amountMinor,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rev != null) 'rev': rev,
+      if (dirty != null) 'dirty': dirty,
+      if (paymentId != null) 'payment_id': paymentId,
+      if (refType != null) 'ref_type': refType,
+      if (refId != null) 'ref_id': refId,
+      if (amountMinor != null) 'amount_minor': amountMinor,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LedgerAllocationsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? ownerId,
+    Value<int>? createdAt,
+    Value<int>? updatedAt,
+    Value<int?>? deletedAt,
+    Value<int>? rev,
+    Value<bool>? dirty,
+    Value<String>? paymentId,
+    Value<String>? refType,
+    Value<String>? refId,
+    Value<int>? amountMinor,
+    Value<int>? rowid,
+  }) {
+    return LedgerAllocationsCompanion(
+      id: id ?? this.id,
+      ownerId: ownerId ?? this.ownerId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rev: rev ?? this.rev,
+      dirty: dirty ?? this.dirty,
+      paymentId: paymentId ?? this.paymentId,
+      refType: refType ?? this.refType,
+      refId: refId ?? this.refId,
+      amountMinor: amountMinor ?? this.amountMinor,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<int>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<int>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<int>(deletedAt.value);
+    }
+    if (rev.present) {
+      map['rev'] = Variable<int>(rev.value);
+    }
+    if (dirty.present) {
+      map['dirty'] = Variable<bool>(dirty.value);
+    }
+    if (paymentId.present) {
+      map['payment_id'] = Variable<String>(paymentId.value);
+    }
+    if (refType.present) {
+      map['ref_type'] = Variable<String>(refType.value);
+    }
+    if (refId.present) {
+      map['ref_id'] = Variable<String>(refId.value);
+    }
+    if (amountMinor.present) {
+      map['amount_minor'] = Variable<int>(amountMinor.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LedgerAllocationsCompanion(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('paymentId: $paymentId, ')
+          ..write('refType: $refType, ')
+          ..write('refId: $refId, ')
+          ..write('amountMinor: $amountMinor, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -15114,6 +17389,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   );
   late final $JamaDepositsTable jamaDeposits = $JamaDepositsTable(this);
   late final $JamaPausesTable jamaPauses = $JamaPausesTable(this);
+  late final $LedgerEntriesTable ledgerEntries = $LedgerEntriesTable(this);
+  late final $LedgerPaymentsTable ledgerPayments = $LedgerPaymentsTable(this);
+  late final $LedgerAllocationsTable ledgerAllocations =
+      $LedgerAllocationsTable(this);
   late final Index tripsByVehicleTime = Index(
     'trips_by_vehicle_time',
     'CREATE INDEX trips_by_vehicle_time ON trips (vehicle_id, started_at)',
@@ -15133,6 +17412,14 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final Index rollupsByDay = Index(
     'rollups_by_day',
     'CREATE INDEX rollups_by_day ON daily_rollups (day)',
+  );
+  late final Index ledgerByParty = Index(
+    'ledger_by_party',
+    'CREATE INDEX ledger_by_party ON ledger_entries (party_type, party_id)',
+  );
+  late final Index ledgerByRef = Index(
+    'ledger_by_ref',
+    'CREATE INDEX ledger_by_ref ON ledger_entries (ref_type, ref_id)',
   );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -15159,11 +17446,16 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     jamaAllocations,
     jamaDeposits,
     jamaPauses,
+    ledgerEntries,
+    ledgerPayments,
+    ledgerAllocations,
     tripsByVehicleTime,
     tripsByDay,
     expensesByVehicleTime,
     expensesByTrip,
     rollupsByDay,
+    ledgerByParty,
+    ledgerByRef,
   ];
 }
 
@@ -27240,6 +29532,1327 @@ typedef $$JamaPausesTableProcessedTableManager =
       JamaPauseRow,
       PrefetchHooks Function({bool vehicleId})
     >;
+typedef $$LedgerEntriesTableCreateCompanionBuilder =
+    LedgerEntriesCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      required String partyType,
+      Value<String> partyId,
+      required String refType,
+      required String refId,
+      required String kind,
+      required int amountMinor,
+      required int occurredDay,
+      Value<int> rowid,
+    });
+typedef $$LedgerEntriesTableUpdateCompanionBuilder =
+    LedgerEntriesCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      Value<String> partyType,
+      Value<String> partyId,
+      Value<String> refType,
+      Value<String> refId,
+      Value<String> kind,
+      Value<int> amountMinor,
+      Value<int> occurredDay,
+      Value<int> rowid,
+    });
+
+class $$LedgerEntriesTableFilterComposer
+    extends Composer<_$AppDatabase, $LedgerEntriesTable> {
+  $$LedgerEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyType => $composableBuilder(
+    column: $table.partyType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refType => $composableBuilder(
+    column: $table.refType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get occurredDay => $composableBuilder(
+    column: $table.occurredDay,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$LedgerEntriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $LedgerEntriesTable> {
+  $$LedgerEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyType => $composableBuilder(
+    column: $table.partyType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refType => $composableBuilder(
+    column: $table.refType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get occurredDay => $composableBuilder(
+    column: $table.occurredDay,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$LedgerEntriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LedgerEntriesTable> {
+  $$LedgerEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get rev =>
+      $composableBuilder(column: $table.rev, builder: (column) => column);
+
+  GeneratedColumn<bool> get dirty =>
+      $composableBuilder(column: $table.dirty, builder: (column) => column);
+
+  GeneratedColumn<String> get partyType =>
+      $composableBuilder(column: $table.partyType, builder: (column) => column);
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get refType =>
+      $composableBuilder(column: $table.refType, builder: (column) => column);
+
+  GeneratedColumn<String> get refId =>
+      $composableBuilder(column: $table.refId, builder: (column) => column);
+
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get occurredDay => $composableBuilder(
+    column: $table.occurredDay,
+    builder: (column) => column,
+  );
+}
+
+class $$LedgerEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $LedgerEntriesTable,
+          LedgerEntryRow,
+          $$LedgerEntriesTableFilterComposer,
+          $$LedgerEntriesTableOrderingComposer,
+          $$LedgerEntriesTableAnnotationComposer,
+          $$LedgerEntriesTableCreateCompanionBuilder,
+          $$LedgerEntriesTableUpdateCompanionBuilder,
+          (
+            LedgerEntryRow,
+            BaseReferences<_$AppDatabase, $LedgerEntriesTable, LedgerEntryRow>,
+          ),
+          LedgerEntryRow,
+          PrefetchHooks Function()
+        > {
+  $$LedgerEntriesTableTableManager(_$AppDatabase db, $LedgerEntriesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LedgerEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LedgerEntriesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LedgerEntriesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                Value<String> partyType = const Value.absent(),
+                Value<String> partyId = const Value.absent(),
+                Value<String> refType = const Value.absent(),
+                Value<String> refId = const Value.absent(),
+                Value<String> kind = const Value.absent(),
+                Value<int> amountMinor = const Value.absent(),
+                Value<int> occurredDay = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LedgerEntriesCompanion(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                partyType: partyType,
+                partyId: partyId,
+                refType: refType,
+                refId: refId,
+                kind: kind,
+                amountMinor: amountMinor,
+                occurredDay: occurredDay,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                required String partyType,
+                Value<String> partyId = const Value.absent(),
+                required String refType,
+                required String refId,
+                required String kind,
+                required int amountMinor,
+                required int occurredDay,
+                Value<int> rowid = const Value.absent(),
+              }) => LedgerEntriesCompanion.insert(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                partyType: partyType,
+                partyId: partyId,
+                refType: refType,
+                refId: refId,
+                kind: kind,
+                amountMinor: amountMinor,
+                occurredDay: occurredDay,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$LedgerEntriesTable, LedgerEntryRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $LedgerEntriesTable,
+                    LedgerEntryRow
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$LedgerEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $LedgerEntriesTable,
+      LedgerEntryRow,
+      $$LedgerEntriesTableFilterComposer,
+      $$LedgerEntriesTableOrderingComposer,
+      $$LedgerEntriesTableAnnotationComposer,
+      $$LedgerEntriesTableCreateCompanionBuilder,
+      $$LedgerEntriesTableUpdateCompanionBuilder,
+      (
+        LedgerEntryRow,
+        BaseReferences<_$AppDatabase, $LedgerEntriesTable, LedgerEntryRow>,
+      ),
+      LedgerEntryRow,
+      PrefetchHooks Function()
+    >;
+typedef $$LedgerPaymentsTableCreateCompanionBuilder =
+    LedgerPaymentsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      required String partyType,
+      Value<String> partyId,
+      required String direction,
+      required int amountMinor,
+      required int day,
+      Value<String?> note,
+      Value<String?> reversesId,
+      Value<int> rowid,
+    });
+typedef $$LedgerPaymentsTableUpdateCompanionBuilder =
+    LedgerPaymentsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      Value<String> partyType,
+      Value<String> partyId,
+      Value<String> direction,
+      Value<int> amountMinor,
+      Value<int> day,
+      Value<String?> note,
+      Value<String?> reversesId,
+      Value<int> rowid,
+    });
+
+final class $$LedgerPaymentsTableReferences
+    extends
+        BaseReferences<_$AppDatabase, $LedgerPaymentsTable, LedgerPaymentRow> {
+  $$LedgerPaymentsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static MultiTypedResultKey<$LedgerAllocationsTable, List<LedgerAllocationRow>>
+  _ledgerAllocationsRefsTable(_$AppDatabase db) =>
+      MultiTypedResultKey.fromTable(
+        db.ledgerAllocations,
+        aliasName: 'ledger_payments__id__ledger_allocations__payment_id',
+      );
+
+  $$LedgerAllocationsTableProcessedTableManager get ledgerAllocationsRefs {
+    final manager = $$LedgerAllocationsTableTableManager(
+      $_db,
+      $_db.ledgerAllocations,
+    ).filter((f) => f.paymentId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _ledgerAllocationsRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$LedgerPaymentsTableFilterComposer
+    extends Composer<_$AppDatabase, $LedgerPaymentsTable> {
+  $$LedgerPaymentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyType => $composableBuilder(
+    column: $table.partyType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get direction => $composableBuilder(
+    column: $table.direction,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get day => $composableBuilder(
+    column: $table.day,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> ledgerAllocationsRefs(
+    Expression<bool> Function($$LedgerAllocationsTableFilterComposer f) f,
+  ) {
+    final $$LedgerAllocationsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.ledgerAllocations,
+      getReferencedColumn: (t) => t.paymentId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LedgerAllocationsTableFilterComposer(
+            $db: $db,
+            $table: $db.ledgerAllocations,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$LedgerPaymentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $LedgerPaymentsTable> {
+  $$LedgerPaymentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyType => $composableBuilder(
+    column: $table.partyType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get partyId => $composableBuilder(
+    column: $table.partyId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get direction => $composableBuilder(
+    column: $table.direction,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get day => $composableBuilder(
+    column: $table.day,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$LedgerPaymentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LedgerPaymentsTable> {
+  $$LedgerPaymentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get rev =>
+      $composableBuilder(column: $table.rev, builder: (column) => column);
+
+  GeneratedColumn<bool> get dirty =>
+      $composableBuilder(column: $table.dirty, builder: (column) => column);
+
+  GeneratedColumn<String> get partyType =>
+      $composableBuilder(column: $table.partyType, builder: (column) => column);
+
+  GeneratedColumn<String> get partyId =>
+      $composableBuilder(column: $table.partyId, builder: (column) => column);
+
+  GeneratedColumn<String> get direction =>
+      $composableBuilder(column: $table.direction, builder: (column) => column);
+
+  GeneratedColumn<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get day =>
+      $composableBuilder(column: $table.day, builder: (column) => column);
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<String> get reversesId => $composableBuilder(
+    column: $table.reversesId,
+    builder: (column) => column,
+  );
+
+  Expression<T> ledgerAllocationsRefs<T extends Object>(
+    Expression<T> Function($$LedgerAllocationsTableAnnotationComposer a) f,
+  ) {
+    final $$LedgerAllocationsTableAnnotationComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.ledgerAllocations,
+          getReferencedColumn: (t) => t.paymentId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$LedgerAllocationsTableAnnotationComposer(
+                $db: $db,
+                $table: $db.ledgerAllocations,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+}
+
+class $$LedgerPaymentsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $LedgerPaymentsTable,
+          LedgerPaymentRow,
+          $$LedgerPaymentsTableFilterComposer,
+          $$LedgerPaymentsTableOrderingComposer,
+          $$LedgerPaymentsTableAnnotationComposer,
+          $$LedgerPaymentsTableCreateCompanionBuilder,
+          $$LedgerPaymentsTableUpdateCompanionBuilder,
+          (LedgerPaymentRow, $$LedgerPaymentsTableReferences),
+          LedgerPaymentRow,
+          PrefetchHooks Function({bool ledgerAllocationsRefs})
+        > {
+  $$LedgerPaymentsTableTableManager(
+    _$AppDatabase db,
+    $LedgerPaymentsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LedgerPaymentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LedgerPaymentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LedgerPaymentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                Value<String> partyType = const Value.absent(),
+                Value<String> partyId = const Value.absent(),
+                Value<String> direction = const Value.absent(),
+                Value<int> amountMinor = const Value.absent(),
+                Value<int> day = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<String?> reversesId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LedgerPaymentsCompanion(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                partyType: partyType,
+                partyId: partyId,
+                direction: direction,
+                amountMinor: amountMinor,
+                day: day,
+                note: note,
+                reversesId: reversesId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                required String partyType,
+                Value<String> partyId = const Value.absent(),
+                required String direction,
+                required int amountMinor,
+                required int day,
+                Value<String?> note = const Value.absent(),
+                Value<String?> reversesId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LedgerPaymentsCompanion.insert(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                partyType: partyType,
+                partyId: partyId,
+                direction: direction,
+                amountMinor: amountMinor,
+                day: day,
+                note: note,
+                reversesId: reversesId,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$LedgerPaymentsTable, LedgerPaymentRow>(table),
+                  $$LedgerPaymentsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({ledgerAllocationsRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (ledgerAllocationsRefs) db.ledgerAllocations,
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (ledgerAllocationsRefs)
+                    await $_getPrefetchedData<
+                      LedgerPaymentRow,
+                      $LedgerPaymentsTable,
+                      LedgerAllocationRow
+                    >(
+                      currentTable: table,
+                      referencedTable: $$LedgerPaymentsTableReferences
+                          ._ledgerAllocationsRefsTable(db),
+                      managerFromTypedResult: (p0) =>
+                          $$LedgerPaymentsTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).ledgerAllocationsRefs,
+                      referencedItemsForCurrentItem: (item, referencedItems) =>
+                          referencedItems.where((e) => e.paymentId == item.id),
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$LedgerPaymentsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $LedgerPaymentsTable,
+      LedgerPaymentRow,
+      $$LedgerPaymentsTableFilterComposer,
+      $$LedgerPaymentsTableOrderingComposer,
+      $$LedgerPaymentsTableAnnotationComposer,
+      $$LedgerPaymentsTableCreateCompanionBuilder,
+      $$LedgerPaymentsTableUpdateCompanionBuilder,
+      (LedgerPaymentRow, $$LedgerPaymentsTableReferences),
+      LedgerPaymentRow,
+      PrefetchHooks Function({bool ledgerAllocationsRefs})
+    >;
+typedef $$LedgerAllocationsTableCreateCompanionBuilder =
+    LedgerAllocationsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      required String paymentId,
+      required String refType,
+      required String refId,
+      required int amountMinor,
+      Value<int> rowid,
+    });
+typedef $$LedgerAllocationsTableUpdateCompanionBuilder =
+    LedgerAllocationsCompanion Function({
+      Value<String> id,
+      Value<String> ownerId,
+      Value<int> createdAt,
+      Value<int> updatedAt,
+      Value<int?> deletedAt,
+      Value<int> rev,
+      Value<bool> dirty,
+      Value<String> paymentId,
+      Value<String> refType,
+      Value<String> refId,
+      Value<int> amountMinor,
+      Value<int> rowid,
+    });
+
+final class $$LedgerAllocationsTableReferences
+    extends
+        BaseReferences<
+          _$AppDatabase,
+          $LedgerAllocationsTable,
+          LedgerAllocationRow
+        > {
+  $$LedgerAllocationsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $LedgerPaymentsTable _paymentIdTable(_$AppDatabase db) => db
+      .ledgerPayments
+      .createAlias('ledger_allocations__payment_id__ledger_payments__id');
+
+  $$LedgerPaymentsTableProcessedTableManager get paymentId {
+    final $_column = $_itemColumn<String>('payment_id')!;
+
+    final manager = $$LedgerPaymentsTableTableManager(
+      $_db,
+      $_db.ledgerPayments,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_paymentIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$LedgerAllocationsTableFilterComposer
+    extends Composer<_$AppDatabase, $LedgerAllocationsTable> {
+  $$LedgerAllocationsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refType => $composableBuilder(
+    column: $table.refType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$LedgerPaymentsTableFilterComposer get paymentId {
+    final $$LedgerPaymentsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.paymentId,
+      referencedTable: $db.ledgerPayments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LedgerPaymentsTableFilterComposer(
+            $db: $db,
+            $table: $db.ledgerPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$LedgerAllocationsTableOrderingComposer
+    extends Composer<_$AppDatabase, $LedgerAllocationsTable> {
+  $$LedgerAllocationsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refType => $composableBuilder(
+    column: $table.refType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get refId => $composableBuilder(
+    column: $table.refId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$LedgerPaymentsTableOrderingComposer get paymentId {
+    final $$LedgerPaymentsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.paymentId,
+      referencedTable: $db.ledgerPayments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LedgerPaymentsTableOrderingComposer(
+            $db: $db,
+            $table: $db.ledgerPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$LedgerAllocationsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LedgerAllocationsTable> {
+  $$LedgerAllocationsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get rev =>
+      $composableBuilder(column: $table.rev, builder: (column) => column);
+
+  GeneratedColumn<bool> get dirty =>
+      $composableBuilder(column: $table.dirty, builder: (column) => column);
+
+  GeneratedColumn<String> get refType =>
+      $composableBuilder(column: $table.refType, builder: (column) => column);
+
+  GeneratedColumn<String> get refId =>
+      $composableBuilder(column: $table.refId, builder: (column) => column);
+
+  GeneratedColumn<int> get amountMinor => $composableBuilder(
+    column: $table.amountMinor,
+    builder: (column) => column,
+  );
+
+  $$LedgerPaymentsTableAnnotationComposer get paymentId {
+    final $$LedgerPaymentsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.paymentId,
+      referencedTable: $db.ledgerPayments,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$LedgerPaymentsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.ledgerPayments,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$LedgerAllocationsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $LedgerAllocationsTable,
+          LedgerAllocationRow,
+          $$LedgerAllocationsTableFilterComposer,
+          $$LedgerAllocationsTableOrderingComposer,
+          $$LedgerAllocationsTableAnnotationComposer,
+          $$LedgerAllocationsTableCreateCompanionBuilder,
+          $$LedgerAllocationsTableUpdateCompanionBuilder,
+          (LedgerAllocationRow, $$LedgerAllocationsTableReferences),
+          LedgerAllocationRow,
+          PrefetchHooks Function({bool paymentId})
+        > {
+  $$LedgerAllocationsTableTableManager(
+    _$AppDatabase db,
+    $LedgerAllocationsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LedgerAllocationsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LedgerAllocationsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LedgerAllocationsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                Value<String> paymentId = const Value.absent(),
+                Value<String> refType = const Value.absent(),
+                Value<String> refId = const Value.absent(),
+                Value<int> amountMinor = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LedgerAllocationsCompanion(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                paymentId: paymentId,
+                refType: refType,
+                refId: refId,
+                amountMinor: amountMinor,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                required String paymentId,
+                required String refType,
+                required String refId,
+                required int amountMinor,
+                Value<int> rowid = const Value.absent(),
+              }) => LedgerAllocationsCompanion.insert(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                paymentId: paymentId,
+                refType: refType,
+                refId: refId,
+                amountMinor: amountMinor,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$LedgerAllocationsTable, LedgerAllocationRow>(
+                    table,
+                  ),
+                  $$LedgerAllocationsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({paymentId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (paymentId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.paymentId,
+                        referencedTable: $$LedgerAllocationsTableReferences
+                            ._paymentIdTable(db),
+                        referencedColumn: $$LedgerAllocationsTableReferences
+                            ._paymentIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$LedgerAllocationsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $LedgerAllocationsTable,
+      LedgerAllocationRow,
+      $$LedgerAllocationsTableFilterComposer,
+      $$LedgerAllocationsTableOrderingComposer,
+      $$LedgerAllocationsTableAnnotationComposer,
+      $$LedgerAllocationsTableCreateCompanionBuilder,
+      $$LedgerAllocationsTableUpdateCompanionBuilder,
+      (LedgerAllocationRow, $$LedgerAllocationsTableReferences),
+      LedgerAllocationRow,
+      PrefetchHooks Function({bool paymentId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -27287,4 +30900,10 @@ class $AppDatabaseManager {
       $$JamaDepositsTableTableManager(_db, _db.jamaDeposits);
   $$JamaPausesTableTableManager get jamaPauses =>
       $$JamaPausesTableTableManager(_db, _db.jamaPauses);
+  $$LedgerEntriesTableTableManager get ledgerEntries =>
+      $$LedgerEntriesTableTableManager(_db, _db.ledgerEntries);
+  $$LedgerPaymentsTableTableManager get ledgerPayments =>
+      $$LedgerPaymentsTableTableManager(_db, _db.ledgerPayments);
+  $$LedgerAllocationsTableTableManager get ledgerAllocations =>
+      $$LedgerAllocationsTableTableManager(_db, _db.ledgerAllocations);
 }

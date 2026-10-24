@@ -13,6 +13,10 @@ class SharedFile {
 
 class FakeFileSharer implements FileSharer {
   final shared = <SharedFile>[];
+  final texts = <String>[];
+
+  @override
+  Future<void> shareText(String text) async => texts.add(text);
 
   @override
   Future<void> shareBytes({

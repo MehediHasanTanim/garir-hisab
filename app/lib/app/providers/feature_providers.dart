@@ -25,6 +25,7 @@ import 'package:vehicle_khata/features/expenses/data/expense_repository.dart';
 import 'package:vehicle_khata/features/expenses/domain/expense.dart';
 import 'package:vehicle_khata/features/export/data/data_export_service.dart';
 import 'package:vehicle_khata/features/jama/data/jama_repository.dart';
+import 'package:vehicle_khata/features/ledger/data/ledger_service.dart';
 import 'package:vehicle_khata/features/onboarding/data/onboarding_repository.dart';
 import 'package:vehicle_khata/features/onboarding/domain/onboarding_state.dart';
 import 'package:vehicle_khata/features/reports/data/report_service.dart';
@@ -60,6 +61,17 @@ final statementServiceProvider = Provider<StatementService>(
     ref.watch(advanceRepositoryProvider),
   ),
 );
+
+// ---- Dues ----------------------------------------------------------------
+
+final ledgerServiceProvider = Provider<LedgerService>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  return LedgerService(
+    db,
+    ref.watch(tripRepositoryProvider),
+    ref.watch(jamaRepositoryProvider),
+  );
+});
 
 // ---- Jama ----------------------------------------------------------------
 

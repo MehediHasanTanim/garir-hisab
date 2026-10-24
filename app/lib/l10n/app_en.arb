@@ -2660,5 +2660,149 @@
   "jamaErrGeneric": "Could not save. Please try again.",
   "@jamaErrGeneric": {
     "description": "jamaErrGeneric"
+  },
+  "duesTitle": "Dues",
+  "@duesTitle": {
+    "description": "duesTitle"
+  },
+  "duesEmpty": "Nobody owes anything.",
+  "@duesEmpty": {
+    "description": "duesEmpty"
+  },
+  "duesCustomers": "Customers (no name)",
+  "@duesCustomers": {
+    "description": "duesCustomers"
+  },
+  "duesOwesYou": "owes you {amount}",
+  "@duesOwesYou": {
+    "description": "duesOwesYou",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "duesYouOwe": "you owe {amount}",
+  "@duesYouOwe": {
+    "description": "duesYouOwe",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "duesYouAreOwed": "They owe you",
+  "@duesYouAreOwed": {
+    "description": "duesYouAreOwed"
+  },
+  "duesTheyAreOwed": "You owe them",
+  "@duesTheyAreOwed": {
+    "description": "duesTheyAreOwed"
+  },
+  "duesAge07": "0–7 days",
+  "@duesAge07": {
+    "description": "duesAge07"
+  },
+  "duesAge830": "8–30 days",
+  "@duesAge830": {
+    "description": "duesAge830"
+  },
+  "duesAge30": "Over 30 days",
+  "@duesAge30": {
+    "description": "duesAge30"
+  },
+  "duesOpenItems": "What is open",
+  "@duesOpenItems": {
+    "description": "duesOpenItems"
+  },
+  "duesTypeJama": "Jama",
+  "@duesTypeJama": {
+    "description": "duesTypeJama"
+  },
+  "duesTypeAdvance": "Advance",
+  "@duesTypeAdvance": {
+    "description": "duesTypeAdvance"
+  },
+  "duesTypeTrip": "Unpaid fare",
+  "@duesTypeTrip": {
+    "description": "duesTypeTrip"
+  },
+  "duesTypeExpense": "Expense to reimburse",
+  "@duesTypeExpense": {
+    "description": "duesTypeExpense"
+  },
+  "duesReceive": "Receive payment",
+  "@duesReceive": {
+    "description": "duesReceive"
+  },
+  "duesPay": "Pay them",
+  "@duesPay": {
+    "description": "duesPay"
+  },
+  "duesPayTitle": "Amount",
+  "@duesPayTitle": {
+    "description": "duesPayTitle"
+  },
+  "duesPaymentDone": "Payment recorded",
+  "@duesPaymentDone": {
+    "description": "duesPaymentDone"
+  },
+  "duesAppliedOldest": "Applied to the oldest items first.",
+  "@duesAppliedOldest": {
+    "description": "duesAppliedOldest"
+  },
+  "duesRemind": "Send reminder",
+  "@duesRemind": {
+    "description": "duesRemind"
+  },
+  "duesReminderText": "Hello {name}, you have ৳ {amount} due. Please pay when you can. Thank you.",
+  "@duesReminderText": {
+    "description": "duesReminderText",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "duesStatement": "Share statement",
+  "@duesStatement": {
+    "description": "duesStatement"
+  },
+  "duesStatementHeader": "Statement for {name}",
+  "@duesStatementHeader": {
+    "description": "duesStatementHeader",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "duesStatementBalance": "Balance: {amount}",
+  "@duesStatementBalance": {
+    "description": "duesStatementBalance",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "duesErrExceeds": "That is more than is owed.",
+  "@duesErrExceeds": {
+    "description": "duesErrExceeds"
+  },
+  "duesErrNothing": "Nothing can be paid here right now.",
+  "@duesErrNothing": {
+    "description": "duesErrNothing"
+  },
+  "duesErrGeneric": "Could not save. Please try again.",
+  "@duesErrGeneric": {
+    "description": "duesErrGeneric"
+  },
+  "duesAdvanceNote": "Advances are recovered from the next payout.",
+  "@duesAdvanceNote": {
+    "description": "duesAdvanceNote"
   }
 }

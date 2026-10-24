@@ -23,6 +23,8 @@ import 'package:vehicle_khata/features/gallery/presentation/gallery_page.dart';
 import 'package:vehicle_khata/features/home/presentation/home_page.dart';
 import 'package:vehicle_khata/features/jama/presentation/jama_page.dart';
 import 'package:vehicle_khata/features/jama/presentation/jama_report_page.dart';
+import 'package:vehicle_khata/features/ledger/domain/ledger_logic.dart';
+import 'package:vehicle_khata/features/ledger/presentation/dues_page.dart';
 import 'package:vehicle_khata/features/more/presentation/more_page.dart';
 import 'package:vehicle_khata/features/onboarding/presentation/onboarding_page.dart';
 import 'package:vehicle_khata/features/reports/presentation/reports_page.dart';
@@ -236,6 +238,24 @@ final routerProvider = Provider<GoRouter>((ref) {
                     builder: (_, _) => const AccountPage(),
                   ),
                   GoRoute(path: 'sync', builder: (_, _) => const SyncPage()),
+                  GoRoute(
+                    path: 'dues',
+                    builder: (_, _) => const DuesPage(),
+                    routes: [
+                      GoRoute(
+                        path: 'party',
+                        builder: (_, state) => PartyPage(
+                          party: Party(
+                            PartyType.values.byName(
+                              state.uri.queryParameters['type']!,
+                            ),
+                            state.uri.queryParameters['id'] ?? '',
+                          ),
+                          name: state.uri.queryParameters['name'] ?? '',
+                        ),
+                      ),
+                    ],
+                  ),
                   GoRoute(
                     path: 'jama-report',
                     builder: (_, _) => const JamaReportPage(),

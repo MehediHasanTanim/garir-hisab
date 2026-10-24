@@ -15,6 +15,7 @@ import 'package:vehicle_khata/features/expenses/data/category_repository.dart';
 import 'package:vehicle_khata/features/expenses/data/expense_repository.dart';
 import 'package:vehicle_khata/features/expenses/domain/expense.dart';
 import 'package:vehicle_khata/features/jama/data/jama_repository.dart';
+import 'package:vehicle_khata/features/ledger/data/ledger_service.dart';
 import 'package:vehicle_khata/features/reports/data/report_service.dart';
 import 'package:vehicle_khata/features/reports/data/rollup_service.dart';
 import 'package:vehicle_khata/features/trips/data/trip_repository.dart';
@@ -50,6 +51,7 @@ class Fixture {
       db,
       clock: clock ?? () => DateTime.utc(2026, 4, 1, 9),
     );
+    ledger = LedgerService(db, trips, jama);
     payouts = PayoutService(
       db,
       assignments,
@@ -73,6 +75,7 @@ class Fixture {
   late final DayLogRepository dayLogs;
   late final RollupService rollups;
   late final JamaRepository jama;
+  late final LedgerService ledger;
   late final ReportService reports;
   late final TripRepository trips;
   late final ExpenseRepository expenses;

@@ -22,6 +22,9 @@ const syncTableOrder = [
   'jama_allocations',
   'jama_deposits',
   'jama_pauses',
+  'ledger_entries',
+  'ledger_payments',
+  'ledger_allocations',
 ];
 
 /// Tables whose changes affect the derived daily rollups.

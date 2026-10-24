@@ -7,6 +7,9 @@ import 'package:share_plus/share_plus.dart';
 
 /// Hands a file to the system share sheet (WhatsApp, Drive, email...).
 abstract interface class FileSharer {
+  /// Opens the share sheet with plain text (WhatsApp, SMS...).
+  Future<void> shareText(String text);
+
   Future<void> shareBytes({
     required Uint8List bytes,
     required String fileName,
@@ -17,6 +20,10 @@ abstract interface class FileSharer {
 
 class SystemFileSharer implements FileSharer {
   const new();
+
+  @override
+  Future<void> shareText(String text) =>
+      SharePlus.instance.share(ShareParams(text: text));
 
   @override
   Future<void> shareBytes({

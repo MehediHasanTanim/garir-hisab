@@ -115,11 +115,15 @@ class RollupService {
   }
 
   Future<Set<(String, int, int)>> _activeMonths() async {
+    final jama = await _hasJama()
+        ? 'UNION SELECT vehicle_id, paid_day FROM jama_payments '
+              'WHERE deleted_at IS NULL'
+        : '';
     final rows = await _db.customSelect('''
 SELECT vehicle_id, trip_day AS day FROM trips WHERE deleted_at IS NULL
 UNION SELECT vehicle_id, log_day FROM day_logs WHERE deleted_at IS NULL
 UNION SELECT vehicle_id, spent_day FROM expenses WHERE deleted_at IS NULL
-UNION SELECT vehicle_id, paid_day FROM jama_payments WHERE deleted_at IS NULL
+$jama
 ''').get();
     return {
       for (final r in rows)
@@ -130,6 +134,15 @@ UNION SELECT vehicle_id, paid_day FROM jama_payments WHERE deleted_at IS NULL
         ),
     };
   }
+
+  /// Databases being upgraded step by step may not have the jama tables yet.
+  Future<bool> _hasJama() async =>
+      (await _db
+              .customSelect(
+                "SELECT 1 FROM sqlite_master WHERE name = 'jama_payments'",
+              )
+              .get())
+          .isNotEmpty;
 
   Future<void> _writeMonth(String vehicleId, int year, int month) async {
     final range = DayRange.month(year, month);
@@ -203,14 +216,15 @@ UNION SELECT vehicle_id, paid_day FROM jama_payments WHERE deleted_at IS NULL
     }
 
     // Jama is the owner's income on the day it is handed over.
-    final jama =
-        await (_db.select(_db.jamaPayments)..where(
-              (t) =>
-                  t.vehicleId.equals(vehicleId) &
-                  t.deletedAt.isNull() &
-                  t.paidDay.isBetweenValues(first, last),
-            ))
-            .get();
+    final jama = !await _hasJama()
+        ? <JamaPaymentRow>[]
+        : await (_db.select(_db.jamaPayments)..where(
+                (t) =>
+                    t.vehicleId.equals(vehicleId) &
+                    t.deletedAt.isNull() &
+                    t.paidDay.isBetweenValues(first, last),
+              ))
+              .get();
     for (final p in jama) {
       at(p.paidDay).collection += p.amountMinor;
     }

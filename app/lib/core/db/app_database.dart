@@ -48,6 +48,9 @@ QueryExecutor _openEncrypted(File file, String key) {
     JamaAllocations,
     JamaDeposits,
     JamaPauses,
+    LedgerEntries,
+    LedgerPayments,
+    LedgerAllocations,
   ],
 )
 class AppDatabase extends _$AppDatabase with SyncedHelpers {
@@ -71,7 +74,7 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
   new file(File file, {required String key}) : super(_openEncrypted(file, key));
 
   @override
-  int get schemaVersion => 7;
+  int get schemaVersion => 8;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -143,6 +146,13 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
         await m.createTable(schema.jamaAllocations);
         await m.createTable(schema.jamaDeposits);
         await m.createTable(schema.jamaPauses);
+      },
+      from7To8: (m, schema) async {
+        await m.createTable(schema.ledgerEntries);
+        await m.createIndex(schema.ledgerByParty);
+        await m.createIndex(schema.ledgerByRef);
+        await m.createTable(schema.ledgerPayments);
+        await m.createTable(schema.ledgerAllocations);
       },
     ),
     beforeOpen: (details) async {

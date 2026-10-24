@@ -3595,6 +3595,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not save. Please try again.'**
   String get jamaErrGeneric;
+
+  /// duesTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Dues'**
+  String get duesTitle;
+
+  /// duesEmpty
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody owes anything.'**
+  String get duesEmpty;
+
+  /// duesCustomers
+  ///
+  /// In en, this message translates to:
+  /// **'Customers (no name)'**
+  String get duesCustomers;
+
+  /// duesOwesYou
+  ///
+  /// In en, this message translates to:
+  /// **'owes you {amount}'**
+  String duesOwesYou(String amount);
+
+  /// duesYouOwe
+  ///
+  /// In en, this message translates to:
+  /// **'you owe {amount}'**
+  String duesYouOwe(String amount);
+
+  /// duesYouAreOwed
+  ///
+  /// In en, this message translates to:
+  /// **'They owe you'**
+  String get duesYouAreOwed;
+
+  /// duesTheyAreOwed
+  ///
+  /// In en, this message translates to:
+  /// **'You owe them'**
+  String get duesTheyAreOwed;
+
+  /// duesAge07
+  ///
+  /// In en, this message translates to:
+  /// **'0–7 days'**
+  String get duesAge07;
+
+  /// duesAge830
+  ///
+  /// In en, this message translates to:
+  /// **'8–30 days'**
+  String get duesAge830;
+
+  /// duesAge30
+  ///
+  /// In en, this message translates to:
+  /// **'Over 30 days'**
+  String get duesAge30;
+
+  /// duesOpenItems
+  ///
+  /// In en, this message translates to:
+  /// **'What is open'**
+  String get duesOpenItems;
+
+  /// duesTypeJama
+  ///
+  /// In en, this message translates to:
+  /// **'Jama'**
+  String get duesTypeJama;
+
+  /// duesTypeAdvance
+  ///
+  /// In en, this message translates to:
+  /// **'Advance'**
+  String get duesTypeAdvance;
+
+  /// duesTypeTrip
+  ///
+  /// In en, this message translates to:
+  /// **'Unpaid fare'**
+  String get duesTypeTrip;
+
+  /// duesTypeExpense
+  ///
+  /// In en, this message translates to:
+  /// **'Expense to reimburse'**
+  String get duesTypeExpense;
+
+  /// duesReceive
+  ///
+  /// In en, this message translates to:
+  /// **'Receive payment'**
+  String get duesReceive;
+
+  /// duesPay
+  ///
+  /// In en, this message translates to:
+  /// **'Pay them'**
+  String get duesPay;
+
+  /// duesPayTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get duesPayTitle;
+
+  /// duesPaymentDone
+  ///
+  /// In en, this message translates to:
+  /// **'Payment recorded'**
+  String get duesPaymentDone;
+
+  /// duesAppliedOldest
+  ///
+  /// In en, this message translates to:
+  /// **'Applied to the oldest items first.'**
+  String get duesAppliedOldest;
+
+  /// duesRemind
+  ///
+  /// In en, this message translates to:
+  /// **'Send reminder'**
+  String get duesRemind;
+
+  /// duesReminderText
+  ///
+  /// In en, this message translates to:
+  /// **'Hello {name}, you have ৳ {amount} due. Please pay when you can. Thank you.'**
+  String duesReminderText(String name, String amount);
+
+  /// duesStatement
+  ///
+  /// In en, this message translates to:
+  /// **'Share statement'**
+  String get duesStatement;
+
+  /// duesStatementHeader
+  ///
+  /// In en, this message translates to:
+  /// **'Statement for {name}'**
+  String duesStatementHeader(String name);
+
+  /// duesStatementBalance
+  ///
+  /// In en, this message translates to:
+  /// **'Balance: {amount}'**
+  String duesStatementBalance(String amount);
+
+  /// duesErrExceeds
+  ///
+  /// In en, this message translates to:
+  /// **'That is more than is owed.'**
+  String get duesErrExceeds;
+
+  /// duesErrNothing
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing can be paid here right now.'**
+  String get duesErrNothing;
+
+  /// duesErrGeneric
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save. Please try again.'**
+  String get duesErrGeneric;
+
+  /// duesAdvanceNote
+  ///
+  /// In en, this message translates to:
+  /// **'Advances are recovered from the next payout.'**
+  String get duesAdvanceNote;
 }
 
 class _AppLocalizationsDelegate
