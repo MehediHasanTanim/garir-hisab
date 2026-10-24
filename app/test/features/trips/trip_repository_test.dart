@@ -604,8 +604,8 @@ void main() {
     test('the trip and its audit row commit together', () async {
       final before = (await f.db.select(f.db.auditLogs).get()).length;
       await f.trips.create(draft(expenses: [_exp(100)]));
-      // one for the trip, one for the expense
-      expect((await f.db.select(f.db.auditLogs).get()).length, before + 2);
+      // the trip, its expense, and the driver being marked present
+      expect((await f.db.select(f.db.auditLogs).get()).length, before + 3);
     });
   });
 }

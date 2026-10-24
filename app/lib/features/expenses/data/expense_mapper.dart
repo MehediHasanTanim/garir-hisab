@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:vehicle_khata/core/db/app_database.dart';
 import 'package:vehicle_khata/core/money/money.dart';
+import 'package:vehicle_khata/core/time/calendar_day.dart';
 import 'package:vehicle_khata/features/expenses/domain/expense.dart';
 
 Expense expenseFromRow(ExpenseRow r) => Expense(
@@ -43,6 +44,7 @@ ExpensesCompanion expenseCompanion(
   receiptFile: Value(e.receiptFile),
   qtyMilli: Value(e.qtyMilli),
   odometerM: Value(e.odometerM),
+  spentDay: Value(CalendarDay.fromDate((e.spentAt ?? at).toLocal()).epochDay),
 );
 
 /// Comparable snapshot of an expense, for audit diffs. With [draft] it

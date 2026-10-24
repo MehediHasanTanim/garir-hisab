@@ -1967,5 +1967,210 @@
   "unitKm": "km",
   "@unitKm": {
     "description": "unitKm"
+  },
+  "todayWithVehicle": "Today · {vehicle}",
+  "@todayWithVehicle": {
+    "description": "todayWithVehicle",
+    "placeholders": {
+      "vehicle": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeToday": "Income today",
+  "@incomeToday": {
+    "description": "incomeToday"
+  },
+  "profitToday": "Profit today",
+  "@profitToday": {
+    "description": "profitToday"
+  },
+  "gasFuel": "Gas / fuel",
+  "@gasFuel": {
+    "description": "gasFuel"
+  },
+  "closeDay": "Close day",
+  "@closeDay": {
+    "description": "closeDay"
+  },
+  "incomeAdded": "Added {amount}",
+  "@incomeAdded": {
+    "description": "incomeAdded",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "undo": "Undo",
+  "@undo": {
+    "description": "undo"
+  },
+  "incomeUndone": "Undone",
+  "@incomeUndone": {
+    "description": "incomeUndone"
+  },
+  "closeDayTitle": "Close the day",
+  "@closeDayTitle": {
+    "description": "closeDayTitle"
+  },
+  "closeDayIncome": "Income",
+  "@closeDayIncome": {
+    "description": "closeDayIncome"
+  },
+  "closeDayRunning": "Running costs",
+  "@closeDayRunning": {
+    "description": "closeDayRunning"
+  },
+  "closeDayDriver": "Driver cost",
+  "@closeDayDriver": {
+    "description": "closeDayDriver"
+  },
+  "closeDayVehicleCosts": "Vehicle costs",
+  "@closeDayVehicleCosts": {
+    "description": "closeDayVehicleCosts"
+  },
+  "closeDayNet": "Net profit",
+  "@closeDayNet": {
+    "description": "closeDayNet"
+  },
+  "settlementTitle": "Settle with the driver",
+  "@settlementTitle": {
+    "description": "settlementTitle"
+  },
+  "settlementJama": "Collect jama {amount} from {driver} today.",
+  "@settlementJama": {
+    "description": "settlementJama",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "driver": {
+        "type": "String"
+      }
+    }
+  },
+  "settlementSalary": "{driver} is on a monthly salary, which builds up each day.",
+  "@settlementSalary": {
+    "description": "settlementSalary",
+    "placeholders": {
+      "driver": {
+        "type": "String"
+      }
+    }
+  },
+  "settlementDaily": "{driver} is paid per day worked. Record a payout when you pay.",
+  "@settlementDaily": {
+    "description": "settlementDaily",
+    "placeholders": {
+      "driver": {
+        "type": "String"
+      }
+    }
+  },
+  "settlementPerTrip": "{driver} is paid from trips. Record a payout when you pay.",
+  "@settlementPerTrip": {
+    "description": "settlementPerTrip",
+    "placeholders": {
+      "driver": {
+        "type": "String"
+      }
+    }
+  },
+  "settlementNone": "No driver settlement is due.",
+  "@settlementNone": {
+    "description": "settlementNone"
+  },
+  "periodWeek": "This week",
+  "@periodWeek": {
+    "description": "periodWeek"
+  },
+  "profitSummary": "Profit summary",
+  "@profitSummary": {
+    "description": "profitSummary"
+  },
+  "repIncome": "Income",
+  "@repIncome": {
+    "description": "repIncome"
+  },
+  "repRunning": "Running costs",
+  "@repRunning": {
+    "description": "repRunning"
+  },
+  "repDriver": "Driver cost",
+  "@repDriver": {
+    "description": "repDriver"
+  },
+  "repOperating": "Operating profit",
+  "@repOperating": {
+    "description": "repOperating"
+  },
+  "repVehicleCosts": "Vehicle costs",
+  "@repVehicleCosts": {
+    "description": "repVehicleCosts"
+  },
+  "repNet": "Net profit",
+  "@repNet": {
+    "description": "repNet"
+  },
+  "repReceivable": "Not yet received",
+  "@repReceivable": {
+    "description": "repReceivable"
+  },
+  "repPerTrip": "Per trip",
+  "@repPerTrip": {
+    "description": "repPerTrip"
+  },
+  "repPerDay": "Per working day",
+  "@repPerDay": {
+    "description": "repPerDay"
+  },
+  "vehiclesRanking": "Vehicles",
+  "@vehiclesRanking": {
+    "description": "vehiclesRanking"
+  },
+  "trendTitle": "Profit trend",
+  "@trendTitle": {
+    "description": "trendTitle"
+  },
+  "incomeVsCost": "Income and costs",
+  "@incomeVsCost": {
+    "description": "incomeVsCost"
+  },
+  "expenseMixTitle": "Where the money went",
+  "@expenseMixTitle": {
+    "description": "expenseMixTitle"
+  },
+  "noDataYet": "Nothing recorded for this period yet.",
+  "@noDataYet": {
+    "description": "noDataYet"
+  },
+  "amortizeFixed": "Spread vehicle costs over the month",
+  "@amortizeFixed": {
+    "description": "amortizeFixed"
+  },
+  "amortizeFixedHint": "Repairs, insurance and loan instalments are shared across the days of the month instead of the day they were paid.",
+  "@amortizeFixedHint": {
+    "description": "amortizeFixedHint"
+  },
+  "chartIncome": "Income",
+  "@chartIncome": {
+    "description": "chartIncome"
+  },
+  "chartCosts": "Costs",
+  "@chartCosts": {
+    "description": "chartCosts"
+  },
+  "chartProfit": "Profit",
+  "@chartProfit": {
+    "description": "chartProfit"
+  },
+  "generateDemo": "Generate demo data",
+  "@generateDemo": {
+    "description": "generateDemo"
+  },
+  "demoDone": "Demo data created",
+  "@demoDone": {
+    "description": "demoDone"
   }
 }

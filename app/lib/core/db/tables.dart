@@ -183,4 +183,46 @@ class Expenses extends Table with SyncedColumns {
 
   /// Odometer in metres.
   IntColumn get odometerM => integer().nullable()();
+
+  /// Local calendar day the money was spent (days since 1970-01-01).
+  IntColumn get spentDay => integer().withDefault(const Constant(0))();
+}
+
+/// One vehicle's income per day when trips are not logged one by one.
+@DataClassName('DayLogRow')
+class DayLogs extends Table with SyncedColumns {
+  TextColumn get vehicleId => text().references(Vehicles, #id)();
+  TextColumn get driverId => text().nullable().references(Drivers, #id)();
+  IntColumn get logDay => integer()();
+  IntColumn get collectionMinor => integer().withDefault(const Constant(0))();
+  IntColumn get distanceM => integer().nullable()();
+  IntColumn get hoursMin => integer().nullable()();
+  TextColumn get note => text().nullable()();
+
+  @override
+  List<Set<Column<Object>>> get uniqueKeys => [
+    {vehicleId, logDay},
+  ];
+}
+
+/// Per-vehicle, per-day totals derived from trips, day logs and expenses so
+/// that reports do not rescan raw rows. Local only (never synced); it can
+/// always be rebuilt from the source tables.
+@DataClassName('DailyRollupRow')
+@TableIndex(name: 'rollups_by_day', columns: {#day})
+class DailyRollups extends Table {
+  TextColumn get vehicleId => text()();
+  IntColumn get day => integer()();
+  IntColumn get trips => integer().withDefault(const Constant(0))();
+  IntColumn get fareMinor => integer().withDefault(const Constant(0))();
+  IntColumn get receivedMinor => integer().withDefault(const Constant(0))();
+  IntColumn get collectionMinor => integer().withDefault(const Constant(0))();
+  IntColumn get variableMinor => integer().withDefault(const Constant(0))();
+  IntColumn get fixedMinor => integer().withDefault(const Constant(0))();
+  IntColumn get fixedAmortizedMinor =>
+      integer().withDefault(const Constant(0))();
+  IntColumn get tripPayMinor => integer().withDefault(const Constant(0))();
+
+  @override
+  Set<Column<Object>> get primaryKey => {vehicleId, day};
 }

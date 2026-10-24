@@ -37,6 +37,7 @@ Future<ExpenseEditResult?> showExpenseEditor(
 }) {
   return showModalBottomSheet<ExpenseEditResult>(
     context: context,
+    useRootNavigator: true,
     isScrollControlled: true,
     showDragHandle: true,
     useSafeArea: true,
@@ -159,6 +160,7 @@ class _ExpenseEditorState extends ConsumerState<_ExpenseEditor> {
     final l10n = AppLocalizations.of(context);
     final choice = await showModalBottomSheet<String>(
       context: context,
+      useRootNavigator: true,
       showDragHandle: true,
       builder: (context) => SafeArea(
         child: Column(

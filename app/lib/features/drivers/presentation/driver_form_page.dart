@@ -128,6 +128,7 @@ class _DriverFormState extends ConsumerState<_DriverForm> {
     final l10n = AppLocalizations.of(context);
     final choice = await showModalBottomSheet<String>(
       context: context,
+      useRootNavigator: true,
       showDragHandle: true,
       builder: (context) => SafeArea(
         child: Column(

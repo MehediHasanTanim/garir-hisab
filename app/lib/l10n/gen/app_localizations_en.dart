@@ -1429,4 +1429,146 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unitKm => 'km';
+
+  @override
+  String todayWithVehicle(String vehicle) {
+    return 'Today · $vehicle';
+  }
+
+  @override
+  String get incomeToday => 'Income today';
+
+  @override
+  String get profitToday => 'Profit today';
+
+  @override
+  String get gasFuel => 'Gas / fuel';
+
+  @override
+  String get closeDay => 'Close day';
+
+  @override
+  String incomeAdded(String amount) {
+    return 'Added $amount';
+  }
+
+  @override
+  String get undo => 'Undo';
+
+  @override
+  String get incomeUndone => 'Undone';
+
+  @override
+  String get closeDayTitle => 'Close the day';
+
+  @override
+  String get closeDayIncome => 'Income';
+
+  @override
+  String get closeDayRunning => 'Running costs';
+
+  @override
+  String get closeDayDriver => 'Driver cost';
+
+  @override
+  String get closeDayVehicleCosts => 'Vehicle costs';
+
+  @override
+  String get closeDayNet => 'Net profit';
+
+  @override
+  String get settlementTitle => 'Settle with the driver';
+
+  @override
+  String settlementJama(String amount, String driver) {
+    return 'Collect jama $amount from $driver today.';
+  }
+
+  @override
+  String settlementSalary(String driver) {
+    return '$driver is on a monthly salary, which builds up each day.';
+  }
+
+  @override
+  String settlementDaily(String driver) {
+    return '$driver is paid per day worked. Record a payout when you pay.';
+  }
+
+  @override
+  String settlementPerTrip(String driver) {
+    return '$driver is paid from trips. Record a payout when you pay.';
+  }
+
+  @override
+  String get settlementNone => 'No driver settlement is due.';
+
+  @override
+  String get periodWeek => 'This week';
+
+  @override
+  String get profitSummary => 'Profit summary';
+
+  @override
+  String get repIncome => 'Income';
+
+  @override
+  String get repRunning => 'Running costs';
+
+  @override
+  String get repDriver => 'Driver cost';
+
+  @override
+  String get repOperating => 'Operating profit';
+
+  @override
+  String get repVehicleCosts => 'Vehicle costs';
+
+  @override
+  String get repNet => 'Net profit';
+
+  @override
+  String get repReceivable => 'Not yet received';
+
+  @override
+  String get repPerTrip => 'Per trip';
+
+  @override
+  String get repPerDay => 'Per working day';
+
+  @override
+  String get vehiclesRanking => 'Vehicles';
+
+  @override
+  String get trendTitle => 'Profit trend';
+
+  @override
+  String get incomeVsCost => 'Income and costs';
+
+  @override
+  String get expenseMixTitle => 'Where the money went';
+
+  @override
+  String get noDataYet => 'Nothing recorded for this period yet.';
+
+  @override
+  String get amortizeFixed => 'Spread vehicle costs over the month';
+
+  @override
+  String get amortizeFixedHint =>
+      'Repairs, insurance and loan instalments are shared across the days of the month instead of the day they were paid.';
+
+  @override
+  String get chartIncome => 'Income';
+
+  @override
+  String get chartCosts => 'Costs';
+
+  @override
+  String get chartProfit => 'Profit';
+
+  @override
+  String get generateDemo => 'Generate demo data';
+
+  @override
+  String get demoDone => 'Demo data created';
 }

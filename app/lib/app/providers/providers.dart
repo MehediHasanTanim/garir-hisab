@@ -1,10 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vehicle_khata/app/flavor.dart';
 import 'package:vehicle_khata/core/db/app_database.dart';
 import 'package:vehicle_khata/core/db/database_key_store.dart';
 import 'package:vehicle_khata/core/money/number_formatter.dart';
 import 'package:vehicle_khata/core/settings/app_settings.dart';
 import 'package:vehicle_khata/core/settings/settings_repository.dart';
+
+/// The running flavor; development tools are hidden in `prod`.
+final flavorProvider = Provider<Flavor>((ref) => Flavor.prod);
 
 /// Must be overridden at startup with the loaded instance.
 final sharedPreferencesProvider = Provider<SharedPreferences>(
@@ -46,6 +50,8 @@ class SettingsNotifier extends Notifier<AppSettings> {
       _update(state.copyWith(grouping: v));
   Future<void> setProfitView(ProfitView v) =>
       _update(state.copyWith(profitView: v));
+  Future<void> setAmortizeFixed({required bool value}) =>
+      _update(state.copyWith(amortizeFixed: value));
 }
 
 final settingsProvider = NotifierProvider<SettingsNotifier, AppSettings>(

@@ -11,6 +11,7 @@ class SettingsRepository {
   static const _numerals = 'settings.numerals';
   static const _grouping = 'settings.grouping';
   static const _profitView = 'settings.profitView';
+  static const _amortize = 'settings.amortizeFixed';
 
   final SharedPreferences _prefs;
 
@@ -30,6 +31,7 @@ class SettingsRepository {
       profitView:
           _enum(ProfitView.values, _prefs.getString(_profitView)) ??
           defaults.profitView,
+      amortizeFixed: _prefs.getBool(_amortize) ?? defaults.amortizeFixed,
     );
   }
 
@@ -38,6 +40,7 @@ class SettingsRepository {
     await _prefs.setString(_numerals, s.numerals.name);
     await _prefs.setString(_grouping, s.grouping.name);
     await _prefs.setString(_profitView, s.profitView.name);
+    await _prefs.setBool(_amortize, s.amortizeFixed);
   }
 
   static T? _enum<T extends Enum>(List<T> values, String? name) {

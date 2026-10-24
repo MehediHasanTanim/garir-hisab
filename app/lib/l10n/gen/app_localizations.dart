@@ -2755,6 +2755,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'km'**
   String get unitKm;
+
+  /// todayWithVehicle
+  ///
+  /// In en, this message translates to:
+  /// **'Today · {vehicle}'**
+  String todayWithVehicle(String vehicle);
+
+  /// incomeToday
+  ///
+  /// In en, this message translates to:
+  /// **'Income today'**
+  String get incomeToday;
+
+  /// profitToday
+  ///
+  /// In en, this message translates to:
+  /// **'Profit today'**
+  String get profitToday;
+
+  /// gasFuel
+  ///
+  /// In en, this message translates to:
+  /// **'Gas / fuel'**
+  String get gasFuel;
+
+  /// closeDay
+  ///
+  /// In en, this message translates to:
+  /// **'Close day'**
+  String get closeDay;
+
+  /// incomeAdded
+  ///
+  /// In en, this message translates to:
+  /// **'Added {amount}'**
+  String incomeAdded(String amount);
+
+  /// undo
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get undo;
+
+  /// incomeUndone
+  ///
+  /// In en, this message translates to:
+  /// **'Undone'**
+  String get incomeUndone;
+
+  /// closeDayTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Close the day'**
+  String get closeDayTitle;
+
+  /// closeDayIncome
+  ///
+  /// In en, this message translates to:
+  /// **'Income'**
+  String get closeDayIncome;
+
+  /// closeDayRunning
+  ///
+  /// In en, this message translates to:
+  /// **'Running costs'**
+  String get closeDayRunning;
+
+  /// closeDayDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Driver cost'**
+  String get closeDayDriver;
+
+  /// closeDayVehicleCosts
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle costs'**
+  String get closeDayVehicleCosts;
+
+  /// closeDayNet
+  ///
+  /// In en, this message translates to:
+  /// **'Net profit'**
+  String get closeDayNet;
+
+  /// settlementTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Settle with the driver'**
+  String get settlementTitle;
+
+  /// settlementJama
+  ///
+  /// In en, this message translates to:
+  /// **'Collect jama {amount} from {driver} today.'**
+  String settlementJama(String amount, String driver);
+
+  /// settlementSalary
+  ///
+  /// In en, this message translates to:
+  /// **'{driver} is on a monthly salary, which builds up each day.'**
+  String settlementSalary(String driver);
+
+  /// settlementDaily
+  ///
+  /// In en, this message translates to:
+  /// **'{driver} is paid per day worked. Record a payout when you pay.'**
+  String settlementDaily(String driver);
+
+  /// settlementPerTrip
+  ///
+  /// In en, this message translates to:
+  /// **'{driver} is paid from trips. Record a payout when you pay.'**
+  String settlementPerTrip(String driver);
+
+  /// settlementNone
+  ///
+  /// In en, this message translates to:
+  /// **'No driver settlement is due.'**
+  String get settlementNone;
+
+  /// periodWeek
+  ///
+  /// In en, this message translates to:
+  /// **'This week'**
+  String get periodWeek;
+
+  /// profitSummary
+  ///
+  /// In en, this message translates to:
+  /// **'Profit summary'**
+  String get profitSummary;
+
+  /// repIncome
+  ///
+  /// In en, this message translates to:
+  /// **'Income'**
+  String get repIncome;
+
+  /// repRunning
+  ///
+  /// In en, this message translates to:
+  /// **'Running costs'**
+  String get repRunning;
+
+  /// repDriver
+  ///
+  /// In en, this message translates to:
+  /// **'Driver cost'**
+  String get repDriver;
+
+  /// repOperating
+  ///
+  /// In en, this message translates to:
+  /// **'Operating profit'**
+  String get repOperating;
+
+  /// repVehicleCosts
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle costs'**
+  String get repVehicleCosts;
+
+  /// repNet
+  ///
+  /// In en, this message translates to:
+  /// **'Net profit'**
+  String get repNet;
+
+  /// repReceivable
+  ///
+  /// In en, this message translates to:
+  /// **'Not yet received'**
+  String get repReceivable;
+
+  /// repPerTrip
+  ///
+  /// In en, this message translates to:
+  /// **'Per trip'**
+  String get repPerTrip;
+
+  /// repPerDay
+  ///
+  /// In en, this message translates to:
+  /// **'Per working day'**
+  String get repPerDay;
+
+  /// vehiclesRanking
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicles'**
+  String get vehiclesRanking;
+
+  /// trendTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Profit trend'**
+  String get trendTitle;
+
+  /// incomeVsCost
+  ///
+  /// In en, this message translates to:
+  /// **'Income and costs'**
+  String get incomeVsCost;
+
+  /// expenseMixTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Where the money went'**
+  String get expenseMixTitle;
+
+  /// noDataYet
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing recorded for this period yet.'**
+  String get noDataYet;
+
+  /// amortizeFixed
+  ///
+  /// In en, this message translates to:
+  /// **'Spread vehicle costs over the month'**
+  String get amortizeFixed;
+
+  /// amortizeFixedHint
+  ///
+  /// In en, this message translates to:
+  /// **'Repairs, insurance and loan instalments are shared across the days of the month instead of the day they were paid.'**
+  String get amortizeFixedHint;
+
+  /// chartIncome
+  ///
+  /// In en, this message translates to:
+  /// **'Income'**
+  String get chartIncome;
+
+  /// chartCosts
+  ///
+  /// In en, this message translates to:
+  /// **'Costs'**
+  String get chartCosts;
+
+  /// chartProfit
+  ///
+  /// In en, this message translates to:
+  /// **'Profit'**
+  String get chartProfit;
+
+  /// generateDemo
+  ///
+  /// In en, this message translates to:
+  /// **'Generate demo data'**
+  String get generateDemo;
+
+  /// demoDone
+  ///
+  /// In en, this message translates to:
+  /// **'Demo data created'**
+  String get demoDone;
 }
 
 class _AppLocalizationsDelegate

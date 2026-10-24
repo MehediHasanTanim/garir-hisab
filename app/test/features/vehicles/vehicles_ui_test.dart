@@ -34,6 +34,9 @@ Future<void> _openMenu(WidgetTester tester, String vehicle) async {
     of: find.text(vehicle),
     matching: find.byType(ListTile),
   );
+  // The Today card sits above the list, so the tile may start off-screen.
+  await tester.ensureVisible(tile);
+  await tester.pumpAndSettle();
   await tester.tap(
     find.descendant(of: tile, matching: find.byIcon(Icons.more_vert)),
   );
@@ -261,6 +264,8 @@ void main() {
         expect(find.text('Rahim CNG'), findsOneWidget);
         expect(find.text('Archived'), findsOneWidget);
 
+        // The "archived" snackbar would cover the bottom of the menu.
+        await tester.pump(const Duration(seconds: 6));
         await _openMenu(tester, 'Rahim CNG');
         await _tap(tester, 'Restore');
         expect(find.text('Vehicle restored'), findsOneWidget);
@@ -297,6 +302,8 @@ void main() {
       tester,
     ) async {
       final app = await seeded(tester);
+      await tester.ensureVisible(find.text('Rahim CNG'));
+      await tester.pumpAndSettle();
       await _tap(tester, 'Rahim CNG');
       expect(find.text('Edit vehicle'), findsOneWidget);
       expect(find.widgetWithText(TextFormField, 'Rahim CNG'), findsOneWidget);

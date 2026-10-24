@@ -9,9 +9,11 @@ import 'package:vehicle_khata/core/db/database_key_store.dart';
 import 'package:vehicle_khata/core/db/ids.dart';
 import 'package:vehicle_khata/core/db/synced_repository.dart';
 import 'package:vehicle_khata/core/db/tables.dart';
+import 'package:vehicle_khata/core/time/calendar_day.dart';
 import 'package:vehicle_khata/features/drivers/domain/attendance.dart';
 import 'package:vehicle_khata/features/drivers/domain/driver.dart';
 import 'package:vehicle_khata/features/expenses/domain/expense.dart';
+import 'package:vehicle_khata/features/reports/data/rollup_service.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle_enums.dart';
 
 part 'app_database.g.dart';
@@ -37,6 +39,8 @@ QueryExecutor _openEncrypted(File file, String key) {
     ExpenseCategories,
     Trips,
     Expenses,
+    DayLogs,
+    DailyRollups,
   ],
 )
 class AppDatabase extends _$AppDatabase with SyncedHelpers {
@@ -60,7 +64,7 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
   new file(File file, {required String key}) : super(_openEncrypted(file, key));
 
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 5;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -86,9 +90,34 @@ class AppDatabase extends _$AppDatabase with SyncedHelpers {
         await m.createIndex(schema.expensesByVehicleTime);
         await m.createIndex(schema.expensesByTrip);
       },
+      from4To5: (m, schema) async {
+        await m.addColumn(schema.expenses, schema.expenses.spentDay);
+        await m.createTable(schema.dayLogs);
+        await m.createTable(schema.dailyRollups);
+        await m.createIndex(schema.rollupsByDay);
+        // Fill in the new day column from each expense's time, using the
+        // phone's own timezone (SQL cannot know it).
+        final rows = await customSelect('SELECT id, spent_at FROM expenses')
+            .get();
+        for (final r in rows) {
+          final local = DateTime.fromMillisecondsSinceEpoch(
+            r.read<int>('spent_at'),
+            isUtc: true,
+          ).toLocal();
+          await customStatement(
+            'UPDATE expenses SET spent_day = ? WHERE id = ?',
+            [CalendarDay.fromDate(local).epochDay, r.read<String>('id')],
+          );
+        }
+      },
     ),
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
+      // Rollups are derived data: build them for databases that predate them.
+      final before = details.versionBefore;
+      if (before != null && before < 5 && details.versionNow >= 5) {
+        await RollupService(this).rebuildAll();
+      }
     },
   );
 }

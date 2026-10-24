@@ -340,6 +340,7 @@ class _TripFormState extends ConsumerState<_TripForm> {
     final l10n = AppLocalizations.of(context);
     final picked = await showModalBottomSheet<ExpenseCategory>(
       context: context,
+      useRootNavigator: true,
       showDragHandle: true,
       isScrollControlled: true,
       builder: (context) => SafeArea(

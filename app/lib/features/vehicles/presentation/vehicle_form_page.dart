@@ -153,6 +153,7 @@ class _VehicleFormState extends ConsumerState<_VehicleForm> {
     final l10n = AppLocalizations.of(context);
     final choice = await showModalBottomSheet<String>(
       context: context,
+      useRootNavigator: true,
       showDragHandle: true,
       builder: (context) => SafeArea(
         child: Column(

@@ -3,9 +3,11 @@ import 'package:vehicle_khata/core/db/app_database.dart';
 import 'package:vehicle_khata/core/db/audit.dart';
 import 'package:vehicle_khata/core/db/ids.dart';
 import 'package:vehicle_khata/core/money/money.dart';
+import 'package:vehicle_khata/core/time/calendar_day.dart';
 import 'package:vehicle_khata/features/expenses/data/expense_mapper.dart';
 import 'package:vehicle_khata/features/expenses/domain/expense.dart';
 import 'package:vehicle_khata/features/expenses/domain/fuel_efficiency.dart';
+import 'package:vehicle_khata/features/reports/data/rollup_service.dart';
 
 enum ExpenseError {
   amountInvalid,
@@ -33,6 +35,7 @@ class ExpenseRepository {
 
   final AppDatabase _db;
   final DateTime Function() _clock;
+  late final RollupService _rollups = RollupService(_db);
 
   /// Newest first.
   Stream<List<Expense>> watchForVehicle(String vehicleId, {int limit = 200}) {
@@ -83,6 +86,10 @@ class ExpenseRepository {
           'categoryId': draft.categoryId,
         },
       );
+      final created = await (_db.select(
+        _db.expenses,
+      )..where((e) => e.id.equals(id))).getSingle();
+      await _rollups.refresh(vehicleId, [CalendarDay(created.spentDay)]);
       return id;
     });
   }
@@ -114,6 +121,13 @@ class ExpenseRepository {
           ),
         ),
       );
+      final updated = await (_db.select(
+        _db.expenses,
+      )..where((e) => e.id.equals(id))).getSingle();
+      await _rollups.refresh(row.vehicleId, [
+        CalendarDay(row.spentDay),
+        CalendarDay(updated.spentDay),
+      ]);
     });
   }
 
@@ -127,6 +141,7 @@ class ExpenseRepository {
         action: 'delete',
         diff: {'amountMinor': row.amountMinor},
       );
+      await _rollups.refresh(row.vehicleId, [CalendarDay(row.spentDay)]);
     });
   }
 

@@ -15,6 +15,7 @@ Future<Money?> showAmountSheet(
 }) {
   return showModalBottomSheet<Money>(
     context: context,
+    useRootNavigator: true,
     isScrollControlled: true,
     showDragHandle: true,
     builder: (context) => _AmountSheet(title: title, initial: initial),

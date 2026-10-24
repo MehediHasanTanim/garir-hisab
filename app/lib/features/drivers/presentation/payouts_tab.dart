@@ -68,6 +68,7 @@ class PayoutsTab extends ConsumerWidget {
   Future<void> _showDetail(BuildContext context, WidgetRef ref, Payout payout) {
     return showModalBottomSheet<void>(
       context: context,
+      useRootNavigator: true,
       showDragHandle: true,
       isScrollControlled: true,
       builder: (_) => _PayoutDetail(payout: payout),

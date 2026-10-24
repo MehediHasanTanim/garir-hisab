@@ -8,6 +8,7 @@ import 'package:vehicle_khata/features/app_lock/presentation/app_lock_controller
 import 'package:vehicle_khata/features/app_lock/presentation/lock_page.dart';
 import 'package:vehicle_khata/features/app_lock/presentation/pin_setup_page.dart';
 import 'package:vehicle_khata/features/auth/presentation/account_page.dart';
+import 'package:vehicle_khata/features/daylog/presentation/close_day_page.dart';
 import 'package:vehicle_khata/features/drivers/presentation/assignment_form_page.dart';
 import 'package:vehicle_khata/features/drivers/presentation/driver_detail_page.dart';
 import 'package:vehicle_khata/features/drivers/presentation/driver_form_page.dart';
@@ -131,6 +132,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/vehicles/:id/expenses',
         builder: (_, state) =>
             VehicleExpensesPage(vehicleId: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: '/vehicles/:id/close-day',
+        builder: (_, state) =>
+            CloseDayPage(vehicleId: state.pathParameters['id']!),
       ),
       GoRoute(path: Routes.drivers, builder: (_, _) => const DriversPage()),
       GoRoute(

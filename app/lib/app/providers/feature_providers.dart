@@ -2,10 +2,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vehicle_khata/app/providers/providers.dart';
 import 'package:vehicle_khata/core/db/field_cipher.dart';
 import 'package:vehicle_khata/core/money/money.dart';
+import 'package:vehicle_khata/core/settings/app_settings.dart';
 import 'package:vehicle_khata/core/time/calendar_day.dart';
 import 'package:vehicle_khata/features/app_lock/presentation/app_lock_controller.dart';
 import 'package:vehicle_khata/features/auth/data/local_only_auth_repository.dart';
 import 'package:vehicle_khata/features/auth/domain/auth_repository.dart';
+import 'package:vehicle_khata/features/daylog/data/day_log_repository.dart';
 import 'package:vehicle_khata/features/drivers/data/advance_repository.dart';
 import 'package:vehicle_khata/features/drivers/data/assignment_repository.dart';
 import 'package:vehicle_khata/features/drivers/data/attendance_repository.dart';
@@ -18,6 +20,8 @@ import 'package:vehicle_khata/features/expenses/data/expense_repository.dart';
 import 'package:vehicle_khata/features/expenses/domain/expense.dart';
 import 'package:vehicle_khata/features/onboarding/data/onboarding_repository.dart';
 import 'package:vehicle_khata/features/onboarding/domain/onboarding_state.dart';
+import 'package:vehicle_khata/features/reports/data/report_service.dart';
+import 'package:vehicle_khata/features/reports/domain/profit_engine.dart';
 import 'package:vehicle_khata/features/trips/data/trip_repository.dart';
 import 'package:vehicle_khata/features/trips/domain/trip.dart';
 import 'package:vehicle_khata/features/vehicles/data/photo_store.dart';
@@ -111,6 +115,60 @@ final vehicleExpensesProvider = StreamProvider.autoDispose
     .family<List<Expense>, String>(
       (ref, vehicleId) =>
           ref.watch(expenseRepositoryProvider).watchForVehicle(vehicleId),
+    );
+
+// ---- Day log and reports -------------------------------------------------
+
+final dayLogRepositoryProvider = Provider<DayLogRepository>(
+  (ref) => DayLogRepository(ref.watch(appDatabaseProvider)),
+);
+
+final reportServiceProvider = Provider<ReportService>(
+  (ref) => ReportService(
+    ref.watch(appDatabaseProvider),
+    clock: ref.watch(clockProvider),
+  ),
+);
+
+/// Today's calendar day (changes only when the app is rebuilt after midnight).
+final todayProvider = Provider<CalendarDay>(
+  (ref) => CalendarDay.today(ref.watch(clockProvider)),
+);
+
+/// The vehicle shown on the Today card; null means "the first one".
+class TodayVehicleNotifier extends Notifier<String?> {
+  @override
+  String? build() => null;
+
+  // A plain setter keeps call sites short.
+  // ignore: use_setters_to_change_properties
+  void select(String? id) => state = id;
+}
+
+final todayVehicleProvider = NotifierProvider<TodayVehicleNotifier, String?>(
+  TodayVehicleNotifier.new,
+);
+
+typedef DashboardArgs = ({
+  int startDay,
+  int endDay,
+  String? vehicleId,
+  bool accrual,
+  bool amortize,
+});
+
+final dashboardProvider = StreamProvider.autoDispose
+    .family<Dashboard, DashboardArgs>(
+      (ref, a) => ref
+          .watch(reportServiceProvider)
+          .watchDashboard(
+            DayRange(CalendarDay(a.startDay), CalendarDay(a.endDay)),
+            ProfitOptions(
+              view: a.accrual ? ProfitView.accrual : ProfitView.cash,
+              amortizeFixed: a.amortize,
+            ),
+            vehicleId: a.vehicleId,
+          ),
     );
 
 // ---- Drivers -------------------------------------------------------------

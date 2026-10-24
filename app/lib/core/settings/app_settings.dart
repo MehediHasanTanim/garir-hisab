@@ -11,6 +11,7 @@ class AppSettings {
     this.numerals = NumeralStyle.bangla,
     this.grouping = GroupingStyle.southAsian,
     this.profitView = ProfitView.cash,
+    this.amortizeFixed = false,
   });
 
   static const supportedLanguages = ['bn', 'en'];
@@ -20,6 +21,9 @@ class AppSettings {
   final GroupingStyle grouping;
   final ProfitView profitView;
 
+  /// Spread vehicle costs (repairs, insurance…) over the month in reports.
+  final bool amortizeFixed;
+
   NumberFormatter get formatter =>
       NumberFormatter(numerals: numerals, grouping: grouping);
 
@@ -28,11 +32,13 @@ class AppSettings {
     NumeralStyle? numerals,
     GroupingStyle? grouping,
     ProfitView? profitView,
+    bool? amortizeFixed,
   }) => AppSettings(
     languageCode: languageCode ?? this.languageCode,
     numerals: numerals ?? this.numerals,
     grouping: grouping ?? this.grouping,
     profitView: profitView ?? this.profitView,
+    amortizeFixed: amortizeFixed ?? this.amortizeFixed,
   );
 
   @override
@@ -41,8 +47,10 @@ class AppSettings {
       other.languageCode == languageCode &&
       other.numerals == numerals &&
       other.grouping == grouping &&
-      other.profitView == profitView;
+      other.profitView == profitView &&
+      other.amortizeFixed == amortizeFixed;
 
   @override
-  int get hashCode => Object.hash(languageCode, numerals, grouping, profitView);
+  int get hashCode =>
+      Object.hash(languageCode, numerals, grouping, profitView, amortizeFixed);
 }

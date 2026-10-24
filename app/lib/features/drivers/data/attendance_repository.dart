@@ -105,3 +105,51 @@ class AttendanceRepository {
     for (final r in rows) CalendarDay(r.day): r.status,
   };
 }
+
+/// Marks [driverId] present on [day] when the day has no mark yet (a trip or
+/// day log proves they worked). An existing mark, including absent or half
+/// day, is never changed. Call inside the transaction that caused it.
+Future<void> autoMarkPresent(
+  AppDatabase db,
+  String driverId,
+  CalendarDay day,
+) async {
+  final existing =
+      await (db.select(db.attendanceRecords)..where(
+            (t) => t.driverId.equals(driverId) & t.day.equals(day.epochDay),
+          ))
+          .getSingleOrNull();
+  if (existing != null && existing.deletedAt == null) return;
+
+  String id;
+  if (existing == null) {
+    id =
+        (await db
+                .into(db.attendanceRecords)
+                .insertReturning(
+                  AttendanceRecordsCompanion.insert(
+                    driverId: driverId,
+                    day: day.epochDay,
+                    status: AttendanceStatus.present,
+                  ),
+                ))
+            .id;
+  } else {
+    id = existing.id;
+    await (db.update(
+      db.attendanceRecords,
+    )..where((t) => t.id.equals(id))).write(
+      const AttendanceRecordsCompanion(
+        status: Value(AttendanceStatus.present),
+        deletedAt: Value(null),
+      ),
+    );
+    await db.touch(db.attendanceRecords, id);
+  }
+  await db.logAudit(
+    entity: 'attendance',
+    entityId: id,
+    action: 'auto',
+    diff: {'day': day.toIso(), 'to': 'present'},
+  );
+}

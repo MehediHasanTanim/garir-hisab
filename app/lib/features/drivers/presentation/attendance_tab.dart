@@ -48,6 +48,7 @@ class _AttendanceTabState extends ConsumerState<AttendanceTab> {
     final formatter = ref.read(numberFormatterProvider);
     final choice = await showModalBottomSheet<_Choice>(
       context: context,
+      useRootNavigator: true,
       showDragHandle: true,
       builder: (context) => SafeArea(
         child: Column(

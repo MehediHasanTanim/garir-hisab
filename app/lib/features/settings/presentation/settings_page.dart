@@ -59,6 +59,12 @@ class SettingsPage extends ConsumerWidget {
               ProfitView.accrual: l10n.profitAccrual,
             },
           ),
+          SwitchListTile(
+            title: Text(l10n.amortizeFixed),
+            subtitle: Text(l10n.amortizeFixedHint),
+            value: settings.amortizeFixed,
+            onChanged: (v) => notifier.setAmortizeFixed(value: v),
+          ),
           SectionHeader(l10n.security),
           const _SecuritySection(),
         ],

@@ -8575,6 +8575,18 @@ class $ExpensesTable extends Expenses
     type: DriftSqlType.int,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _spentDayMeta = const VerificationMeta(
+    'spentDay',
+  );
+  @override
+  late final GeneratedColumn<int> spentDay = GeneratedColumn<int>(
+    'spent_day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -8595,6 +8607,7 @@ class $ExpensesTable extends Expenses
     receiptFile,
     qtyMilli,
     odometerM,
+    spentDay,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -8724,6 +8737,12 @@ class $ExpensesTable extends Expenses
         odometerM.isAcceptableOrUnknown(data['odometer_m']!, _odometerMMeta),
       );
     }
+    if (data.containsKey('spent_day')) {
+      context.handle(
+        _spentDayMeta,
+        spentDay.isAcceptableOrUnknown(data['spent_day']!, _spentDayMeta),
+      );
+    }
     return context;
   }
 
@@ -8807,6 +8826,10 @@ class $ExpensesTable extends Expenses
         DriftSqlType.int,
         data['${effectivePrefix}odometer_m'],
       ),
+      spentDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}spent_day'],
+      )!,
     );
   }
 
@@ -8852,6 +8875,9 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
 
   /// Odometer in metres.
   final int? odometerM;
+
+  /// Local calendar day the money was spent (days since 1970-01-01).
+  final int spentDay;
   const ExpenseRow({
     required this.id,
     required this.ownerId,
@@ -8871,6 +8897,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
     this.receiptFile,
     this.qtyMilli,
     this.odometerM,
+    required this.spentDay,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -8909,6 +8936,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
     if (!nullToAbsent || odometerM != null) {
       map['odometer_m'] = Variable<int>(odometerM);
     }
+    map['spent_day'] = Variable<int>(spentDay);
     return map;
   }
 
@@ -8942,6 +8970,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
       odometerM: odometerM == null && nullToAbsent
           ? const Value.absent()
           : Value(odometerM),
+      spentDay: Value(spentDay),
     );
   }
 
@@ -8971,6 +9000,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
       receiptFile: serializer.fromJson<String?>(json['receiptFile']),
       qtyMilli: serializer.fromJson<int?>(json['qtyMilli']),
       odometerM: serializer.fromJson<int?>(json['odometerM']),
+      spentDay: serializer.fromJson<int>(json['spentDay']),
     );
   }
   @override
@@ -8997,6 +9027,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
       'receiptFile': serializer.toJson<String?>(receiptFile),
       'qtyMilli': serializer.toJson<int?>(qtyMilli),
       'odometerM': serializer.toJson<int?>(odometerM),
+      'spentDay': serializer.toJson<int>(spentDay),
     };
   }
 
@@ -9019,6 +9050,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
     Value<String?> receiptFile = const Value.absent(),
     Value<int?> qtyMilli = const Value.absent(),
     Value<int?> odometerM = const Value.absent(),
+    int? spentDay,
   }) => ExpenseRow(
     id: id ?? this.id,
     ownerId: ownerId ?? this.ownerId,
@@ -9038,6 +9070,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
     receiptFile: receiptFile.present ? receiptFile.value : this.receiptFile,
     qtyMilli: qtyMilli.present ? qtyMilli.value : this.qtyMilli,
     odometerM: odometerM.present ? odometerM.value : this.odometerM,
+    spentDay: spentDay ?? this.spentDay,
   );
   ExpenseRow copyWithCompanion(ExpensesCompanion data) {
     return ExpenseRow(
@@ -9067,6 +9100,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
           : this.receiptFile,
       qtyMilli: data.qtyMilli.present ? data.qtyMilli.value : this.qtyMilli,
       odometerM: data.odometerM.present ? data.odometerM.value : this.odometerM,
+      spentDay: data.spentDay.present ? data.spentDay.value : this.spentDay,
     );
   }
 
@@ -9090,7 +9124,8 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
           ..write('note: $note, ')
           ..write('receiptFile: $receiptFile, ')
           ..write('qtyMilli: $qtyMilli, ')
-          ..write('odometerM: $odometerM')
+          ..write('odometerM: $odometerM, ')
+          ..write('spentDay: $spentDay')
           ..write(')'))
         .toString();
   }
@@ -9115,6 +9150,7 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
     receiptFile,
     qtyMilli,
     odometerM,
+    spentDay,
   );
   @override
   bool operator ==(Object other) =>
@@ -9137,7 +9173,8 @@ class ExpenseRow extends DataClass implements Insertable<ExpenseRow> {
           other.note == this.note &&
           other.receiptFile == this.receiptFile &&
           other.qtyMilli == this.qtyMilli &&
-          other.odometerM == this.odometerM);
+          other.odometerM == this.odometerM &&
+          other.spentDay == this.spentDay);
 }
 
 class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
@@ -9159,6 +9196,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
   final Value<String?> receiptFile;
   final Value<int?> qtyMilli;
   final Value<int?> odometerM;
+  final Value<int> spentDay;
   final Value<int> rowid;
   const ExpensesCompanion({
     this.id = const Value.absent(),
@@ -9179,6 +9217,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
     this.receiptFile = const Value.absent(),
     this.qtyMilli = const Value.absent(),
     this.odometerM = const Value.absent(),
+    this.spentDay = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   ExpensesCompanion.insert({
@@ -9200,6 +9239,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
     this.receiptFile = const Value.absent(),
     this.qtyMilli = const Value.absent(),
     this.odometerM = const Value.absent(),
+    this.spentDay = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : vehicleId = Value(vehicleId),
        categoryId = Value(categoryId),
@@ -9225,6 +9265,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
     Expression<String>? receiptFile,
     Expression<int>? qtyMilli,
     Expression<int>? odometerM,
+    Expression<int>? spentDay,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -9246,6 +9287,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
       if (receiptFile != null) 'receipt_file': receiptFile,
       if (qtyMilli != null) 'qty_milli': qtyMilli,
       if (odometerM != null) 'odometer_m': odometerM,
+      if (spentDay != null) 'spent_day': spentDay,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -9269,6 +9311,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
     Value<String?>? receiptFile,
     Value<int?>? qtyMilli,
     Value<int?>? odometerM,
+    Value<int>? spentDay,
     Value<int>? rowid,
   }) {
     return ExpensesCompanion(
@@ -9290,6 +9333,7 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
       receiptFile: receiptFile ?? this.receiptFile,
       qtyMilli: qtyMilli ?? this.qtyMilli,
       odometerM: odometerM ?? this.odometerM,
+      spentDay: spentDay ?? this.spentDay,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -9353,6 +9397,9 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
     if (odometerM.present) {
       map['odometer_m'] = Variable<int>(odometerM.value);
     }
+    if (spentDay.present) {
+      map['spent_day'] = Variable<int>(spentDay.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -9380,6 +9427,1437 @@ class ExpensesCompanion extends UpdateCompanion<ExpenseRow> {
           ..write('receiptFile: $receiptFile, ')
           ..write('qtyMilli: $qtyMilli, ')
           ..write('odometerM: $odometerM, ')
+          ..write('spentDay: $spentDay, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $DayLogsTable extends DayLogs with TableInfo<$DayLogsTable, DayLogRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DayLogsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: newId,
+  );
+  static const VerificationMeta _ownerIdMeta = const VerificationMeta(
+    'ownerId',
+  );
+  @override
+  late final GeneratedColumn<String> ownerId = GeneratedColumn<String>(
+    'owner_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('local'),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<int> createdAt = GeneratedColumn<int>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<int> updatedAt = GeneratedColumn<int>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    clientDefault: utcNowMs,
+  );
+  static const VerificationMeta _deletedAtMeta = const VerificationMeta(
+    'deletedAt',
+  );
+  @override
+  late final GeneratedColumn<int> deletedAt = GeneratedColumn<int>(
+    'deleted_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _revMeta = const VerificationMeta('rev');
+  @override
+  late final GeneratedColumn<int> rev = GeneratedColumn<int>(
+    'rev',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _dirtyMeta = const VerificationMeta('dirty');
+  @override
+  late final GeneratedColumn<bool> dirty = GeneratedColumn<bool>(
+    'dirty',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("dirty" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _vehicleIdMeta = const VerificationMeta(
+    'vehicleId',
+  );
+  @override
+  late final GeneratedColumn<String> vehicleId = GeneratedColumn<String>(
+    'vehicle_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES vehicles (id)',
+    ),
+  );
+  static const VerificationMeta _driverIdMeta = const VerificationMeta(
+    'driverId',
+  );
+  @override
+  late final GeneratedColumn<String> driverId = GeneratedColumn<String>(
+    'driver_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES drivers (id)',
+    ),
+  );
+  static const VerificationMeta _logDayMeta = const VerificationMeta('logDay');
+  @override
+  late final GeneratedColumn<int> logDay = GeneratedColumn<int>(
+    'log_day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _collectionMinorMeta = const VerificationMeta(
+    'collectionMinor',
+  );
+  @override
+  late final GeneratedColumn<int> collectionMinor = GeneratedColumn<int>(
+    'collection_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _distanceMMeta = const VerificationMeta(
+    'distanceM',
+  );
+  @override
+  late final GeneratedColumn<int> distanceM = GeneratedColumn<int>(
+    'distance_m',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _hoursMinMeta = const VerificationMeta(
+    'hoursMin',
+  );
+  @override
+  late final GeneratedColumn<int> hoursMin = GeneratedColumn<int>(
+    'hours_min',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    vehicleId,
+    driverId,
+    logDay,
+    collectionMinor,
+    distanceM,
+    hoursMin,
+    note,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'day_logs';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<DayLogRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('owner_id')) {
+      context.handle(
+        _ownerIdMeta,
+        ownerId.isAcceptableOrUnknown(data['owner_id']!, _ownerIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('deleted_at')) {
+      context.handle(
+        _deletedAtMeta,
+        deletedAt.isAcceptableOrUnknown(data['deleted_at']!, _deletedAtMeta),
+      );
+    }
+    if (data.containsKey('rev')) {
+      context.handle(
+        _revMeta,
+        rev.isAcceptableOrUnknown(data['rev']!, _revMeta),
+      );
+    }
+    if (data.containsKey('dirty')) {
+      context.handle(
+        _dirtyMeta,
+        dirty.isAcceptableOrUnknown(data['dirty']!, _dirtyMeta),
+      );
+    }
+    if (data.containsKey('vehicle_id')) {
+      context.handle(
+        _vehicleIdMeta,
+        vehicleId.isAcceptableOrUnknown(data['vehicle_id']!, _vehicleIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_vehicleIdMeta);
+    }
+    if (data.containsKey('driver_id')) {
+      context.handle(
+        _driverIdMeta,
+        driverId.isAcceptableOrUnknown(data['driver_id']!, _driverIdMeta),
+      );
+    }
+    if (data.containsKey('log_day')) {
+      context.handle(
+        _logDayMeta,
+        logDay.isAcceptableOrUnknown(data['log_day']!, _logDayMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_logDayMeta);
+    }
+    if (data.containsKey('collection_minor')) {
+      context.handle(
+        _collectionMinorMeta,
+        collectionMinor.isAcceptableOrUnknown(
+          data['collection_minor']!,
+          _collectionMinorMeta,
+        ),
+      );
+    }
+    if (data.containsKey('distance_m')) {
+      context.handle(
+        _distanceMMeta,
+        distanceM.isAcceptableOrUnknown(data['distance_m']!, _distanceMMeta),
+      );
+    }
+    if (data.containsKey('hours_min')) {
+      context.handle(
+        _hoursMinMeta,
+        hoursMin.isAcceptableOrUnknown(data['hours_min']!, _hoursMinMeta),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  List<Set<GeneratedColumn>> get uniqueKeys => [
+    {vehicleId, logDay},
+  ];
+  @override
+  DayLogRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DayLogRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      ownerId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}owner_id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deletedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}deleted_at'],
+      ),
+      rev: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rev'],
+      )!,
+      dirty: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}dirty'],
+      )!,
+      vehicleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}vehicle_id'],
+      )!,
+      driverId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}driver_id'],
+      ),
+      logDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}log_day'],
+      )!,
+      collectionMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}collection_minor'],
+      )!,
+      distanceM: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}distance_m'],
+      ),
+      hoursMin: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}hours_min'],
+      ),
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      ),
+    );
+  }
+
+  @override
+  $DayLogsTable createAlias(String alias) {
+    return $DayLogsTable(attachedDatabase, alias);
+  }
+}
+
+class DayLogRow extends DataClass implements Insertable<DayLogRow> {
+  final String id;
+
+  /// Tenant key. `local` until the user signs in and the data is claimed.
+  final String ownerId;
+
+  /// Epoch milliseconds, UTC.
+  final int createdAt;
+  final int updatedAt;
+
+  /// Tombstone; non-null means soft-deleted.
+  final int? deletedAt;
+
+  /// Local monotonic revision, bumped on every write.
+  final int rev;
+
+  /// True while the row has changes not yet pushed.
+  final bool dirty;
+  final String vehicleId;
+  final String? driverId;
+  final int logDay;
+  final int collectionMinor;
+  final int? distanceM;
+  final int? hoursMin;
+  final String? note;
+  const DayLogRow({
+    required this.id,
+    required this.ownerId,
+    required this.createdAt,
+    required this.updatedAt,
+    this.deletedAt,
+    required this.rev,
+    required this.dirty,
+    required this.vehicleId,
+    this.driverId,
+    required this.logDay,
+    required this.collectionMinor,
+    this.distanceM,
+    this.hoursMin,
+    this.note,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['owner_id'] = Variable<String>(ownerId);
+    map['created_at'] = Variable<int>(createdAt);
+    map['updated_at'] = Variable<int>(updatedAt);
+    if (!nullToAbsent || deletedAt != null) {
+      map['deleted_at'] = Variable<int>(deletedAt);
+    }
+    map['rev'] = Variable<int>(rev);
+    map['dirty'] = Variable<bool>(dirty);
+    map['vehicle_id'] = Variable<String>(vehicleId);
+    if (!nullToAbsent || driverId != null) {
+      map['driver_id'] = Variable<String>(driverId);
+    }
+    map['log_day'] = Variable<int>(logDay);
+    map['collection_minor'] = Variable<int>(collectionMinor);
+    if (!nullToAbsent || distanceM != null) {
+      map['distance_m'] = Variable<int>(distanceM);
+    }
+    if (!nullToAbsent || hoursMin != null) {
+      map['hours_min'] = Variable<int>(hoursMin);
+    }
+    if (!nullToAbsent || note != null) {
+      map['note'] = Variable<String>(note);
+    }
+    return map;
+  }
+
+  DayLogsCompanion toCompanion(bool nullToAbsent) {
+    return DayLogsCompanion(
+      id: Value(id),
+      ownerId: Value(ownerId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deletedAt: deletedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(deletedAt),
+      rev: Value(rev),
+      dirty: Value(dirty),
+      vehicleId: Value(vehicleId),
+      driverId: driverId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(driverId),
+      logDay: Value(logDay),
+      collectionMinor: Value(collectionMinor),
+      distanceM: distanceM == null && nullToAbsent
+          ? const Value.absent()
+          : Value(distanceM),
+      hoursMin: hoursMin == null && nullToAbsent
+          ? const Value.absent()
+          : Value(hoursMin),
+      note: note == null && nullToAbsent ? const Value.absent() : Value(note),
+    );
+  }
+
+  factory DayLogRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return DayLogRow(
+      id: serializer.fromJson<String>(json['id']),
+      ownerId: serializer.fromJson<String>(json['ownerId']),
+      createdAt: serializer.fromJson<int>(json['createdAt']),
+      updatedAt: serializer.fromJson<int>(json['updatedAt']),
+      deletedAt: serializer.fromJson<int?>(json['deletedAt']),
+      rev: serializer.fromJson<int>(json['rev']),
+      dirty: serializer.fromJson<bool>(json['dirty']),
+      vehicleId: serializer.fromJson<String>(json['vehicleId']),
+      driverId: serializer.fromJson<String?>(json['driverId']),
+      logDay: serializer.fromJson<int>(json['logDay']),
+      collectionMinor: serializer.fromJson<int>(json['collectionMinor']),
+      distanceM: serializer.fromJson<int?>(json['distanceM']),
+      hoursMin: serializer.fromJson<int?>(json['hoursMin']),
+      note: serializer.fromJson<String?>(json['note']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'ownerId': serializer.toJson<String>(ownerId),
+      'createdAt': serializer.toJson<int>(createdAt),
+      'updatedAt': serializer.toJson<int>(updatedAt),
+      'deletedAt': serializer.toJson<int?>(deletedAt),
+      'rev': serializer.toJson<int>(rev),
+      'dirty': serializer.toJson<bool>(dirty),
+      'vehicleId': serializer.toJson<String>(vehicleId),
+      'driverId': serializer.toJson<String?>(driverId),
+      'logDay': serializer.toJson<int>(logDay),
+      'collectionMinor': serializer.toJson<int>(collectionMinor),
+      'distanceM': serializer.toJson<int?>(distanceM),
+      'hoursMin': serializer.toJson<int?>(hoursMin),
+      'note': serializer.toJson<String?>(note),
+    };
+  }
+
+  DayLogRow copyWith({
+    String? id,
+    String? ownerId,
+    int? createdAt,
+    int? updatedAt,
+    Value<int?> deletedAt = const Value.absent(),
+    int? rev,
+    bool? dirty,
+    String? vehicleId,
+    Value<String?> driverId = const Value.absent(),
+    int? logDay,
+    int? collectionMinor,
+    Value<int?> distanceM = const Value.absent(),
+    Value<int?> hoursMin = const Value.absent(),
+    Value<String?> note = const Value.absent(),
+  }) => DayLogRow(
+    id: id ?? this.id,
+    ownerId: ownerId ?? this.ownerId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deletedAt: deletedAt.present ? deletedAt.value : this.deletedAt,
+    rev: rev ?? this.rev,
+    dirty: dirty ?? this.dirty,
+    vehicleId: vehicleId ?? this.vehicleId,
+    driverId: driverId.present ? driverId.value : this.driverId,
+    logDay: logDay ?? this.logDay,
+    collectionMinor: collectionMinor ?? this.collectionMinor,
+    distanceM: distanceM.present ? distanceM.value : this.distanceM,
+    hoursMin: hoursMin.present ? hoursMin.value : this.hoursMin,
+    note: note.present ? note.value : this.note,
+  );
+  DayLogRow copyWithCompanion(DayLogsCompanion data) {
+    return DayLogRow(
+      id: data.id.present ? data.id.value : this.id,
+      ownerId: data.ownerId.present ? data.ownerId.value : this.ownerId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deletedAt: data.deletedAt.present ? data.deletedAt.value : this.deletedAt,
+      rev: data.rev.present ? data.rev.value : this.rev,
+      dirty: data.dirty.present ? data.dirty.value : this.dirty,
+      vehicleId: data.vehicleId.present ? data.vehicleId.value : this.vehicleId,
+      driverId: data.driverId.present ? data.driverId.value : this.driverId,
+      logDay: data.logDay.present ? data.logDay.value : this.logDay,
+      collectionMinor: data.collectionMinor.present
+          ? data.collectionMinor.value
+          : this.collectionMinor,
+      distanceM: data.distanceM.present ? data.distanceM.value : this.distanceM,
+      hoursMin: data.hoursMin.present ? data.hoursMin.value : this.hoursMin,
+      note: data.note.present ? data.note.value : this.note,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DayLogRow(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('driverId: $driverId, ')
+          ..write('logDay: $logDay, ')
+          ..write('collectionMinor: $collectionMinor, ')
+          ..write('distanceM: $distanceM, ')
+          ..write('hoursMin: $hoursMin, ')
+          ..write('note: $note')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    ownerId,
+    createdAt,
+    updatedAt,
+    deletedAt,
+    rev,
+    dirty,
+    vehicleId,
+    driverId,
+    logDay,
+    collectionMinor,
+    distanceM,
+    hoursMin,
+    note,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is DayLogRow &&
+          other.id == this.id &&
+          other.ownerId == this.ownerId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deletedAt == this.deletedAt &&
+          other.rev == this.rev &&
+          other.dirty == this.dirty &&
+          other.vehicleId == this.vehicleId &&
+          other.driverId == this.driverId &&
+          other.logDay == this.logDay &&
+          other.collectionMinor == this.collectionMinor &&
+          other.distanceM == this.distanceM &&
+          other.hoursMin == this.hoursMin &&
+          other.note == this.note);
+}
+
+class DayLogsCompanion extends UpdateCompanion<DayLogRow> {
+  final Value<String> id;
+  final Value<String> ownerId;
+  final Value<int> createdAt;
+  final Value<int> updatedAt;
+  final Value<int?> deletedAt;
+  final Value<int> rev;
+  final Value<bool> dirty;
+  final Value<String> vehicleId;
+  final Value<String?> driverId;
+  final Value<int> logDay;
+  final Value<int> collectionMinor;
+  final Value<int?> distanceM;
+  final Value<int?> hoursMin;
+  final Value<String?> note;
+  final Value<int> rowid;
+  const DayLogsCompanion({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    this.vehicleId = const Value.absent(),
+    this.driverId = const Value.absent(),
+    this.logDay = const Value.absent(),
+    this.collectionMinor = const Value.absent(),
+    this.distanceM = const Value.absent(),
+    this.hoursMin = const Value.absent(),
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  DayLogsCompanion.insert({
+    this.id = const Value.absent(),
+    this.ownerId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deletedAt = const Value.absent(),
+    this.rev = const Value.absent(),
+    this.dirty = const Value.absent(),
+    required String vehicleId,
+    this.driverId = const Value.absent(),
+    required int logDay,
+    this.collectionMinor = const Value.absent(),
+    this.distanceM = const Value.absent(),
+    this.hoursMin = const Value.absent(),
+    this.note = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : vehicleId = Value(vehicleId),
+       logDay = Value(logDay);
+  static Insertable<DayLogRow> custom({
+    Expression<String>? id,
+    Expression<String>? ownerId,
+    Expression<int>? createdAt,
+    Expression<int>? updatedAt,
+    Expression<int>? deletedAt,
+    Expression<int>? rev,
+    Expression<bool>? dirty,
+    Expression<String>? vehicleId,
+    Expression<String>? driverId,
+    Expression<int>? logDay,
+    Expression<int>? collectionMinor,
+    Expression<int>? distanceM,
+    Expression<int>? hoursMin,
+    Expression<String>? note,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (ownerId != null) 'owner_id': ownerId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deletedAt != null) 'deleted_at': deletedAt,
+      if (rev != null) 'rev': rev,
+      if (dirty != null) 'dirty': dirty,
+      if (vehicleId != null) 'vehicle_id': vehicleId,
+      if (driverId != null) 'driver_id': driverId,
+      if (logDay != null) 'log_day': logDay,
+      if (collectionMinor != null) 'collection_minor': collectionMinor,
+      if (distanceM != null) 'distance_m': distanceM,
+      if (hoursMin != null) 'hours_min': hoursMin,
+      if (note != null) 'note': note,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  DayLogsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? ownerId,
+    Value<int>? createdAt,
+    Value<int>? updatedAt,
+    Value<int?>? deletedAt,
+    Value<int>? rev,
+    Value<bool>? dirty,
+    Value<String>? vehicleId,
+    Value<String?>? driverId,
+    Value<int>? logDay,
+    Value<int>? collectionMinor,
+    Value<int?>? distanceM,
+    Value<int?>? hoursMin,
+    Value<String?>? note,
+    Value<int>? rowid,
+  }) {
+    return DayLogsCompanion(
+      id: id ?? this.id,
+      ownerId: ownerId ?? this.ownerId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
+      rev: rev ?? this.rev,
+      dirty: dirty ?? this.dirty,
+      vehicleId: vehicleId ?? this.vehicleId,
+      driverId: driverId ?? this.driverId,
+      logDay: logDay ?? this.logDay,
+      collectionMinor: collectionMinor ?? this.collectionMinor,
+      distanceM: distanceM ?? this.distanceM,
+      hoursMin: hoursMin ?? this.hoursMin,
+      note: note ?? this.note,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (ownerId.present) {
+      map['owner_id'] = Variable<String>(ownerId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<int>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<int>(updatedAt.value);
+    }
+    if (deletedAt.present) {
+      map['deleted_at'] = Variable<int>(deletedAt.value);
+    }
+    if (rev.present) {
+      map['rev'] = Variable<int>(rev.value);
+    }
+    if (dirty.present) {
+      map['dirty'] = Variable<bool>(dirty.value);
+    }
+    if (vehicleId.present) {
+      map['vehicle_id'] = Variable<String>(vehicleId.value);
+    }
+    if (driverId.present) {
+      map['driver_id'] = Variable<String>(driverId.value);
+    }
+    if (logDay.present) {
+      map['log_day'] = Variable<int>(logDay.value);
+    }
+    if (collectionMinor.present) {
+      map['collection_minor'] = Variable<int>(collectionMinor.value);
+    }
+    if (distanceM.present) {
+      map['distance_m'] = Variable<int>(distanceM.value);
+    }
+    if (hoursMin.present) {
+      map['hours_min'] = Variable<int>(hoursMin.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DayLogsCompanion(')
+          ..write('id: $id, ')
+          ..write('ownerId: $ownerId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deletedAt: $deletedAt, ')
+          ..write('rev: $rev, ')
+          ..write('dirty: $dirty, ')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('driverId: $driverId, ')
+          ..write('logDay: $logDay, ')
+          ..write('collectionMinor: $collectionMinor, ')
+          ..write('distanceM: $distanceM, ')
+          ..write('hoursMin: $hoursMin, ')
+          ..write('note: $note, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $DailyRollupsTable extends DailyRollups
+    with TableInfo<$DailyRollupsTable, DailyRollupRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DailyRollupsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _vehicleIdMeta = const VerificationMeta(
+    'vehicleId',
+  );
+  @override
+  late final GeneratedColumn<String> vehicleId = GeneratedColumn<String>(
+    'vehicle_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _dayMeta = const VerificationMeta('day');
+  @override
+  late final GeneratedColumn<int> day = GeneratedColumn<int>(
+    'day',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _tripsMeta = const VerificationMeta('trips');
+  @override
+  late final GeneratedColumn<int> trips = GeneratedColumn<int>(
+    'trips',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fareMinorMeta = const VerificationMeta(
+    'fareMinor',
+  );
+  @override
+  late final GeneratedColumn<int> fareMinor = GeneratedColumn<int>(
+    'fare_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _receivedMinorMeta = const VerificationMeta(
+    'receivedMinor',
+  );
+  @override
+  late final GeneratedColumn<int> receivedMinor = GeneratedColumn<int>(
+    'received_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _collectionMinorMeta = const VerificationMeta(
+    'collectionMinor',
+  );
+  @override
+  late final GeneratedColumn<int> collectionMinor = GeneratedColumn<int>(
+    'collection_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _variableMinorMeta = const VerificationMeta(
+    'variableMinor',
+  );
+  @override
+  late final GeneratedColumn<int> variableMinor = GeneratedColumn<int>(
+    'variable_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fixedMinorMeta = const VerificationMeta(
+    'fixedMinor',
+  );
+  @override
+  late final GeneratedColumn<int> fixedMinor = GeneratedColumn<int>(
+    'fixed_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _fixedAmortizedMinorMeta =
+      const VerificationMeta('fixedAmortizedMinor');
+  @override
+  late final GeneratedColumn<int> fixedAmortizedMinor = GeneratedColumn<int>(
+    'fixed_amortized_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _tripPayMinorMeta = const VerificationMeta(
+    'tripPayMinor',
+  );
+  @override
+  late final GeneratedColumn<int> tripPayMinor = GeneratedColumn<int>(
+    'trip_pay_minor',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    vehicleId,
+    day,
+    trips,
+    fareMinor,
+    receivedMinor,
+    collectionMinor,
+    variableMinor,
+    fixedMinor,
+    fixedAmortizedMinor,
+    tripPayMinor,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'daily_rollups';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<DailyRollupRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('vehicle_id')) {
+      context.handle(
+        _vehicleIdMeta,
+        vehicleId.isAcceptableOrUnknown(data['vehicle_id']!, _vehicleIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_vehicleIdMeta);
+    }
+    if (data.containsKey('day')) {
+      context.handle(
+        _dayMeta,
+        day.isAcceptableOrUnknown(data['day']!, _dayMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_dayMeta);
+    }
+    if (data.containsKey('trips')) {
+      context.handle(
+        _tripsMeta,
+        trips.isAcceptableOrUnknown(data['trips']!, _tripsMeta),
+      );
+    }
+    if (data.containsKey('fare_minor')) {
+      context.handle(
+        _fareMinorMeta,
+        fareMinor.isAcceptableOrUnknown(data['fare_minor']!, _fareMinorMeta),
+      );
+    }
+    if (data.containsKey('received_minor')) {
+      context.handle(
+        _receivedMinorMeta,
+        receivedMinor.isAcceptableOrUnknown(
+          data['received_minor']!,
+          _receivedMinorMeta,
+        ),
+      );
+    }
+    if (data.containsKey('collection_minor')) {
+      context.handle(
+        _collectionMinorMeta,
+        collectionMinor.isAcceptableOrUnknown(
+          data['collection_minor']!,
+          _collectionMinorMeta,
+        ),
+      );
+    }
+    if (data.containsKey('variable_minor')) {
+      context.handle(
+        _variableMinorMeta,
+        variableMinor.isAcceptableOrUnknown(
+          data['variable_minor']!,
+          _variableMinorMeta,
+        ),
+      );
+    }
+    if (data.containsKey('fixed_minor')) {
+      context.handle(
+        _fixedMinorMeta,
+        fixedMinor.isAcceptableOrUnknown(data['fixed_minor']!, _fixedMinorMeta),
+      );
+    }
+    if (data.containsKey('fixed_amortized_minor')) {
+      context.handle(
+        _fixedAmortizedMinorMeta,
+        fixedAmortizedMinor.isAcceptableOrUnknown(
+          data['fixed_amortized_minor']!,
+          _fixedAmortizedMinorMeta,
+        ),
+      );
+    }
+    if (data.containsKey('trip_pay_minor')) {
+      context.handle(
+        _tripPayMinorMeta,
+        tripPayMinor.isAcceptableOrUnknown(
+          data['trip_pay_minor']!,
+          _tripPayMinorMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {vehicleId, day};
+  @override
+  DailyRollupRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DailyRollupRow(
+      vehicleId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}vehicle_id'],
+      )!,
+      day: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}day'],
+      )!,
+      trips: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}trips'],
+      )!,
+      fareMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}fare_minor'],
+      )!,
+      receivedMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}received_minor'],
+      )!,
+      collectionMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}collection_minor'],
+      )!,
+      variableMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}variable_minor'],
+      )!,
+      fixedMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}fixed_minor'],
+      )!,
+      fixedAmortizedMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}fixed_amortized_minor'],
+      )!,
+      tripPayMinor: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}trip_pay_minor'],
+      )!,
+    );
+  }
+
+  @override
+  $DailyRollupsTable createAlias(String alias) {
+    return $DailyRollupsTable(attachedDatabase, alias);
+  }
+}
+
+class DailyRollupRow extends DataClass implements Insertable<DailyRollupRow> {
+  final String vehicleId;
+  final int day;
+  final int trips;
+  final int fareMinor;
+  final int receivedMinor;
+  final int collectionMinor;
+  final int variableMinor;
+  final int fixedMinor;
+  final int fixedAmortizedMinor;
+  final int tripPayMinor;
+  const DailyRollupRow({
+    required this.vehicleId,
+    required this.day,
+    required this.trips,
+    required this.fareMinor,
+    required this.receivedMinor,
+    required this.collectionMinor,
+    required this.variableMinor,
+    required this.fixedMinor,
+    required this.fixedAmortizedMinor,
+    required this.tripPayMinor,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['vehicle_id'] = Variable<String>(vehicleId);
+    map['day'] = Variable<int>(day);
+    map['trips'] = Variable<int>(trips);
+    map['fare_minor'] = Variable<int>(fareMinor);
+    map['received_minor'] = Variable<int>(receivedMinor);
+    map['collection_minor'] = Variable<int>(collectionMinor);
+    map['variable_minor'] = Variable<int>(variableMinor);
+    map['fixed_minor'] = Variable<int>(fixedMinor);
+    map['fixed_amortized_minor'] = Variable<int>(fixedAmortizedMinor);
+    map['trip_pay_minor'] = Variable<int>(tripPayMinor);
+    return map;
+  }
+
+  DailyRollupsCompanion toCompanion(bool nullToAbsent) {
+    return DailyRollupsCompanion(
+      vehicleId: Value(vehicleId),
+      day: Value(day),
+      trips: Value(trips),
+      fareMinor: Value(fareMinor),
+      receivedMinor: Value(receivedMinor),
+      collectionMinor: Value(collectionMinor),
+      variableMinor: Value(variableMinor),
+      fixedMinor: Value(fixedMinor),
+      fixedAmortizedMinor: Value(fixedAmortizedMinor),
+      tripPayMinor: Value(tripPayMinor),
+    );
+  }
+
+  factory DailyRollupRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return DailyRollupRow(
+      vehicleId: serializer.fromJson<String>(json['vehicleId']),
+      day: serializer.fromJson<int>(json['day']),
+      trips: serializer.fromJson<int>(json['trips']),
+      fareMinor: serializer.fromJson<int>(json['fareMinor']),
+      receivedMinor: serializer.fromJson<int>(json['receivedMinor']),
+      collectionMinor: serializer.fromJson<int>(json['collectionMinor']),
+      variableMinor: serializer.fromJson<int>(json['variableMinor']),
+      fixedMinor: serializer.fromJson<int>(json['fixedMinor']),
+      fixedAmortizedMinor: serializer.fromJson<int>(
+        json['fixedAmortizedMinor'],
+      ),
+      tripPayMinor: serializer.fromJson<int>(json['tripPayMinor']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'vehicleId': serializer.toJson<String>(vehicleId),
+      'day': serializer.toJson<int>(day),
+      'trips': serializer.toJson<int>(trips),
+      'fareMinor': serializer.toJson<int>(fareMinor),
+      'receivedMinor': serializer.toJson<int>(receivedMinor),
+      'collectionMinor': serializer.toJson<int>(collectionMinor),
+      'variableMinor': serializer.toJson<int>(variableMinor),
+      'fixedMinor': serializer.toJson<int>(fixedMinor),
+      'fixedAmortizedMinor': serializer.toJson<int>(fixedAmortizedMinor),
+      'tripPayMinor': serializer.toJson<int>(tripPayMinor),
+    };
+  }
+
+  DailyRollupRow copyWith({
+    String? vehicleId,
+    int? day,
+    int? trips,
+    int? fareMinor,
+    int? receivedMinor,
+    int? collectionMinor,
+    int? variableMinor,
+    int? fixedMinor,
+    int? fixedAmortizedMinor,
+    int? tripPayMinor,
+  }) => DailyRollupRow(
+    vehicleId: vehicleId ?? this.vehicleId,
+    day: day ?? this.day,
+    trips: trips ?? this.trips,
+    fareMinor: fareMinor ?? this.fareMinor,
+    receivedMinor: receivedMinor ?? this.receivedMinor,
+    collectionMinor: collectionMinor ?? this.collectionMinor,
+    variableMinor: variableMinor ?? this.variableMinor,
+    fixedMinor: fixedMinor ?? this.fixedMinor,
+    fixedAmortizedMinor: fixedAmortizedMinor ?? this.fixedAmortizedMinor,
+    tripPayMinor: tripPayMinor ?? this.tripPayMinor,
+  );
+  DailyRollupRow copyWithCompanion(DailyRollupsCompanion data) {
+    return DailyRollupRow(
+      vehicleId: data.vehicleId.present ? data.vehicleId.value : this.vehicleId,
+      day: data.day.present ? data.day.value : this.day,
+      trips: data.trips.present ? data.trips.value : this.trips,
+      fareMinor: data.fareMinor.present ? data.fareMinor.value : this.fareMinor,
+      receivedMinor: data.receivedMinor.present
+          ? data.receivedMinor.value
+          : this.receivedMinor,
+      collectionMinor: data.collectionMinor.present
+          ? data.collectionMinor.value
+          : this.collectionMinor,
+      variableMinor: data.variableMinor.present
+          ? data.variableMinor.value
+          : this.variableMinor,
+      fixedMinor: data.fixedMinor.present
+          ? data.fixedMinor.value
+          : this.fixedMinor,
+      fixedAmortizedMinor: data.fixedAmortizedMinor.present
+          ? data.fixedAmortizedMinor.value
+          : this.fixedAmortizedMinor,
+      tripPayMinor: data.tripPayMinor.present
+          ? data.tripPayMinor.value
+          : this.tripPayMinor,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DailyRollupRow(')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('day: $day, ')
+          ..write('trips: $trips, ')
+          ..write('fareMinor: $fareMinor, ')
+          ..write('receivedMinor: $receivedMinor, ')
+          ..write('collectionMinor: $collectionMinor, ')
+          ..write('variableMinor: $variableMinor, ')
+          ..write('fixedMinor: $fixedMinor, ')
+          ..write('fixedAmortizedMinor: $fixedAmortizedMinor, ')
+          ..write('tripPayMinor: $tripPayMinor')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    vehicleId,
+    day,
+    trips,
+    fareMinor,
+    receivedMinor,
+    collectionMinor,
+    variableMinor,
+    fixedMinor,
+    fixedAmortizedMinor,
+    tripPayMinor,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is DailyRollupRow &&
+          other.vehicleId == this.vehicleId &&
+          other.day == this.day &&
+          other.trips == this.trips &&
+          other.fareMinor == this.fareMinor &&
+          other.receivedMinor == this.receivedMinor &&
+          other.collectionMinor == this.collectionMinor &&
+          other.variableMinor == this.variableMinor &&
+          other.fixedMinor == this.fixedMinor &&
+          other.fixedAmortizedMinor == this.fixedAmortizedMinor &&
+          other.tripPayMinor == this.tripPayMinor);
+}
+
+class DailyRollupsCompanion extends UpdateCompanion<DailyRollupRow> {
+  final Value<String> vehicleId;
+  final Value<int> day;
+  final Value<int> trips;
+  final Value<int> fareMinor;
+  final Value<int> receivedMinor;
+  final Value<int> collectionMinor;
+  final Value<int> variableMinor;
+  final Value<int> fixedMinor;
+  final Value<int> fixedAmortizedMinor;
+  final Value<int> tripPayMinor;
+  final Value<int> rowid;
+  const DailyRollupsCompanion({
+    this.vehicleId = const Value.absent(),
+    this.day = const Value.absent(),
+    this.trips = const Value.absent(),
+    this.fareMinor = const Value.absent(),
+    this.receivedMinor = const Value.absent(),
+    this.collectionMinor = const Value.absent(),
+    this.variableMinor = const Value.absent(),
+    this.fixedMinor = const Value.absent(),
+    this.fixedAmortizedMinor = const Value.absent(),
+    this.tripPayMinor = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  DailyRollupsCompanion.insert({
+    required String vehicleId,
+    required int day,
+    this.trips = const Value.absent(),
+    this.fareMinor = const Value.absent(),
+    this.receivedMinor = const Value.absent(),
+    this.collectionMinor = const Value.absent(),
+    this.variableMinor = const Value.absent(),
+    this.fixedMinor = const Value.absent(),
+    this.fixedAmortizedMinor = const Value.absent(),
+    this.tripPayMinor = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : vehicleId = Value(vehicleId),
+       day = Value(day);
+  static Insertable<DailyRollupRow> custom({
+    Expression<String>? vehicleId,
+    Expression<int>? day,
+    Expression<int>? trips,
+    Expression<int>? fareMinor,
+    Expression<int>? receivedMinor,
+    Expression<int>? collectionMinor,
+    Expression<int>? variableMinor,
+    Expression<int>? fixedMinor,
+    Expression<int>? fixedAmortizedMinor,
+    Expression<int>? tripPayMinor,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (vehicleId != null) 'vehicle_id': vehicleId,
+      if (day != null) 'day': day,
+      if (trips != null) 'trips': trips,
+      if (fareMinor != null) 'fare_minor': fareMinor,
+      if (receivedMinor != null) 'received_minor': receivedMinor,
+      if (collectionMinor != null) 'collection_minor': collectionMinor,
+      if (variableMinor != null) 'variable_minor': variableMinor,
+      if (fixedMinor != null) 'fixed_minor': fixedMinor,
+      if (fixedAmortizedMinor != null)
+        'fixed_amortized_minor': fixedAmortizedMinor,
+      if (tripPayMinor != null) 'trip_pay_minor': tripPayMinor,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  DailyRollupsCompanion copyWith({
+    Value<String>? vehicleId,
+    Value<int>? day,
+    Value<int>? trips,
+    Value<int>? fareMinor,
+    Value<int>? receivedMinor,
+    Value<int>? collectionMinor,
+    Value<int>? variableMinor,
+    Value<int>? fixedMinor,
+    Value<int>? fixedAmortizedMinor,
+    Value<int>? tripPayMinor,
+    Value<int>? rowid,
+  }) {
+    return DailyRollupsCompanion(
+      vehicleId: vehicleId ?? this.vehicleId,
+      day: day ?? this.day,
+      trips: trips ?? this.trips,
+      fareMinor: fareMinor ?? this.fareMinor,
+      receivedMinor: receivedMinor ?? this.receivedMinor,
+      collectionMinor: collectionMinor ?? this.collectionMinor,
+      variableMinor: variableMinor ?? this.variableMinor,
+      fixedMinor: fixedMinor ?? this.fixedMinor,
+      fixedAmortizedMinor: fixedAmortizedMinor ?? this.fixedAmortizedMinor,
+      tripPayMinor: tripPayMinor ?? this.tripPayMinor,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (vehicleId.present) {
+      map['vehicle_id'] = Variable<String>(vehicleId.value);
+    }
+    if (day.present) {
+      map['day'] = Variable<int>(day.value);
+    }
+    if (trips.present) {
+      map['trips'] = Variable<int>(trips.value);
+    }
+    if (fareMinor.present) {
+      map['fare_minor'] = Variable<int>(fareMinor.value);
+    }
+    if (receivedMinor.present) {
+      map['received_minor'] = Variable<int>(receivedMinor.value);
+    }
+    if (collectionMinor.present) {
+      map['collection_minor'] = Variable<int>(collectionMinor.value);
+    }
+    if (variableMinor.present) {
+      map['variable_minor'] = Variable<int>(variableMinor.value);
+    }
+    if (fixedMinor.present) {
+      map['fixed_minor'] = Variable<int>(fixedMinor.value);
+    }
+    if (fixedAmortizedMinor.present) {
+      map['fixed_amortized_minor'] = Variable<int>(fixedAmortizedMinor.value);
+    }
+    if (tripPayMinor.present) {
+      map['trip_pay_minor'] = Variable<int>(tripPayMinor.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DailyRollupsCompanion(')
+          ..write('vehicleId: $vehicleId, ')
+          ..write('day: $day, ')
+          ..write('trips: $trips, ')
+          ..write('fareMinor: $fareMinor, ')
+          ..write('receivedMinor: $receivedMinor, ')
+          ..write('collectionMinor: $collectionMinor, ')
+          ..write('variableMinor: $variableMinor, ')
+          ..write('fixedMinor: $fixedMinor, ')
+          ..write('fixedAmortizedMinor: $fixedAmortizedMinor, ')
+          ..write('tripPayMinor: $tripPayMinor, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -9403,6 +10881,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $ExpenseCategoriesTable(this);
   late final $TripsTable trips = $TripsTable(this);
   late final $ExpensesTable expenses = $ExpensesTable(this);
+  late final $DayLogsTable dayLogs = $DayLogsTable(this);
+  late final $DailyRollupsTable dailyRollups = $DailyRollupsTable(this);
   late final Index tripsByVehicleTime = Index(
     'trips_by_vehicle_time',
     'CREATE INDEX trips_by_vehicle_time ON trips (vehicle_id, started_at)',
@@ -9418,6 +10898,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final Index expensesByTrip = Index(
     'expenses_by_trip',
     'CREATE INDEX expenses_by_trip ON expenses (trip_id)',
+  );
+  late final Index rollupsByDay = Index(
+    'rollups_by_day',
+    'CREATE INDEX rollups_by_day ON daily_rollups (day)',
   );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -9435,10 +10919,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     expenseCategories,
     trips,
     expenses,
+    dayLogs,
+    dailyRollups,
     tripsByVehicleTime,
     tripsByDay,
     expensesByVehicleTime,
     expensesByTrip,
+    rollupsByDay,
   ];
 }
 
@@ -9881,6 +11368,25 @@ final class $$VehiclesTableReferences
       manager.$state.copyWith(prefetchedData: cache),
     );
   }
+
+  static MultiTypedResultKey<$DayLogsTable, List<DayLogRow>> _dayLogsRefsTable(
+    _$AppDatabase db,
+  ) => MultiTypedResultKey.fromTable(
+    db.dayLogs,
+    aliasName: 'vehicles__id__day_logs__vehicle_id',
+  );
+
+  $$DayLogsTableProcessedTableManager get dayLogsRefs {
+    final manager = $$DayLogsTableTableManager(
+      $_db,
+      $_db.dayLogs,
+    ).filter((f) => f.vehicleId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_dayLogsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
 }
 
 class $$VehiclesTableFilterComposer
@@ -10062,6 +11568,31 @@ class $$VehiclesTableFilterComposer
           }) => $$ExpensesTableFilterComposer(
             $db: $db,
             $table: $db.expenses,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> dayLogsRefs(
+    Expression<bool> Function($$DayLogsTableFilterComposer f) f,
+  ) {
+    final $$DayLogsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.dayLogs,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DayLogsTableFilterComposer(
+            $db: $db,
+            $table: $db.dayLogs,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -10332,6 +11863,31 @@ class $$VehiclesTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> dayLogsRefs<T extends Object>(
+    Expression<T> Function($$DayLogsTableAnnotationComposer a) f,
+  ) {
+    final $$DayLogsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.dayLogs,
+      getReferencedColumn: (t) => t.vehicleId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DayLogsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.dayLogs,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$VehiclesTableTableManager
@@ -10351,6 +11907,7 @@ class $$VehiclesTableTableManager
             bool assignmentsRefs,
             bool tripsRefs,
             bool expensesRefs,
+            bool dayLogsRefs,
           })
         > {
   $$VehiclesTableTableManager(_$AppDatabase db, $VehiclesTable table)
@@ -10469,6 +12026,7 @@ class $$VehiclesTableTableManager
                 assignmentsRefs = false,
                 tripsRefs = false,
                 expensesRefs = false,
+                dayLogsRefs = false,
               }) {
                 return PrefetchHooks(
                   db: db,
@@ -10476,6 +12034,7 @@ class $$VehiclesTableTableManager
                     if (assignmentsRefs) db.assignments,
                     if (tripsRefs) db.trips,
                     if (expensesRefs) db.expenses,
+                    if (dayLogsRefs) db.dayLogs,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
@@ -10543,6 +12102,27 @@ class $$VehiclesTableTableManager
                               ),
                           typedResults: items,
                         ),
+                      if (dayLogsRefs)
+                        await $_getPrefetchedData<
+                          VehicleRow,
+                          $VehiclesTable,
+                          DayLogRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$VehiclesTableReferences
+                              ._dayLogsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$VehiclesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).dayLogsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.vehicleId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -10567,6 +12147,7 @@ typedef $$VehiclesTableProcessedTableManager =
         bool assignmentsRefs,
         bool tripsRefs,
         bool expensesRefs,
+        bool dayLogsRefs,
       })
     >;
 typedef $$DriversTableCreateCompanionBuilder = DriversCompanion Function({
@@ -10704,6 +12285,25 @@ final class $$DriversTableReferences
     ).filter((f) => f.driverId.id.sqlEquals($_itemColumn<String>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_tripsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$DayLogsTable, List<DayLogRow>> _dayLogsRefsTable(
+    _$AppDatabase db,
+  ) => MultiTypedResultKey.fromTable(
+    db.dayLogs,
+    aliasName: 'drivers__id__day_logs__driver_id',
+  );
+
+  $$DayLogsTableProcessedTableManager get dayLogsRefs {
+    final manager = $$DayLogsTableTableManager(
+      $_db,
+      $_db.dayLogs,
+    ).filter((f) => f.driverId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_dayLogsRefsTable($_db));
     return ProcessedTableManager(
       manager.$state.copyWith(prefetchedData: cache),
     );
@@ -10921,6 +12521,31 @@ class $$DriversTableFilterComposer
           }) => $$TripsTableFilterComposer(
             $db: $db,
             $table: $db.trips,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> dayLogsRefs(
+    Expression<bool> Function($$DayLogsTableFilterComposer f) f,
+  ) {
+    final $$DayLogsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.dayLogs,
+      getReferencedColumn: (t) => t.driverId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DayLogsTableFilterComposer(
+            $db: $db,
+            $table: $db.dayLogs,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -11217,6 +12842,31 @@ class $$DriversTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> dayLogsRefs<T extends Object>(
+    Expression<T> Function($$DayLogsTableAnnotationComposer a) f,
+  ) {
+    final $$DayLogsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.dayLogs,
+      getReferencedColumn: (t) => t.driverId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DayLogsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.dayLogs,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$DriversTableTableManager
@@ -11238,6 +12888,7 @@ class $$DriversTableTableManager
             bool advancesRefs,
             bool payoutsRefs,
             bool tripsRefs,
+            bool dayLogsRefs,
           })
         > {
   $$DriversTableTableManager(_$AppDatabase db, $DriversTable table)
@@ -11346,6 +12997,7 @@ class $$DriversTableTableManager
                 advancesRefs = false,
                 payoutsRefs = false,
                 tripsRefs = false,
+                dayLogsRefs = false,
               }) {
                 return PrefetchHooks(
                   db: db,
@@ -11355,6 +13007,7 @@ class $$DriversTableTableManager
                     if (advancesRefs) db.advances,
                     if (payoutsRefs) db.payouts,
                     if (tripsRefs) db.trips,
+                    if (dayLogsRefs) db.dayLogs,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
@@ -11460,6 +13113,27 @@ class $$DriversTableTableManager
                               ),
                           typedResults: items,
                         ),
+                      if (dayLogsRefs)
+                        await $_getPrefetchedData<
+                          DriverRow,
+                          $DriversTable,
+                          DayLogRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$DriversTableReferences
+                              ._dayLogsRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$DriversTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).dayLogsRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.driverId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -11486,6 +13160,7 @@ typedef $$DriversTableProcessedTableManager =
         bool advancesRefs,
         bool payoutsRefs,
         bool tripsRefs,
+        bool dayLogsRefs,
       })
     >;
 typedef $$AssignmentsTableCreateCompanionBuilder =
@@ -15665,6 +17340,7 @@ typedef $$ExpensesTableCreateCompanionBuilder = ExpensesCompanion Function({
   Value<String?> receiptFile,
   Value<int?> qtyMilli,
   Value<int?> odometerM,
+  Value<int> spentDay,
   Value<int> rowid,
 });
 typedef $$ExpensesTableUpdateCompanionBuilder = ExpensesCompanion Function({
@@ -15686,6 +17362,7 @@ typedef $$ExpensesTableUpdateCompanionBuilder = ExpensesCompanion Function({
   Value<String?> receiptFile,
   Value<int?> qtyMilli,
   Value<int?> odometerM,
+  Value<int> spentDay,
   Value<int> rowid,
 });
 
@@ -15828,6 +17505,11 @@ class $$ExpensesTableFilterComposer
 
   ColumnFilters<int> get odometerM => $composableBuilder(
     column: $table.odometerM,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get spentDay => $composableBuilder(
+    column: $table.spentDay,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -15985,6 +17667,11 @@ class $$ExpensesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<int> get spentDay => $composableBuilder(
+    column: $table.spentDay,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$VehiclesTableOrderingComposer get vehicleId {
     final $$VehiclesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -16115,6 +17802,9 @@ class $$ExpensesTableAnnotationComposer
   GeneratedColumn<int> get odometerM =>
       $composableBuilder(column: $table.odometerM, builder: (column) => column);
 
+  GeneratedColumn<int> get spentDay =>
+      $composableBuilder(column: $table.spentDay, builder: (column) => column);
+
   $$VehiclesTableAnnotationComposer get vehicleId {
     final $$VehiclesTableAnnotationComposer composer = $composerBuilder(
       composer: this,
@@ -16232,6 +17922,7 @@ class $$ExpensesTableTableManager
                 Value<String?> receiptFile = const Value.absent(),
                 Value<int?> qtyMilli = const Value.absent(),
                 Value<int?> odometerM = const Value.absent(),
+                Value<int> spentDay = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => ExpensesCompanion(
                 id: id,
@@ -16252,6 +17943,7 @@ class $$ExpensesTableTableManager
                 receiptFile: receiptFile,
                 qtyMilli: qtyMilli,
                 odometerM: odometerM,
+                spentDay: spentDay,
                 rowid: rowid,
               ),
           createCompanionCallback:
@@ -16274,6 +17966,7 @@ class $$ExpensesTableTableManager
                 Value<String?> receiptFile = const Value.absent(),
                 Value<int?> qtyMilli = const Value.absent(),
                 Value<int?> odometerM = const Value.absent(),
+                Value<int> spentDay = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => ExpensesCompanion.insert(
                 id: id,
@@ -16294,6 +17987,7 @@ class $$ExpensesTableTableManager
                 receiptFile: receiptFile,
                 qtyMilli: qtyMilli,
                 odometerM: odometerM,
+                spentDay: spentDay,
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
@@ -16384,6 +18078,892 @@ typedef $$ExpensesTableProcessedTableManager =
       ExpenseRow,
       PrefetchHooks Function({bool vehicleId, bool tripId, bool categoryId})
     >;
+typedef $$DayLogsTableCreateCompanionBuilder = DayLogsCompanion Function({
+  Value<String> id,
+  Value<String> ownerId,
+  Value<int> createdAt,
+  Value<int> updatedAt,
+  Value<int?> deletedAt,
+  Value<int> rev,
+  Value<bool> dirty,
+  required String vehicleId,
+  Value<String?> driverId,
+  required int logDay,
+  Value<int> collectionMinor,
+  Value<int?> distanceM,
+  Value<int?> hoursMin,
+  Value<String?> note,
+  Value<int> rowid,
+});
+typedef $$DayLogsTableUpdateCompanionBuilder = DayLogsCompanion Function({
+  Value<String> id,
+  Value<String> ownerId,
+  Value<int> createdAt,
+  Value<int> updatedAt,
+  Value<int?> deletedAt,
+  Value<int> rev,
+  Value<bool> dirty,
+  Value<String> vehicleId,
+  Value<String?> driverId,
+  Value<int> logDay,
+  Value<int> collectionMinor,
+  Value<int?> distanceM,
+  Value<int?> hoursMin,
+  Value<String?> note,
+  Value<int> rowid,
+});
+
+final class $$DayLogsTableReferences
+    extends BaseReferences<_$AppDatabase, $DayLogsTable, DayLogRow> {
+  $$DayLogsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $VehiclesTable _vehicleIdTable(_$AppDatabase db) =>
+      db.vehicles.createAlias('day_logs__vehicle_id__vehicles__id');
+
+  $$VehiclesTableProcessedTableManager get vehicleId {
+    final $_column = $_itemColumn<String>('vehicle_id')!;
+
+    final manager = $$VehiclesTableTableManager(
+      $_db,
+      $_db.vehicles,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_vehicleIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $DriversTable _driverIdTable(_$AppDatabase db) =>
+      db.drivers.createAlias('day_logs__driver_id__drivers__id');
+
+  $$DriversTableProcessedTableManager? get driverId {
+    final $_column = $_itemColumn<String>('driver_id');
+    if ($_column == null) return null;
+    final manager = $$DriversTableTableManager(
+      $_db,
+      $_db.drivers,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_driverIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$DayLogsTableFilterComposer
+    extends Composer<_$AppDatabase, $DayLogsTable> {
+  $$DayLogsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get logDay => $composableBuilder(
+    column: $table.logDay,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get collectionMinor => $composableBuilder(
+    column: $table.collectionMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get distanceM => $composableBuilder(
+    column: $table.distanceM,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get hoursMin => $composableBuilder(
+    column: $table.hoursMin,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$VehiclesTableFilterComposer get vehicleId {
+    final $$VehiclesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableFilterComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DriversTableFilterComposer get driverId {
+    final $$DriversTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.driverId,
+      referencedTable: $db.drivers,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DriversTableFilterComposer(
+            $db: $db,
+            $table: $db.drivers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$DayLogsTableOrderingComposer
+    extends Composer<_$AppDatabase, $DayLogsTable> {
+  $$DayLogsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ownerId => $composableBuilder(
+    column: $table.ownerId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get deletedAt => $composableBuilder(
+    column: $table.deletedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rev => $composableBuilder(
+    column: $table.rev,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get dirty => $composableBuilder(
+    column: $table.dirty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get logDay => $composableBuilder(
+    column: $table.logDay,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get collectionMinor => $composableBuilder(
+    column: $table.collectionMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get distanceM => $composableBuilder(
+    column: $table.distanceM,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get hoursMin => $composableBuilder(
+    column: $table.hoursMin,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$VehiclesTableOrderingComposer get vehicleId {
+    final $$VehiclesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableOrderingComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DriversTableOrderingComposer get driverId {
+    final $$DriversTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.driverId,
+      referencedTable: $db.drivers,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DriversTableOrderingComposer(
+            $db: $db,
+            $table: $db.drivers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$DayLogsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $DayLogsTable> {
+  $$DayLogsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get ownerId =>
+      $composableBuilder(column: $table.ownerId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<int> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get deletedAt =>
+      $composableBuilder(column: $table.deletedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get rev =>
+      $composableBuilder(column: $table.rev, builder: (column) => column);
+
+  GeneratedColumn<bool> get dirty =>
+      $composableBuilder(column: $table.dirty, builder: (column) => column);
+
+  GeneratedColumn<int> get logDay =>
+      $composableBuilder(column: $table.logDay, builder: (column) => column);
+
+  GeneratedColumn<int> get collectionMinor => $composableBuilder(
+    column: $table.collectionMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get distanceM =>
+      $composableBuilder(column: $table.distanceM, builder: (column) => column);
+
+  GeneratedColumn<int> get hoursMin =>
+      $composableBuilder(column: $table.hoursMin, builder: (column) => column);
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  $$VehiclesTableAnnotationComposer get vehicleId {
+    final $$VehiclesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.vehicleId,
+      referencedTable: $db.vehicles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VehiclesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.vehicles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$DriversTableAnnotationComposer get driverId {
+    final $$DriversTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.driverId,
+      referencedTable: $db.drivers,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DriversTableAnnotationComposer(
+            $db: $db,
+            $table: $db.drivers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$DayLogsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $DayLogsTable,
+          DayLogRow,
+          $$DayLogsTableFilterComposer,
+          $$DayLogsTableOrderingComposer,
+          $$DayLogsTableAnnotationComposer,
+          $$DayLogsTableCreateCompanionBuilder,
+          $$DayLogsTableUpdateCompanionBuilder,
+          (DayLogRow, $$DayLogsTableReferences),
+          DayLogRow,
+          PrefetchHooks Function({bool vehicleId, bool driverId})
+        > {
+  $$DayLogsTableTableManager(_$AppDatabase db, $DayLogsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$DayLogsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DayLogsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DayLogsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                Value<String> vehicleId = const Value.absent(),
+                Value<String?> driverId = const Value.absent(),
+                Value<int> logDay = const Value.absent(),
+                Value<int> collectionMinor = const Value.absent(),
+                Value<int?> distanceM = const Value.absent(),
+                Value<int?> hoursMin = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => DayLogsCompanion(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                vehicleId: vehicleId,
+                driverId: driverId,
+                logDay: logDay,
+                collectionMinor: collectionMinor,
+                distanceM: distanceM,
+                hoursMin: hoursMin,
+                note: note,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> ownerId = const Value.absent(),
+                Value<int> createdAt = const Value.absent(),
+                Value<int> updatedAt = const Value.absent(),
+                Value<int?> deletedAt = const Value.absent(),
+                Value<int> rev = const Value.absent(),
+                Value<bool> dirty = const Value.absent(),
+                required String vehicleId,
+                Value<String?> driverId = const Value.absent(),
+                required int logDay,
+                Value<int> collectionMinor = const Value.absent(),
+                Value<int?> distanceM = const Value.absent(),
+                Value<int?> hoursMin = const Value.absent(),
+                Value<String?> note = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => DayLogsCompanion.insert(
+                id: id,
+                ownerId: ownerId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deletedAt: deletedAt,
+                rev: rev,
+                dirty: dirty,
+                vehicleId: vehicleId,
+                driverId: driverId,
+                logDay: logDay,
+                collectionMinor: collectionMinor,
+                distanceM: distanceM,
+                hoursMin: hoursMin,
+                note: note,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$DayLogsTable, DayLogRow>(table),
+                  $$DayLogsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({vehicleId = false, driverId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (vehicleId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.vehicleId,
+                        referencedTable: $$DayLogsTableReferences
+                            ._vehicleIdTable(db),
+                        referencedColumn: $$DayLogsTableReferences
+                            ._vehicleIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+                    if (driverId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.driverId,
+                        referencedTable: $$DayLogsTableReferences
+                            ._driverIdTable(db),
+                        referencedColumn: $$DayLogsTableReferences
+                            ._driverIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$DayLogsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $DayLogsTable,
+      DayLogRow,
+      $$DayLogsTableFilterComposer,
+      $$DayLogsTableOrderingComposer,
+      $$DayLogsTableAnnotationComposer,
+      $$DayLogsTableCreateCompanionBuilder,
+      $$DayLogsTableUpdateCompanionBuilder,
+      (DayLogRow, $$DayLogsTableReferences),
+      DayLogRow,
+      PrefetchHooks Function({bool vehicleId, bool driverId})
+    >;
+typedef $$DailyRollupsTableCreateCompanionBuilder =
+    DailyRollupsCompanion Function({
+      required String vehicleId,
+      required int day,
+      Value<int> trips,
+      Value<int> fareMinor,
+      Value<int> receivedMinor,
+      Value<int> collectionMinor,
+      Value<int> variableMinor,
+      Value<int> fixedMinor,
+      Value<int> fixedAmortizedMinor,
+      Value<int> tripPayMinor,
+      Value<int> rowid,
+    });
+typedef $$DailyRollupsTableUpdateCompanionBuilder =
+    DailyRollupsCompanion Function({
+      Value<String> vehicleId,
+      Value<int> day,
+      Value<int> trips,
+      Value<int> fareMinor,
+      Value<int> receivedMinor,
+      Value<int> collectionMinor,
+      Value<int> variableMinor,
+      Value<int> fixedMinor,
+      Value<int> fixedAmortizedMinor,
+      Value<int> tripPayMinor,
+      Value<int> rowid,
+    });
+
+class $$DailyRollupsTableFilterComposer
+    extends Composer<_$AppDatabase, $DailyRollupsTable> {
+  $$DailyRollupsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get vehicleId => $composableBuilder(
+    column: $table.vehicleId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get day => $composableBuilder(
+    column: $table.day,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get trips => $composableBuilder(
+    column: $table.trips,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get fareMinor => $composableBuilder(
+    column: $table.fareMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get receivedMinor => $composableBuilder(
+    column: $table.receivedMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get collectionMinor => $composableBuilder(
+    column: $table.collectionMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get variableMinor => $composableBuilder(
+    column: $table.variableMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get fixedMinor => $composableBuilder(
+    column: $table.fixedMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get fixedAmortizedMinor => $composableBuilder(
+    column: $table.fixedAmortizedMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get tripPayMinor => $composableBuilder(
+    column: $table.tripPayMinor,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$DailyRollupsTableOrderingComposer
+    extends Composer<_$AppDatabase, $DailyRollupsTable> {
+  $$DailyRollupsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get vehicleId => $composableBuilder(
+    column: $table.vehicleId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get day => $composableBuilder(
+    column: $table.day,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get trips => $composableBuilder(
+    column: $table.trips,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get fareMinor => $composableBuilder(
+    column: $table.fareMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get receivedMinor => $composableBuilder(
+    column: $table.receivedMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get collectionMinor => $composableBuilder(
+    column: $table.collectionMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get variableMinor => $composableBuilder(
+    column: $table.variableMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get fixedMinor => $composableBuilder(
+    column: $table.fixedMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get fixedAmortizedMinor => $composableBuilder(
+    column: $table.fixedAmortizedMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get tripPayMinor => $composableBuilder(
+    column: $table.tripPayMinor,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$DailyRollupsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $DailyRollupsTable> {
+  $$DailyRollupsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get vehicleId =>
+      $composableBuilder(column: $table.vehicleId, builder: (column) => column);
+
+  GeneratedColumn<int> get day =>
+      $composableBuilder(column: $table.day, builder: (column) => column);
+
+  GeneratedColumn<int> get trips =>
+      $composableBuilder(column: $table.trips, builder: (column) => column);
+
+  GeneratedColumn<int> get fareMinor =>
+      $composableBuilder(column: $table.fareMinor, builder: (column) => column);
+
+  GeneratedColumn<int> get receivedMinor => $composableBuilder(
+    column: $table.receivedMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get collectionMinor => $composableBuilder(
+    column: $table.collectionMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get variableMinor => $composableBuilder(
+    column: $table.variableMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get fixedMinor => $composableBuilder(
+    column: $table.fixedMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get fixedAmortizedMinor => $composableBuilder(
+    column: $table.fixedAmortizedMinor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get tripPayMinor => $composableBuilder(
+    column: $table.tripPayMinor,
+    builder: (column) => column,
+  );
+}
+
+class $$DailyRollupsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $DailyRollupsTable,
+          DailyRollupRow,
+          $$DailyRollupsTableFilterComposer,
+          $$DailyRollupsTableOrderingComposer,
+          $$DailyRollupsTableAnnotationComposer,
+          $$DailyRollupsTableCreateCompanionBuilder,
+          $$DailyRollupsTableUpdateCompanionBuilder,
+          (
+            DailyRollupRow,
+            BaseReferences<_$AppDatabase, $DailyRollupsTable, DailyRollupRow>,
+          ),
+          DailyRollupRow,
+          PrefetchHooks Function()
+        > {
+  $$DailyRollupsTableTableManager(_$AppDatabase db, $DailyRollupsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$DailyRollupsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$DailyRollupsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$DailyRollupsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> vehicleId = const Value.absent(),
+                Value<int> day = const Value.absent(),
+                Value<int> trips = const Value.absent(),
+                Value<int> fareMinor = const Value.absent(),
+                Value<int> receivedMinor = const Value.absent(),
+                Value<int> collectionMinor = const Value.absent(),
+                Value<int> variableMinor = const Value.absent(),
+                Value<int> fixedMinor = const Value.absent(),
+                Value<int> fixedAmortizedMinor = const Value.absent(),
+                Value<int> tripPayMinor = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => DailyRollupsCompanion(
+                vehicleId: vehicleId,
+                day: day,
+                trips: trips,
+                fareMinor: fareMinor,
+                receivedMinor: receivedMinor,
+                collectionMinor: collectionMinor,
+                variableMinor: variableMinor,
+                fixedMinor: fixedMinor,
+                fixedAmortizedMinor: fixedAmortizedMinor,
+                tripPayMinor: tripPayMinor,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String vehicleId,
+                required int day,
+                Value<int> trips = const Value.absent(),
+                Value<int> fareMinor = const Value.absent(),
+                Value<int> receivedMinor = const Value.absent(),
+                Value<int> collectionMinor = const Value.absent(),
+                Value<int> variableMinor = const Value.absent(),
+                Value<int> fixedMinor = const Value.absent(),
+                Value<int> fixedAmortizedMinor = const Value.absent(),
+                Value<int> tripPayMinor = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => DailyRollupsCompanion.insert(
+                vehicleId: vehicleId,
+                day: day,
+                trips: trips,
+                fareMinor: fareMinor,
+                receivedMinor: receivedMinor,
+                collectionMinor: collectionMinor,
+                variableMinor: variableMinor,
+                fixedMinor: fixedMinor,
+                fixedAmortizedMinor: fixedAmortizedMinor,
+                tripPayMinor: tripPayMinor,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$DailyRollupsTable, DailyRollupRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $DailyRollupsTable,
+                    DailyRollupRow
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$DailyRollupsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $DailyRollupsTable,
+      DailyRollupRow,
+      $$DailyRollupsTableFilterComposer,
+      $$DailyRollupsTableOrderingComposer,
+      $$DailyRollupsTableAnnotationComposer,
+      $$DailyRollupsTableCreateCompanionBuilder,
+      $$DailyRollupsTableUpdateCompanionBuilder,
+      (
+        DailyRollupRow,
+        BaseReferences<_$AppDatabase, $DailyRollupsTable, DailyRollupRow>,
+      ),
+      DailyRollupRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -16413,4 +18993,8 @@ class $AppDatabaseManager {
       $$TripsTableTableManager(_db, _db.trips);
   $$ExpensesTableTableManager get expenses =>
       $$ExpensesTableTableManager(_db, _db.expenses);
+  $$DayLogsTableTableManager get dayLogs =>
+      $$DayLogsTableTableManager(_db, _db.dayLogs);
+  $$DailyRollupsTableTableManager get dailyRollups =>
+      $$DailyRollupsTableTableManager(_db, _db.dailyRollups);
 }

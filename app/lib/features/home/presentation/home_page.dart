@@ -8,6 +8,7 @@ import 'package:vehicle_khata/app/providers/feature_providers.dart';
 import 'package:vehicle_khata/app/ui/tokens.dart';
 import 'package:vehicle_khata/app/ui/widgets/big_button.dart';
 import 'package:vehicle_khata/app/ui/widgets/empty_state.dart';
+import 'package:vehicle_khata/features/daylog/presentation/today_card.dart';
 import 'package:vehicle_khata/features/vehicles/data/vehicle_repository.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle.dart';
 import 'package:vehicle_khata/features/vehicles/domain/vehicle_enums.dart';
@@ -168,8 +169,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                 return ListView.builder(
                   controller: _scroll,
                   padding: const EdgeInsets.only(bottom: 96),
-                  itemCount: list.length,
-                  itemBuilder: (context, i) => _VehicleTile(vehicle: list[i]),
+                  itemCount: list.length + 1,
+                  itemBuilder: (context, i) => i == 0
+                      ? const TodayCard()
+                      : _VehicleTile(vehicle: list[i - 1]),
                 );
               },
             ),

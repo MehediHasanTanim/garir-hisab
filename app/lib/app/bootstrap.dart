@@ -20,6 +20,7 @@ Future<void> bootstrap(AppConfig config) async {
   final app = ProviderScope(
     overrides: [
       sharedPreferencesProvider.overrideWithValue(prefs),
+      flavorProvider.overrideWithValue(config.flavor),
       if (auth != null) authRepositoryProvider.overrideWithValue(auth),
     ],
     child: KhataApp(config: config),

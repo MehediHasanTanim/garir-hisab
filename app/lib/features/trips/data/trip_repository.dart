@@ -5,8 +5,10 @@ import 'package:vehicle_khata/core/db/audit.dart';
 import 'package:vehicle_khata/core/db/ids.dart';
 import 'package:vehicle_khata/core/money/money.dart';
 import 'package:vehicle_khata/core/time/calendar_day.dart';
+import 'package:vehicle_khata/features/drivers/data/attendance_repository.dart';
 import 'package:vehicle_khata/features/expenses/data/expense_mapper.dart';
 import 'package:vehicle_khata/features/expenses/domain/expense.dart';
+import 'package:vehicle_khata/features/reports/data/rollup_service.dart';
 import 'package:vehicle_khata/features/trips/domain/trip.dart';
 
 enum TripError {
@@ -75,6 +77,7 @@ class TripRepository {
   new(this._db);
 
   final AppDatabase _db;
+  late final RollupService _rollups = RollupService(_db);
 
   Stream<List<TripSummary>> watch(TripFilter filter) {
     final where = <String>['t.deleted_at IS NULL'];
@@ -189,6 +192,11 @@ class TripRepository {
           'expenses': draft.expenses.length,
         },
       );
+      final day = CalendarDay.fromDate(draft.startedAt.toLocal());
+      if (draft.driverId != null) {
+        await autoMarkPresent(_db, draft.driverId!, day);
+      }
+      await _rollups.refresh(draft.vehicleId, [day]);
       return id;
     });
   }
@@ -250,6 +258,14 @@ class TripRepository {
         action: 'update',
         diff: diffFields(before, _snapshot(_tripFromDraft(id, draft))),
       );
+      final day = CalendarDay.fromDate(draft.startedAt.toLocal());
+      if (draft.driverId != null) {
+        await autoMarkPresent(_db, draft.driverId!, day);
+      }
+      await _rollups.refresh(draft.vehicleId, [day]);
+      await _rollups.refresh(existing.vehicleId, [
+        CalendarDay(existing.tripDay),
+      ]);
     });
   }
 
@@ -273,6 +289,9 @@ class TripRepository {
         action: 'delete',
         diff: {'fareMinor': existing.fareMinor, 'expenses': expenses.length},
       );
+      await _rollups.refresh(existing.vehicleId, [
+        CalendarDay(existing.tripDay),
+      ]);
     });
   }
 
@@ -299,6 +318,7 @@ class TripRepository {
         action: 'payment',
         diff: {'amountMinor': amount.minor},
       );
+      await _rollups.refresh(row.vehicleId, [CalendarDay(row.tripDay)]);
     });
   }
 

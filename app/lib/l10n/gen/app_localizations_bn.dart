@@ -1426,4 +1426,146 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get unitKm => 'কিমি';
+
+  @override
+  String todayWithVehicle(String vehicle) {
+    return 'আজ · $vehicle';
+  }
+
+  @override
+  String get incomeToday => 'আজকের আয়';
+
+  @override
+  String get profitToday => 'আজকের লাভ';
+
+  @override
+  String get gasFuel => 'গ্যাস / জ্বালানি';
+
+  @override
+  String get closeDay => 'দিন শেষ করুন';
+
+  @override
+  String incomeAdded(String amount) {
+    return '$amount যোগ হয়েছে';
+  }
+
+  @override
+  String get undo => 'ফিরিয়ে নিন';
+
+  @override
+  String get incomeUndone => 'ফিরিয়ে নেওয়া হয়েছে';
+
+  @override
+  String get closeDayTitle => 'দিনের হিসাব';
+
+  @override
+  String get closeDayIncome => 'আয়';
+
+  @override
+  String get closeDayRunning => 'চলতি খরচ';
+
+  @override
+  String get closeDayDriver => 'ড্রাইভারের খরচ';
+
+  @override
+  String get closeDayVehicleCosts => 'গাড়ির খরচ';
+
+  @override
+  String get closeDayNet => 'নিট লাভ';
+
+  @override
+  String get settlementTitle => 'ড্রাইভারের সাথে হিসাব';
+
+  @override
+  String settlementJama(String amount, String driver) {
+    return 'আজ $driver এর কাছ থেকে জমা $amount নিন।';
+  }
+
+  @override
+  String settlementSalary(String driver) {
+    return '$driver মাসিক বেতনে আছেন, যা প্রতিদিন জমছে।';
+  }
+
+  @override
+  String settlementDaily(String driver) {
+    return '$driver কাজের দিন অনুযায়ী মজুরি পান। দেওয়ার সময় পরিশোধ লিখুন।';
+  }
+
+  @override
+  String settlementPerTrip(String driver) {
+    return '$driver ট্রিপ থেকে পান। দেওয়ার সময় পরিশোধ লিখুন।';
+  }
+
+  @override
+  String get settlementNone => 'ড্রাইভারের সাথে কোনো হিসাব বাকি নেই।';
+
+  @override
+  String get periodWeek => 'এই সপ্তাহ';
+
+  @override
+  String get profitSummary => 'লাভের সারসংক্ষেপ';
+
+  @override
+  String get repIncome => 'আয়';
+
+  @override
+  String get repRunning => 'চলতি খরচ';
+
+  @override
+  String get repDriver => 'ড্রাইভারের খরচ';
+
+  @override
+  String get repOperating => 'পরিচালন লাভ';
+
+  @override
+  String get repVehicleCosts => 'গাড়ির খরচ';
+
+  @override
+  String get repNet => 'নিট লাভ';
+
+  @override
+  String get repReceivable => 'এখনো পাওয়া যায়নি';
+
+  @override
+  String get repPerTrip => 'ট্রিপ প্রতি';
+
+  @override
+  String get repPerDay => 'কাজের দিন প্রতি';
+
+  @override
+  String get vehiclesRanking => 'গাড়ি';
+
+  @override
+  String get trendTitle => 'লাভের ধারা';
+
+  @override
+  String get incomeVsCost => 'আয় ও খরচ';
+
+  @override
+  String get expenseMixTitle => 'খরচ কোথায় গেছে';
+
+  @override
+  String get noDataYet => 'এই সময়ে এখনো কিছু লেখা হয়নি।';
+
+  @override
+  String get amortizeFixed => 'গাড়ির খরচ মাস জুড়ে ভাগ করুন';
+
+  @override
+  String get amortizeFixedHint =>
+      'মেরামত, বীমা ও কিস্তি যেদিন দেওয়া হয়েছে সেদিন না ধরে মাসের সব দিনে ভাগ করা হবে।';
+
+  @override
+  String get chartIncome => 'আয়';
+
+  @override
+  String get chartCosts => 'খরচ';
+
+  @override
+  String get chartProfit => 'লাভ';
+
+  @override
+  String get generateDemo => 'ডেমো তথ্য তৈরি করুন';
+
+  @override
+  String get demoDone => 'ডেমো তথ্য তৈরি হয়েছে';
 }
